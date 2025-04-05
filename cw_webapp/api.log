@@ -1,0 +1,1762 @@
+2025-03-21 14:04:48,844 - WARNING - Not Found: /users/dashboard/path/to/custom-cursor.png
+2025-03-23 02:21:42,674 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-23 02:21:42,707 - WARNING - Not Found: /script.js
+2025-03-23 02:21:42,756 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-23 02:21:42,789 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-23 02:21:42,895 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-23 02:21:43,283 - WARNING - Not Found: /favicon.ico
+2025-03-23 02:21:47,504 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-23 02:21:47,510 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-23 02:21:47,515 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-23 02:21:48,056 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-23 02:21:48,060 - WARNING - Not Found: /script.js
+2025-03-23 02:21:48,067 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-23 02:21:48,091 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-23 02:21:48,098 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-23 02:22:59,184 - WARNING - Not Found: /users/dashboard/path/to/custom-cursor.png
+2025-03-23 02:23:42,183 - WARNING - Not Found: /users/dashboard/path/to/custom-cursor.png
+2025-03-23 02:28:48,664 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'app' not found. 'app' is not a valid view function or pattern name.
+2025-03-23 02:34:07,657 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'app' not found. 'app' is not a valid view function or pattern name.
+2025-03-23 02:35:23,059 - WARNING - Unauthorized: /projects/save_project/
+2025-03-23 02:37:11,698 - WARNING - Unauthorized: /projects/save_project/
+2025-03-23 02:38:29,507 - WARNING - Unauthorized: /projects/save_project/
+2025-03-23 02:42:24,455 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'app' not found. 'app' is not a valid view function or pattern name.
+2025-03-23 02:42:35,432 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'app' not found. 'app' is not a valid view function or pattern name.
+2025-03-23 02:42:36,217 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'app' not found. 'app' is not a valid view function or pattern name.
+2025-03-23 02:43:29,581 - WARNING - Not Found: /templates/app.html
+2025-03-23 02:43:58,342 - WARNING - Not Found: /app.html
+2025-03-23 02:45:11,239 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\api\urls.py changed, reloading.
+2025-03-23 02:45:42,252 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\api\views.py changed, reloading.
+2025-03-23 02:46:49,321 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\api\views.py changed, reloading.
+2025-03-23 02:50:54,331 - WARNING - Not Found: /favicon.ico
+2025-03-23 02:52:04,219 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-23 02:52:04,223 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-23 02:52:04,226 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-23 02:52:04,233 - WARNING - Not Found: /script.js
+2025-03-23 02:52:04,236 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-23 03:15:54,790 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\projects\views.py changed, reloading.
+2025-03-25 01:21:57,301 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 01:21:57,308 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 01:21:57,312 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 01:21:57,316 - WARNING - Not Found: /script.js
+2025-03-25 01:21:57,322 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 01:21:57,366 - WARNING - Not Found: /favicon.ico
+2025-03-25 01:24:11,299 - ERROR - Internal Server Error: /users/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 74, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dev_environment' not found. 'dev_environment' is not a valid view function or pattern name.
+2025-03-25 01:28:27,244 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\projects\views.py changed, reloading.
+2025-03-25 01:47:33,045 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 01:47:33,056 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 01:47:33,092 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 01:47:33,099 - WARNING - Not Found: /script.js
+2025-03-25 01:47:33,106 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 01:47:33,109 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 01:47:44,382 - ERROR - Internal Server Error: /projects/dev_environment/1/
+2025-03-25 01:48:10,471 - WARNING - Unauthorized: /projects/save_project/
+2025-03-25 01:50:12,783 - ERROR - Internal Server Error: /projects/dev_environment/1/
+2025-03-25 01:51:13,552 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\projects\views.py changed, reloading.
+2025-03-25 01:52:10,521 - WARNING - Not Found: /projects/save_code/
+2025-03-25 01:55:19,879 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\projects\views.py changed, reloading.
+2025-03-25 01:55:36,283 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\projects\urls.py changed, reloading.
+2025-03-25 01:56:50,985 - WARNING - Not Found: /projects/
+2025-03-25 09:58:38,870 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 09:58:38,878 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 09:58:38,889 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 09:58:38,945 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 09:58:38,957 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 09:58:38,966 - WARNING - Not Found: /script.js
+2025-03-25 09:58:39,750 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 09:58:39,758 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 09:58:40,627 - WARNING - Not Found: /favicon.ico
+2025-03-25 09:58:44,506 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 09:58:44,514 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 09:58:44,681 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 09:58:44,693 - WARNING - Not Found: /script.js
+2025-03-25 09:58:44,700 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 13:04:32,952 - WARNING - Not Found: /script.js
+2025-03-25 13:04:32,968 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 13:04:32,969 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 13:04:32,976 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 13:04:32,993 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 13:04:33,229 - WARNING - Not Found: /favicon.ico
+2025-03-25 13:32:16,190 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 13:32:16,190 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 13:32:16,209 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 13:32:16,209 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 13:32:16,222 - WARNING - Not Found: /script.js
+2025-03-25 13:42:57,809 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 13:42:57,818 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 13:42:57,863 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 13:42:57,867 - WARNING - Not Found: /script.js
+2025-03-25 13:42:57,875 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 13:42:57,884 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 14:09:58,935 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 14:09:58,955 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 14:09:58,967 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 14:09:58,982 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 14:09:58,999 - WARNING - Not Found: /script.js
+2025-03-25 14:10:00,641 - WARNING - Not Found: /data-warehouse-data-mining-big-data-online-analytical-processing-3d-9c788b2c62630ab06607f08dfe45844d.png
+2025-03-25 14:10:00,647 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 14:10:01,366 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 14:10:01,378 - WARNING - Not Found: /script.js
+2025-03-25 14:10:01,394 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 14:10:01,410 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-25 14:10:01,423 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-25 14:10:01,439 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-25 14:10:01,649 - WARNING - Not Found: /favicon.ico
+2025-03-26 12:51:44,678 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-26 12:51:44,692 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-26 12:51:44,696 - WARNING - Not Found: /script.js
+2025-03-26 12:51:44,703 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-26 12:51:54,564 - WARNING - Not Found: /favicon.ico
+2025-03-26 13:16:12,493 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-26 13:16:12,497 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-26 13:16:12,501 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-26 13:16:12,509 - WARNING - Not Found: /script.js
+2025-03-27 01:18:08,166 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 01:18:08,168 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 01:18:08,171 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 01:18:08,178 - WARNING - Not Found: /script.js
+2025-03-27 01:18:09,142 - WARNING - Not Found: /favicon.ico
+2025-03-27 01:18:39,315 - ERROR - Internal Server Error: /users/register/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py", line 15, in register_view
+    login(request, user, backend=backend)  # \u2705 Specify the backend
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\roadmap_pj\env\Lib\site-packages\django\contrib\auth\__init__.py", line 142, in login
+    raise TypeError(
+TypeError: backend must be a dotted import path string (got <django.contrib.auth.backends.ModelBackend object at 0x000002162F3A08C0>).
+2025-03-27 01:19:21,191 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py changed, reloading.
+2025-03-27 01:24:30,021 - WARNING - Unauthorized: /projects/save_project/
+2025-03-27 01:26:51,411 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\views.py changed, reloading.
+2025-03-27 01:27:43,410 - WARNING - Unauthorized: /projects/save_project/
+2025-03-27 01:28:14,139 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 01:28:14,147 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 01:28:14,155 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 01:28:14,160 - WARNING - Not Found: /script.js
+2025-03-27 01:28:34,145 - WARNING - Not Found: /dashboard/
+2025-03-27 01:29:14,188 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\auth_system\urls.py changed, reloading.
+2025-03-27 01:29:26,936 - INFO - C:\Users\Naman Sharma\Documents\roadmap_pj\auth_system\users\urls.py changed, reloading.
+2025-03-27 01:35:22,416 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-03-27 01:35:25,117 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-03-27 01:51:33,467 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:36,910 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:37,696 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:38,380 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:38,728 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:39,030 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:39,301 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:51:39,553 - WARNING - Not Found: /users/dashboard/
+2025-03-27 01:52:52,626 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-03-27 01:56:08,318 - WARNING - Not Found: /users/dashboard/
+2025-03-27 02:30:39,526 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 02:30:39,562 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 02:30:39,572 - WARNING - Not Found: /script.js
+2025-03-27 02:30:39,578 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 02:30:39,587 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 02:31:03,145 - WARNING - Bad Request: /users/register/
+2025-03-27 02:31:18,162 - WARNING - Bad Request: /users/register/
+2025-03-27 02:41:48,855 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 02:41:48,865 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 02:41:48,868 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 02:41:48,873 - WARNING - Not Found: /script.js
+2025-03-27 02:42:48,495 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 02:42:48,501 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 02:42:48,506 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 02:42:48,512 - WARNING - Not Found: /script.js
+2025-03-27 02:47:24,637 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 02:47:24,648 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 02:47:24,656 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 02:47:24,661 - WARNING - Not Found: /script.js
+2025-03-27 10:25:01,065 - WARNING - Not Found: /script.js
+2025-03-27 10:25:01,075 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 10:25:01,080 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 10:25:01,088 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 10:25:01,198 - WARNING - Not Found: /favicon.ico
+2025-03-27 11:12:04,983 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:12:04,987 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:12:04,997 - WARNING - Not Found: /script.js
+2025-03-27 11:12:05,004 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,381 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:15:03,386 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,466 - WARNING - Not Found: /script.js
+2025-03-27 11:15:03,478 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:15:03,488 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:15:03,502 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,618 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:15:03,632 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,689 - WARNING - Not Found: /script.js
+2025-03-27 11:15:03,697 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:15:03,711 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:15:03,720 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,864 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:15:03,876 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,959 - WARNING - Not Found: /script.js
+2025-03-27 11:15:03,978 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:15:03,987 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:15:03,997 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:29:07,684 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:29:07,690 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:29:07,698 - WARNING - Not Found: /script.js
+2025-03-27 11:29:07,706 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:32:19,671 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:32:19,690 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:32:19,914 - WARNING - Not Found: /script.js
+2025-03-27 11:32:19,921 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:32:19,934 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:32:19,944 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:53:09,396 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:53:09,435 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:53:09,585 - WARNING - Not Found: /script.js
+2025-03-27 11:53:09,590 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-27 11:53:09,606 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-27 11:53:09,611 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-27 11:59:16,814 - WARNING - Bad Request: /users/register/
+2025-03-27 11:59:27,394 - WARNING - Bad Request: /users/register/
+2025-03-28 13:59:42,964 - WARNING - Not Found: /script.js
+2025-03-28 13:59:42,968 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-28 13:59:42,972 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-28 13:59:42,985 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-28 13:59:43,075 - WARNING - Not Found: /favicon.ico
+2025-03-28 14:36:30,154 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-28 14:36:30,159 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-28 14:36:30,164 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-28 14:36:30,170 - WARNING - Not Found: /script.js
+2025-03-28 14:38:50,304 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-28 14:38:50,311 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-28 14:38:50,318 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-28 14:38:50,323 - WARNING - Not Found: /script.js
+2025-03-28 14:39:20,525 - WARNING - Unauthorized: /projects/save_code/
+2025-03-28 14:39:22,247 - WARNING - Unauthorized: /projects/save_code/
+2025-03-28 14:39:23,458 - WARNING - Unauthorized: /projects/run_code/
+2025-03-29 01:51:37,616 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 01:51:37,623 - WARNING - Not Found: /script.js
+2025-03-29 01:51:37,625 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 01:51:37,627 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 01:51:39,214 - WARNING - Not Found: /favicon.ico
+2025-03-29 09:44:11,949 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 09:44:11,953 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 09:44:11,954 - WARNING - Not Found: /script.js
+2025-03-29 09:44:11,967 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 09:44:12,185 - WARNING - Not Found: /favicon.ico
+2025-03-29 09:49:17,033 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 09:49:17,136 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 09:49:17,147 - WARNING - Not Found: /script.js
+2025-03-29 09:49:17,160 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 09:49:17,169 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 09:57:21,099 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:57:23,072 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:57:28,148 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:58:10,419 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:58:12,284 - WARNING - Unauthorized: /projects/run_code/
+2025-03-29 09:58:46,383 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:58:54,998 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:58:57,584 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:59:00,347 - WARNING - Unauthorized: /projects/run_code/
+2025-03-29 09:59:28,083 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 09:59:29,696 - WARNING - Unauthorized: /projects/run_code/
+2025-03-29 09:59:39,019 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 10:07:10,382 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:07:10,392 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 10:07:10,402 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 10:07:10,411 - WARNING - Not Found: /script.js
+2025-03-29 10:18:23,350 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:18:23,364 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 10:18:23,379 - WARNING - Not Found: /script.js
+2025-03-29 10:18:23,389 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 10:41:55,880 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:41:55,954 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 10:41:55,961 - WARNING - Not Found: /script.js
+2025-03-29 10:41:55,968 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 10:41:55,978 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:46:47,579 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:46:47,653 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 10:46:47,659 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 10:46:47,662 - WARNING - Not Found: /script.js
+2025-03-29 10:46:47,678 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:52:03,989 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 10:52:04,026 - WARNING - Not Found: /api/placeholder/500/500
+2025-03-29 10:52:04,034 - WARNING - Not Found: /script.js
+2025-03-29 10:52:04,035 - WARNING - Not Found: /api/placeholder/400/300
+2025-03-29 10:52:04,048 - WARNING - Not Found: /api/placeholder/200/200
+2025-03-29 11:08:08,199 - WARNING - Unauthorized: /projects/save_code/
+2025-03-29 11:08:11,073 - WARNING - Unauthorized: /projects/save_code/
+2025-04-01 02:00:54,502 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 02:00:54,505 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 02:00:54,505 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 02:00:54,510 - WARNING - Not Found: /script.js
+2025-04-01 02:00:54,649 - WARNING - Not Found: /favicon.ico
+2025-04-01 14:22:07,482 - WARNING - Not Found: /script.js
+2025-04-01 14:22:07,487 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 14:22:07,499 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 14:22:07,500 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 14:22:07,722 - WARNING - Not Found: /favicon.ico
+2025-04-01 23:47:19,992 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 23:47:20,004 - WARNING - Not Found: /script.js
+2025-04-01 23:47:20,010 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 23:47:20,012 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 23:47:20,140 - WARNING - Not Found: /favicon.ico
+2025-04-01 23:53:33,675 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 23:53:33,722 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 23:53:33,735 - WARNING - Not Found: /script.js
+2025-04-01 23:53:33,746 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 23:53:33,750 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 23:57:09,079 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 23:57:09,079 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 23:57:09,093 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 23:57:09,105 - WARNING - Not Found: /script.js
+2025-04-01 23:57:40,757 - WARNING - Bad Request: /users/register/
+2025-04-01 23:59:06,172 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-01 23:59:06,186 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-01 23:59:06,192 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-01 23:59:06,201 - WARNING - Not Found: /script.js
+2025-04-02 00:00:21,674 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-02 00:00:21,694 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-02 00:00:21,707 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-02 00:00:21,723 - WARNING - Not Found: /script.js
+2025-04-02 00:03:06,038 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-02 00:03:06,054 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-02 00:03:06,061 - WARNING - Not Found: /script.js
+2025-04-02 00:03:06,071 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-02 02:04:50,144 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-02 02:04:50,156 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-02 02:04:50,162 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-02 02:04:50,172 - WARNING - Not Found: /script.js
+2025-04-02 02:07:15,398 - WARNING - Unauthorized: /projects/save_code/
+2025-04-02 02:07:16,514 - WARNING - Unauthorized: /projects/save_code/
+2025-04-02 02:07:18,801 - WARNING - Unauthorized: /projects/save_code/
+2025-04-02 02:07:19,873 - WARNING - Unauthorized: /projects/run_code/
+2025-04-02 02:07:25,806 - WARNING - Unauthorized: /projects/run_code/
+2025-04-02 11:05:03,309 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-02 11:05:03,312 - WARNING - Not Found: /script.js
+2025-04-02 11:05:03,322 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-02 11:05:03,325 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-02 11:05:05,216 - WARNING - Not Found: /favicon.ico
+2025-04-03 17:20:17,782 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-03 17:20:17,787 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-03 17:20:17,807 - WARNING - Not Found: /script.js
+2025-04-03 17:20:17,814 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-03 17:20:18,858 - WARNING - Not Found: /favicon.ico
+2025-04-03 17:21:24,900 - WARNING - Not Found: /users/dashboard/
+2025-04-03 17:21:43,403 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-03 17:28:55,535 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\library.py", line 237, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\templatetags\socialaccount.py", line 21, in provider_login_url
+    provider = adapter.get_provider(request, provider)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\adapter.py", line 213, in get_provider
+    app = self.get_app(request, provider=provider, client_id=client_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\adapter.py", line 303, in get_app
+    raise SocialApp.DoesNotExist()
+allauth.socialaccount.models.SocialApp.DoesNotExist
+2025-04-03 17:30:50,777 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:30:52,119 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:30:52,820 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:30:53,608 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:30:54,292 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:30:54,621 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:50,036 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:50,932 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:51,759 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:52,472 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:52,853 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:53,222 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:56,808 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:32:57,547 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:33:03,150 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-03 17:33:03,192 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-03 17:33:03,205 - WARNING - Not Found: /script.js
+2025-04-03 17:33:03,212 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-03 17:33:03,222 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-03 17:33:07,769 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 55, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_reset' not found. 'password_reset' is not a valid view function or pattern name.
+2025-04-03 17:35:01,512 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-03 17:35:49,908 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-03 17:39:25,790 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-04 02:08:16,280 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-04 02:08:16,293 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-04 02:08:16,342 - WARNING - Not Found: /script.js
+2025-04-04 02:08:16,508 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-04 02:08:16,606 - WARNING - Not Found: /api/placeholder/200/200
+2025-04-04 02:08:16,622 - WARNING - Not Found: /api/placeholder/500/500
+2025-04-04 02:08:16,631 - WARNING - Not Found: /api/placeholder/400/300
+2025-04-04 02:08:17,208 - WARNING - Not Found: /scene.gltf
+2025-04-04 02:09:42,616 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-04 02:10:16,420 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-04 02:10:44,786 - WARNING - Not Found: /script.js
+2025-04-04 02:10:44,902 - WARNING - Not Found: /scene.gltf
+2025-04-04 02:10:45,003 - ERROR - Internal Server Error: /api/placeholder/500/500/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py", line 78, in placeholder_image
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'
+2025-04-04 02:10:45,027 - ERROR - Internal Server Error: /api/placeholder/200/200/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py", line 78, in placeholder_image
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'
+2025-04-04 02:10:45,030 - ERROR - Internal Server Error: /api/placeholder/400/300/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py", line 78, in placeholder_image
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'
+2025-04-04 02:13:14,548 - WARNING - Not Found: /script.js
+2025-04-04 02:13:16,986 - WARNING - Not Found: /scene.gltf
+2025-04-04 02:14:45,411 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 73, in home_view
+    return render(request, "index.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2283: 'static'. Did you forget to register or load this tag?
+2025-04-04 02:17:04,666 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\urls.py changed, reloading.
+2025-04-04 02:17:12,238 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 73, in home_view
+    return render(request, "index.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2283: 'static'. Did you forget to register or load this tag?
+2025-04-04 02:17:23,966 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 73, in home_view
+    return render(request, "index.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2283: 'static'. Did you forget to register or load this tag?
+2025-04-04 02:17:25,063 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 73, in home_view
+    return render(request, "index.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2283: 'static'. Did you forget to register or load this tag?
+2025-04-04 02:18:10,821 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 02:18:10,830 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 02:18:10,844 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 02:18:36,569 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-04 02:18:48,574 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 73, in home_view
+    return render(request, "index.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 2283: 'static'. Did you forget to register or load this tag?
+2025-04-04 02:19:33,284 - WARNING - Not Found: /script.js
+2025-04-04 02:19:54,209 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\urls.py changed, reloading.
+2025-04-04 02:20:05,234 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 02:20:05,249 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 02:20:05,277 - WARNING - Not Found: /script.js
+2025-04-04 02:20:05,301 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 02:20:05,355 - WARNING - Not Found: /scene.gltf
+2025-04-04 02:23:31,280 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-04 02:24:33,832 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-04 02:27:25,036 - WARNING - Not Found: /users/create_project/index.html
+2025-04-04 02:28:02,675 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 02:28:02,683 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 02:28:02,692 - WARNING - Not Found: /script.js
+2025-04-04 02:28:03,436 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 02:28:03,442 - WARNING - Not Found: /scene.gltf
+2025-04-04 02:28:29,375 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 02:28:29,380 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 02:28:29,392 - WARNING - Not Found: /script.js
+2025-04-04 02:28:29,555 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 02:28:29,592 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:38:38,199 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:38:38,219 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:38:38,247 - WARNING - Not Found: /script.js
+2025-04-04 09:38:39,898 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:38:39,903 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:38:39,922 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:38:39,937 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:38:40,071 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:38:40,295 - WARNING - Not Found: /favicon.ico
+2025-04-04 09:39:11,261 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:39:11,277 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:39:11,286 - WARNING - Not Found: /script.js
+2025-04-04 09:39:11,554 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:39:11,686 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:39:51,635 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:39:51,643 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:39:51,654 - WARNING - Not Found: /script.js
+2025-04-04 09:39:54,358 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:39:54,465 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:41:22,519 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:41:22,530 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:41:22,555 - WARNING - Not Found: /script.js
+2025-04-04 09:41:22,593 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:41:22,628 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:41:22,637 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:41:22,683 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:43:15,460 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:15,465 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:15,472 - WARNING - Not Found: /script.js
+2025-04-04 09:43:15,483 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:15,543 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:43:17,793 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:17,802 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:17,812 - WARNING - Not Found: /script.js
+2025-04-04 09:43:17,825 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:17,947 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:17,957 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:17,965 - WARNING - Not Found: /script.js
+2025-04-04 09:43:17,977 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:18,048 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:43:18,360 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:18,372 - WARNING - Not Found: /script.js
+2025-04-04 09:43:18,382 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:18,602 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:18,624 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:18,641 - WARNING - Not Found: /script.js
+2025-04-04 09:43:18,648 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:18,844 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:18,853 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:18,872 - WARNING - Not Found: /script.js
+2025-04-04 09:43:19,119 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:19,140 - WARNING - Not Found: /script.js
+2025-04-04 09:43:19,154 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:19,173 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:19,416 - WARNING - Not Found: /api/placeholder/200/200/
+2025-04-04 09:43:19,430 - WARNING - Not Found: /api/placeholder/500/500/
+2025-04-04 09:43:19,446 - WARNING - Not Found: /script.js
+2025-04-04 09:43:19,457 - WARNING - Not Found: /api/placeholder/400/300/
+2025-04-04 09:43:19,542 - WARNING - Not Found: /scene.gltf
+2025-04-04 09:49:59,639 - WARNING - Not Found: /scene.gltf
+2025-04-04 11:25:56,294 - WARNING - Not Found: /favicon.ico
+2025-04-04 13:15:57,506 - WARNING - Unauthorized: /projects/save_code/
+2025-04-04 13:26:35,740 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-04 13:27:43,601 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-04 13:38:32,386 - ERROR - Internal Server Error: /projects/save_project/
+2025-04-04 13:40:00,090 - ERROR - Internal Server Error: /projects/save_project/
+2025-04-04 13:40:50,279 - ERROR - Internal Server Error: /projects/save_project/
+2025-04-05 14:56:04,579 - WARNING - Not Found: /favicon.ico
+2025-04-05 15:02:08,562 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-05 15:06:23,459 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\urls.py changed, reloading.
+2025-04-05 15:51:57,527 - WARNING - Not Found: /projects/delete_project/1/
+2025-04-05 15:52:35,880 - WARNING - Not Found: /projects/delete_project/2/
+2025-04-05 15:54:36,904 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\urls.py changed, reloading.
+2025-04-05 15:55:43,890 - WARNING - Not Found: /projects/delete_project/1/
+2025-04-05 15:56:21,269 - WARNING - Not Found: /projects/delete_project/1/
+2025-04-05 16:00:49,073 - WARNING - Not Found: /projects/delete_project/2/
+2025-04-05 16:02:30,949 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-05 16:04:43,039 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\urls.py changed, reloading.
+2025-04-05 16:04:55,938 - WARNING - Not Found: /projects/delete_project/1/
+2025-04-05 16:43:46,566 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-05 16:48:38,511 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 69, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\library.py", line 237, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\templatetags\socialaccount.py", line 21, in provider_login_url
+    provider = adapter.get_provider(request, provider)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\adapter.py", line 213, in get_provider
+    app = self.get_app(request, provider=provider, client_id=client_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\allauth\socialaccount\adapter.py", line 303, in get_app
+    raise SocialApp.DoesNotExist()
+allauth.socialaccount.models.SocialApp.DoesNotExist
+2025-04-05 16:55:07,833 - WARNING - Not Found: /favicon.ico
+2025-04-05 16:58:58,962 - WARNING - Bad Request: /users/login/

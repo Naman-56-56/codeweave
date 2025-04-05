@@ -1,0 +1,2633 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeweave - AI-Powered Project Development</title>
+    <script src="{% static 'js/three.min.js' %}"></script>
+    <script src="{% static 'js/GLTFLoader.js' %}"></script>
+   
+    <style>
+       /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary: #6C63FF;
+    --primary-light: #837DF7;
+    --secondary: #00E676;
+    --dark: #121212;
+    --dark-light: #1E1E1E;
+    --text: #E0E0E0;
+    --text-muted: #A0A0A0;
+    --glass-bg: rgba(30, 30, 30, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size for rem calculations */
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.model-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 300%;
+            z-index: 1;
+            pointer-events: none;
+        }
+/* Layout Containers */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem; /* 20px */
+}
+
+section {
+    padding: 5rem 0; /* 80px */
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3.75rem 0; /* 60px */
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem 0; /* 40px */
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem; /* 12px 28px */
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 6px 15px rgba(108, 99, 255, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 0.625rem 1.5rem; /* 10px 24px */
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* Typography */
+.section-title {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    margin-bottom: 1.25rem; /* 20px */
+    text-align: center;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-subtitle {
+    font-size: 1.125rem; /* 18px */
+    color: var(--text-muted);
+    margin-bottom: 3.125rem; /* 50px */
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.875rem; /* 30px */
+    }
+    
+    .section-subtitle {
+        font-size: 1rem; /* 16px */
+        margin-bottom: 2.5rem; /* 40px */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem; /* 24px */
+    }
+    
+    .section-subtitle {
+        font-size: 0.875rem; /* 14px */
+        margin-bottom: 2rem; /* 32px */
+    }
+}
+
+/* Glassmorphism Components */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    padding: 1.875rem; /* 30px */
+    transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 1.5rem; /* 24px */
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 1.25rem; /* 20px */
+    }
+    
+    .glass-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Header and Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    padding: 1.25rem 0; /* 20px */
+}
+
+header.scrolled {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    padding: 0.9375rem 0; /* 15px */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    position: relative;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.logo i {
+    margin-right: 0.625rem; /* 10px */
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    transition: right 0.4s ease;
+}
+
+.nav-links li {
+    margin: 0 0.9375rem; /* 15px */
+}
+
+.nav-links a {
+    font-weight: 500;
+    position: relative;
+    padding: 0.3125rem 0; /* 5px */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem; /* 24px */
+    z-index: 1001;
+}
+
+/* Mobile Navigation */
+@media (max-width: 992px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 1rem 0;
+    }
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    
+    .nav-overlay.active {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.25rem; /* 20px */
+    }
+    
+    .nav-links {
+        width: 250px;
+        right: -250px;
+    }
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem; /* 80px - to account for fixed header */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3rem; /* 48px */
+    font-weight: 800;
+    margin-top: 9.375rem; /* 150px */
+    margin-bottom: 1.25rem; /* 20px */
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem; /* 20px */
+    color: var(--text-muted);
+    margin-bottom: 2.5rem; /* 40px */
+    max-width: 600px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1.25rem; /* 20px */
+    margin-bottom: 3.75rem; /* 60px */
+}
+
+.hero-image {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    height: auto;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 2.5rem; /* 40px */
+        margin-top: 7.5rem; /* 120px */
+    }
+    
+    .hero-image {
+        width: 35%;
+        opacity: 0.7;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.25rem; /* 36px */
+        margin-top: 6.25rem; /* 100px */
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem; /* 18px */
+    }
+    
+    .hero-image {
+        width: 30%;
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 4rem; /* 64px */
+    }
+    
+    .hero-title {
+        font-size: 2rem; /* 32px */
+        margin-top: 5rem; /* 80px */
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem; /* 16px */
+        margin-bottom: 2rem; /* 32px */
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        gap: 1rem; /* 16px */
+        margin-bottom: 3rem; /* 48px */
+        max-width: 100%;
+    }
+    
+    .hero-btns .btn {
+        width: 100%;
+    }
+    
+    .hero-image {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem; /* 28px */
+        margin-top: 4rem; /* 64px */
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* Code Terminal */
+.code-terminal {
+    position: relative;
+    margin-top: 2.5rem; /* 40px */
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--dark-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.code-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.625rem 0.9375rem; /* 10px 15px */
+    display: flex;
+    align-items: center;
+}
+
+.code-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.code-dot.red {
+    background: #FF5F56;
+}
+
+.code-dot.yellow {
+    background: #FFBD2E;
+}
+
+.code-dot.green {
+    background: #27C93F;
+}
+
+.code-body {
+    padding: 0.9375rem; /* 15px */
+    font-family: 'Courier New', monospace;
+    height: 200px;
+    overflow: hidden;
+}
+
+.code-line {
+    display: flex;
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.code-prompt {
+    width: 30px;
+    color: #666;
+    text-align: right;
+    padding-right: 15px;
+    user-select: none;
+}
+
+.code-text {
+    flex: 1;
+}
+
+.code-keyword { color: #CC99CD; }
+.code-string { color: #7EC699; }
+.code-comment { color: #666; }
+.code-function { color: #67CDFE; }
+
+@media (max-width: 768px) {
+    .code-terminal {
+        margin-top: 2rem; /* 32px */
+    }
+    
+    .code-body {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .code-terminal {
+        margin-top: 1.5rem; /* 24px */
+    }
+    
+    .code-body {
+        height: 150px;
+        font-size: 0.75rem; /* 12px */
+    }
+    
+    .code-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Features Section */
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem; /* 30px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.feature-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-icon {
+    font-size: 2.5rem; /* 40px */
+    margin-bottom: 1.25rem; /* 20px */
+    color: var(--primary);
+    text-align: center;
+}
+
+.feature-title {
+    font-size: 1.375rem; /* 22px */
+    font-weight: 600;
+    margin-bottom: 0.9375rem; /* 15px */
+    text-align: center;
+}
+
+.feature-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+    text-align: center;
+    flex-grow: 1;
+}
+
+@media (max-width: 992px) {
+    .features-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem; /* 24px */
+    }
+    
+    .feature-icon {
+        font-size: 2.25rem; /* 36px */
+    }
+    
+    .feature-title {
+        font-size: 1.25rem; /* 20px */
+    }
+}
+
+@media (max-width: 768px) {
+    .features-container {
+        grid-template-columns: 1fr;
+        gap: 1.25rem; /* 20px */
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-icon {
+        font-size: 2rem; /* 32px */
+        margin-bottom: 1rem; /* 16px */
+    }
+    
+    .feature-title {
+        font-size: 1.125rem; /* 18px */
+        margin-bottom: 0.75rem; /* 12px */
+    }
+    
+    .feature-desc {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* How It Works Section */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 3.125rem auto 0; /* 50px */
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1.875rem 2.5rem; /* 30px 40px */
+    background: transparent;
+    margin-bottom: 3.125rem; /* 50px */
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border: 4px solid var(--dark);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-right {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-left::after {
+    right: -12px;
+}
+
+.timeline-right::after {
+    left: -12px;
+}
+
+.timeline-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    padding: 1.5625rem; /* 25px */
+    position: relative;
+}
+
+.timeline-number {
+    font-size: 3rem; /* 48px */
+    font-weight: 800;
+    color: rgba(108, 99, 255, 0.2);
+    position: absolute;
+    top: -20px;
+}
+
+.timeline-left .timeline-number {
+    right: 20px;
+}
+
+.timeline-right .timeline-number {
+    left: 20px;
+}
+
+.timeline-title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    margin-bottom: 0.9375rem; /* 15px */
+    color: var(--primary);
+}
+
+.timeline-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .timeline-item {
+        padding: 1.5625rem 2.1875rem; /* 25px 35px */
+    }
+    
+    .timeline-number {
+        font-size: 2.5rem; /* 40px */
+    }
+    
+    .timeline-title {
+        font-size: 1.125rem; /* 18px */
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 4.375rem; /* 70px */
+        padding-right: 1.5625rem; /* 25px */
+    }
+    
+    .timeline-left, .timeline-right {
+        left: 0;
+        text-align: left;
+    }
+    
+    .timeline-left::after, .timeline-right::after {
+        left: 20px;
+    }
+    
+    .timeline-left .timeline-number, .timeline-right .timeline-number {
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-item {
+        padding-left: 3.75rem; /* 60px */
+        padding-right: 1.25rem; /* 20px */
+        margin-bottom: 2.5rem; /* 40px */
+    }
+    
+    .timeline-item::after {
+        width: 16px;
+        height: 16px;
+        top: 20px;
+    }
+    
+    .timeline-content {
+        padding: 1.25rem; /* 20px */
+    }
+    
+    .timeline-number {
+        font-size: 2rem; /* 32px */
+    }
+    
+    .timeline-title {
+        font-size: 1rem; /* 16px */
+    }
+    
+    .timeline-desc {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* Testimonials Section */
+.testimonials-container {
+    max-width: 900px;
+    margin: 3.125rem auto 0; /* 50px */
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial {
+    min-width: 100%;
+    padding: 1.25rem; /* 20px */
+}
+
+.testimonial-card {
+    text-align: center;
+    padding: 2.5rem; /* 40px */
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem; /* 20px */
+    border: 3px solid var(--primary);
+    overflow: hidden;
+}
+
+.testimonial-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.25rem; /* 20px */
+    line-height: 1.6;
+    position: relative;
+}
+
+.testimonial-text::before, .testimonial-text::after {
+    content: '"';
+    font-size: 2.5rem; /* 40px */
+    position: absolute;
+    color: rgba(108, 99, 255, 0.3);
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -15px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -15px;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    margin-bottom: 0.3125rem; /* 5px */
+}
+
+.testimonial-position {
+    color: var(--text-muted);
+    font-size: 0.875rem; /* 14px */
+}
+
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.875rem; /* 30px */
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 1.875rem; /* 30px */
+    }
+    
+    .testimonial-img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .testimonial-text::before, .testimonial-text::after {
+        font-size: 2rem; /* 32px */
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        padding: 1.25rem; /* 20px */
+    }
+    
+    .testimonial-img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem; /* 16px */
+    }
+    
+    .testimonial-text {
+        font-size: 0.875rem; /* 14px */
+    }
+    
+    .testimonial-text::before, .testimonial-text::after {
+        font-size: 1.5rem; /* 24px */
+    }
+    
+    .testimonial-name {
+        font-size: 0.9375rem; /* 15px */
+    }
+    
+    .testimonial-position {
+        font-size: 0.75rem; /* 12px */
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Pricing Section */
+.pricing ul {
+    margin-bottom: 1.875rem; /* 30px */
+}
+
+.pricing li {
+    margin-bottom: 0.625rem; /* 10px */
+    display: flex;
+    align-items: center;
+}
+
+.pricing li i {
+    margin-right: 0.625rem; /* 10px */
+}
+
+.pricing .feature-card {
+    position: relative;
+}
+
+.pricing .popular-tag {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    z-index: 1;
+}
+
+.pricing .price {
+    text-align: center;
+    margin: 1.25rem 0; /* 20px */
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+}
+
+.pricing .price span {
+    font-size: 1rem; /* 16px */
+    font-weight: 400;
+}
+
+.pricing .btn {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .pricing .price {
+        font-size: 2rem; /* 32px */
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing li {
+        font-size: 0.9375rem; /* 15px */
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing .price {
+        font-size: 1.75rem; /* 28px */
+    }
+    
+    .pricing li {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* About Us Section */
+.about {
+    background: var(--dark-light);
+    color: white;
+}
+
+.about-content {
+    display: flex;
+    gap: 3.125rem; /* 50px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text-content {
+    padding: 1.25rem; /* 20px */
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+}
+
+.about-heading {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin-bottom: 0.9375rem; /* 15px */
+}
+
+.about-description {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.875rem; /* 30px */
+}
+
+.about-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem; /* 20px */
+    margin-bottom: 1.875rem; /* 30px */
+}
+
+.about-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem; /* 10px */
+    flex: 1 1 calc(50% - 0.625rem); /* 10px */
+    min-width: 200px;
+}
+
+.about-feature-text {
+    flex: 1;
+}
+
+.about-feature h4 {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    margin-bottom: 0.3125rem; /* 5px */
+}
+
+.about-feature p {
+    color: var(--text-muted);
+    font-size: 0.875rem; /* 14px */
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.about-visuals {
+    display: flex;
+    gap: 1.25rem; /* 20px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.visual-card {
+    position: relative;
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+.visual-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.visual-card:hover .visual-overlay {
+    opacity: 1;
+}
+
+.visual-overlay h4 {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    margin-bottom: 0.3125rem; /* 5px */
+}
+
+.visual-overlay p {
+    font-size: 0.875rem; /* 14px */
+}
+
+@media (max-width: 992px) {
+    .about-content {
+        flex-direction: column;
+        gap: 2.5rem; /* 40px */
+    }
+    
+    .about-features {
+        flex-direction: column;
+    }
+    
+    .about-feature {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-heading {
+        font-size: 1.375rem; /* 22px */
+    }
+    
+    .about-visuals {
+        flex-direction: column;
+    }
+    
+    .visual-card {
+        margin-bottom: 1.25rem; /* 20px */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 1.25rem; /* 20px */
+    }
+    
+    .about-description {
+        font-size: 0.875rem; /* 14px */
+    }
+    
+    .about-feature h4 {
+        font-size: 1rem; /* 16px */
+    }
+    
+    .about-feature p {
+        font-size: 0.75rem; /* 12px */
+    }
+}
+
+/* Stats Section */
+.stats {
+    background: var(--dark-light);
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.875rem; /* 30px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem; /* 48px */
+    font-weight: 800;
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+.stat-title {
+    font-size: 1.125rem; /* 18px */
+    color: var(--text-muted);
+}
+
+@media (max-width: 992px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 1.875rem; /* 40px 30px */
+    }
+    
+    .stat-number {
+        font-size: 2.5rem; /* 40px */
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem; /* 32px */
+    }
+    
+    .stat-number {
+        font-size: 2.25rem; /* 36px */
+    }
+    
+    .stat-title {
+        font-size: 1rem; /* 16px */
+    }
+}
+
+/* FAQ Section */
+.faq {
+    background: var(--dark-light);
+    color: white;
+}
+
+.faq-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.875rem; /* 30px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.faq-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    padding: 1.5625rem; /* 25px */
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 1.25rem; /* 20px */
+}
+
+.faq-answer p {
+    font-size: 1.125rem; /* 18px */
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .faq-container {
+        gap: 1.25rem; /* 20px */
+    }
+    
+    .faq-item {
+        padding: 1.25rem; /* 20px */
+    }
+    
+    .faq-question h3 {
+        font-size: 1.125rem; /* 18px */
+    }
+    
+    .faq-answer p {
+        font-size: 1rem; /* 16px */
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-question h3 {
+        font-size: 1rem; /* 16px */
+    }
+    
+    .faq-answer p {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* Blog Section */
+.blog {
+    background: var(--dark-light);
+    color: white;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem; /* 30px */
+    margin-top: 3.125rem; /* 50px */
+}
+
+.blog-post {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    padding: 1.5625rem; /* 25px */
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.25rem; /* 20px */
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    aspect-ratio: 4/3;
+}
+
+.blog-content {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-title {
+    font-size: 1.375rem; /* 22px */
+    font-weight: 600;
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+.blog-excerpt {
+    font-size: 1.125rem; /* 18px */
+    color: var(--text-muted);
+    margin-bottom: 1.25rem; /* 20px */
+    flex-grow: 1;
+}
+
+.blog-content .btn {
+    align-self: center;
+}
+
+@media (max-width: 992px) {
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .blog-title {
+        font-size: 1.25rem; /* 20px */
+    }
+    
+    .blog-excerpt {
+        font-size: 1rem; /* 16px */
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem; /* 24px */
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-post {
+        padding: 1.25rem; /* 20px */
+    }
+    
+    .blog-title {
+        font-size: 1.125rem; /* 18px */
+    }
+    
+    .blog-excerpt {
+        font-size: 0.875rem; /* 14px */
+    }
+}
+
+/* Newsletter Section */
+.newsletter {
+    background: var(--dark-light);
+    color: white;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.125rem; /* 50px */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 0.9375rem; /* 12px 15px */
+    margin-right: 1.25rem; /* 20px */
+    border-radius: 5px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-form button {
+    padding: 0.75rem 1.75rem; /* 12px 28px */
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 6px 15px rgba(108, 99, 255, 0.4);
+    white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+        gap: 1rem; /* 16px */
+        width: 100%;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+/* Footer Section */
+footer {
+    background: var(--dark-light);
+    padding: 3.75rem 0 1.875rem; /* 60px 30px */
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem; /* 40px */
+}
+
+.footer-col h3 {
+    font-size: 1.375rem; /* 22px */
+    margin-bottom: 1.5625rem; /* 25px */
+    position: relative;
+    padding-bottom: 0.625rem; /* 10px */
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem; /* 12px */
+}
+
+.footer-links li a {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+    color: var(--primary);
+}
+
+.footer-contact input, .footer-contact textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 0.9375rem; /* 12px 15px */
+    margin-bottom: 0.9375rem; /* 15px */
+    border-radius: 5px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.footer-contact input:focus, .footer-contact textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-contact textarea {
+    height: 100px;
+    resize: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.9375rem; /* 15px */
+    margin-top: 1.25rem; /* 20px */
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.875rem; /* 30px */
+    margin-top: 2.5rem; /* 40px */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.875rem; /* 14px */
+}
+
+.copyright a {
+    color: var(--primary);
+}
+
+.special-thanks {
+    text-align: center;
+    padding-top: 0.625rem; /* 10px */
+    margin-top: 1.25rem; /* 20px */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.875rem; /* 14px */
+}
+
+.special-thanks p {
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem; /* 32px */
+    }
+    
+    .footer-col h3 {
+        font-size: 1.25rem; /* 20px */
+        margin-bottom: 1.25rem; /* 20px */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 3rem 0 1.5rem; /* 48px 24px */
+    }
+    
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Animated Background */
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    animation: float 15s infinite;
+    opacity: 0.3;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+    25% { transform: translate(100px, 100px) rotate(90deg); opacity: 0.6; }
+    50% { transform: translate(200px, 0) rotate(180deg); opacity: 0.3; }
+    75% { transform: translate(100px, -100px) rotate(270deg); opacity: 0.6; }
+    100% { transform: translate(0, 0) rotate(360deg); opacity: 0.3; }
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-1 { margin-bottom: 0.625rem; } /* 10px */
+.mb-2 { margin-bottom: 1.25rem; } /* 20px */
+.mb-3 { margin-bottom: 1.875rem; } /* 30px */
+.mb-4 { margin-bottom: 2.5rem; } /* 40px */
+.mb-5 { margin-bottom: 3.125rem; } /* 50px */
+
+.mt-1 { margin-top: 0.625rem; } /* 10px */
+.mt-2 { margin-top: 1.25rem; } /* 20px */
+.mt-3 { margin-top: 1.875rem; } /* 30px */
+.mt-4 { margin-top: 2.5rem; } /* 40px */
+.mt-5 { margin-top: 3.125rem; } /* 50px */
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+    
+    header, footer, .hero-btns, .code-terminal {
+        display: none;
+    }
+}
+
+.code-terminal {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 2rem auto;
+        background: #1e1e1e;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-header {
+        height: 30px;
+        background: #2d2d2d;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .code-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .code-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #666;
+        transition: all 0.3s ease;
+    }
+
+    .code-dot.red { background: #ff5f56; }
+    .code-dot.yellow { background: #ffbd2e; }
+    .code-dot.green { background: #27c93f; }
+
+    .code-body {
+        padding: 1rem;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        color: #fff;
+        line-height: 1.6;
+    }
+
+    .code-line {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+    }
+
+    .code-prompt {
+        color: #00ff00;
+    }
+
+    .code-text {
+        color: #fff;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 16px;
+        background: #00ff00;
+        margin-left: 4px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-brain"></i> <span>C</span>ode <span>W</span>eave
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="{% url 'register' %}" class="btn btn-primary">Get Started</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="animated-bg" id="animated-bg"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">CodeWeave - AI-Powered <br> Project Development <br> & Code Merging</h1>
+            <p class="hero-subtitle">Seamlessly create, structure, and deploy projects with AI assistance. Leverage the power of AI to streamline your development workflow.</p>
+            <div class="hero-btns">
+                <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">See Live Demo</a>
+            </div>
+             <div class="code-terminal">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="code-dot red"></div>
+                        <div class="code-dot yellow"></div>
+                        <div class="code-dot green"></div>
+                    </div>
+                </div>
+                <div class="code-body" id="code-animation">
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">pip install windsurf</span></div>
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">windsurf init</span></div>
+                    <div class="code-line"><span class="code-prompt">$</span> <span class="code-text">windsurf generate project</span></div>
+                </div>
+            </div>
+        </div>
+       <div class="model-container"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful AI Features</h2>
+            <p class="section-subtitle">Our platform combines cutting-edge AI technology with intuitive development tools to streamline your project workflow.</p>
+            <div class="features-container">
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Roadmap</h3>
+                    <p class="feature-desc">Our Gemini API analyzes your project requirements and automatically generates a structured roadmap with all necessary components and dependencies.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Modular Code Writing</h3>
+                    <p class="feature-desc">Build your project step-by-step with modular functions. Our intelligent editor suggests optimizations and best practices as you code.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">AI Merging & Deployment</h3>
+                    <p class="feature-desc">Let our AI intelligently merge your modular code into a cohesive project, optimizing performance and preparing it for seamless deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Our streamlined process makes it easy to go from concept to deployment in just four simple steps.</p>
+            <div class="timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">1</div>
+                        <h3 class="timeline-title">Enter Project Details</h3>
+                        <p class="timeline-desc">Describe your project requirements, technologies, and goals. Our AI analyzes your input to understand the scope and complexity.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">2</div>
+                        <h3 class="timeline-title">AI Generates Roadmap</h3>
+                        <p class="timeline-desc">Based on your requirements, our AI creates a comprehensive project roadmap with all necessary components, dependencies, and development stages.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-number">3</div>
+                        <h3 class="timeline-title">Write Code in Modular Steps</h3>
+                        <p class="timeline-desc">Follow the roadmap to develop your project in manageable, modular chunks. Our intelligent editor provides suggestions and optimizations as you code.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-number">4</div>
+                        <h3 class="timeline-title">AI Merges & Deploys Project</h3>
+                        <p class="timeline-desc">Our AI intelligently merges your modular code into a cohesive project, optimizes performance, and prepares it for seamless deployment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <p class="section-subtitle">Join thousands of developers who have transformed their workflow with our AI-powered platform.</p>
+            <div class="testimonials-container">
+                <div class="testimonials-slider" id="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="glass-card testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="{% static 'img/placeholder/200/200' %}" alt="User Avatar">
+                            </div>
+                            <p class="testimonial-text">This platform has revolutionized how I approach project development. The AI roadmap generator saved me countless hours of planning, and the modular coding approach has made my code more maintainable.</p>
+                            <h4 class="testimonial-name">Alex Johnson</h4>
+                            <p class="testimonial-position">Senior Developer, TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="glass-card testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="{% static 'img/placeholder/200/200' %}" alt="User Avatar">
+                            </div>
+                            <p class="testimonial-text">As a startup founder, I needed to move quickly without sacrificing quality. This platform allowed me to develop our MVP in half the time, with better architecture than if we'd done it manually.</p>
+                            <h4 class="testimonial-name">Sarah Mitchell</h4>
+                            <p class="testimonial-position">Founder, InnovateTech</p>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="glass-card testimonial-card">
+                            <div class="testimonial-img">
+                                <img src="{% static 'img/placeholder/200/200' %}" alt="User Avatar">
+                            </div>
+                            <p class="testimonial-text">The AI merging technology is incredible. It not only combines our code perfectly but also optimizes it in ways we hadn't thought of. This has significantly improved our application's performance.</p>
+                            <h4 class="testimonial-name">David Chen</h4>
+                            <p class="testimonial-position">CTO, FutureSoft</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav" id="slider-nav">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing</h2>
+            <p class="section-subtitle">Choose the plan that best fits your development needs.</p>
+            <div class="features-container">
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="feature-title">Basic</h3>
+                    <p class="feature-desc">Perfect for individual developers and small projects.</p>
+                    <div style="text-align: center; margin: 20px 0; font-size: 36px; font-weight: 700;">$19<span style="font-size: 16px; font-weight: 400;">/month</span></div>
+                    <ul style="margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> AI Roadmap Generation</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Modular Code Editor</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Basic AI Merging</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-times" style="color: #ff5555; margin-right: 10px;"></i> Advanced Optimization</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-times" style="color: #ff5555; margin-right: 10px;"></i> Team Collaboration</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="glass-card feature-card" style="border-color: var(--primary); transform: translateY(-10px);">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; font-weight: 600;">MOST POPULAR</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="feature-title">Professional</h3>
+                    <p class="feature-desc">Ideal for professional developers and growing teams.</p>
+                    <div style="text-align: center; margin: 20px 0; font-size: 36px; font-weight: 700;">$49<span style="font-size: 16px; font-weight: 400;">/month</span></div>
+                    <ul style="margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> AI Roadmap Generation</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Advanced Modular Editor</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Enhanced AI Merging</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Advanced Optimization</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-times" style="color: #ff5555; margin-right: 10px;"></i> Team Collaboration</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="glass-card feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="feature-title">Enterprise</h3>
+                    <p class="feature-desc">Complete solution for development teams and organizations.</p>
+                    <div style="text-align: center; margin: 20px 0; font-size: 36px; font-weight: 700;">$99<span style="font-size: 16px; font-weight: 400;">/month</span></div>
+                    <ul style="margin-bottom: 30px;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> AI Roadmap Generation</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Advanced Modular Editor</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Premium AI Merging</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Advanced Optimization</li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center;"><i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i> Team Collaboration</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Codeweave</h2>
+            <p class="section-subtitle">We are revolutionizing project development with AI-powered tools.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-text-content">
+                        <h3 class="about-heading">The Future of Development</h3>
+                        <p class="about-description">Codeweave is an innovative platform that combines the power of AI with intuitive development tools to streamline your project workflow. Our mission is to make project development faster, more efficient, and more accessible to developers of all skill levels.</p>
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <i class="fas fa-brain"></i>
+                                <div class="about-feature-text">
+                                    <h4>AI-Powered</h4>
+                                    <p>Leverage cutting-edge AI for project planning and execution</p>
+                                </div>
+                            </div>
+                            <div class="about-feature">
+                                <i class="fas fa-cubes"></i>
+                                <div class="about-feature-text">
+                                    <h4>Modular Design</h4>
+                                    <p>Build projects with reusable, maintainable components</p>
+                                </div>
+                            </div>
+                            <div class="about-feature">
+                                <i class="fas fa-rocket"></i>
+                                <div class="about-feature-text">
+                                    <h4>Rapid Deployment</h4>
+                                    <p>Deploy projects faster with automated optimization</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-animated">Learn More</a>
+                    </div>
+                </div>
+                <div class="about-visuals">
+                    <div class="visual-card">
+                        <img src="{% static 'img/placeholder/500/500' %}" alt="AI Development" class="visual-main">
+                        <div class="visual-overlay">
+                            <h4>AI Development</h4>
+                            <p>Smart project planning and execution</p>
+                        </div>
+                    </div>
+                    <div class="visual-card">
+                        <img src="{% static 'img/placeholder/500/500' %}" alt="Code Optimization" class="visual-main">
+                        <div class="visual-overlay">
+                            <h4>Code Optimization</h4>
+                            <p>Efficient and maintainable code</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3 class="stat-number" data-count="1000">0</h3>
+                    <p class="stat-title">Projects Completed</p>
+                </div>
+                <div class="stat">
+                    <h3 class="stat-number" data-count="500">0</h3>
+                    <p class="stat-title">Happy Developers</p>
+                </div>
+                <div class="stat">
+                    <h3 class="stat-number" data-count="99">0</h3>
+                    <p class="stat-title">Success Rate</p>
+                </div>
+                <div class="stat">
+                    <h3 class="stat-number" data-count="50">0</h3>
+                    <p class="stat-title">Countries Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our platform.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>What is Codeweave?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Codeweave is an AI-powered platform that helps developers create, structure, and deploy projects more efficiently. It provides tools for roadmap generation, modular coding, and AI-assisted code merging.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>How does the AI roadmap generator work?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI analyzes your project requirements and automatically generates a structured roadmap with all necessary components and dependencies, helping you plan your project more effectively.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Can I use Codeweave for team projects?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Codeweave is designed to support both individual developers and teams. You can collaborate on projects, share roadmaps, and merge code seamlessly.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>What programming languages does Codeweave support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Codeweave currently supports JavaScript, Python, and Java. We're continuously working to add support for more languages.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>Is my code secure on Codeweave?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use industry-standard encryption and security practices to ensure your code is safe and protected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Latest from Our Blog</h2>
+            <p class="section-subtitle">Stay updated with the latest trends and insights in AI and development.</p>
+            <div class="blog-grid">
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="{% static 'img/placeholder/400/300' %}" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">The Future of AI in Development</h3>
+                        <p class="blog-excerpt">Explore how AI is transforming the way we develop software and what the future holds for developers.</p>
+                        <a href="#" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="{% static 'img/placeholder/400/300' %}" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Modular Coding Best Practices</h3>
+                        <p class="blog-excerpt">Learn how to write maintainable and scalable code using modular programming techniques.</p>
+                        <a href="#" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-post">
+                    <div class="blog-image">
+                        <img src="{% static 'img/placeholder/400/300' %}" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">AI-Powered Code Optimization</h3>
+                        <p class="blog-excerpt">Discover how AI can help optimize your code for better performance and efficiency.</p>
+                        <a href="#" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Subscribe to Our Newsletter</h2>
+            <p class="section-subtitle">Get the latest updates, tips, and insights delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <form class="footer-contact">
+                        <input type="text" placeholder="Name">
+                        <input type="email" placeholder="Email">
+                        <textarea placeholder="Message"></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Codeweave. All rights reserved. Designed by <a href="#">AIdev</a></p>
+                <div class="special-thanks">
+                    <p>Special thanks to <i class="fas fa-heart"></i> Ankit and Naman for their contributions</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/placeholder.js@latest/placeholder.min.js"></script>
+    <div class="terminal">
+        <span id="typewriter"></span>
+    </div>
+
+    <script>
+        // Initialize GSAP and ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Navbar toggle
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.hamburger i').classList.toggle('fa-bars');
+            document.querySelector('.hamburger i').classList.toggle('fa-times');
+        });
+        
+        // Sticky navbar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Animated Background
+        function createAnimatedBackground() {
+            const bg = document.getElementById('animated-bg');
+            const colors = ['#6C63FF', '#00E676', '#FF4081'];
+            
+            // Create particles
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = Math.random() * 300 + 100 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+                bg.appendChild(particle);
+            }
+            
+            // Create blobs
+            for (let i = 0; i < 5; i++) {
+                const blob = document.createElement('div');
+                blob.classList.add('blob');
+                blob.style.width = Math.random() * 500 + 200 + 'px';
+                blob.style.height = blob.style.width;
+                blob.style.left = Math.random() * 100 + '%';
+                blob.style.top = Math.random() * 100 + '%';
+                blob.style.opacity = Math.random() * 0.3 + 0.1;
+                blob.style.background = colors[Math.floor(Math.random() * colors.length)];
+                blob.style.transition = 'all 15s ease-in-out';
+                bg.appendChild(blob);
+                
+                // Animate blobs with GSAP
+                gsap.to(blob, {
+                    x: Math.random() * 200 - 100,
+                    y: Math.random() * 200 - 100,
+                    duration: 15,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+        }
+        
+        // Code typing animation
+        function animateCode() {
+            const codeLines = document.querySelectorAll('.code-line');
+            
+            gsap.fromTo(codeLines, {
+                opacity: 0,
+                y: 10
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+        }
+        
+        // Testimonial slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.slider-dot');
+        const slider = document.getElementById('testimonials-slider');
+        
+        function showSlide(index) {
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        // Set up dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto slide
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Initialize ScrollReveal
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px',
+            duration: 1000,
+            delay: 200,
+            reset: false
+        });
+        
+        // GSAP animations
+        function initAnimations() {
+            // Hero section animations
+            gsap.from('.hero-title', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.2
+            });
+            
+            gsap.from('.hero-subtitle', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.4
+            });
+            
+            gsap.from('.hero-btns', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.6
+            });
+            
+            gsap.from('.hero-image', {
+                opacity: 0,
+                x: 50,
+                duration: 1,
+                delay: 0.8
+            });
+            
+            // Feature cards animations
+            sr.reveal('.feature-card', {
+                interval: 200
+            });
+            
+            // Timeline animations
+            sr.reveal('.timeline-item', {
+                interval: 300
+            });
+            
+            // Testimonial animations
+            sr.reveal('.testimonials-container', {
+                delay: 200
+            });
+        }
+        
+        // FAQ expand/collapse functionality
+        
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                const content = item.querySelector('.faq-content');
+                const arrow = item.querySelector('.faq-arrow');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+
+    </script>
+<script>
+    // Initialize Three.js scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    document.querySelector('.model-container').appendChild(renderer.domElement);
+
+    // Add lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    // Load the 3D model
+    let model;
+    let isHovered = false;
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+        '/static/js/scene.gltf',
+        function (gltf) {
+            model = gltf.scene;
+            model.scale.set(0.8, 0.8, 0.8);
+            model.position.set(1.5, 0, 2);
+            scene.add(model);
+        },
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('An error happened', error);
+        }
+    );
+
+    // Mouse tracking variables
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    const speed = 0.1;
+    const autoSpinSpeed = 0.005; // Speed of automatic spinning
+
+    // Handle mouse movement
+    document.addEventListener('mousemove', function(event) {
+        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        
+        // Check if cursor is over the model
+        const rect = renderer.domElement.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        // Set hover state
+        isHovered = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+    });
+
+    // Animation
+    function animate() {
+        requestAnimationFrame(animate);
+        
+        // Smoothly track mouse position
+        targetX = mouseX;
+        targetY = mouseY;
+        
+        if (model) {
+            // Rotate model based on mouse position when hovered
+            if (isHovered) {
+                model.rotation.y += (targetX - model.rotation.y) * speed;
+                model.rotation.x += (targetY - model.rotation.x) * speed;
+            } else {
+                // Automatic spinning when not hovered
+                model.rotation.y += autoSpinSpeed;
+            }
+            
+            // Add a slight scale effect based on mouse proximity
+            const distance = Math.sqrt(mouseX * mouseX + mouseY * mouseY);
+            const scale = 0.7 + (1 - distance) * 0.1;
+            model.scale.set(scale, scale, scale);
+        }
+        
+        renderer.render(scene, camera);
+    }
+
+    // Position camera
+    camera.position.z = 5;
+
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize, false);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    animate();
+</script>
+<script>
+    // Typewriter effect
+    const codeLines = [
+        'pip install windsurf',
+        'windsurf init',
+        'windsurf generate project'
+    ];
+
+    let currentLine = 0;
+    let currentChar = 0;
+    let isTyping = false;
+
+    function typeLine() {
+        const codeBody = document.getElementById('code-animation');
+        const currentElement = codeBody.children[currentLine];
+        const text = codeLines[currentLine];
+        
+        if (currentChar < text.length) {
+            currentElement.querySelector('.code-text').textContent += text[currentChar];
+            currentChar++;
+            
+            // Adjust typing speed based on character
+            const nextChar = text[currentChar];
+            const delay = nextChar === ' ' ? 50 : 100;
+            
+            setTimeout(typeLine, delay);
+        } else {
+            currentChar = 0;
+            currentLine++;
+            
+            if (currentLine < codeLines.length) {
+                setTimeout(typeLine, 1000); // Add a small delay between lines
+            }
+        }
+    }
+
+    // Initialize with first line
+    document.addEventListener('DOMContentLoaded', () => {
+        const codeBody = document.getElementById('code-animation');
+        codeLines.forEach((_, index) => {
+            const line = document.createElement('div');
+            line.className = 'code-line';
+            line.innerHTML = `
+                <span class="code-prompt">$</span>
+                <span class="code-text"></span>
+                <span class="cursor"></span>
+            `;
+            codeBody.appendChild(line);
+        });
+        
+        typeLine();
+    });
+</script>
+</body>
+</html>

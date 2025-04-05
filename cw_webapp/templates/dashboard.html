@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevHub Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --success: #22c55e;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --gradient-1: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-2: linear-gradient(135deg, #22c55e 0%, #34d399 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --gradient-4: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --sidebar-width: 280px;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-color);
+            min-height: 100vh;
+        }
+
+        /* Layout */
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            display: block;
+            max-width: 100%;
+            width: fit-content;
+        }
+
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .sidebar-user:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .sidebar-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        .sidebar-toggle:hover {
+            color: white;
+        }
+
+        /* Navigation */
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: white;
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            transform: scaleX(1);
+        }
+
+        .nav-item i {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .nav-item:hover i {
+            color: white;
+        }
+
+        .nav-item span {
+            font-weight: 500;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            width: 100%;
+        }
+
+        .nav-item .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-left: 0.5rem;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .quick-actions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .quick-actions-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: white;
+            margin: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .quick-actions-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 100px;
+            flex-shrink: 0;
+        }
+
+        .quick-action:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-action::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .quick-action:hover::before {
+            opacity: 0.1;
+        }
+
+        .quick-action-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            color: white;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .quick-action-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            text-align: center;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .quick-action-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            position: absolute;
+            bottom: 0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+            flex-shrink: 0;
+        }
+
+        /* Special Section */
+        .special-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            min-height: 300px;
+            width: 100%;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            margin: 0;
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            min-height: 80px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            color: white;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .feature-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: white;
+            margin: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .feature-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .feature-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 80px;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-1);
+            color: white;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+            width: 65%;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .user-profile:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .user-info {
+            flex: 1;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .user-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: white;
+            flex-shrink: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .user-role {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            flex-shrink: 0;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .user-settings {
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .user-settings:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .settings-icon {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            flex-shrink: 0;
+        }
+
+        .settings-icon:hover {
+            color: white;
+        }
+
+        /* User Menu */
+        .user-menu {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            width: 250px;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 1rem;
+            z-index: 1000;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .user-menu.active {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item:hover {
+            background: var(--glass-bg);
+            color: var(--primary);
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .menu-text {
+            flex: 1;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .menu-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--gradient-1);
+            color: white;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                padding: 1rem;
+            }
+
+            .sidebar-header {
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .sidebar-user {
+                padding: 0.75rem;
+            }
+
+            .user-avatar {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-item {
+                padding: 0.5rem 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+
+            .stat-card {
+                padding: 0.75rem;
+                min-height: 70px;
+            }
+
+            .stat-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .progress-section {
+                padding: 0.75rem;
+            }
+
+            .feature-card {
+                padding: 0.75rem;
+                gap: 0.75rem;
+            }
+
+            .feature-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .user-menu {
+                width: 100%;
+                left: 0;
+                top: 0;
+                bottom: auto;
+                margin-left: 0;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+                padding: 0.75rem;
+                min-height: 100px;
+            }
+
+            .feature-content {
+                flex: none;
+            }
+
+            .feature-badge {
+                position: static;
+                margin-top: 0.5rem;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-card {
+                min-height: 80px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .quick-actions {
+                padding: 1rem;
+                gap: 0.75rem;
+            }
+
+            .quick-actions-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .quick-action {
+                padding: 0.75rem;
+                min-height: 90px;
+            }
+
+            .quick-action-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .quick-action-text {
+                font-size: 0.85rem;
+            }
+
+            .quick-action-badge {
+                bottom: 0.5rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-action {
+                min-height: 100px;
+            }
+
+            .quick-action-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .quick-action-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .project-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-card-title {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-card-status {
+            padding: 0.375rem 0.875rem;
+            border-radius: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .project-card-description {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .project-card-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card-action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card-action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .project-card {
+                padding: 1rem;
+            }
+
+            .project-card-title {
+                font-size: 1.1rem;
+            }
+
+            .project-card-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            transition: margin-left 0.3s ease;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-area.collapsed {
+            margin-left: 0;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .action-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Stats Cards */
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stats-card:hover::before {
+            opacity: 1;
+        }
+
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stats-title {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .stats-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .stats-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .stats-change.positive {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .stats-change.negative {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .status-success { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+        .status-warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+        .status-info { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .status-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            transition: width 0.3s ease;
+        }
+
+        /* Charts */
+        .chart-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .chart-filters {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Team Activity */
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .activity-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-name {
+            font-size: 0.95rem;
+            color: white;
+            margin: 0;
+        }
+
+        .activity-time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.25rem 0;
+        }
+
+        .activity-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Recent Updates */
+        .updates-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .updates-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .updates-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .update-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .update-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .update-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .update-content {
+            flex: 1;
+        }
+
+        .update-title {
+            font-size: 0.95rem;
+            color: white;
+            margin: 0;
+        }
+
+        .update-time {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.25rem 0;
+        }
+
+        .update-description {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .stats-card {
+                padding: 1.25rem;
+            }
+
+            .project-card {
+                padding: 1.25rem;
+            }
+
+            .chart-card {
+                padding: 1.25rem;
+            }
+
+            .activity-card {
+                padding: 1.25rem;
+            }
+
+            .updates-card {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .content-area {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .action-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats-card {
+                padding: 1rem;
+            }
+
+            .project-card {
+                padding: 1rem;
+            }
+
+            .chart-card {
+                padding: 1rem;
+            }
+
+            .activity-card {
+                padding: 1rem;
+            }
+
+            .updates-card {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-card {
+                padding: 0.75rem;
+            }
+
+            .project-card {
+                padding: 0.75rem;
+            }
+
+            .chart-card {
+                padding: 0.75rem;
+            }
+
+            .activity-card {
+                padding: 0.75rem;
+            }
+
+            .updates-card {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            --bg-color: #0f172a;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --gradient-1: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-2: linear-gradient(135deg, #10b981 0%, #22c55e 100%);
+            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #f59e0b 100%);
+            --gradient-4: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        }
+        
+        /* Projects Section */
+        .projects-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .projects-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .projects-title {
+            font-size: 2rem;
+            color: white;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .projects-count {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: 1rem;
+        }
+
+        .view-all-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-all-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem 0;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+            color: white;
+        }
+
+        .empty-state-message {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 1.5rem 0;
+        }
+
+        .create-project-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .create-project-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-section {
+                padding: 1.5rem;
+            }
+
+            .projects-title {
+                font-size: 1.75rem;
+            }
+
+            .empty-state {
+                padding: 2rem 1rem;
+            }
+        }
+        .delete-project-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .delete-project-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .delete-project-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .delete-project-btn i {
+        font-size: 16px;
+    }
+
+    .delete-project-btn .spinner {
+        display: none;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-logo">DevHub</h2>
+                <div class="sidebar-user">
+                    <div class="user-avatar">{{ request.user.username|slice:':2'|upper }}</div>
+                    <span class="user-name">{{ request.user.username|truncatechars:20 }}</span>
+                </div>
+                <button class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="{% url 'create_project' %}" class="nav-item">
+                    <i class="fas fa-plus"></i>
+                    <span>Create New Project</span>
+                </a>
+                <a href="{% url 'dashboard' %}" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                    <span class="badge">12</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Team</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="quick-actions">
+                <div class="quick-actions-header">
+                    <h3 class="quick-actions-title">Quick Actions</h3>
+                </div>
+                <div class="quick-actions-list">
+                    <div class="quick-action">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="quick-action-text">View Reports</div>
+                        <span class="quick-action-badge">Updated</span>
+                    </div>
+                    <div class="quick-action">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="quick-action-text">Analytics</div>
+                        <span class="quick-action-badge">New</span>
+                    </div>
+                    <div class="quick-action">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="quick-action-text">Team</div>
+                        <span class="quick-action-badge">4 Members</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div>
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Active Tasks</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Team Members</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Hours Tracked</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">{{ request.user.username|slice:':2'|upper }}</div>
+                    <div class="user-info">
+                        <span class="user-name">{{ request.user.username|truncatechars:20 }}</span>
+                        <span class="user-role">Admin</span>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="user-settings" onclick="toggleUserMenu(this)">
+                        <i class="fas fa-cog settings-icon"></i>
+                    </button>
+                </div>
+
+                <div class="special-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Quick Stats</h3>
+                        <span class="section-subtitle">Today's Overview</span>
+                    </div>
+
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Tasks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Team</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-value">3.5</div>
+                            <div class="stat-label">Hours</div>
+                        </div>
+                    </div>
+
+                    <div class="progress-section">
+                        <div class="progress-label">Daily Progress</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">Quick Start</div>
+                            <div class="feature-description">Get started with our quick start guide</div>
+                        </div>
+                        <span class="feature-badge">New</span>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">Analytics</div>
+                            <div class="feature-description">View your team's performance</div>
+                        </div>
+                        <span class="feature-badge">Updated</span>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-title">Support</div>
+                            <div class="feature-description">Get help from our support team</div>
+                        </div>
+                        <span class="feature-badge">24/7</span>
+                    </div>
+                </div>
+
+                <div class="user-menu" id="userMenu">
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="menu-text">Profile</div>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="menu-text">Settings</div>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="menu-text">Notifications</div>
+                        <span class="menu-badge">3</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="menu-text">Help Center</div>
+                    </a>
+                    <a href="{% url 'logout' %}" class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <div class="menu-text">Logout</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="header">
+                <h1 class="header-title">Dashboard</h1>
+                <div class="header-actions">
+                    <button class="action-btn" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button class="action-btn" onclick="refreshDashboard()">
+                        <i class="fas fa-sync"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="projects-section">
+                <div class="projects-header">
+                    <h2 class="projects-title">Projects</h2>
+                    <span class="projects-count">Total Projects: {{ projects|length }}</span>
+                    <button class="view-all-btn">
+                        View All
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            
+                {% if projects %}
+                    <div class="projects-grid">
+                        {% for project in projects %}
+                            <div class="project-card">
+                                <div class="project-card-header">
+                                    <h3 class="project-card-title">{{ project.name }}</h3>
+                                    <span class="project-card-status">Active</span>
+                                </div>
+                                <div class="project-card-meta">
+                                    <div class="project-card-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>{{ project.created_at|date:"M d, Y" }}</span>
+                                    </div>
+                                    <div class="project-card-meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>{{ request.user.username }}</span>
+                                    </div>
+                                </div>
+                                <div class="project-card-actions">
+                                    <button class="project-card-action-btn">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    <a href="/projects/dev_environment/{{ project.id }}/" class="project-card-action-btn">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button class="delete-project-btn" onclick="deleteProject('{{ project.id }}')">
+                                        <i class="fas fa-trash"></i>
+                                        Delete Project
+                                        <div class="spinner"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-folder-open empty-state-icon"></i>
+                        <h3 class="empty-state-title">No Projects Yet</h3>
+                        <p class="empty-state-message">Start a new project to get things rolling!</p>
+                        <a href="{% url 'create_project' %}" style="text-decoration: none;">
+                            <button class="create-project-btn">
+                                <i class="fas fa-plus"></i> Create Project
+                            </button>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+        </div>
+
+    <script>
+        // DOM Elements
+        const DOM = {
+            element(id) {
+                return document.getElementById(id);
+            },
+            elements(selector) {
+                return document.querySelectorAll(selector);
+            },
+            projectGrid() {
+                return this.element('projectGrid');
+            },
+            loadingSpinner() {
+                return this.element('loadingSpinner');
+            }
+        };
+
+        // State Management
+        class DashboardState {
+            static #instance = null;
+            static getInstance() {
+                if (!this.#instance) {
+                    this.#instance = new DashboardState();
+                }
+                return this.#instance;
+            }
+
+            constructor() {
+                this.projects = [];
+                this.isLoading = false;
+                this.error = null;
+            }
+
+            updateProjects(projects) {
+                this.projects = projects;
+                this.updateUI();
+            }
+
+            setLoading(loading) {
+                this.isLoading = loading;
+                this.updateUI();
+            }
+
+            setError(error) {
+                this.error = error;
+                this.updateUI();
+            }
+
+            updateUI() {
+                if (this.isLoading) {
+                    DOM.loadingSpinner().style.display = 'block';
+                } else {
+                    DOM.loadingSpinner().style.display = 'none';
+                }
+
+                if (this.error) {
+                    UI.showNotification(this.error, 'error');
+                }
+            }
+        }
+
+        // UI Components
+        class UI {
+            static showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                `;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 300);
+                    }, 5000);
+                }, 100);
+            }
+
+            static updateProjectGrid(projects) {
+                const grid = DOM.projectGrid();
+                if (!grid) return;
+
+                grid.innerHTML = '';
+
+                if (projects.length === 0) {
+                    grid.innerHTML = this.createNoProjectsMessage();
+                    return;
+                }
+
+                projects.forEach(project => {
+                    const card = this.createProjectCard(project);
+                    grid.appendChild(card);
+                });
+
+                this.updateProjectCount(projects.length);
+            }
+
+            static createNoProjectsMessage() {
+                return `
+                    <div class="no-projects">
+                        <i class="fas fa-folder-open"></i>
+                        <h3>No Projects Yet</h3>
+                        <p>Start a new project to get things rolling!</p>
+                        <button class="action-btn" onclick="ProjectActions.create()">
+                            <i class="fas fa-plus"></i> Create Project
+                        </button>
+                    </div>
+                `;
+            }
+
+            static createProjectCard(project) {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <div class="project-header">
+                        <h3 class="project-title">${project.name}</h3>
+                        <div class="project-meta">
+                            <span class="project-date">${project.created_at}</span>
+                            <span class="project-status ${project.status}">${project.status}</span>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <a href="/projects/dev_environment/${project.id}/" class="action-btn">
+                            <i class="fas fa-code"></i>
+                            Open IDE
+                        </a>
+                        <a href="/projects/dev_environment/{{ project.id }}/" class="action-btn">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </a>
+                        <button class="action-btn share-btn" data-project-id="${project.id}">
+                            <i class="fas fa-share-alt"></i>
+                            Share
+                        </button>
+                    </div>
+                `;
+                return card;
+            }
+
+            static updateProjectCount(count) {
+                const subtitle = document.querySelector('.projects-subtitle');
+                if (subtitle) {
+                    subtitle.textContent = `Total Projects: ${count}`;
+                }
+            }
+        }
+
+        // API Service
+        class ApiService {
+            static async fetchProjects() {
+                try {
+                    const response = await fetch('/projects/list/', {
+                        headers: {
+                            'Authorization': `Token ${localStorage.getItem('authToken')}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch projects');
+                    }
+                    const data = await response.json();
+                    return data.projects;
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+            static async createProject(data) {
+                try {
+                    const response = await fetch('/projects/save_project/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                            'Authorization': `Token ${localStorage.getItem('authToken')}`
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to create project');
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+            static async getProjectDetails(id) {
+                try {
+                    const response = await fetch(`/projects/dev_environment/${id}/`, {
+                        headers: {
+                            'Authorization': `Token ${localStorage.getItem('authToken')}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch project details');
+                    }
+                    return await response.json();
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+            static async saveCode(projectId, code) {
+                try {
+                    const response = await fetch('/projects/save_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken'),
+                            'Authorization': `Token ${localStorage.getItem('authToken')}`
+                        },
+                        body: JSON.stringify({
+                            project_id: projectId,
+                            code: code
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to save code');
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    throw error;
+                }
+            }
+
+            static async runCode(projectId, code) {
+                try {
+                    const response = await fetch('/projects/run_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Token ${localStorage.getItem('authToken')}`
+                        },
+                        body: JSON.stringify({
+                            project_id: projectId,
+                            code: code
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to run code');
+                    }
+
+                    return await response.json();
+                } catch (error) {
+                    throw error;
+                }
+            }
+        }
+
+        // Project Actions
+        class ProjectActions {
+            static async create() {
+                try {
+                    DashboardState.getInstance().setLoading(true);
+                    
+                    const project = await ApiService.createProject({
+                        name: 'New Project',
+                        description: 'Project created on ' + new Date().toLocaleDateString(),
+                        status: 'pending',
+                        progress: 0
+                    });
+
+                    await Dashboard.refresh();
+                    UI.showNotification('Project created successfully', 'success');
+                } catch (error) {
+                    UI.showNotification('Failed to create project', 'error');
+                    console.error('Error creating project:', error);
+                } finally {
+                    DashboardState.getInstance().setLoading(false);
+                }
+            }
+
+            static async view(id) {
+                try {
+                    const project = await ApiService.getProjectDetails(id);
+                    console.log('Project details:', project);
+                } catch (error) {
+                    UI.showNotification('Failed to load project details', 'error');
+                    console.error('Error loading project details:', error);
+                }
+            }
+
+            static async edit(id) {
+                console.log('Editing project:', id);
+            }
+
+            static async share(id) {
+                console.log('Sharing project:', id);
+            }
+        }
+
+        // Dashboard Manager
+        class Dashboard {
+            static async refresh() {
+                try {
+                    DashboardState.getInstance().setLoading(true);
+                    
+                    const projects = await ApiService.fetchProjects();
+                    DashboardState.getInstance().updateProjects(projects);
+                    UI.updateProjectGrid(projects);
+                } catch (error) {
+                    DashboardState.getInstance().setError(error.message);
+                    console.error('Error refreshing dashboard:', error);
+                } finally {
+                    DashboardState.getInstance().setLoading(false);
+                }
+            }
+
+            static async initialize() {
+                await this.refresh();
+                
+                // Add event listeners
+                this.addEventListeners();
+            }
+
+            static addEventListeners() {
+                // Window resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        const sidebar = document.querySelector('.sidebar');
+                        if (sidebar && sidebar.classList.contains('active')) {
+                            sidebar.classList.remove('active');
+                        }
+                    }
+                });
+
+                // Smooth scrolling
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+
+                // Sidebar toggle
+                const toggleButton = document.querySelector('.sidebar-toggle');
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', () => {
+                        const sidebar = document.querySelector('.sidebar');
+                        if (sidebar) {
+                            sidebar.classList.toggle('active');
+                        }
+                    });
+                }
+            }
+        }
+
+        // Initialize the dashboard when DOM is ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            await Dashboard.initialize();
+        });
+
+        // Toggle sidebar
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content-area');
+            if (sidebar && content) {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('collapsed');
+            }
+        }
+
+        // Refresh dashboard
+        function refreshDashboard() {
+            Dashboard.refresh();
+        }
+
+        // Toggle user menu
+        function toggleUserMenu(button) {
+            const menu = document.getElementById('userMenu');
+            menu.classList.toggle('active');
+
+            // Add click outside handler
+            document.addEventListener('click', function(e) {
+                if (!menu.contains(e.target) && !button.contains(e.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('userMenu');
+            const button = document.querySelector('.user-settings');
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        async function createProject() {
+            const projectName = prompt("Enter project name:");
+            if (!projectName) return;
+
+            try {
+                const response = await fetch('/projects/save_project/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        name: projectName
+                    })
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to create project');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to create project');
+            }
+        }
+        let authToken = localStorage.getItem('authToken');
+
+        async function getAuthToken() {
+    try {
+        const response = await fetch('/auth/token/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: 'your_username',
+                password: 'your_password'
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            return data.token;
+        }
+    } catch (error) {
+        console.error('Error getting token:', error);
+        throw error;
+    }
+}
+
+async function deleteProject(projectId) {
+    if (!confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
+        return;
+    }
+
+    try {
+        // Get token if not already cached
+        if (!authToken) {
+            authToken = await getAuthToken();
+        }
+
+        const response = await fetch(`/projects/delete_project/${projectId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${authToken}`
+            }
+        });
+
+        if (response.ok) {
+            alert('Project deleted successfully');
+            window.location.reload();
+        } else {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to delete project');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Failed to delete project: ${error.message}`);
+    }
+}
+        
+
+        function formatProjectDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Cookie functions
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+</body>
+</html>

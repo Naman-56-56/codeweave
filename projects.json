@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "title": "Education Project 2732",
+        "category": "Education",
+        "description": "An interactive e-learning platform with gamification. This project will include features such as:\n- Search and filtering functionality\n- Social media integration\n- Payment processing\n- Notification system",
+        "tech_stack": [
+            "Node.js",
+            "Next.js",
+            "Prisma",
+            "AWS"
+        ],
+        "difficulty": "Advanced",
+        "features": [
+            "Search and filtering functionality",
+            "Social media integration",
+            "Payment processing",
+            "Notification system"
+        ],
+        "prompt": "Create a education project with the following specifications:\n\nProject Title: Education Project 2732\nCategory: Education\nDifficulty: Advanced\n\nKey Features:\nAn interactive e-learning platform with gamification. This project will include features such as:\n- Search and filtering functionality\n- Social media integration\n- Payment processing\n- Notification system\n\nTechnical Requirements:\n- Frontend: Node.js, Next.js, Prisma, AWS\n- Backend: Python\n- Database: MySQL\n- Authentication: OAuth\n\nAdditional Requirements:\n- Responsive design\n- Cross-browser compatibility\n- Mobile-friendly interface\n- Error handling and validation\n- Unit tests and documentation\n\nPlease provide:\n1. Project structure\n2. Required dependencies\n3. Setup instructions\n4. API endpoints (if applicable)\n5. Database schema\n6. Sample code snippets\n7. Testing guidelines\n8. Deployment instructions\n\nNote: Ensure the solution follows best practices and is scalable."
+    },
+    {
+        "id": 2,
+        "title": "Healthcare Project 5264",
+        "category": "Healthcare",
+        "description": "A fitness app with personalized workout plans. This project will include features such as:\n- User authentication and authorization\n- File upload and storage\n- Real-time data synchronization\n- Data visualization and analytics\n- Search and filtering functionality",
+        "tech_stack": [
+            "Python",
+            "Flask"
+        ],
+        "difficulty": "Beginner",
+        "features": [
+            "User authentication and authorization",
+            "File upload and storage",
+            "Real-time data synchronization",
+            "Data visualization and analytics",
+            "Search and filtering functionality"
+        ],
+        "prompt": "Create a healthcare project with the following specifications:\n\nProject Title: Healthcare Project 5264\nCategory: Healthcare\nDifficulty: Beginner\n\nKey Features:\nA fitness app with personalized workout plans. This project will include features such as:\n- User authentication and authorization\n- File upload and storage\n- Real-time data synchronization\n- Data visualization and analytics\n- Search and filtering functionality\n\nTechnical Requirements:\n- Frontend: Python, Flask\n- Backend: Node.js\n- Database: MySQL\n- Authentication: OAuth\n\nAdditional Requirements:\n- Responsive design\n- Cross-browser compatibility\n- Mobile-friendly interface\n- Error handling and validation\n- Unit tests and documentation\n\nPlease provide:\n1. Project structure\n2. Required dependencies\n3. Setup instructions\n4. API endpoints (if applicable)\n5. Database schema\n6. Sample code snippets\n7. Testing guidelines\n8. Deployment instructions\n\nNote: Ensure the solution follows best practices and is scalable."
+    },
+    {
+        "id": 3,
+        "title": "Social Media Project 7849",
+        "category": "Social Media",
+        "description": "A real-time collaborative workspace for remote teams. This project will include features such as:\n- Payment processing\n- Search and filtering functionality\n- API integration with external services\n- Data visualization and analytics\n- Responsive and mobile-friendly design\n- File upload and storage",
+        "tech_stack": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "difficulty": "Beginner",
+        "features": [
+            "Payment processing",
+            "Search and filtering functionality",
+            "API integration with external services",
+            "Data visualization and analytics",
+            "Responsive and mobile-friendly design",
+            "File upload and storage"
+        ],
+        "prompt": "Create a social media project with the following specifications:\n\nProject Title: Social Media Project 7849\nCategory: Social Media\nDifficulty: Beginner\n\nKey Features:\nA real-time collaborative workspace for remote teams. This project will include features such as:\n- Payment processing\n- Search and filtering functionality\n- API integration with external services\n- Data visualization and analytics\n- Responsive and mobile-friendly design\n- File upload and storage\n\nTechnical Requirements:\n- Frontend: HTML, CSS, JavaScript\n- Backend: Java\n- Database: SQLite\n- Authentication: OAuth\n\nAdditional Requirements:\n- Responsive design\n- Cross-browser compatibility\n- Mobile-friendly interface\n- Error handling and validation\n- Unit tests and documentation\n\nPlease provide:\n1. Project structure\n2. Required dependencies\n3. Setup instructions\n4. API endpoints (if applicable)\n5. Database schema\n6. Sample code snippets\n7. Testing guidelines\n8. Deployment instructions\n\nNote: Ensure the solution follows best practices and is scalable."
+    },
+    {
+        "id": 4,
+        "title": "E commerce Project 1417",
+        "category": "E-commerce",
+        "description": "A B2B e-commerce platform for wholesale products. This project will include features such as:\n- Responsive and mobile-friendly design\n- Notification system\n- Payment processing",
+        "tech_stack": [
+            "Python",
+            "FastAPI",
+            "GraphQL",
+            "Redis"
+        ],
+        "difficulty": "Advanced",
+        "features": [
+            "Responsive and mobile-friendly design",
+            "Notification system",
+            "Payment processing"
+        ],
+        "prompt": "Create a e-commerce project with the following specifications:\n\nProject Title: E commerce Project 1417\nCategory: E-commerce\nDifficulty: Advanced\n\nKey Features:\nA B2B e-commerce platform for wholesale products. This project will include features such as:\n- Responsive and mobile-friendly design\n- Notification system\n- Payment processing\n\nTechnical Requirements:\n- Frontend: Python, FastAPI, GraphQL, Redis\n- Backend: Java\n- Database: PostgreSQL\n- Authentication: Session-based\n\nAdditional Requirements:\n- Responsive design\n- Cross-browser compatibility\n- Mobile-friendly interface\n- Error handling and validation\n- Unit tests and documentation\n\nPlease provide:\n1. Project structure\n2. Required dependencies\n3. Setup instructions\n4. API endpoints (if applicable)\n5. Database schema\n6. Sample code snippets\n7. Testing guidelines\n8. Deployment instructions\n\nNote: Ensure the solution follows best practices and is scalable."
+    },
+    {
+        "id": 5,
+        "title": "Healthcare Project 4445",
+        "category": "Healthcare",
+        "description": "A mental health support app with mood tracking. This project will include features such as:\n- Responsive and mobile-friendly design\n- User authentication and authorization\n- API integration with external services\n- Data visualization and analytics\n- Search and filtering functionality\n- File upload and storage",
+        "tech_stack": [
+            "Vue.js",
+            "Firebase"
+        ],
+        "difficulty": "Intermediate",
+        "features": [
+            "Responsive and mobile-friendly design",
+            "User authentication and authorization",
+            "API integration with external services",
+            "Data visualization and analytics",
+            "Search and filtering functionality",
+            "File upload and storage"
+        ],
+        "prompt": "Create a healthcare project with the following specifications:\n\nProject Title: Healthcare Project 4445\nCategory: Healthcare\nDifficulty: Intermediate\n\nKey Features:\nA mental health support app with mood tracking. This project will include features such as:\n- Responsive and mobile-friendly design\n- User authentication and authorization\n- API integration with external services\n- Data visualization and analytics\n- Search and filtering functionality\n- File upload and storage\n\nTechnical Requirements:\n- Frontend: Vue.js, Firebase\n- Backend: Java\n- Database: MySQL\n- Authentication: Session-based\n\nAdditional Requirements:\n- Responsive design\n- Cross-browser compatibility\n- Mobile-friendly interface\n- Error handling and validation\n- Unit tests and documentation\n\nPlease provide:\n1. Project structure\n2. Required dependencies\n3. Setup instructions\n4. API endpoints (if applicable)\n5. Database schema\n6. Sample code snippets\n7. Testing guidelines\n8. Deployment instructions\n\nNote: Ensure the solution follows best practices and is scalable."
+    }
+]

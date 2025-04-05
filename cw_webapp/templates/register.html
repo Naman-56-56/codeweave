@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --light-bg: #f0f4ff;
+            --light-card-bg: rgba(255, 255, 255, 0.7);
+            --light-text: #333;
+            --light-primary: #4361ee;
+            --light-secondary: #3f37c9;
+            --light-border: rgba(255, 255, 255, 0.4);
+            --light-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            --light-form-border: rgba(209, 213, 219, 0.8);
+            --light-input-bg: rgba(255, 255, 255, 0.9);
+            --light-backdrop: blur(16px);
+            
+            /* Dark Theme Variables */
+            --dark-bg: #0f172a;
+            --dark-card-bg: rgba(15, 23, 42, 0.7);
+            --dark-text: #f8fafc;
+            --dark-primary: #818cf8;
+            --dark-secondary: #6366f1;
+            --dark-border: rgba(30, 41, 59, 0.4);
+            --dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --dark-form-border: rgba(55, 65, 81, 0.8);
+            --dark-input-bg: rgba(30, 41, 59, 0.6);
+            --dark-backdrop: blur(16px);
+            
+            /* Active Theme (default: light) */
+            --bg: var(--light-bg);
+            --card-bg: var(--light-card-bg);
+            --text: var(--light-text);
+            --primary: var(--light-primary);
+            --secondary: var(--light-secondary);
+            --border: var(--light-border);
+            --shadow: var(--light-shadow);
+            --form-border: var(--light-form-border);
+            --input-bg: var(--light-input-bg);
+            --backdrop: var(--light-backdrop);
+        }
+        
+        [data-theme="dark"] {
+            --bg: var(--dark-bg);
+            --card-bg: var(--dark-card-bg);
+            --text: var(--dark-text);
+            --primary: var(--dark-primary);
+            --secondary: var(--dark-secondary);
+            --border: var(--dark-border);
+            --shadow: var(--dark-shadow);
+            --form-border: var(--dark-form-border);
+            --input-bg: var(--dark-input-bg);
+            --backdrop: var(--dark-backdrop);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        /* Mesh Background */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .mesh-gradient {
+            position: absolute;
+            width: 80vmax;
+            height: 80vmax;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+            transition: all 0.8s ease;
+        }
+        
+        .mesh-1 {
+            background: radial-gradient(circle at center, var(--primary), transparent 70%);
+            top: -20%;
+            left: -20%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        .mesh-2 {
+            background: radial-gradient(circle at center, var(--secondary), transparent 70%);
+            bottom: -30%;
+            right: -20%;
+            animation: float 15s ease-in-out infinite 2s;
+        }
+        
+        .mesh-3 {
+            background: radial-gradient(circle at center, #22d3ee, transparent 70%);
+            top: 60%;
+            left: 20%;
+            animation: float 18s ease-in-out infinite 1s;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(3%, 3%) rotate(5deg); }
+            66% { transform: translate(-3%, 1%) rotate(-3deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .register-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            backdrop-filter: var(--backdrop);
+            -webkit-backdrop-filter: var(--backdrop);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        /* Glassmorphism Shine Effect */
+        .register-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+            pointer-events: none;
+        }
+        
+        .register-container:hover::before {
+            left: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-control {
+            background: var(--input-bg);
+            border: 1px solid var(--form-border);
+            color: var(--text);
+            padding: 14px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            width: 100%;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            outline: none;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text);
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        /* Button Animation Effect */
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary);
+            transition: all 0.5s ease-in-out;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--form-border);
+            background: var(--input-bg);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            color: var(--text);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .already-account {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .already-account a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .already-account a:hover {
+            text-decoration: underline;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .title h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title p {
+            color: var(--text);
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--form-border);
+        }
+
+        .divider span {
+            padding: 0 16px;
+            color: var(--text);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        /* Form animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-group {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .btn-primary { animation: fadeIn 0.5s ease forwards 0.4s; opacity: 0; }
+        
+        @media (max-width: 768px) {
+            .register-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .title h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-gradient mesh-1"></div>
+        <div class="mesh-gradient mesh-2"></div>
+        <div class="mesh-gradient mesh-3"></div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="container">
+        <div class="register-container">
+            <div class="title">
+                <h2>Create Account</h2>
+                <p>Join our community today</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        
+                        {% if field.errors %}
+                            <div class="form-error">
+                                {% for error in field.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Get Started</button>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <button type="button" class="social-btn">
+                    <i class="fab fa-google social-icon"></i>
+                    Continue with Google
+                </button>
+
+                <div class="already-account">
+                    <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use device preference
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        } else {
+            // Use device preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                htmlElement.setAttribute('data-theme', 'dark');
+                updateIcon('dark');
+            }
+        }
+        
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            updateIcon(newTheme);
+        });
+        
+        // Update icon based on theme
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+        
+        // Adjust mesh gradients on theme change
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    // Animate the meshes slightly when theme changes
+                    document.querySelectorAll('.mesh-gradient').forEach(mesh => {
+                        mesh.style.opacity = '0.4';
+                        setTimeout(() => {
+                            mesh.style.opacity = '0.6';
+                        }, 400);
+                    });
+                }
+            });
+        });
+        
+        observer.observe(htmlElement, { attributes: true });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.querySelector('form');
+            
+            registerForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                try {
+                    const formData = new FormData(registerForm);
+                    const response = await fetch(registerForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                        }
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        // Store the auth token
+                        localStorage.setItem('authToken', data.token);
+                        
+                        // Show success message
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'alert alert-success';
+                        messageDiv.textContent = data.message;
+                        registerForm.insertBefore(messageDiv, registerForm.firstChild);
+                        
+                        // Redirect after a short delay
+                        setTimeout(() => {
+                            window.location.href = data.redirect;
+                        }, 1000);
+                    } else {
+                        // Show error message
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'alert alert-danger';
+                        messageDiv.textContent = Object.values(data.errors).flat().join('\n');
+                        registerForm.insertBefore(messageDiv, registerForm.firstChild);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Show error message
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'alert alert-danger';
+                    messageDiv.textContent = 'An error occurred. Please try again.';
+                    registerForm.insertBefore(messageDiv, registerForm.firstChild);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
