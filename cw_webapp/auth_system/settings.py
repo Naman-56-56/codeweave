@@ -164,3 +164,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',  # For API authentication
     ),
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://codeweave-2.onrender.com',
+]
+
