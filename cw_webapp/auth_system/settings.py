@@ -168,5 +168,6 @@ REST_FRAMEWORK = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://codeweave-2.onrender.com',
+    'https://codeweave-4d5h.onrender.com',
 ]
+

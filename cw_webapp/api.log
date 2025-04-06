@@ -3057,3 +3057,5 @@ django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
 2025-04-06 18:35:31,057 - INFO - Initialized model: gemini-1.5-pro
 2025-04-06 18:36:06,798 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 35.741081s | Status: 200
 2025-04-06 19:17:32,369 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 19:22:24,565 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 19:22:39,479 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
