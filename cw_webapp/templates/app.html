@@ -824,7 +824,7 @@ footer {
                         duration: projectDuration || undefined
                     };
                     
-                    const response = await fetch('http://localhost:5000/api/roadmap', {
+                    const response = await fetch('/api/roadmap/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

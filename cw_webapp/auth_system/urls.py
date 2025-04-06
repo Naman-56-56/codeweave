@@ -23,6 +23,7 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path('accounts/', include('allauth.urls')),
     path('projects/', include('projects.urls')),
+    path('dev_env/', include('dev_env.urls')),
     path("dashboard/", dashboard_view, name="dashboard"),
     path("", home_view, name="home"),
     path('api/', include('api.urls', namespace='api')),

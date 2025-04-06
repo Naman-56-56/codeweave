@@ -3,401 +3,2105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ project.name }} - Development Environment</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.js"></script>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #3b82f6;
-            --bg-color: #1e1e1e;
-            --text-primary: #ffffff;
-            --text-secondary: #a0aec0;
-            --border-color: #2d3748;
-            --success: #10b981;
-            --error: #ef4444;
-        }
+    <title>Code Weave IDE</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CodeMirror for code editing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+  :root {
+  --primary: #0078d4;
+  --secondary: #3b82f6;
+  --bg-color: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --border-color: #2d3748;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --editor-bg: #1e1e1e;
+  --line-numbers-bg: #252526;
+  --line-numbers-color: #858585;
+  --activity-bar-bg: #333333;
+  --sidebar-bg: #252526;
+  --panel-bg: #1e1e1e;
+  --titlebar-bg: #3c3c3c;
+  --statusbar-bg: #007acc;
+  --statusbar-item-hover-bg: #1f8ad2;
+  --dropdown-bg: #3c3c3c;
+  --dropdown-border: #3c3c3c;
+  --input-bg: #3c3c3c;
+  --input-border: #3c3c3c;
+  --button-bg: #0e639c;
+  --button-hover-bg: #1177bb;
+  --button-secondary-bg: #3c3c3c;
+  --button-secondary-hover-bg: #4e4e4e;
+  --scrollbar-bg: #1e1e1e;
+  --scrollbar-thumb-bg: #424242;
+  --tab-active-bg: #1e1e1e;
+  --tab-inactive-bg: #2d2d2d;
+  --explorer-hover-bg: #2a2d2e;
+  --explorer-selected-bg: #094771;
+  --terminal-bg: #1e1e1e;
+  --terminal-header-bg: #252526;
+  --notification-bg: #252526;
+  --notification-border: #454545;
+  --breadcrumb-bg: #252526;
+  --menu-bg: #252526;
+  --menu-border: #454545;
+  --menu-item-hover-bg: #094771;
+  --tooltip-bg: #252526;
+  --tooltip-border: #454545;
+  --selection-bg: #264f78;
+  --widget-shadow: rgba(0, 0, 0, 0.36);
+  --focus-border: #007fd4;
+  --settings-bg: #252526;
+  --settings-section-bg: #2d2d2d;
+  --settings-item-hover-bg: #2a2d2e;
+  --extension-bg: #252526;
+  --extension-button-bg: #0e639c;
+  --extension-button-hover-bg: #1177bb;
+  --extension-badge-bg: #4d4d4d;
+  --extension-badge-text: #ffffff;
+  --extension-verified-bg: #10b981;
+  --extension-downloads-bg: #3b82f6;
+  --extension-border: #454545;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-primary);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid var(--border-color);
-        }
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Ubuntu", "Droid Sans", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+  font-size: 13px;
+  user-select: none;
+}
 
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
-        .controls {
-            display: flex;
-            gap: 1rem;
-        }
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
 
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            border: none;
-            background: var(--primary);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-            font-size: 0.875rem;
-        }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 3px;
+}
 
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-        .btn-success {
-            background: var(--success);
-        }
+/* Title Bar */
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  background: var(--titlebar-bg);
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 0 10px;
+}
 
-        .btn-error {
-            background: var(--error);
-        }
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-        .main-content {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
+.window-controls {
+  display: flex;
+  align-items: center;
+}
 
-        .file-explorer {
-            width: 250px;
-            background: rgba(0, 0, 0, 0.2);
-            border-right: 1px solid var(--border-color);
-            padding: 1rem;
-            overflow-y: auto;
-        }
+.window-control {
+  width: 46px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
-        .file-explorer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
+.window-control:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
-        .file-list {
-            list-style: none;
-        }
+.window-control.close:hover {
+  background-color: #e81123;
+}
 
-        .file-item {
-            padding: 0.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-radius: 0.25rem;
-            transition: all 0.2s;
-        }
+/* Menu Bar */
+.menubar {
+  display: flex;
+  height: 30px;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 10px;
+}
 
-        .file-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+.menu-item {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
 
-        .file-item.active {
-            background: var(--primary);
-        }
+.menu-item:hover {
+  background: var(--menu-item-hover-bg);
+}
 
-        .editor-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--menu-bg);
+  border: 1px solid var(--menu-border);
+  box-shadow: 0 2px 8px var(--widget-shadow);
+  min-width: 180px;
+  z-index: 1000;
+  display: none;
+}
 
-        #editor {
-            flex: 1;
-            overflow: hidden;
-        }
+.menu-item:hover .menu-dropdown {
+  display: block;
+}
 
-        .terminal {
-            height: 200px;
-            background: #000;
-            border-top: 1px solid var(--border-color);
-            padding: 1rem;
-            font-family: 'Consolas', monospace;
-            overflow-y: auto;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            white-space: pre-wrap;
-        }
+.menu-dropdown-item {
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        .terminal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
+.menu-dropdown-item:hover {
+  background: var(--menu-item-hover-bg);
+}
 
-        .notification {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            padding: 1rem;
-            border-radius: 0.375rem;
-            background: var(--success);
-            color: white;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            transform: translateY(-1rem);
-            transition: all 0.3s;
-        }
+.menu-dropdown-item .shortcut {
+  color: var(--text-secondary);
+  font-size: 11px;
+  margin-left: 20px;
+}
 
-        .notification.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.menu-separator {
+  height: 1px;
+  background: var(--border-color);
+  margin: 5px 0;
+}
 
-        .notification.error {
-            background: var(--error);
-        }
-    </style>
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Activity Bar */
+.activity-bar {
+  width: 48px;
+  background: var(--activity-bar-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  z-index: 10;
+}
+
+.activity-bar-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.activity-bar-item:hover {
+  color: var(--text-primary);
+}
+
+.activity-bar-item.active {
+  color: var(--text-primary);
+}
+
+.activity-bar-item.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--text-primary);
+}
+
+.activity-bar-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 35px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.sidebar-action {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.sidebar-action:hover {
+  opacity: 1;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 0 10px 0;
+}
+
+/* Explorer */
+.explorer-section {
+  margin-bottom: 10px;
+}
+
+.explorer-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 20px;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.explorer-section-header:hover {
+  background: var(--explorer-hover-bg);
+}
+
+.explorer-section-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.explorer-section-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.explorer-section-action {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.explorer-section-action:hover {
+  opacity: 1;
+}
+
+.explorer-items {
+  padding-left: 20px;
+}
+
+.explorer-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 20px 3px 0;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.explorer-item:hover {
+  background: var(--explorer-hover-bg);
+}
+
+.explorer-item.active {
+  background: var(--explorer-selected-bg);
+}
+
+.explorer-item-icon {
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explorer-item-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Editor Area */
+.editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  height: 22px;
+  background: var(--breadcrumb-bg);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-separator {
+  margin: 0 5px;
+  opacity: 0.5;
+}
+
+/* Editor Tabs */
+.editor-tabs {
+  display: flex;
+  background: var(--tab-inactive-bg);
+  height: 35px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.editor-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 100%;
+  min-width: 120px;
+  max-width: 200px;
+  background: var(--tab-inactive-bg);
+  border-right: 1px solid var(--border-color);
+  cursor: pointer;
+  position: relative;
+  gap: 5px;
+}
+
+.editor-tab.active {
+  background: var(--tab-active-bg);
+}
+
+.editor-tab.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+}
+
+.tab-icon {
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.tab-close {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  opacity: 0;
+}
+
+.editor-tab:hover .tab-close {
+  opacity: 0.7;
+}
+
+.tab-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1 !important;
+}
+
+/* Editor Content */
+.editor-content {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.editor {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--editor-bg);
+}
+
+/* CodeMirror customization */
+.CodeMirror {
+  height: 100% !important;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Panel */
+.panel {
+  height: 200px;
+  background: var(--panel-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  height: 35px;
+  background: var(--terminal-header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 100%;
+  gap: 5px;
+  cursor: pointer;
+  border-right: 1px solid var(--border-color);
+}
+
+.panel-tab.active {
+  background: var(--panel-bg);
+  border-top: 1px solid var(--primary);
+  margin-top: -1px;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 10px;
+  gap: 10px;
+}
+
+.panel-action {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.panel-action:hover {
+  opacity: 1;
+}
+
+.panel-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Terminal */
+.terminal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  color: var(--text-primary);
+}
+
+.terminal-line {
+  margin-bottom: 2px;
+}
+
+.terminal-prompt {
+  color: #0f0;
+}
+
+.terminal-command {
+  color: var(--text-primary);
+}
+
+.terminal-output {
+  color: var(--text-secondary);
+}
+
+.terminal-error {
+  color: var(--error);
+}
+
+.terminal-warning {
+  color: var(--warning);
+}
+
+.terminal-success {
+  color: var(--success);
+}
+
+/* Status Bar */
+.statusbar {
+  display: flex;
+  height: 22px;
+  background: var(--statusbar-bg);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.statusbar-item {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 100%;
+  gap: 5px;
+}
+
+.statusbar-item:hover {
+  background: var(--statusbar-item-hover-bg);
+}
+
+.statusbar-section {
+  display: flex;
+  height: 100%;
+}
+
+.statusbar-section.right {
+  margin-left: auto;
+}
+
+/* Notifications */
+.notifications {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  width: 300px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  background: var(--notification-bg);
+  border: 1px solid var(--notification-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--widget-shadow);
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification-icon {
+  display: flex;
+  align-items: flex-start;
+  font-size: 16px;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.notification-message {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.notification-close {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.notification-close:hover {
+  opacity: 1;
+}
+
+.notification.success .notification-icon {
+  color: var(--success);
+}
+
+.notification.error .notification-icon {
+  color: var(--error);
+}
+
+.notification.warning .notification-icon {
+  color: var(--warning);
+}
+
+.notification.info .notification-icon {
+  color: var(--info);
+}
+
+/* Command Palette */
+.command-palette {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  max-width: 90%;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--widget-shadow);
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.command-palette.show {
+  display: flex;
+}
+
+.command-input {
+  padding: 10px;
+  background: var(--input-bg);
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.command-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.command-item {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.command-item:hover,
+.command-item.selected {
+  background: var(--menu-item-hover-bg);
+}
+
+.command-icon {
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.command-label {
+  flex: 1;
+}
+
+.command-shortcut {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  background: var(--bg-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--widget-shadow);
+  width: 500px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-close {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--focus-border);
+}
+
+.form-select {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px;
+  padding-right: 24px;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  background: var(--button-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn:hover {
+  background: var(--button-hover-bg);
+}
+
+.btn-secondary {
+  background: var(--button-secondary-bg);
+}
+
+.btn-secondary:hover {
+  background: var(--button-secondary-hover-bg);
+}
+
+/* Settings Panel */
+.settings-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--settings-bg);
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.settings-panel.show {
+  display: flex;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.settings-close {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.settings-close:hover {
+  opacity: 1;
+}
+
+.settings-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.settings-sidebar {
+  width: 200px;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+.settings-sidebar-item {
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.settings-sidebar-item:hover {
+  background: var(--settings-item-hover-bg);
+}
+
+.settings-sidebar-item.active {
+  background: var(--explorer-selected-bg);
+}
+
+.settings-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.settings-section {
+  margin-bottom: 30px;
+}
+
+.settings-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-item {
+  display: flex;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.settings-item:hover {
+  background: var(--settings-item-hover-bg);
+}
+
+.settings-item-label {
+  flex: 1;
+}
+
+.settings-item-control {
+  width: 200px;
+}
+
+/* Extensions Panel */
+.extensions-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--extension-bg);
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.extensions-panel.show {
+  display: flex;
+}
+
+.extensions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.extensions-search {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.extensions-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.extension-item {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid var(--extension-border);
+}
+
+.extension-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--input-bg);
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.extension-details {
+  flex: 1;
+}
+
+.extension-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.extension-verified {
+  background: var(--extension-verified-bg);
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.extension-description {
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.extension-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.extension-downloads {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.extension-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.extension-install {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Language-specific styles */
+.language-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: var(--button-secondary-bg);
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.language-config-button {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.language-config-button:hover {
+  opacity: 1;
+}
+
+/* Run Button */
+.run-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: var(--success);
+  border-radius: 3px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.run-button:hover {
+  background: #0ea271;
+}
+
+/* Debug Button */
+.debug-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background: var(--primary);
+  border-radius: 3px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.debug-button:hover {
+  background: var(--button-hover-bg);
+}
+
+/* Language Config Modal */
+.language-config-modal .modal-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.config-section {
+  margin-bottom: 20px;
+}
+
+.config-section-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.config-item {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.config-item-label {
+  flex: 1;
+  font-size: 12px;
+}
+
+.config-item-control {
+  width: 200px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .activity-bar {
+    width: 40px;
+  }
+
+  .activity-bar-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sidebar {
+    width: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    display: none;
+  }
+
+  .panel {
+    height: 150px;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1 class="project-title">
-            <i class="fas fa-code"></i>
-            {{ project.name }}
-        </h1>
-        <div class="controls">
-            <button class="btn" id="saveBtn">
-                <i class="fas fa-save"></i>
-                Save
-            </button>
-            <button class="btn" id="runBtn">
-                <i class="fas fa-play"></i>
-                Run
-            </button>
-            <button class="btn" onclick="location.href='/users/dashboard/'">
-                <i class="fas fa-arrow-left"></i>
-                Dashboard
-            </button>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="file-explorer">
-            <div class="file-explorer-header">
-                <span>Files</span>
-                <button class="btn" id="newFileBtn">
-                    <i class="fas fa-plus"></i>
-                </button>
+    <div class="app-container">
+        <!-- Title Bar -->
+        <div class="titlebar">
+            <div class="titlebar-title">
+                <i class="fas fa-code"></i>
+                <span>Code Weave IDE</span>
             </div>
-            <ul class="file-list" id="fileList">
-                <li class="file-item active">
-                    <i class="fas fa-file-code"></i>
-                    main.py
-                </li>
-            </ul>
-        </div>
-
-        <div class="editor-container">
-            <div id="editor"></div>
-            <div class="terminal">
-                <div class="terminal-header">
-                    <span>Output</span>
-                    <button class="btn" id="clearTerminalBtn" style="padding: 0.25rem 0.5rem">
-                        <i class="fas fa-trash"></i>
-                    </button>
+            <div class="window-controls">
+                <div class="window-control minimize">
+                    <i class="fas fa-window-minimize"></i>
                 </div>
-                <div id="terminalOutput"></div>
+                <div class="window-control maximize">
+                    <i class="fas fa-window-maximize"></i>
+                </div>
+                <div class="window-control close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Bar -->
+        <div class="menubar">
+            <div class="menu-item">
+                File
+                <div class="menu-dropdown">
+                    <div class="menu-dropdown-item" data-command="new-file">
+                        <span>New File</span>
+                        <span class="shortcut">Ctrl+N</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="open-file">
+                        <span>Open File...</span>
+                        <span class="shortcut">Ctrl+O</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="save-file">
+                        <span>Save</span>
+                        <span class="shortcut">Ctrl+S</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-dropdown-item" data-command="exit">
+                        <span>Exit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                Edit
+                <div class="menu-dropdown">
+                    <div class="menu-dropdown-item" data-command="undo">
+                        <span>Undo</span>
+                        <span class="shortcut">Ctrl+Z</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="redo">
+                        <span>Redo</span>
+                        <span class="shortcut">Ctrl+Y</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-dropdown-item" data-command="cut">
+                        <span>Cut</span>
+                        <span class="shortcut">Ctrl+X</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="copy">
+                        <span>Copy</span>
+                        <span class="shortcut">Ctrl+C</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="paste">
+                        <span>Paste</span>
+                        <span class="shortcut">Ctrl+V</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                View
+                <div class="menu-dropdown">
+                    <div class="menu-dropdown-item" data-command="command-palette">
+                        <span>Command Palette</span>
+                        <span class="shortcut">Ctrl+Shift+P</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="toggle-explorer">
+                        <span>Explorer</span>
+                        <span class="shortcut">Ctrl+Shift+E</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="toggle-search">
+                        <span>Search</span>
+                        <span class="shortcut">Ctrl+Shift+F</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="toggle-terminal">
+                        <span>Terminal</span>
+                        <span class="shortcut">Ctrl+`</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                Run
+                <div class="menu-dropdown">
+                    <div class="menu-dropdown-item" data-command="run-code">
+                        <span>Run Code</span>
+                        <span class="shortcut">Ctrl+F5</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="debug-code">
+                        <span>Debug Code</span>
+                        <span class="shortcut">F5</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-dropdown-item" data-command="run-config">
+                        <span>Run Configuration</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                Help
+                <div class="menu-dropdown">
+                    <div class="menu-dropdown-item" data-command="welcome">
+                        <span>Welcome</span>
+                    </div>
+                    <div class="menu-dropdown-item" data-command="documentation">
+                        <span>Documentation</span>
+                    </div>
+                    <div class="menu-separator"></div>
+                    <div class="menu-dropdown-item" data-command="about">
+                        <span>About</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Activity Bar -->
+            <div class="activity-bar">
+                <div class="activity-bar-item active" title="Explorer" data-view="explorer">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="activity-bar-item" title="Search" data-view="search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="activity-bar-item" title="Source Control" data-view="source-control">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="activity-bar-item" title="Run and Debug" data-view="run-debug">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="activity-bar-item" title="Extensions" data-view="extensions">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <div class="activity-bar-bottom">
+                    <div class="activity-bar-item" title="Settings" data-view="settings">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="activity-bar-item" title="Accounts" data-view="accounts">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        Explorer: Workspace
+                    </div>
+                    <div class="sidebar-actions">
+                        <div class="sidebar-action" title="New File" id="newFileBtn">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <div class="sidebar-action" title="New Folder" id="newFolderBtn">
+                            <i class="fas fa-folder"></i>
+                        </div>
+                        <div class="sidebar-action" title="Refresh" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="sidebar-action" title="Collapse" id="collapseBtn">
+                            <i class="fas fa-chevron-up"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-content">
+                    <div class="explorer-section">
+                        <div class="explorer-section-header">
+                            <div class="explorer-section-title">
+                                <i class="fas fa-chevron-down"></i>
+                                <span>Open Editors</span>
+                            </div>
+                        </div>
+                        <div class="explorer-items" id="openEditorsList">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="explorer-section">
+                        <div class="explorer-section-header">
+                            <div class="explorer-section-title">
+                                <i class="fas fa-chevron-down"></i>
+                                <span>Workspace</span>
+                            </div>
+                            <div class="explorer-section-actions">
+                                <div class="explorer-section-action" title="New File">
+                                    <i class="fas fa-file"></i>
+                                </div>
+                                <div class="explorer-section-action" title="New Folder">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explorer-items" id="workspaceFilesList">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="explorer-section">
+                        <div class="explorer-section-header">
+                            <div class="explorer-section-title">
+                                <i class="fas fa-chevron-down"></i>
+                                <span>Outline</span>
+                            </div>
+                        </div>
+                        <div class="explorer-items" id="outlineList">
+                            <!-- Will be populated based on the current file -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor Area -->
+            <div class="editor-area">
+                <!-- Breadcrumbs -->
+                <div class="breadcrumbs">
+                    <div class="breadcrumb-item">workspace</div>
+                    <div class="breadcrumb-separator">/</div>
+                    <div class="breadcrumb-item" id="currentFileBreadcrumb">index.html</div>
+                    <div class="language-indicator" id="languageIndicator">
+                        <i class="fas fa-code"></i>
+                        <span>HTML</span>
+                        <div class="language-config-button" id="languageConfigBtn">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="run-button" id="runCodeBtn">
+                        <i class="fas fa-play"></i>
+                        <span>Run</span>
+                    </div>
+                    <div class="debug-button" id="debugCodeBtn">
+                        <i class="fas fa-bug"></i>
+                        <span>Debug</span>
+                    </div>
+                </div>
+
+                <!-- Editor Tabs -->
+                <div class="editor-tabs" id="editorTabs">
+                    <!-- Will be populated dynamically -->
+                </div>
+
+                <!-- Editor Content -->
+                <div class="editor-content">
+                    <div class="editor" id="editorContainer">
+                        <!-- CodeMirror will be initialized here -->
+                    </div>
+
+                    <!-- Settings Panel -->
+                    <div class="settings-panel" id="settingsPanel">
+                        <div class="settings-header">
+                            <div class="settings-title">Settings</div>
+                            <div class="settings-close" id="closeSettingsBtn">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-sidebar">
+                                <div class="settings-sidebar-item active">User Settings</div>
+                                <div class="settings-sidebar-item">Workspace Settings</div>
+                                <div class="settings-sidebar-item">Editor</div>
+                                <div class="settings-sidebar-item">Language Settings</div>
+                                <div class="settings-sidebar-item">Terminal</div>
+                                <div class="settings-sidebar-item">Extensions</div>
+                            </div>
+                            <div class="settings-main">
+                                <div class="settings-section">
+                                    <div class="settings-section-title">Editor</div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Font Size</div>
+                                        <div class="settings-item-control">
+                                            <input type="number" class="form-control" id="editorFontSize" value="14">
+                                        </div>
+                                    </div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Tab Size</div>
+                                        <div class="settings-item-control">
+                                            <input type="number" class="form-control" id="editorTabSize" value="4">
+                                        </div>
+                                    </div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Word Wrap</div>
+                                        <div class="settings-item-control">
+                                            <select class="form-select" id="editorWordWrap">
+                                                <option value="off">Off</option>
+                                                <option value="on">On</option>
+                                                <option value="wordWrapColumn">Word Wrap Column</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <div class="settings-section-title">Theme</div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Color Theme</div>
+                                        <div class="settings-item-control">
+                                            <select class="form-select" id="colorTheme">
+                                                <option value="dracula">Dracula</option>
+                                                <option value="monokai">Monokai</option>
+                                                <option value="github">GitHub</option>
+                                                <option value="solarized">Solarized</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="settings-section">
+                                    <div class="settings-section-title">Terminal</div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Font Size</div>
+                                        <div class="settings-item-control">
+                                            <input type="number" class="form-control" id="terminalFontSize" value="14">
+                                        </div>
+                                    </div>
+                                    <div class="settings-item">
+                                        <div class="settings-item-label">Shell</div>
+                                        <div class="settings-item-control">
+                                            <select class="form-select" id="terminalShell">
+                                                <option value="bash">Bash</option>
+                                                <option value="powershell">PowerShell</option>
+                                                <option value="cmd">Command Prompt</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extensions Panel -->
+                    <div class="extensions-panel" id="extensionsPanel">
+                        <div class="extensions-header">
+                            <div class="settings-title">Extensions</div>
+                            <div class="extensions-search">
+                                <input type="text" class="form-control" placeholder="Search Extensions...">
+                            </div>
+                            <div class="settings-close" id="closeExtensionsBtn">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="extensions-content">
+                            <div class="extension-item">
+                                <div class="extension-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="extension-details">
+                                    <div class="extension-title">
+                                        Python <span class="extension-verified">Verified</span>
+                                    </div>
+                                    <div class="extension-description">
+                                        Rich Python language support including IntelliSense, linting, debugging, code navigation, code formatting, refactoring, and more.
+                                    </div>
+                                    <div class="extension-meta">
+                                        <div class="extension-downloads">
+                                            <i class="fas fa-download"></i> 50M+
+                                        </div>
+                                        <div class="extension-rating">
+                                            <i class="fas fa-star"></i> 4.8
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="extension-install">
+                                    <button class="btn">Install</button>
+                                </div>
+                            </div>
+                            <div class="extension-item">
+                                <div class="extension-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="extension-details">
+                                    <div class="extension-title">
+                                        Java Extension Pack <span class="extension-verified">Verified</span>
+                                    </div>
+                                    <div class="extension-description">
+                                        Popular extensions for Java development that provides Java IntelliSense, debugging, testing, and more.
+                                    </div>
+                                    <div class="extension-meta">
+                                        <div class="extension-downloads">
+                                            <i class="fas fa-download"></i> 20M+
+                                        </div>
+                                        <div class="extension-rating">
+                                            <i class="fas fa-star"></i> 4.6
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="extension-install">
+                                    <button class="btn">Install</button>
+                                </div>
+                            </div>
+                            <div class="extension-item">
+                                <div class="extension-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="extension-details">
+                                    <div class="extension-title">
+                                        JavaScript Debugger <span class="extension-verified">Verified</span>
+                                    </div>
+                                    <div class="extension-description">
+                                        Debug your JavaScript code in the Chrome browser, or any other target that supports the Chrome DevTools Protocol.
+                                    </div>
+                                    <div class="extension-meta">
+                                        <div class="extension-downloads">
+                                            <i class="fas fa-download"></i> 35M+
+                                        </div>
+                                        <div class="extension-rating">
+                                            <i class="fas fa-star"></i> 4.7
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="extension-install">
+                                    <button class="btn">Install</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-tab active" data-panel="terminal">
+                            <i class="fas fa-terminal"></i>
+                            <span>Terminal</span>
+                        </div>
+                        <div class="panel-tab" data-panel="problems">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Problems</span>
+                        </div>
+                        <div class="panel-tab" data-panel="output">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Output</span>
+                        </div>
+                        <div class="panel-tab" data-panel="debug">
+                            <i class="fas fa-bug"></i>
+                            <span>Debug Console</span>
+                        </div>
+                        <div class="panel-actions">
+                            <div class="panel-action" title="Clear" id="clearTerminalBtn">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                            <div class="panel-action" title="Maximize Panel" id="maximizePanelBtn">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </div>
+                            <div class="panel-action" title="Close Panel" id="closePanelBtn">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="terminal" id="terminal">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span>
+                                <span class="terminal-command"> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="statusbar">
+            <div class="statusbar-section">
+                <div class="statusbar-item">
+                    <i class="fas fa-code-branch"></i>
+                    <span>main</span>
+                </div>
+                <div class="statusbar-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>0 ↓ 0 ↑</span>
+                </div>
+                <div class="statusbar-item">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>0</span>
+                </div>
+                <div class="statusbar-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>0</span>
+                </div>
+            </div>
+            <div class="statusbar-section right">
+                <div class="statusbar-item">
+                    <span>UTF-8</span>
+                </div>
+                <div class="statusbar-item">
+                    <span>LF</span>
+                </div>
+                <div class="statusbar-item" id="languageStatus">
+                    <span>HTML</span>
+                </div>
+                <div class="statusbar-item" id="cursorPosition">
+                    <span>Ln 1, Col 1</span>
+                </div>
+                <div class="statusbar-item">
+                    <i class="fas fa-bell"></i>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- Command Palette -->
+    <div class="command-palette" id="commandPalette">
+        <input type="text" class="command-input" id="commandInput" placeholder="Type '>' to show all commands">
+        <div class="command-list" id="commandList">
+            <div class="command-item selected">
+                <div class="command-icon">
+                    <i class="fas fa-file"></i>
+                </div>
+                <div class="command-label">New File</div>
+                <div class="command-shortcut">Ctrl+N</div>
+            </div>
+            <div class="command-item">
+                <div class="command-icon">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <div class="command-label">New Folder</div>
+            </div>
+            <div class="command-item">
+                <div class="command-icon">
+                    <i class="fas fa-save"></i>
+                </div>
+                <div class="command-label">Save</div>
+                <div class="command-shortcut">Ctrl+S</div>
+            </div>
+            <div class="command-item">
+                <div class="command-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="command-label">Find</div>
+                <div class="command-shortcut">Ctrl+F</div>
+            </div>
+            <div class="command-item">
+                <div class="command-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="command-label">Run Code</div>
+                <div class="command-shortcut">Ctrl+F5</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New File Modal -->
+    <div class="modal-overlay" id="newFileModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">New File</div>
+                <div class="modal-close" id="closeNewFileModal">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="newFileName">File Name</label>
+                    <input type="text" class="form-control" id="newFileName" placeholder="Enter file name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="newFileLanguage">Language</label>
+                    <select class="form-select" id="newFileLanguage">
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="csharp">C#</option>
+                        <option value="php">PHP</option>
+                        <option value="go">Go</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelNewFile">Cancel</button>
+                <button class="btn" id="createNewFile">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Config Modal -->
+    <div class="modal-overlay language-config-modal" id="languageConfigModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">Language Configuration: <span id="configLanguageName">HTML</span></div>
+                <div class="modal-close" id="closeLanguageConfigModal">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="config-section">
+                    <div class="config-section-title">Editor</div>
+                    <div class="config-item">
+                        <div class="config-item-label">Tab Size</div>
+                        <div class="config-item-control">
+                            <input type="number" class="form-control" id="langTabSize" value="4">
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-item-label">Insert Spaces</div>
+                        <div class="config-item-control">
+                            <select class="form-select" id="langInsertSpaces">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="config-section">
+                    <div class="config-section-title">Formatting</div>
+                    <div class="config-item">
+                        <div class="config-item-label">Formatter</div>
+                        <div class="config-item-control">
+                            <select class="form-select" id="langFormatter">
+                                <option value="default">Default</option>
+                                <option value="prettier">Prettier</option>
+                                <option value="beautify">Beautify</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-item-label">Format On Save</div>
+                        <div class="config-item-control">
+                            <select class="form-select" id="langFormatOnSave">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="config-section">
+                    <div class="config-section-title">Run Configuration</div>
+                    <div class="config-item">
+                        <div class="config-item-label">Command</div>
+                        <div class="config-item-control">
+                            <input type="text" class="form-control" id="langRunCommand" placeholder="e.g., python -u">
+                        </div>
+                    </div>
+                    <div class="config-item">
+                        <div class="config-item-label">Arguments</div>
+                        <div class="config-item-control">
+                            <input type="text" class="form-control" id="langRunArgs" placeholder="e.g., --verbose">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="resetLanguageConfig">Reset to Default</button>
+                <button class="btn" id="saveLanguageConfig">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CodeMirror and other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/comment/comment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
     <script>
-        // Initialize Monaco Editor
-        require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
-        require(['vs/editor/editor.main'], function() {
-            window.editor = monaco.editor.create(document.getElementById('editor'), {
-                value: '# Write your Python code here\n\n',
-                language: 'python',
-                theme: 'vs-dark',
-                automaticLayout: true,
-                minimap: { enabled: true },
-                fontSize: 14,
-                lineNumbers: 'on',
-                renderWhitespace: 'selection',
-                tabSize: 4,
-                insertSpaces: true,
-                wordWrap: 'on',
-                scrollbar: {
-                    vertical: 'auto',
-                    horizontal: 'auto'
-                },
-                overviewRulerLanes: 0,
-                hideCursorInOverviewRuler: true,
-                cursorBlinking: 'blink',
-                cursorSmoothCaretAnimation: true,
-                cursorWidth: 2,
-                cursorStyle: 'line',
-                occurrencesHighlight: true,
-                autoIndent: 'advanced',
-                formatOnPaste: true,
-                formatOnType: true,
-                suggestOnTriggerCharacters: true,
-                acceptSuggestionOnEnter: 'on',
-                acceptSuggestionOnCommitCharacter: true,
-                quickSuggestionsDelay: 10,
-                parameterHints: { enabled: true },
-                snippetSuggestions: 'top',
-                wordBasedSuggestions: true,
-                suggestFontSize: 14,
-                suggestLineHeight: 16
-            });
+      // Language definitions and configurations
+const languageDefinitions = {
+  html: {
+    name: "HTML",
+    icon: "fab fa-html5",
+    extensions: [".html", ".htm", ".xhtml"],
+    mode: "htmlmixed",
+    tabSize: 2,
+    insertSpaces: true,
+    formatter: "prettier",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "browser-preview",
+    runArgs: "",
+    templates: {
+      new: '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Document</title>\n</head>\n<body>\n    \n</body>\n</html>',
+    },
+  },
+  css: {
+    name: "CSS",
+    icon: "fab fa-css3-alt",
+    extensions: [".css"],
+    mode: "css",
+    tabSize: 2,
+    insertSpaces: true,
+    formatter: "prettier",
+    formatOnSave: true,
+    linting: true,
+    linter: "stylelint",
+    runCommand: "browser-preview",
+    runArgs: "",
+    templates: {
+      new: "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    line-height: 1.6;\n    color: #333;\n}",
+    },
+  },
+  javascript: {
+    name: "JavaScript",
+    icon: "fab fa-js",
+    extensions: [".js", ".jsx", ".mjs"],
+    mode: "javascript",
+    tabSize: 2,
+    insertSpaces: true,
+    formatter: "prettier",
+    formatOnSave: true,
+    linting: true,
+    linter: "eslint",
+    runCommand: "node",
+    runArgs: "",
+    templates: {
+      new: '// JavaScript code\nconsole.log("Hello, World!");\n\nfunction greet(name) {\n    return Hello, ${name}!;\n}\n\nconst result = greet("User");\nconsole.log(result);',
+    },
+  },
+  python: {
+    name: "Python",
+    icon: "fab fa-python",
+    extensions: [".py"],
+    mode: "python",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "black",
+    formatOnSave: true,
+    linting: true,
+    linter: "pylint",
+    runCommand: "python",
+    runArgs: "-u",
+    templates: {
+      new: '# Python program\n\ndef greet(name):\n    """Return a greeting message"""\n    return f"Hello, {name}!"\n\nif _name_ == "_main_":\n    result = greet("User")\n    print(result)',
+    },
+  },
+  java: {
+    name: "Java",
+    icon: "fab fa-java",
+    extensions: [".java"],
+    mode: "clike",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "google-java-format",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "java",
+    runArgs: "",
+    templates: {
+      new: 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n        \n        String result = greet("User");\n        System.out.println(result);\n    }\n    \n    public static String greet(String name) {\n        return "Hello, " + name + "!";\n    }\n}',
+    },
+  },
+  csharp: {
+    name: "C#",
+    icon: "fas fa-hashtag",
+    extensions: [".cs"],
+    mode: "clike",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "default",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "dotnet",
+    runArgs: "run",
+    templates: {
+      new: 'using System;\n\nnamespace MyApp\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            Console.WriteLine("Hello, World!");\n            \n            string result = Greet("User");\n            Console.WriteLine(result);\n        }\n        \n        static string Greet(string name)\n        {\n            return $"Hello, {name}!";\n        }\n    }\n}',
+    },
+  },
+  cpp: {
+    name: "C++",
+    icon: "fas fa-code",
+    extensions: [".cpp", ".cc", ".h", ".hpp"],
+    mode: "clike",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "clang-format",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "g++",
+    runArgs: "",
+    templates: {
+      new: '#include <iostream>\n#include <string>\n\nstd::string greet(const std::string& name) {\n    return "Hello, " + name + "!";\n}\n\nint main() {\n    std::cout << "Hello, World!" << std::endl;\n    \n    std::string result = greet("User");\n    std::cout << result << std::endl;\n    \n    return 0;\n}',
+    },
+  },
+  go: {
+    name: "Go",
+    icon: "fas fa-code",
+    extensions: [".go"],
+    mode: "go",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "gofmt",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "go",
+    runArgs: "run",
+    templates: {
+      new: 'package main\n\nimport (\n\t"fmt"\n)\n\nfunc greet(name string) string {\n\treturn "Hello, " + name + "!"\n}\n\nfunc main() {\n\tfmt.Println("Hello, World!")\n\t\n\tresult := greet("User")\n\tfmt.Println(result)\n}',
+    },
+  },
+  php: {
+    name: "PHP",
+    icon: "fab fa-php",
+    extensions: [".php"],
+    mode: "php",
+    tabSize: 4,
+    insertSpaces: true,
+    formatter: "default",
+    formatOnSave: true,
+    linting: true,
+    linter: "default",
+    runCommand: "php",
+    runArgs: "",
+    templates: {
+  new: '<?php\n\nfunction greet($name) {\n    return "Hello, " . $name . "!";\n}\n\n$result = greet("User");\necho $result;\n?>',
+},
+  },
+}
 
-            // Auto-save functionality
-            let saveTimeout;
-            editor.onDidChangeModelContent(() => {
-                clearTimeout(saveTimeout);
-                saveTimeout = setTimeout(saveCode, 1000);
-            });
-        });
+// File content storage
+const fileContents = {
+  "index.html":
+    '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>My Project</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <h1>Hello World!</h1>\n    <p>Welcome to Code Weave IDE. This is a VS Code-inspired web-based code editor.</p>\n    <p>Start by creating new files or editing this one.</p>\n    \n    <script src="script.js"></script>\n</body>\n</html>',
+  "styles.css":
+    "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    line-height: 1.6;\n    color: #333;\n}\n\nh1 {\n    color: #0078d4;\n}",
+  "script.js":
+    '// JavaScript code\nconsole.log("Script loaded!");\n\ndocument.addEventListener("DOMContentLoaded", function() {\n    console.log("DOM fully loaded");\n});',
+}
 
-        // Run button click handler
-        document.getElementById('runBtn').addEventListener('click', async function() {
-            const runBtn = this;
-            const code = window.editor.getValue();
-            const terminal = document.getElementById('terminalOutput');
-
-            runBtn.disabled = true;
-            terminal.textContent += '\n> Running code...\n';
-
-            try {
-                const response = await fetch('/projects/run_code/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')
-                    },
-                    body: JSON.stringify({ code })
-                });
-
-                const data = await response.json();
-                
-                if (response.ok) {
-                    terminal.textContent += data.output || 'No output';
-                    showNotification('Code executed successfully');
-                } else {
-                    terminal.textContent += `Error: ${data.error}`;
-                    showNotification('Failed to execute code', 'error');
-                }
-            } catch (error) {
-                terminal.textContent += `Error: ${error.message}`;
-                showNotification('Failed to execute code', 'error');
-            } finally {
-                runBtn.disabled = false;
-                terminal.scrollTop = terminal.scrollHeight;
-            }
-        });
-
-        // Clear terminal button
-        document.getElementById('clearTerminalBtn').addEventListener('click', function() {
-            document.getElementById('terminalOutput').textContent = '';
-        });
-
-        // Save code function
-        async function saveCode() {
-            const code = window.editor.getValue();
-            try {
-                const response = await fetch('/projects/save_code/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')
-                    },
-                    body: JSON.stringify({
-                        project_id: {{ project.id }},
-                        code: code
-                    })
-                });
-
-                if (response.ok) {
-                    showNotification('Code saved');
-                } else {
-                    showNotification('Failed to save code', 'error');
-                }
-            } catch (error) {
-                showNotification('Failed to save code', 'error');
-            }
-        }
-
-        // Manual save button
-        document.getElementById('saveBtn').addEventListener('click', saveCode);
-
-        // Helper function to get CSRF token
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-
-        // Notification function
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type === 'error' ? 'error' : ''}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'error' ? 'times' : 'check'}"></i>
-                ${message}
-            `;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.classList.add('show'), 100);
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-    </script>
-</body>
-</html>
+// DOM Elements
+let editor // CodeMirror instance
+const terminal = document.getElementById("terminal")
+const notifications = document.getElementById("notifications")
+const commandPalette = document.getElementById("commandPalette")
+const commandInput = document.getElementById("commandInput")
+const commandList = document.getElementById("commandList")
+const newFileModal = document.getElementById("newFileModal")
+const closeNewFileModal = document.getElementById("closeNewFileModal")
+const cancelNewFile = document.getElementById("cancelNewFile")
+const createNewFile = document.getElementById("createNewFile")
+const newFileName = document.getElementById("newFileName")
+const newFileLanguage = document.getElementById("newFileLanguage")
+const languageConfigModal = document.getElementById("languageConfigModal")
+const closeLanguageConfigModal = document.getElementById("closeLanguageConfigModal")
+const resetLanguageConfig = document.getElementById("resetLanguageConfig")
+const saveLanguageConfig = document.getElementById("saveLanguageConfig")
+const configLanguageName = document.getElementById("configLanguageName")
+const settingsPanel = document.getElementById("settingsPanel")
+const closeSettingsBtn = document.getElementById("closeSettingsBtn")
+const extensionsPanel = document.getElementById("extensionsPanel")
+const closeExtensionsBtn = document.getElementById("closeExtensionsBtn")
+const languageIndicator = document.getElementById("languageIndicator")
+const languageConfigBtn = document.getElementById("languageConfigBtn")
+const runCodeBtn = document.getElementById("runCodeBtn")
+const debugCodeBtn = document.getElementById("debugCodeBtn")
+const clearTerminalBtn = document.getElementById("clearTerminalBtn")
+const maximizePanelBtn = document.getElementById("maximizePanelBtn")
+const closePanelBtn = document.getElementById("closePanelBtn")
+const editorTabs = document.getElementById("editorTabs")
+const currentFileBreadcrumb = document.getElementById("currentFileBreadcrumb")
+const languageStatus = document.getElementById("languageStatus")
+const cursorPosition = document.get

@@ -12,4 +12,5 @@ urlpatterns = [
     path("", views.home_view, name="home"),
     path('auth/token/', CustomObtainAuthToken.as_view(), name='token_obtain'),
     path("test-auth/", views.test_user_auth, name="test-auth"),
+    path("dashboard/", views.dashboard_view, name="dashboard"),
 ]

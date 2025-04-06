@@ -22716,3 +22716,13 @@ type="submit"
     "description": "Building a decentralized photo-sharing platform leveraging blockchain technology for enhance...
 2025-04-05 16:52:27,125 - INFO - Successfully generated and validated roadmap for prompt: blockchain based insta clone
 2025-04-05 16:52:27,204 - INFO - 127.0.0.1 - - [05/Apr/2025 16:52:27] "POST /api/roadmap HTTP/1.1" 200 -
+2025-04-05 17:56:48,963 - INFO -  * Detected change in 'c:\\Users\\Naman Sharma\\Documents\\codeweave\\cw_webapp\\auth_system\\settings.py', reloading
+2025-04-05 17:56:51,153 - INFO -  * Restarting with stat
+2025-04-05 17:56:53,906 - INFO - Starting the Flask application...
+2025-04-05 17:56:54,104 - WARNING -  * Debugger is active!
+2025-04-05 17:56:54,176 - INFO -  * Debugger PIN: 106-724-485
+2025-04-05 18:08:43,739 - INFO -  * Detected change in 'c:\\Users\\Naman Sharma\\Documents\\codeweave\\cw_webapp\\auth_system\\settings.py', reloading
+2025-04-05 18:08:43,839 - INFO -  * Restarting with stat
+2025-04-05 18:08:45,957 - INFO - Starting the Flask application...
+2025-04-05 18:08:45,983 - WARNING -  * Debugger is active!
+2025-04-05 18:08:46,004 - INFO -  * Debugger PIN: 106-724-485

@@ -77,7 +77,14 @@ def logout_view(request):
 # Dashboard View (Only Accessible After Login)
 @login_required
 def dashboard_view(request):
-    return render(request, "dashboard.html")
+    projects = Project.objects.filter(user=request.user).order_by('-created_at')
+    projects_data = [{
+        'id': project.id,
+        'name': project.name,
+        'created_at': project.created_at,
+        'roadmap': project.roadmap
+    } for project in projects]
+    return render(request, "dashboard.html", {"projects": projects_data})
 
 def create_project(request):
     return render(request, 'app.html')
@@ -92,7 +99,6 @@ from django.http import JsonResponse
 def test_user_auth(request):
     user = get_user(request)
     return JsonResponse({"logged_in_user": str(user)})
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from projects.models import Project 

@@ -1760,3 +1760,1300 @@ Traceback (most recent call last):
 allauth.socialaccount.models.SocialApp.DoesNotExist
 2025-04-05 16:55:07,833 - WARNING - Not Found: /favicon.ico
 2025-04-05 16:58:58,962 - WARNING - Bad Request: /users/login/
+2025-04-05 17:56:48,538 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-05 18:08:04,815 - ERROR - Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\utils\deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\http\request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2025-04-05 18:08:04,942 - WARNING - Bad Request: /
+2025-04-05 18:08:43,491 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 04:05:05,883 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-06 04:08:15,843 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\urls.py changed, reloading.
+2025-04-06 04:10:47,540 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-06 04:11:42,990 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:11:57,578 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 14.587659s | Status: 200
+2025-04-06 04:13:15,582 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-06 04:13:43,229 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:13:59,607 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 16.377105s | Status: 200
+2025-04-06 04:14:57,309 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-06 04:15:31,769 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:16:04,226 - ERROR - Failed to parse JSON response
+2025-04-06 04:16:04,269 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 32.50041s | Status: 200
+2025-04-06 04:16:31,287 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:17:14,215 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 42.928034s | Status: 200
+2025-04-06 04:19:34,616 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 04:20:45,095 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:21:33,154 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-04-06 04:21:59,714 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:22:49,178 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 49.46403s | Status: 200
+2025-04-06 04:24:14,944 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:25:46,507 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:26:13,453 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:26:52,287 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 38.8405s | Status: 200
+2025-04-06 04:27:40,478 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:28:30,224 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:29:08,988 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:29:40,108 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 04:30:40,885 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:30:56,453 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:31:29,963 - ERROR - Failed to parse JSON response
+2025-04-06 04:31:30,017 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 33.563842s | Status: 200
+2025-04-06 04:32:04,548 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 04:35:03,298 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:35:31,232 - ERROR - Failed to parse JSON response
+2025-04-06 04:35:31,282 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 27.983931s | Status: 200
+2025-04-06 04:36:43,668 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 04:37:29,354 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 45.685712s | Status: 200
+2025-04-06 15:27:45,929 - WARNING - Not Found: /favicon.ico
+2025-04-06 15:28:37,679 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 15:29:24,353 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.674021s | Status: 200
+2025-04-06 15:29:30,449 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 15:33:02,886 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 15:33:09,120 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 15:36:44,389 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\dev_env\models.py changed, reloading.
+2025-04-06 15:37:30,871 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 15:37:37,750 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 15:37:52,689 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 15:38:03,390 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 15:38:12,982 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\models.py changed, reloading.
+2025-04-06 15:39:38,887 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\dev_env\views.py changed, reloading.
+2025-04-06 15:44:02,852 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:25,408 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\dev_env\urls.py changed, reloading.
+2025-04-06 15:44:32,908 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:34,414 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:34,998 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:35,528 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:35,900 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:44:36,189 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 15:45:49,655 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: projects_project.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 110, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 745, in resolve
+    new_obj = func(obj, *arg_vals)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaultfilters.py", line 632, in length
+    return len(value)
+           ^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: projects_project.updated_at
+2025-04-06 15:46:22,707 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 15:47:30,077 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\models.py changed, reloading.
+2025-04-06 15:47:38,685 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\migrations\0002_project_updated_at.py changed, reloading.
+2025-04-06 15:48:14,447 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: projects_project.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 110, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 745, in resolve
+    new_obj = func(obj, *arg_vals)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaultfilters.py", line 632, in length
+    return len(value)
+           ^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: projects_project.updated_at
+2025-04-06 15:48:15,527 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: projects_project.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 110, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 745, in resolve
+    new_obj = func(obj, *arg_vals)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaultfilters.py", line 632, in length
+    return len(value)
+           ^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: projects_project.updated_at
+2025-04-06 15:48:15,917 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: projects_project.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 110, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 745, in resolve
+    new_obj = func(obj, *arg_vals)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaultfilters.py", line 632, in length
+    return len(value)
+           ^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: projects_project.updated_at
+2025-04-06 15:51:13,254 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: projects_project.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 110, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 745, in resolve
+    new_obj = func(obj, *arg_vals)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaultfilters.py", line 632, in length
+    return len(value)
+           ^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: projects_project.updated_at
+2025-04-06 15:51:49,306 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\migrations\0002_project_updated_at.py changed, reloading.
+2025-04-06 15:52:13,158 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\models.py changed, reloading.
+2025-04-06 15:53:05,685 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 15:53:14,286 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 15:53:26,626 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\urls.py changed, reloading.
+2025-04-06 15:59:28,233 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 15:59:34,584 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 15:59:45,954 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 16:00:43,002 - WARNING - Not Found: /dashboard/register/
+2025-04-06 16:10:10,760 - WARNING - Not Found: /dashboard/login/
+2025-04-06 16:11:25,701 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 16:11:45,059 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 16:12:30,601 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 16:14:29,389 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-06 16:14:42,401 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-04-06 16:18:39,238 - WARNING - Not Found: /projects/dev_environment/11/
+2025-04-06 16:21:29,681 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:22:07,529 - WARNING - Not Found: /projects/save_project/
+2025-04-06 16:22:07,531 - ERROR - Failed to save project to Django: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at /projects/save_project/</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style>
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font-family: sans-serif; background:#eee; color:#000; }
+    body > :where(header, main, footer) { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 small { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }
+  </style>
+</head>
+<body>
+  <header id="summary">
+    <h1>Page not found <small>(404)</small></h1>
+    
+    <table class="meta">
+      <tr>
+        <th scope="row">Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th scope="row">Request URL:</th>
+        <td>http://127.0.0.1:8000/projects/save_project/</td>
+      </tr>
+      
+    </table>
+  </header>
+
+  <main id="info">
+    
+      <p>
+      Using the URLconf defined in <code>auth_system.urls</code>,
+      Django tried these URL patterns, in this order:
+      </p>
+      <ol>
+        
+          <li>
+            
+              <code>
+                admin/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                users/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                accounts/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                list/
+                [name='list_projects']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                save/
+                [name='save_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                delete/&lt;int:project_id&gt;/
+                [name='delete_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dev_env/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dashboard/
+                [name='dashboard']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                
+                [name='home']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                api/
+                
+              </code>
+            
+          </li>
+        
+      </ol>
+      <p>
+        
+          The current path, <code>projects/save_project/</code>,
+        
+        didn’t match any of these.
+      </p>
+    
+  </main>
+
+  <footer id="explanation">
+    <p>
+      You’re seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </footer>
+</body>
+</html>
+
+2025-04-06 16:22:07,531 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 37.850073s | Status: 404
+2025-04-06 16:22:07,531 - WARNING - Not Found: /api/roadmap/
+2025-04-06 16:22:57,266 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py changed, reloading.
+2025-04-06 16:23:08,520 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 16:23:15,246 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 16:23:23,086 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:24:02,249 - WARNING - Not Found: /projects/save_project/
+2025-04-06 16:24:02,252 - ERROR - Failed to save project to Django: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at /projects/save_project/</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style>
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font-family: sans-serif; background:#eee; color:#000; }
+    body > :where(header, main, footer) { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 small { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }
+  </style>
+</head>
+<body>
+  <header id="summary">
+    <h1>Page not found <small>(404)</small></h1>
+    
+    <table class="meta">
+      <tr>
+        <th scope="row">Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th scope="row">Request URL:</th>
+        <td>http://127.0.0.1:8000/projects/save_project/</td>
+      </tr>
+      
+    </table>
+  </header>
+
+  <main id="info">
+    
+      <p>
+      Using the URLconf defined in <code>auth_system.urls</code>,
+      Django tried these URL patterns, in this order:
+      </p>
+      <ol>
+        
+          <li>
+            
+              <code>
+                admin/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                users/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                accounts/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                list/
+                [name='list_projects']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                save/
+                [name='save_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                delete/&lt;int:project_id&gt;/
+                [name='delete_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dev_env/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dashboard/
+                [name='dashboard']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                
+                [name='home']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                api/
+                
+              </code>
+            
+          </li>
+        
+      </ol>
+      <p>
+        
+          The current path, <code>projects/save_project/</code>,
+        
+        didn’t match any of these.
+      </p>
+    
+  </main>
+
+  <footer id="explanation">
+    <p>
+      You’re seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </footer>
+</body>
+</html>
+
+2025-04-06 16:24:02,252 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.175841s | Status: 404
+2025-04-06 16:24:02,252 - WARNING - Not Found: /api/roadmap/
+2025-04-06 16:24:17,286 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\urls.py changed, reloading.
+2025-04-06 16:25:39,760 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:26:18,510 - WARNING - Not Found: /projects/save_project/
+2025-04-06 16:26:18,512 - ERROR - Failed to save project to Django: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Page not found at /projects/save_project/</title>
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style>
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font-family: sans-serif; background:#eee; color:#000; }
+    body > :where(header, main, footer) { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; margin-bottom:.4em; }
+    h1 small { font-size:60%; color:#666; font-weight:normal; }
+    table { border:none; border-collapse: collapse; width:100%; }
+    td, th { vertical-align:top; padding:2px 3px; }
+    th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    #info { background:#f6f6f6; }
+    #info ol { margin: 0.5em 4em; }
+    #info ol li { font-family: monospace; }
+    #summary { background: #ffc; }
+    #explanation { background:#eee; border-bottom: 0px none; }
+    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }
+  </style>
+</head>
+<body>
+  <header id="summary">
+    <h1>Page not found <small>(404)</small></h1>
+    
+    <table class="meta">
+      <tr>
+        <th scope="row">Request Method:</th>
+        <td>POST</td>
+      </tr>
+      <tr>
+        <th scope="row">Request URL:</th>
+        <td>http://127.0.0.1:8000/projects/save_project/</td>
+      </tr>
+      
+    </table>
+  </header>
+
+  <main id="info">
+    
+      <p>
+      Using the URLconf defined in <code>auth_system.urls</code>,
+      Django tried these URL patterns, in this order:
+      </p>
+      <ol>
+        
+          <li>
+            
+              <code>
+                admin/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                users/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                accounts/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                list/
+                [name='list_projects']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                save/
+                [name='save_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                projects/
+                
+              </code>
+            
+              <code>
+                delete/&lt;int:project_id&gt;/
+                [name='delete_project']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dev_env/
+                
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                dashboard/
+                [name='dashboard']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                
+                [name='home']
+              </code>
+            
+          </li>
+        
+          <li>
+            
+              <code>
+                api/
+                
+              </code>
+            
+          </li>
+        
+      </ol>
+      <p>
+        
+          The current path, <code>projects/save_project/</code>,
+        
+        didn’t match any of these.
+      </p>
+    
+  </main>
+
+  <footer id="explanation">
+    <p>
+      You’re seeing this error because you have <code>DEBUG = True</code> in
+      your Django settings file. Change that to <code>False</code>, and Django
+      will display a standard 404 page.
+    </p>
+  </footer>
+</body>
+</html>
+
+2025-04-06 16:26:18,513 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 38.753281s | Status: 404
+2025-04-06 16:26:18,513 - WARNING - Not Found: /api/roadmap/
+2025-04-06 16:27:13,683 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 16:27:39,240 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:28:19,745 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 40.505192s | Status: 200
+2025-04-06 16:30:03,490 - WARNING - Not Found: /projects/dev_environment/12/
+2025-04-06 16:30:26,505 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 16:31:11,895 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:13,835 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:14,140 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:15,829 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:16,067 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:16,327 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:16,565 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:16,814 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:17,055 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:17,288 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:31:25,653 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:31:57,354 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 31.701729s | Status: 200
+2025-04-06 16:32:15,516 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:32:16,503 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:32:19,215 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:32:20,917 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:32:51,684 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:32:58,717 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:32:58,964 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:32:59,444 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:35:09,657 - WARNING - Unauthorized: /projects/delete/13/
+2025-04-06 16:35:29,875 - WARNING - Unauthorized: /projects/delete/12/
+2025-04-06 16:37:03,727 - ERROR - Error deleting project: no such table: dev_env_codefile
+2025-04-06 16:37:03,727 - ERROR - Internal Server Error: /projects/delete/12/
+2025-04-06 16:39:20,166 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 16:39:32,853 - WARNING - Error deleting code files: no such table: dev_env_codefile
+2025-04-06 16:39:32,855 - ERROR - Error deleting project: no such table: dev_env_codefile
+2025-04-06 16:39:32,856 - ERROR - Internal Server Error: /projects/delete/13/
+2025-04-06 16:39:46,342 - WARNING - Error deleting code files: no such table: dev_env_codefile
+2025-04-06 16:39:46,343 - ERROR - Error deleting project: no such table: dev_env_codefile
+2025-04-06 16:39:46,343 - ERROR - Internal Server Error: /projects/delete/12/
+2025-04-06 16:40:28,091 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 16:40:45,830 - WARNING - Error deleting code files: no such table: dev_env_codefile
+2025-04-06 16:40:45,831 - ERROR - Error deleting project: no such table: dev_env_codefile
+2025-04-06 16:40:45,833 - ERROR - Internal Server Error: /projects/delete/13/
+2025-04-06 16:45:33,278 - WARNING - Bad Request: /users/register/
+2025-04-06 16:45:43,242 - WARNING - Not Found: /create_project/
+2025-04-06 16:46:43,036 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 16:46:48,516 - WARNING - Not Found: /create_project/
+2025-04-06 16:46:49,158 - WARNING - Not Found: /create_project/
+2025-04-06 16:46:52,428 - WARNING - Not Found: /create_project/
+2025-04-06 16:47:18,426 - WARNING - Not Found: /create_project/
+2025-04-06 16:47:57,470 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 16:48:43,831 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.360613s | Status: 200
+2025-04-06 16:49:04,207 - WARNING - Not Found: /projects/dev_environment/14/
+2025-04-06 16:50:00,242 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 16:50:23,659 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 109, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dev_environment' with arguments '('',)' not found. 1 pattern(s) tried: ['users/projects/dev_environment/(?P<project_id>[0-9]+)/\\Z']
+2025-04-06 16:51:32,709 - WARNING - Not Found: /projects/dev_environment/${project.id}/
+2025-04-06 16:51:51,168 - WARNING - Not Found: /projects/dev_environment/${project.id}/
+2025-04-06 16:52:40,385 - ERROR - Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 109, in dashboard_view
+    return render(request, "dashboard.html", {"projects": projects})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'dev_environment' with arguments '('',)' not found. 1 pattern(s) tried: ['users/projects/dev_environment/(?P<project_id>[0-9]+)/\\Z']
+2025-04-06 16:52:55,780 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 16:53:02,203 - WARNING - Not Found: /projects/dev_environment/14/
+2025-04-06 16:53:26,056 - WARNING - Not Found: /projects/dev_environment/14/
+2025-04-06 16:54:56,641 - WARNING - Not Found: /projects/dev_environment/${project.id}/
+2025-04-06 16:55:43,321 - WARNING - Not Found: /dev_env/
+2025-04-06 16:56:27,711 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 16:57:14,703 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 17:02:42,867 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\urls.py changed, reloading.
+2025-04-06 17:02:49,478 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\projects\views.py changed, reloading.
+2025-04-06 17:03:24,589 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 17:04:09,007 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.417416s | Status: 200
+2025-04-06 17:10:32,592 - ERROR - Internal Server Error: /users/register/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 29, in register_view
+    user = form.save()
+           ^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\forms.py", line 263, in save
+    user = self.set_password_and_save(user, commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\forms.py", line 152, in set_password_and_save
+    user.save()
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\contrib\auth\base_user.py", line 62, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+2025-04-06 17:16:22,615 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 17:17:01,984 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.369007s | Status: 200
+2025-04-06 17:19:02,400 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 17:19:37,920 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 35.520821s | Status: 200
+2025-04-06 17:45:22,670 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 17:46:20,595 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 17:53:40,036 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-06 18:32:04,089 - WARNING - Bad Request: /users/register/
+2025-04-06 18:35:31,057 - INFO - Initialized model: gemini-1.5-pro
+2025-04-06 18:36:06,798 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 35.741081s | Status: 200
+2025-04-06 19:17:32,369 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
