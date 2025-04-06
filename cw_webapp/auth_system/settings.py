@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$&r95^u$=-8t_d9ca*am%fp^6_1l_qd$0gtht_h#zwfmmr$0os
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['codeweave-2.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://codeweave-4d5h.onrender.com', '127.0.0.1' ]
 
 
 # Application definition
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'auth_system',
+    'api',
+    'dev_env'
 ]
 
 MIDDLEWARE = [
@@ -168,4 +170,3 @@ REST_FRAMEWORK = {
 CSRF_TRUSTED_ORIGINS = [
     'https://codeweave-2.onrender.com',
 ]
-
