@@ -218,24 +218,41 @@ def generate_roadmap(prompt):
             logger.debug(f"JSON extraction indices: start={start_idx}, end={end_idx}")
             
             if start_idx != -1 and end_idx != -1:
-                json_str = response_text[start_idx:end_idx]
-                logger.debug(f"Extracted JSON string: {json_str[:200]}...")
-                try:
-                    roadmap = json.loads(json_str)
+                logger.debug("Attempting to clean and parse model response...")
+                def clean_and_parse_json(response_text):
+                    import re
+                    try:
+                        response_text = response_text.strip().replace("```json", "").replace("```", "")
+                        start_idx = response_text.find('{')
+                        end_idx = response_text.rfind('}') + 1
+                        if start_idx == -1 or end_idx == -1:
+                            return None
+                        json_str = response_text[start_idx:end_idx]
+                        json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
+                        return json.loads(json_str)
+                    except Exception as e:
+                        logger.error(f"Failed to clean and parse JSON: {e}")
+                        return None
+
+                roadmap = clean_and_parse_json(response_text)
+                if roadmap:
                     logger.info("JSON parsed successfully.")
                     if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
-                        logger.error("Invalid roadmap structure")
+                        logger.error("Invalid roadmap structure - missing required fields")
+                        logger.info("Falling back to default roadmap")
                         return create_default_roadmap(prompt)
+
                     roadmap['metadata'] = {
                         'generated_at': datetime.now().isoformat(),
                         'prompt': prompt,
                         'version': '2.0'
                     }
                     roadmap_cache[cache_key] = roadmap
-                    logger.info("Roadmap generation complete and cached.")
+                    logger.info("Roadmap generation completed successfully")
                     return roadmap
-                except json.JSONDecodeError as e:
-                    logger.error(f"Failed to parse JSON response: {e}")
+                else:
+                    logger.error("Failed to clean/parse JSON properly")
+                    logger.info("Falling back to default roadmap")
                     return create_default_roadmap(prompt)
             else:
                 logger.error("No JSON structure found in response")

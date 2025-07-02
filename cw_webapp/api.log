@@ -3605,3 +3605,208 @@ violations {
 2025-07-02 13:03:39,240 - INFO - Model response received.
 2025-07-02 13:03:39,240 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 586 column 18 (char 36794)
 2025-07-02 13:03:39,274 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.874198s | Status: 200
+2025-07-02 13:12:40,906 - WARNING - Not Found: /favicon.ico
+2025-07-02 13:13:02,902 - INFO - Starting roadmap generation for prompt: a game similar to clash of clans
+2025-07-02 13:13:02,902 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:13:02,902 - INFO - Model initialized. Generating content...
+2025-07-02 13:13:49,858 - INFO - Model response received.
+2025-07-02 13:13:49,862 - INFO - JSON parsed successfully.
+2025-07-02 13:13:49,862 - INFO - Roadmap generation complete and cached.
+2025-07-02 13:13:49,907 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 47.004998s | Status: 200
+2025-07-02 13:19:59,126 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:20:55,378 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:25:19,212 - INFO - Starting roadmap generation for prompt: a game similar to clash of clans
+2025-07-02 13:25:19,213 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:25:19,214 - INFO - Model initialized. Generating content...
+2025-07-02 13:26:03,348 - INFO - Model response received.
+2025-07-02 13:26:03,349 - INFO - JSON parsed successfully.
+2025-07-02 13:26:03,349 - INFO - Roadmap generation complete and cached.
+2025-07-02 13:26:03,370 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.158048s | Status: 200
+2025-07-02 13:33:55,076 - INFO - Starting roadmap generation for prompt: a game similar to minecraft
+2025-07-02 13:33:55,077 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:33:55,077 - INFO - Model initialized. Generating content...
+2025-07-02 13:34:45,424 - INFO - Model response received.
+2025-07-02 13:34:45,427 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 487 column 10 (char 33844)
+2025-07-02 13:34:45,453 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.376631s | Status: 200
+2025-07-02 13:35:07,097 - INFO - Starting roadmap generation for prompt: a game similar to clash of clans
+2025-07-02 13:35:07,097 - INFO - Returning cached roadmap for prompt: a game similar to clash of clans
+2025-07-02 13:35:07,150 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.053049s | Status: 200
+2025-07-02 13:35:15,200 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 13:35:15,200 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:35:15,201 - INFO - Model initialized. Generating content...
+2025-07-02 13:36:03,337 - INFO - Model response received.
+2025-07-02 13:36:03,337 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 512 column 18 (char 33704)
+2025-07-02 13:36:03,377 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 48.176882s | Status: 200
+2025-07-02 13:39:56,270 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:40:04,926 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:42:52,290 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:43:16,914 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:43:33,645 - WARNING - Not Found: /favicon.ico
+2025-07-02 13:43:37,750 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 13:43:37,750 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:43:37,751 - INFO - Model initialized. Generating content...
+2025-07-02 13:44:26,995 - INFO - Model response received.
+2025-07-02 13:44:26,997 - ERROR - Failed to clean and parse JSON: Expecting ',' delimiter: line 508 column 14 (char 34499)
+2025-07-02 13:44:26,997 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 13:44:26,997 - INFO - Falling back to default roadmap
+2025-07-02 13:44:27,035 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 49.286164s | Status: 200
+2025-07-02 13:46:56,305 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 13:47:23,764 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 13:47:23,764 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:47:23,777 - INFO - Model initialized. Generating content...
+2025-07-02 13:48:10,621 - INFO - Model response received.
+2025-07-02 13:48:10,621 - ERROR - Problematic JSON string: {
+    "project_overview": {
+        "name": "Arena Royale: Clash of Champions",
+        "description": "A real-time player-versus-player (PvP) strategy game for mobile platforms (iOS and Android), heavily inspired by Clash Royale. Players collect and upgrade card-based units and spells, build decks, and strategically deploy them in a dynamic arena to destroy opponent's towers and claim victory. The game will feature a robust progression system, competitive ladders, and engaging monetization mech...
+2025-07-02 13:48:10,624 - ERROR - Failed to clean and parse JSON: Expecting ',' delimiter: line 221 column 18 (char 14745)
+2025-07-02 13:48:10,624 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 13:48:10,624 - INFO - Falling back to default roadmap
+2025-07-02 13:48:10,672 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.907298s | Status: 200
+2025-07-02 14:50:56,665 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 14:50:56,667 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 14:50:56,667 - INFO - Model initialized. Generating content...
+2025-07-02 14:51:42,753 - INFO - Model response received.
+2025-07-02 14:51:42,764 - ERROR - Problematic JSON string: {
+    "project_overview": {
+        "name": "Arena Clash: Mythic Wars",
+        "description": "A real-time strategy card-battler mobile game similar to Clash Royale, focusing on competitive PvP, strategic deck building, and a robust progression system. Players collect and upgrade unique units/spells (cards) to deploy in a dynamic arena, aiming to destroy opponent towers within a time limit. The game will feature rich fantasy lore, diverse card archetypes, and engaging social features.",
+       ...
+2025-07-02 14:51:42,764 - ERROR - Failed to clean and parse JSON: Expecting ',' delimiter: line 438 column 10 (char 28826)
+2025-07-02 14:51:42,764 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 14:51:42,767 - INFO - Falling back to default roadmap
+2025-07-02 14:51:42,813 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.148753s | Status: 200
+2025-07-02 14:54:53,581 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 14:59:18,258 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 14:59:18,261 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 14:59:18,261 - INFO - Model initialized. Generating content...
+2025-07-02 15:00:02,663 - INFO - Model response received.
+2025-07-02 15:00:02,663 - ERROR - Problematic cleaned JSON string: {
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+...
+2025-07-02 15:00:02,663 - ERROR - Failed to clean and parse JSON: Expecting property name enclosed in double quotes: line 2 column 1 (char 2)
+2025-07-02 15:00:02,663 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 15:00:02,663 - INFO - Falling back to default roadmap
+2025-07-02 15:00:02,714 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.455791s | Status: 200
+2025-07-02 15:01:45,557 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 15:07:22,914 - INFO - Starting roadmap generation for prompt: a game similar to clash royale
+2025-07-02 15:07:22,916 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 15:07:22,916 - INFO - Model initialized. Generating content...
+2025-07-02 15:08:06,432 - INFO - Model response received.
+2025-07-02 15:08:06,432 - ERROR - Problematic cleaned JSON string: {
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+...
+2025-07-02 15:08:06,432 - ERROR - Failed to clean and parse JSON: Expecting property name enclosed in double quotes: line 2 column 1 (char 2)
+2025-07-02 15:08:06,432 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 15:08:06,432 - INFO - Falling back to default roadmap
+2025-07-02 15:08:06,479 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 43.565113s | Status: 200
+2025-07-02 15:12:33,567 - INFO - Starting roadmap generation for prompt: blockchain based chrome like browser
+2025-07-02 15:12:33,567 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 15:12:33,569 - INFO - Model initialized. Generating content...
+2025-07-02 15:13:23,953 - INFO - Model response received.
+2025-07-02 15:13:23,953 - ERROR - Error generating roadmap: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-07-02 15:13:23,993 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.425323s | Status: 200
+2025-07-02 15:15:16,148 - INFO - Starting roadmap generation for prompt: blockchain based chrome like browser
+2025-07-02 15:15:16,148 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 15:15:16,148 - INFO - Model initialized. Generating content...
+2025-07-02 15:16:02,733 - INFO - Model response received.
+2025-07-02 15:16:02,737 - ERROR - Problematic cleaned JSON string: {
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+{
+...
+2025-07-02 15:16:02,738 - ERROR - Failed to clean and parse JSON: Expecting property name enclosed in double quotes: line 2 column 1 (char 2)
+2025-07-02 15:16:02,739 - ERROR - Failed to clean/parse JSON properly
+2025-07-02 15:16:02,739 - INFO - Falling back to default roadmap
+2025-07-02 15:16:02,781 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.63346s | Status: 200
+2025-07-02 15:18:16,121 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 15:18:58,242 - WARNING - Not Found: /favicon.ico
+2025-07-02 15:19:02,829 - INFO - Starting roadmap generation for prompt: blockchain based chrome like browser
+2025-07-02 15:19:02,832 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 15:19:02,832 - INFO - Model initialized. Generating content...
+2025-07-02 15:19:41,672 - INFO - Model response received.
+2025-07-02 15:19:41,674 - INFO - JSON parsed successfully.
+2025-07-02 15:19:41,674 - INFO - Roadmap generation completed successfully
+2025-07-02 15:19:41,710 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 38.881056s | Status: 200
