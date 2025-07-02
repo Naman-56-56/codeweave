@@ -171,8 +171,8 @@ def generate_roadmap(prompt):
             return roadmap_cache[cache_key]
 
         # Initialize Gemini model
-        model = genai.GenerativeModel('gemini-1.5-pro')
-        logger.info(f"Initialized model: gemini-1.5-pro")
+        model = genai.GenerativeModel('models/gemini-2.5-flash-preview-05-20')
+        logger.info(f"Initialized model: models/gemini-2.5-flash-preview-05-20")
 
         # Get response from model
         response = model.generate_content(
