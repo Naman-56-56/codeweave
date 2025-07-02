@@ -3059,3 +3059,549 @@ django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
 2025-04-06 19:17:32,369 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
 2025-04-06 19:22:24,565 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
 2025-04-06 19:22:39,479 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-04-07 01:35:12,278 - WARNING - Not Found: /favicon.ico
+2025-06-17 11:34:57,647 - WARNING - Not Found: /favicon.ico
+2025-06-17 11:35:35,505 - INFO - Initialized model: gemini-1.5-pro
+2025-06-17 11:35:37,660 - ERROR - Error generating roadmap: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+violations {
+}
+violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 22
+}
+]
+2025-06-17 11:35:37,674 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 2.168449s | Status: 200
+2025-06-17 11:50:03,663 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-17 11:53:21,949 - WARNING - Not Found: /favicon.ico
+2025-06-17 11:53:28,088 - INFO - Initialized model: gemini-2.5-flash
+2025-06-17 11:53:29,861 - ERROR - Error generating roadmap: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-06-17 11:53:29,895 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.806853s | Status: 200
+2025-06-17 12:28:31,150 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-17 12:28:55,559 - WARNING - Not Found: /favicon.ico
+2025-06-17 12:29:04,404 - INFO - Received roadmap generation request
+2025-06-17 12:29:04,405 - INFO - Processing prompt: whatsapp clone
+2025-06-17 12:29:04,406 - INFO - Generating roadmap...
+2025-06-17 12:29:04,406 - INFO - Starting roadmap generation for prompt: whatsapp clone
+2025-06-17 12:29:04,407 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 12:29:04,409 - INFO - Initializing Gemini model...
+2025-06-17 12:29:04,409 - INFO - Gemini model initialized successfully
+2025-06-17 12:29:04,410 - INFO - Sending prompt to Gemini model...
+2025-06-17 12:29:06,312 - ERROR - Error generating roadmap: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-06-17 12:29:06,312 - INFO - Falling back to default roadmap
+2025-06-17 12:29:06,312 - INFO - Generated roadmap for project: Whatsapp Clone Project
+2025-06-17 12:29:06,312 - INFO - Retrieved authentication token
+2025-06-17 12:29:06,312 - INFO - Saving project to Django backend...
+2025-06-17 12:29:06,373 - INFO - Project saved successfully to Django backend
+2025-06-17 12:29:06,377 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.974161s | Status: 200
+2025-06-17 12:36:49,542 - INFO - Received roadmap generation request
+2025-06-17 12:36:49,543 - INFO - Processing prompt: whatsapp clone
+2025-06-17 12:36:49,543 - INFO - Generating roadmap...
+2025-06-17 12:36:49,544 - INFO - Starting roadmap generation for prompt: whatsapp clone
+2025-06-17 12:36:49,545 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 12:36:49,545 - INFO - Initializing Gemini model...
+2025-06-17 12:36:49,547 - INFO - Gemini model initialized successfully
+2025-06-17 12:36:49,548 - INFO - Sending prompt to Gemini model...
+2025-06-17 12:36:51,317 - ERROR - Error generating roadmap: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-06-17 12:36:51,317 - INFO - Falling back to default roadmap
+2025-06-17 12:36:51,317 - INFO - Generated roadmap for project: Whatsapp Clone Project
+2025-06-17 12:36:51,317 - INFO - Retrieved authentication token
+2025-06-17 12:36:51,317 - INFO - Saving project to Django backend...
+2025-06-17 12:36:51,347 - INFO - Project saved successfully to Django backend
+2025-06-17 12:36:51,347 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.804988s | Status: 200
+2025-06-17 12:37:20,881 - INFO - Received roadmap generation request
+2025-06-17 12:37:20,883 - INFO - Processing prompt: whatsapp clone
+2025-06-17 12:37:20,883 - INFO - Generating roadmap...
+2025-06-17 12:37:20,884 - INFO - Starting roadmap generation for prompt: whatsapp clone
+2025-06-17 12:37:20,885 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 12:37:20,885 - INFO - Initializing Gemini model...
+2025-06-17 12:37:20,887 - INFO - Gemini model initialized successfully
+2025-06-17 12:37:20,887 - INFO - Sending prompt to Gemini model...
+2025-06-17 12:37:22,691 - ERROR - Error generating roadmap: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+2025-06-17 12:37:22,693 - INFO - Falling back to default roadmap
+2025-06-17 12:37:22,693 - INFO - Generated roadmap for project: Whatsapp Clone Project
+2025-06-17 12:37:22,693 - INFO - Retrieved authentication token
+2025-06-17 12:37:22,693 - INFO - Saving project to Django backend...
+2025-06-17 12:37:22,726 - INFO - Project saved successfully to Django backend
+2025-06-17 12:37:22,726 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.844794s | Status: 200
+2025-06-17 12:41:02,951 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-17 12:56:58,707 - WARNING - Not Found: /favicon.ico
+2025-06-17 12:57:08,380 - INFO - Received roadmap generation request
+2025-06-17 12:57:08,380 - INFO - Processing prompt: clash of clans clone game
+2025-06-17 12:57:08,382 - INFO - Generating roadmap...
+2025-06-17 12:57:08,383 - INFO - Starting roadmap generation for prompt: clash of clans clone game
+2025-06-17 12:57:08,384 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 12:57:08,385 - INFO - Initializing Gemini model...
+2025-06-17 12:57:08,386 - INFO - Gemini model initialized successfully
+2025-06-17 12:57:08,387 - INFO - Sending prompt to Gemini model...
+2025-06-17 12:57:48,487 - INFO - Received response from Gemini model
+2025-06-17 12:57:48,487 - INFO - Processing model response...
+2025-06-17 12:57:48,487 - INFO - Found JSON structure in response
+2025-06-17 12:57:48,487 - INFO - Parsing JSON response...
+2025-06-17 12:57:48,487 - INFO - Adding metadata to roadmap...
+2025-06-17 12:57:48,487 - INFO - Caching generated roadmap...
+2025-06-17 12:57:48,490 - INFO - Roadmap generation completed successfully
+2025-06-17 12:57:48,490 - INFO - Generated roadmap for project: Battleground Builder: A Strategy War Game
+2025-06-17 12:57:48,490 - INFO - Retrieved authentication token
+2025-06-17 12:57:48,490 - INFO - Saving project to Django backend...
+2025-06-17 12:57:48,502 - INFO - Project saved successfully to Django backend
+2025-06-17 12:57:48,502 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 40.12258s | Status: 200
+2025-06-17 13:27:09,356 - WARNING - Not Found: /favicon.ico
+2025-06-17 13:27:23,260 - INFO - Received roadmap generation request
+2025-06-17 13:27:23,260 - INFO - Processing prompt: insta clone
+2025-06-17 13:27:23,261 - INFO - Generating roadmap...
+2025-06-17 13:27:23,262 - INFO - Starting roadmap generation for prompt: insta clone
+2025-06-17 13:27:23,262 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 13:27:23,263 - INFO - Initializing Gemini model...
+2025-06-17 13:27:23,264 - INFO - Gemini model initialized successfully
+2025-06-17 13:27:23,264 - INFO - Sending prompt to Gemini model...
+2025-06-17 13:28:07,237 - INFO - Received response from Gemini model
+2025-06-17 13:28:07,237 - INFO - Processing model response...
+2025-06-17 13:28:07,237 - INFO - Found JSON structure in response
+2025-06-17 13:28:07,237 - INFO - Parsing JSON response...
+2025-06-17 13:28:07,246 - ERROR - Failed to parse JSON response
+2025-06-17 13:28:07,246 - INFO - Falling back to default roadmap
+2025-06-17 13:28:07,246 - INFO - Generated roadmap for project: Insta Clone Project
+2025-06-17 13:28:07,246 - INFO - Retrieved authentication token
+2025-06-17 13:28:07,246 - INFO - Saving project to Django backend...
+2025-06-17 13:28:07,276 - INFO - Project saved successfully to Django backend
+2025-06-17 13:28:07,276 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.016461s | Status: 200
+2025-06-17 14:48:35,836 - INFO - Received roadmap generation request
+2025-06-17 14:48:35,838 - INFO - Processing prompt: {"description":"lotm game","duration":"8 months"}
+2025-06-17 14:48:35,839 - INFO - Generating roadmap...
+2025-06-17 14:48:35,839 - INFO - Starting roadmap generation for prompt: {"description":"lotm game","duration":"8 months"}
+2025-06-17 14:48:35,841 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 14:48:35,841 - INFO - Initializing Gemini model...
+2025-06-17 14:48:35,842 - INFO - Gemini model initialized successfully
+2025-06-17 14:48:35,843 - INFO - Sending prompt to Gemini model...
+2025-06-17 14:49:22,042 - INFO - Received response from Gemini model
+2025-06-17 14:49:22,042 - INFO - Processing model response...
+2025-06-17 14:49:22,043 - INFO - Found JSON structure in response
+2025-06-17 14:49:22,043 - INFO - Parsing JSON response...
+2025-06-17 14:49:22,043 - ERROR - Failed to parse JSON response
+2025-06-17 14:49:22,044 - INFO - Falling back to default roadmap
+2025-06-17 14:49:22,044 - INFO - Generated roadmap for project: {"Description":"Lotm Game","Duration":"8 Months"} Project
+2025-06-17 14:49:22,044 - INFO - Retrieved authentication token
+2025-06-17 14:49:22,045 - INFO - Saving project to Django backend...
+2025-06-17 14:49:22,070 - INFO - Project saved successfully to Django backend
+2025-06-17 14:49:22,071 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.235265s | Status: 200
+2025-06-17 14:51:36,894 - INFO - Received roadmap generation request
+2025-06-17 14:51:36,895 - INFO - Processing prompt: {"description":"lotm game","duration":"8 months"}
+2025-06-17 14:51:36,895 - INFO - Generating roadmap...
+2025-06-17 14:51:36,896 - INFO - Starting roadmap generation for prompt: {"description":"lotm game","duration":"8 months"}
+2025-06-17 14:51:36,896 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-17 14:51:36,896 - INFO - Initializing Gemini model...
+2025-06-17 14:51:36,897 - INFO - Gemini model initialized successfully
+2025-06-17 14:51:36,897 - INFO - Sending prompt to Gemini model...
+2025-06-17 14:52:24,462 - INFO - Received response from Gemini model
+2025-06-17 14:52:24,462 - INFO - Processing model response...
+2025-06-17 14:52:24,462 - INFO - Found JSON structure in response
+2025-06-17 14:52:24,462 - INFO - Parsing JSON response...
+2025-06-17 14:52:24,466 - ERROR - Failed to parse JSON response
+2025-06-17 14:52:24,466 - INFO - Falling back to default roadmap
+2025-06-17 14:52:24,466 - INFO - Generated roadmap for project: {"Description":"Lotm Game","Duration":"8 Months"} Project
+2025-06-17 14:52:24,466 - INFO - Retrieved authentication token
+2025-06-17 14:52:24,466 - INFO - Saving project to Django backend...
+2025-06-17 14:52:24,482 - INFO - Project saved successfully to Django backend
+2025-06-17 14:52:24,483 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 47.589378s | Status: 200
+2025-06-20 13:46:23,871 - WARNING - Not Found: /favicon.ico
+2025-06-24 11:52:17,124 - WARNING - Not Found: /favicon.ico
+2025-06-24 12:07:39,605 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-24 12:08:42,265 - WARNING - Not Found: /favicon.ico
+2025-06-24 12:09:28,914 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-24 12:10:22,505 - INFO - Received roadmap generation request
+2025-06-24 12:10:22,507 - INFO - Processing prompt: insta clone
+2025-06-24 12:10:22,508 - INFO - Generating roadmap...
+2025-06-24 12:10:22,508 - INFO - Starting roadmap generation for prompt: insta clone
+2025-06-24 12:10:22,509 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:10:22,510 - INFO - Initializing Gemini model...
+2025-06-24 12:10:22,510 - INFO - Gemini model initialized successfully
+2025-06-24 12:10:22,512 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:11:10,201 - INFO - Received response from Gemini model
+2025-06-24 12:11:10,201 - ERROR - Error generating roadmap: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-06-24 12:11:10,201 - INFO - Falling back to default roadmap
+2025-06-24 12:11:10,201 - INFO - Generated roadmap for project: Insta Clone Project
+2025-06-24 12:11:10,201 - INFO - Retrieved authentication token
+2025-06-24 12:11:10,201 - INFO - Saving project to Django backend...
+2025-06-24 12:11:10,249 - INFO - Project saved successfully to Django backend
+2025-06-24 12:11:10,249 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 47.744349s | Status: 200
+2025-06-24 12:16:31,199 - INFO - Received roadmap generation request
+2025-06-24 12:16:31,200 - INFO - Processing prompt: browser similar to opera gx 
+2025-06-24 12:16:31,201 - INFO - Generating roadmap...
+2025-06-24 12:16:31,202 - INFO - Starting roadmap generation for prompt: browser similar to opera gx 
+2025-06-24 12:16:31,203 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:16:31,204 - INFO - Initializing Gemini model...
+2025-06-24 12:16:31,205 - INFO - Gemini model initialized successfully
+2025-06-24 12:16:31,206 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:17:15,524 - INFO - Received response from Gemini model
+2025-06-24 12:17:15,524 - INFO - Processing model response...
+2025-06-24 12:17:15,524 - INFO - Found JSON structure in response
+2025-06-24 12:17:15,524 - INFO - Parsing JSON response...
+2025-06-24 12:17:15,524 - INFO - Adding metadata to roadmap...
+2025-06-24 12:17:15,524 - INFO - Caching generated roadmap...
+2025-06-24 12:17:15,524 - INFO - Roadmap generation completed successfully
+2025-06-24 12:17:15,524 - INFO - Generated roadmap for project: Project NovaBrowse GX
+2025-06-24 12:17:15,524 - INFO - Retrieved authentication token
+2025-06-24 12:17:15,524 - INFO - Saving project to Django backend...
+2025-06-24 12:17:15,571 - INFO - Project saved successfully to Django backend
+2025-06-24 12:17:15,571 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.372374s | Status: 200
+2025-06-24 12:19:02,769 - INFO - Received roadmap generation request
+2025-06-24 12:19:02,769 - INFO - Processing prompt: browser similar to opera gx
+2025-06-24 12:19:02,770 - INFO - Generating roadmap...
+2025-06-24 12:19:02,772 - INFO - Starting roadmap generation for prompt: browser similar to opera gx
+2025-06-24 12:19:02,773 - INFO - Cache hit! Returning cached roadmap for prompt: browser similar to opera gx
+2025-06-24 12:19:02,773 - INFO - Generated roadmap for project: Project NovaBrowse GX
+2025-06-24 12:19:02,774 - INFO - Retrieved authentication token
+2025-06-24 12:19:02,775 - INFO - Saving project to Django backend...
+2025-06-24 12:19:02,817 - INFO - Project saved successfully to Django backend
+2025-06-24 12:19:02,827 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.059848s | Status: 200
+2025-06-24 12:20:41,050 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-24 12:21:29,549 - INFO - Received roadmap generation request
+2025-06-24 12:21:29,552 - INFO - Processing prompt: browser similar to opera gx | Roadmap type: tech
+2025-06-24 12:21:29,553 - INFO - Starting TECH roadmap generation for prompt: browser similar to opera gx
+2025-06-24 12:21:29,554 - INFO - Cache miss. Proceeding with new TECH roadmap generation...
+2025-06-24 12:21:39,390 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-24 12:22:17,903 - INFO - Received roadmap generation request
+2025-06-24 12:22:17,905 - INFO - Processing prompt: browser similar to opera gx | Roadmap type: tech
+2025-06-24 12:22:17,906 - INFO - Starting TECH roadmap generation for prompt: browser similar to opera gx
+2025-06-24 12:22:17,906 - INFO - Cache miss. Proceeding with new TECH roadmap generation...
+2025-06-24 12:23:10,270 - ERROR - Failed to parse TECH JSON response
+2025-06-24 12:23:10,272 - INFO - Generated roadmap for project: Browser Similar To Opera Gx Project
+2025-06-24 12:23:10,272 - INFO - Retrieved authentication token
+2025-06-24 12:23:10,283 - INFO - Project saved successfully to Django backend
+2025-06-24 12:23:10,283 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 52.380315s | Status: 200
+2025-06-24 12:25:47,169 - INFO - Received roadmap generation request
+2025-06-24 12:25:47,170 - INFO - Processing prompt: a business startup for a lemonade chain | Roadmap type: non-tech
+2025-06-24 12:25:47,171 - INFO - Starting roadmap generation for prompt: a business startup for a lemonade chain
+2025-06-24 12:25:47,172 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:25:47,173 - INFO - Initializing Gemini model...
+2025-06-24 12:25:47,174 - INFO - Gemini model initialized successfully
+2025-06-24 12:25:47,174 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:26:35,184 - INFO - Received response from Gemini model
+2025-06-24 12:26:35,184 - INFO - Processing model response...
+2025-06-24 12:26:35,184 - INFO - Found JSON structure in response
+2025-06-24 12:26:35,184 - INFO - Parsing JSON response...
+2025-06-24 12:26:35,184 - ERROR - Failed to parse JSON response
+2025-06-24 12:26:35,184 - INFO - Falling back to default roadmap
+2025-06-24 12:26:35,184 - INFO - Generated roadmap for project: A Business Startup For A Lemonade Chain Project
+2025-06-24 12:26:35,184 - INFO - Retrieved authentication token
+2025-06-24 12:26:35,222 - INFO - Project saved successfully to Django backend
+2025-06-24 12:26:35,222 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 48.054155s | Status: 200
+2025-06-24 12:27:11,938 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-24 12:32:23,702 - WARNING - Not Found: /devenv.html
+2025-06-24 12:35:27,846 - INFO - Received roadmap generation request
+2025-06-24 12:35:27,847 - INFO - Processing prompt: instagram like blockchain based social media | Roadmap type: non-tech
+2025-06-24 12:35:27,848 - INFO - Starting roadmap generation for prompt: instagram like blockchain based social media
+2025-06-24 12:35:27,848 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:35:27,849 - INFO - Initializing Gemini model...
+2025-06-24 12:35:27,849 - INFO - Gemini model initialized successfully
+2025-06-24 12:35:27,849 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:36:15,914 - INFO - Received response from Gemini model
+2025-06-24 12:36:15,930 - INFO - Processing model response...
+2025-06-24 12:36:15,930 - INFO - Found JSON structure in response
+2025-06-24 12:36:15,930 - INFO - Parsing JSON response...
+2025-06-24 12:36:15,930 - ERROR - Failed to parse JSON response
+2025-06-24 12:36:15,930 - INFO - Falling back to default roadmap
+2025-06-24 12:36:15,930 - INFO - Generated roadmap for project: Instagram Like Blockchain Based Social Media Project
+2025-06-24 12:36:15,930 - INFO - Retrieved authentication token
+2025-06-24 12:36:15,978 - INFO - Project saved successfully to Django backend
+2025-06-24 12:36:15,978 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 48.132061s | Status: 200
+2025-06-24 12:36:48,497 - INFO - Received roadmap generation request
+2025-06-24 12:36:48,498 - INFO - Processing prompt: lord of mysteries game | Roadmap type: non-tech
+2025-06-24 12:36:48,499 - INFO - Starting roadmap generation for prompt: lord of mysteries game
+2025-06-24 12:36:48,499 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:36:48,501 - INFO - Initializing Gemini model...
+2025-06-24 12:36:48,502 - INFO - Gemini model initialized successfully
+2025-06-24 12:36:48,502 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:37:38,748 - INFO - Received response from Gemini model
+2025-06-24 12:37:38,748 - INFO - Processing model response...
+2025-06-24 12:37:38,748 - INFO - Found JSON structure in response
+2025-06-24 12:37:38,748 - INFO - Parsing JSON response...
+2025-06-24 12:37:38,748 - ERROR - Failed to parse JSON response
+2025-06-24 12:37:38,748 - INFO - Falling back to default roadmap
+2025-06-24 12:37:38,751 - INFO - Generated roadmap for project: Lord Of Mysteries Game Project
+2025-06-24 12:37:38,751 - INFO - Retrieved authentication token
+2025-06-24 12:37:38,770 - INFO - Project saved successfully to Django backend
+2025-06-24 12:37:38,770 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.27253s | Status: 200
+2025-06-24 12:37:46,315 - INFO - Received roadmap generation request
+2025-06-24 12:37:46,316 - INFO - Processing prompt: lord of mysteries game | Roadmap type: tech
+2025-06-24 12:37:46,317 - INFO - Starting TECH roadmap generation for prompt: lord of mysteries game
+2025-06-24 12:37:46,317 - INFO - Cache miss. Proceeding with new TECH roadmap generation...
+2025-06-24 12:38:35,416 - ERROR - Error generating TECH roadmap: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-06-24 12:38:35,416 - INFO - Generated roadmap for project: Lord Of Mysteries Game Project
+2025-06-24 12:38:35,416 - INFO - Retrieved authentication token
+2025-06-24 12:38:35,448 - INFO - Project saved successfully to Django backend
+2025-06-24 12:38:35,448 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 49.13344s | Status: 200
+2025-06-24 12:38:57,004 - INFO - Received roadmap generation request
+2025-06-24 12:38:57,005 - INFO - Processing prompt: a browser similar to opera gx | Roadmap type: tech
+2025-06-24 12:38:57,006 - INFO - Starting TECH roadmap generation for prompt: a browser similar to opera gx
+2025-06-24 12:38:57,007 - INFO - Cache miss. Proceeding with new TECH roadmap generation...
+2025-06-24 12:39:45,520 - ERROR - Failed to parse TECH JSON response
+2025-06-24 12:39:45,520 - INFO - Generated roadmap for project: A Browser Similar To Opera Gx Project
+2025-06-24 12:39:45,520 - INFO - Retrieved authentication token
+2025-06-24 12:39:45,567 - INFO - Project saved successfully to Django backend
+2025-06-24 12:39:45,567 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 48.564522s | Status: 200
+2025-06-24 12:39:54,003 - INFO - Received roadmap generation request
+2025-06-24 12:39:54,004 - INFO - Processing prompt: a browser similar to opera gx | Roadmap type: non-tech
+2025-06-24 12:39:54,005 - INFO - Starting roadmap generation for prompt: a browser similar to opera gx
+2025-06-24 12:39:54,006 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-24 12:39:54,007 - INFO - Initializing Gemini model...
+2025-06-24 12:39:54,008 - INFO - Gemini model initialized successfully
+2025-06-24 12:39:54,009 - INFO - Sending prompt to Gemini model...
+2025-06-24 12:40:42,307 - INFO - Received response from Gemini model
+2025-06-24 12:40:42,307 - INFO - Processing model response...
+2025-06-24 12:40:42,307 - INFO - Found JSON structure in response
+2025-06-24 12:40:42,307 - INFO - Parsing JSON response...
+2025-06-24 12:40:42,307 - ERROR - Failed to parse JSON response
+2025-06-24 12:40:42,307 - INFO - Falling back to default roadmap
+2025-06-24 12:40:42,307 - INFO - Generated roadmap for project: A Browser Similar To Opera Gx Project
+2025-06-24 12:40:42,307 - INFO - Retrieved authentication token
+2025-06-24 12:40:42,339 - INFO - Project saved successfully to Django backend
+2025-06-24 12:40:42,355 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 48.351874s | Status: 200
+2025-06-27 12:22:43,465 - WARNING - Not Found: /favicon.ico
+2025-06-27 12:24:27,911 - INFO - Received roadmap generation request
+2025-06-27 12:24:27,912 - INFO - Processing prompt: opera gx clone | Roadmap type: non-tech
+2025-06-27 12:24:27,912 - INFO - Starting roadmap generation for prompt: opera gx clone
+2025-06-27 12:24:27,913 - INFO - Cache miss. Proceeding with new roadmap generation...
+2025-06-27 12:24:27,913 - INFO - Initializing Gemini model...
+2025-06-27 12:24:27,914 - INFO - Gemini model initialized successfully
+2025-06-27 12:24:27,915 - INFO - Sending prompt to Gemini model...
+2025-06-27 12:25:19,431 - INFO - Received response from Gemini model
+2025-06-27 12:25:19,431 - INFO - Processing model response...
+2025-06-27 12:25:19,431 - INFO - Found JSON structure in response
+2025-06-27 12:25:19,431 - INFO - Parsing JSON response...
+2025-06-27 12:25:19,431 - ERROR - Failed to parse JSON response
+2025-06-27 12:25:19,431 - INFO - Falling back to default roadmap
+2025-06-27 12:25:19,431 - INFO - Generated roadmap for project: Opera Gx Clone Project
+2025-06-27 12:25:19,431 - INFO - Retrieved authentication token
+2025-06-27 12:25:19,453 - INFO - Project saved successfully to Django backend
+2025-06-27 12:25:19,455 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 51.545111s | Status: 200
+2025-06-27 12:26:33,633 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-06-27 12:27:20,480 - INFO - Initialized model: gemini-1.5-pro
+2025-06-27 12:27:22,339 - ERROR - Error generating roadmap: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+violations {
+}
+violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 35
+}
+]
+2025-06-27 12:27:22,371 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.891897s | Status: 200
+2025-06-27 12:27:53,621 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:29:46,128 - WARNING - Not Found: /favicon.ico
+2025-07-02 12:31:31,925 - INFO - Initialized model: gemini-1.5-pro
+2025-07-02 12:31:33,967 - ERROR - Error generating roadmap: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+violations {
+}
+violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 25
+}
+]
+2025-07-02 12:31:34,004 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 2.079233s | Status: 200
+2025-07-02 12:33:40,484 - INFO - Initialized model: gemini-1.5-pro
+2025-07-02 12:33:42,266 - ERROR - Error generating roadmap: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+violations {
+}
+violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 17
+}
+]
+2025-07-02 12:33:42,297 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 1.813024s | Status: 200
+2025-07-02 12:36:24,519 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:36:45,880 - INFO - Starting roadmap generation for prompt: instagram clone
+2025-07-02 12:36:45,883 - INFO - Initializing generative model: gemini-1.5-pro
+2025-07-02 12:36:45,883 - INFO - Model initialized. Generating content...
+2025-07-02 12:36:46,525 - ERROR - Error generating roadmap: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+}
+violations {
+}
+violations {
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 12
+}
+]
+2025-07-02 12:36:46,546 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.666678s | Status: 200
+2025-07-02 12:40:26,039 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:40:36,598 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:40:43,443 - INFO - Starting roadmap generation for prompt: whatsapp clone
+2025-07-02 12:40:43,444 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:40:43,444 - INFO - Model initialized. Generating content...
+2025-07-02 12:41:26,979 - INFO - Model response received.
+2025-07-02 12:41:26,983 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 204 column 10 (char 14178)
+2025-07-02 12:41:27,505 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.063516s | Status: 200
+2025-07-02 12:44:03,589 - INFO - Starting roadmap generation for prompt: opera clone
+2025-07-02 12:44:03,591 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:44:03,591 - INFO - Model initialized. Generating content...
+2025-07-02 12:44:52,980 - INFO - Model response received.
+2025-07-02 12:44:52,980 - INFO - JSON parsed successfully.
+2025-07-02 12:44:52,980 - INFO - Roadmap generation complete and cached.
+2025-07-02 12:44:53,018 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 49.429757s | Status: 200
+2025-07-02 12:45:41,591 - INFO - Starting roadmap generation for prompt: clash of clans inspired game with one piece characters
+2025-07-02 12:45:41,592 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:45:41,593 - INFO - Model initialized. Generating content...
+2025-07-02 12:46:26,451 - INFO - Model response received.
+2025-07-02 12:46:26,451 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 221 column 18 (char 16493)
+2025-07-02 12:46:26,487 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.897495s | Status: 200
+2025-07-02 12:47:54,473 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:48:03,578 - INFO - Starting roadmap generation for prompt: clash of clans inspired game with one piece characters
+2025-07-02 12:48:03,578 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:48:03,578 - INFO - Model initialized. Generating content...
+2025-07-02 12:48:53,601 - INFO - Model response received.
+2025-07-02 12:48:53,607 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 345 column 14 (char 23830)
+2025-07-02 12:48:53,607 - ERROR - JSON repair also failed: Expecting ',' delimiter: line 4 column 186 (char 262)
+2025-07-02 12:48:53,607 - ERROR - Raw model response for debugging: ```json
+{
+    "project_overview": {
+        "name": "One Piece: Grand Line Clashes",
+        "description": "A mobile strategy game inspired by the core gameplay loop of Clash of Clans, intricately integrating the rich world, iconic characters, and lore of Eiichiro Oda's 'One Piece'. Players will build and defend their own pirate base, recruit and train a roster of beloved One Piece characters as unique troops, and raid other player bases or challenging Marine strongholds to gather resources, acquire bounties, and climb the ranks of the Grand Line.",
+        "estimated_duration": "12-15 months",
+        "team_size": "15-20 (Project Manager, Lead Developer, 2-3 Backend Developers, 3-4 Mobile Developers, UI/UX Designer, 4-5 2D/3D Artists & Animators, Game Designer, QA Lead, 2-3 QA Testers, Sound Designer, Marketing Specialist)",
+        "objectives": [
+            "Develop and launch a stable, engaging, and highly performant mobile strategy game on iOS and Android platforms within 15 mon
+2025-07-02 12:48:53,657 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.079346s | Status: 200
+2025-07-02 12:51:24,481 - INFO - Starting roadmap generation for prompt: clash of clans inspired game with one piece characters
+2025-07-02 12:51:24,482 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:51:24,484 - INFO - Model initialized. Generating content...
+2025-07-02 12:52:12,293 - INFO - Model response received.
+2025-07-02 12:52:12,293 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 453 column 10 (char 31645)
+2025-07-02 12:52:12,293 - ERROR - JSON repair also failed: Expecting ',' delimiter: line 47 column 131 (char 4094)
+2025-07-02 12:52:12,293 - ERROR - Raw model response for debugging: ```json
+{
+    "project_overview": {
+        "name": "Grand Line Stronghold: One Piece Clash",
+        "description": "A comprehensive project to develop a mobile strategy game (iOS/Android) inspired by Clash of Clans, seamlessly integrating the rich world, iconic characters, and unique abilities of the One Piece anime/manga. Players will build and defend their pirate strongholds, recruit and train One Piece characters as troops, and engage in tactical combat against other players to gather resources and dominate the Grand Line.",
+        "estimated_duration": "40-48 weeks (10-12 months)",
+        "team_size": "12-15 (1 Game Director, 2 Game Designers, 1 Concept Artist, 4 2D/3D Artists/Animators, 5 Developers (2 Frontend/Unity, 3 Backend/Server), 1 QA Lead, 1-2 QA Testers, 1 Project Manager)",
+        "objectives": [
+            "Develop and launch a fully functional, stable mobile strategy game (iOS/Android) featuring core CoC mechanics (base building, resource management, tactical com
+2025-07-02 12:52:12,306 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 47.825713s | Status: 200
+2025-07-02 12:53:21,276 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:54:22,978 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:54:31,399 - INFO - Starting roadmap generation for prompt: clash of clans inspired game with one piece characters
+2025-07-02 12:54:31,399 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:54:31,399 - INFO - Model initialized. Generating content...
+2025-07-02 12:55:17,345 - INFO - Model response received.
+2025-07-02 12:55:17,350 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 206 column 18 (char 16128)
+2025-07-02 12:55:17,350 - ERROR - JSON repair also failed: Expecting ',' delimiter: line 54 column 154 (char 4730)
+2025-07-02 12:55:17,352 - ERROR - Raw model response for debugging: ```json
+{
+    "project_overview": {
+        "name": "Grand Line Clash: One Piece Kingdom Builders",
+        "description": "Develop a mobile strategy game inspired by Clash of Clans, integrating the rich universe and iconic characters of One Piece. Players will build and defend their own pirate strongholds, recruit and upgrade beloved One Piece characters, and engage in tactical battles against other players and NPC factions. The game will feature core mechanics of base building, resource management, character progression, and real-time strategic combat, all rendered in a vibrant, anime-inspired art style.",
+        "estimated_duration": "12-15 months",
+        "team_size": "18-22 (Project Manager, Game Designer, Lead Developer, 2 Backend Devs, 2 Frontend Devs, UI/UX Designer, Art Director, 3 Character/Prop Artists, 2 Environment Artists, Animator, Sound Designer, QA Lead, 2 QA Testers, Marketing Specialist)",
+        "objectives": [
+            "Launch a Minimum Viable Product (MVP) o
+2025-07-02 12:55:17,376 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 45.976776s | Status: 200
+2025-07-02 12:56:34,863 - INFO - Starting roadmap generation for prompt: a game like minecraft
+2025-07-02 12:56:34,864 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:56:34,865 - INFO - Model initialized. Generating content...
+2025-07-02 12:57:27,072 - INFO - Model response received.
+2025-07-02 12:57:27,072 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 377 column 10 (char 28631)
+2025-07-02 12:57:27,075 - ERROR - JSON repair also failed: Expecting ',' delimiter: line 13 column 173 (char 1868)
+2025-07-02 12:57:27,075 - ERROR - Raw model response for debugging: {
+    "project_overview": {
+        "name": "VoxelCrafter: Infinite Horizons",
+        "description": "VoxelCrafter: Infinite Horizons is a comprehensive sandbox survival game inspired by the procedural world generation, crafting, and building mechanics of Minecraft. Players will embark on an adventure in an infinitely generated voxel world, where they can mine diverse resources, craft tools, weapons, and armor, construct intricate structures, and survive against environmental hazards and hostile creatures. The game aims to provide a robust single-player experience with a strong emphasis on exploration and creativity, while also supporting a stable multiplayer environment for shared adventures.",
+        "estimated_duration": "14 Months (58 weeks)",
+        "team_size": "10-12 core members (1 Lead Developer, 3-4 Core Programmers, 2 3D Voxel Artists, 1 UI/UX Designer, 1 Sound Designer/Composer, 1 QA Engineer, 1 Project Manager)",
+        "objectives": [
+            "Develop a stable and
+2025-07-02 12:57:27,117 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 52.254245s | Status: 200
+2025-07-02 12:58:08,604 - INFO - Starting roadmap generation for prompt: a browser like opera
+2025-07-02 12:58:08,604 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:58:08,605 - INFO - Model initialized. Generating content...
+2025-07-02 12:58:53,448 - INFO - Model response received.
+2025-07-02 12:58:53,448 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 487 column 18 (char 32660)
+2025-07-02 12:58:53,448 - ERROR - JSON repair also failed: Expecting ',' delimiter: line 16 column 69 (char 1940)
+2025-07-02 12:58:53,448 - ERROR - Raw model response for debugging: ```json
+{
+    "project_overview": {
+        "name": "NovaBrowser: A Next-Generation Web Browser",
+        "description": "Develop a high-performance, secure, and feature-rich web browser similar to Opera, focusing on enhanced privacy, built-in utility features (VPN, ad-blocker), AI integration, and extensive user customization. The browser will be built on a robust, open-source rendering engine and target multiple major operating systems (Windows, macOS, Linux, eventually mobile). It aims to provide a fast, intuitive, and secure browsing experience with a strong emphasis on user control and modern web capabilities.",
+        "estimated_duration": "20-24 months (for MVP and initial stable release)",
+        "team_size": "40-50 individuals (including Product, UI/UX, Frontend, Backend/Core, QA, DevOps, Security, Technical Writing)",
+        "objectives": [
+            "Launch a stable, secure, and performant cross-platform browser (Windows, macOS, Linux) within 24 months, meeting key perf
+2025-07-02 12:58:53,467 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.863253s | Status: 200
+2025-07-02 12:59:12,699 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-02 12:59:44,025 - INFO - Starting roadmap generation for prompt: a browser like opera
+2025-07-02 12:59:44,025 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 12:59:44,025 - INFO - Model initialized. Generating content...
+2025-07-02 13:00:30,891 - INFO - Model response received.
+2025-07-02 13:00:30,891 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 572 column 18 (char 37729)
+2025-07-02 13:00:30,914 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.889695s | Status: 200
+2025-07-02 13:01:07,299 - INFO - Starting roadmap generation for prompt: build a browser similar to google chrome. it should be fast, robust and portable
+2025-07-02 13:01:07,299 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:01:07,300 - INFO - Model initialized. Generating content...
+2025-07-02 13:01:53,878 - INFO - Model response received.
+2025-07-02 13:01:53,881 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 251 column 14 (char 17536)
+2025-07-02 13:01:53,924 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.62611s | Status: 200
+2025-07-02 13:02:54,401 - INFO - Starting roadmap generation for prompt: a clone of instagram
+2025-07-02 13:02:54,402 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-02 13:02:54,403 - INFO - Model initialized. Generating content...
+2025-07-02 13:03:39,240 - INFO - Model response received.
+2025-07-02 13:03:39,240 - ERROR - Failed to parse JSON response: Expecting ',' delimiter: line 586 column 18 (char 36794)
+2025-07-02 13:03:39,274 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.874198s | Status: 200

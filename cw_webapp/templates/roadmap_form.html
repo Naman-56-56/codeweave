@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Roadmap Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .container.light {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .container.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .card.light {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card.dark {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0.25rem 0 0 0;
+        }
+
+        .theme-toggle {
+            padding: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-container {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .label.light {
+            color: #374151;
+        }
+
+        .label.dark {
+            color: #f1f5f9;
+        }
+
+        .input, .select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .input.light, .select.light {
+            border-color: #d1d5db;
+            background-color: #ffffff;
+            color: #374151;
+        }
+
+        .input.dark, .select.dark {
+            border-color: #374151;
+            background-color: #374151;
+            color: #f1f5f9;
+        }
+
+        .input:focus, .select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .input.error, .select.error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            display: block;
+            font-size: 0.75rem;
+            color: #ef4444;
+            margin-top: 0.25rem;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .radio-option.light {
+            border-color: #d1d5db;
+            background-color: #ffffff;
+        }
+
+        .radio-option.dark {
+            border-color: #374151;
+            background-color: #374151;
+        }
+
+        .radio-option.selected {
+            border-color: #3b82f6;
+        }
+
+        .radio-option.selected.light {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .radio-option.selected.dark {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .radio-indicator {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            border: 2px solid;
+            margin-right: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .radio-indicator.light {
+            border-color: #d1d5db;
+        }
+
+        .radio-indicator.dark {
+            border-color: #6b7280;
+        }
+
+        .radio-indicator.selected {
+            border-color: #3b82f6;
+            background-color: #3b82f6;
+        }
+
+        .radio-content {
+            flex: 1;
+        }
+
+        .radio-title {
+            font-size: 1rem;
+            font-weight: 500;
+            display: block;
+        }
+
+        .radio-title.light {
+            color: #374151;
+        }
+
+        .radio-title.dark {
+            color: #f1f5f9;
+        }
+
+        .radio-description {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .radio-description.light {
+            color: #6b7280;
+        }
+
+        .radio-description.dark {
+            color: #94a3b8;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 2px solid;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-option.light {
+            border-color: #d1d5db;
+            background-color: #ffffff;
+        }
+
+        .checkbox-option.dark {
+            border-color: #374151;
+            background-color: #374151;
+        }
+
+        .checkbox-option.selected {
+            border-color: #3b82f6;
+        }
+
+        .checkbox-option.selected.light {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .checkbox-option.selected.dark {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .checkbox-content {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .checkbox-icon {
+            margin-right: 0.5rem;
+        }
+
+        .checkbox-icon.light {
+            color: #6b7280;
+        }
+
+        .checkbox-icon.dark {
+            color: #94a3b8;
+        }
+
+        .checkbox-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .checkbox-title.light {
+            color: #374151;
+        }
+
+        .checkbox-title.dark {
+            color: #f1f5f9;
+        }
+
+        .checkbox-indicator {
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-indicator.selected {
+            color: #3b82f6;
+        }
+
+        .checkbox-indicator.unselected {
+            color: transparent;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 2px solid;
+            border-radius: 0.5rem;
+        }
+
+        .toggle-container.light {
+            border-color: #d1d5db;
+            background-color: #ffffff;
+        }
+
+        .toggle-container.dark {
+            border-color: #374151;
+            background-color: #374151;
+        }
+
+        .toggle-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .toggle-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+        }
+
+        .toggle-icon.light {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .toggle-icon.dark {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .toggle-text-label {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .toggle-text-label.light {
+            color: #374151;
+        }
+
+        .toggle-text-label.dark {
+            color: #f1f5f9;
+        }
+
+        .toggle-description {
+            font-size: 0.75rem;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .toggle-description.light {
+            color: #6b7280;
+        }
+
+        .toggle-description.dark {
+            color: #94a3b8;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 3rem;
+            height: 1.75rem;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-slider.light {
+            background-color: #d1d5db;
+        }
+
+        .toggle-slider.dark {
+            background-color: #4b5563;
+        }
+
+        .toggle-slider.active {
+            background-color: #3b82f6;
+        }
+
+        .toggle-slider::before {
+            position: absolute;
+            content: "";
+            height: 1.25rem;
+            width: 1.25rem;
+            bottom: 0.25rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-slider.inactive::before {
+            left: 0.25rem;
+        }
+
+        .toggle-slider.active::before {
+            left: 1.5rem;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            outline: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .submit-button.normal {
+            background-color: #3b82f6;
+        }
+
+        .submit-button.submitting {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .submit-button:hover:not(.submitting) {
+            background-color: #2563eb;
+        }
+
+        .spinner {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .modal-close {
+            background-color: #e5e7eb;
+            color: #111827;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .modal-close:hover {
+            background-color: #d1d5db;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Icons */
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icon-lg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container light">
+        <div id="card" class="card light">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-content">
+                    <div class="header-icon">
+                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16,18 22,12 16,6"></polyline>
+                            <polyline points="8,6 2,12 8,18"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="title">Project Roadmap Generator</h2>
+                        <p class="subtitle">Create a personalized development roadmap</p>
+                    </div>
+                </div>
+                <button id="themeToggle" class="theme-toggle">
+                    <svg id="themeIcon" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Form -->
+            <div class="form-container">
+                <form id="roadmapForm">
+                    <!-- Project Name -->
+                    <div class="form-group">
+                        <label for="projectName" id="projectNameLabel" class="label light">Project Name *</label>
+                        <input type="text" id="projectName" name="projectName" class="input light" placeholder="Enter your project name">
+                        <span id="projectNameError" class="error-message hidden"></span>
+                    </div>
+
+                    <!-- Programming Language -->
+                    <div class="form-group">
+                        <label for="programmingLanguage" id="programmingLanguageLabel" class="label light">Programming Language *</label>
+                        <select id="programmingLanguage" name="programmingLanguage" class="select light">
+                            <option value="">Select a language</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="TypeScript">TypeScript</option>
+                            <option value="C++">C++</option>
+                            <option value="C#">C#</option>
+                            <option value="Go">Go</option>
+                            <option value="Rust">Rust</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="Swift">Swift</option>
+                            <option value="Kotlin">Kotlin</option>
+                            <option value="Dart">Dart</option>
+                            <option value="Scala">Scala</option>
+                            <option value="R">R</option>
+                        </select>
+                        <span id="programmingLanguageError" class="error-message hidden"></span>
+                    </div>
+
+                    <!-- Complexity Level -->
+                    <div class="form-group">
+                        <label id="complexityLevelLabel" class="label light">Complexity Level *</label>
+                        <div class="radio-group">
+                            <div class="radio-option light" data-value="beginner">
+                                <div class="radio-indicator light"></div>
+                                <div class="radio-content">
+                                    <span class="radio-title light">Beginner</span>
+                                    <span class="radio-description light">New to programming</span>
+                                </div>
+                            </div>
+                            <div class="radio-option light" data-value="intermediate">
+                                <div class="radio-indicator light"></div>
+                                <div class="radio-content">
+                                    <span class="radio-title light">Intermediate</span>
+                                    <span class="radio-description light">Some experience</span>
+                                </div>
+                            </div>
+                            <div class="radio-option light" data-value="advanced">
+                                <div class="radio-indicator light"></div>
+                                <div class="radio-content">
+                                    <span class="radio-title light">Advanced</span>
+                                    <span class="radio-description light">Experienced developer</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="complexityLevelError" class="error-message hidden"></span>
+                    </div>
+
+                    <!-- Roadmap Format -->
+                    <div class="form-group">
+                        <label id="roadmapFormatLabel" class="label light">Roadmap Format *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option light" data-value="pdf">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon light">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                            <polyline points="7,10 12,15 17,10"></polyline>
+                                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                                        </svg>
+                                    </div>
+                                    <span class="checkbox-title light">PDF Document</span>
+                                </div>
+                                <div class="checkbox-indicator unselected">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="checkbox-option light" data-value="visual">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon light">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
+                                    </div>
+                                    <span class="checkbox-title light">Visual Flow</span>
+                                </div>
+                                <div class="checkbox-indicator unselected">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="checkbox-option light" data-value="tasklist">
+                                <div class="checkbox-content">
+                                    <div class="checkbox-icon light">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                        </svg>
+                                    </div>
+                                    <span class="checkbox-title light">Task List</span>
+                                </div>
+                                <div class="checkbox-indicator unselected">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <span id="roadmapFormatError" class="error-message hidden"></span>
+                    </div>
+
+                    <!-- AI Suggestions Toggle -->
+                    <div class="form-group">
+                        <div id="toggleContainer" class="toggle-container light">
+                            <div class="toggle-content">
+                                <div id="toggleIcon" class="toggle-icon light">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <label for="aiSuggestions" id="aiSuggestionsLabel" class="toggle-text-label light">AI Suggestions</label>
+                                    <p id="aiSuggestionsDesc" class="toggle-description light">Get intelligent recommendations and tips</p>
+                                </div>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="aiSuggestions" name="aiSuggestions" style="opacity: 0; width: 0; height: 0;">
+                                <span id="toggleSlider" class="toggle-slider light inactive"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitButton" class="submit-button normal">
+                        <svg id="submitIcon" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10,9 9,9 8,9"></polyline>
+                        </svg>
+                        <span id="submitText">Generate Roadmap</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p class="modal-description">Get intelligent recommendations and tips for your project.</p>
+            <button id="modalClose" class="modal-close">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let state = {
+            isDarkMode: false,
+            formData: {
+                projectName: '',
+                programmingLanguage: '',
+                complexityLevel: '',
+                roadmapFormat: [],
+                aiSuggestions: false
+            },
+            errors: {},
+            isSubmitting: false
+        };
+
+        // DOM elements
+        const elements = {
+            container: document.getElementById('container'),
+            card: document.getElementById('card'),
+            themeToggle: document.getElementById('themeToggle'),
+            themeIcon: document.getElementById('themeIcon'),
+            form: document.getElementById('roadmapForm'),
+            submitButton: document.getElementById('submitButton'),
+            submitIcon: document.getElementById('submitIcon'),
+            submitText: document.getElementById('submitText'),
+            modal: document.getElementById('modal'),
+            modalClose: document.getElementById('modalClose'),
+            aiSuggestions: document.getElementById('aiSuggestions'),
+            toggleSlider: document.getElementById('toggleSlider')
+        };
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            state.isDarkMode = !state.isDarkMode;
+            updateTheme();
+        }
+
+        function updateTheme() {
+            const theme = state.isDarkMode ? 'dark' : 'light';
+            const otherTheme = state.isDarkMode ? 'light' : 'dark';
+
+            // Update container and card
+            elements.container.className = `container ${theme}`;
+            elements.card.className = `card ${theme}`;
+
+            // Update theme icon
+            elements.themeIcon.innerHTML = state.isDarkMode
+                ? '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>'
+                : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+
+            // Update all themed elements
+            document.querySelectorAll('.label, .input, .select, .radio-option, .radio-indicator, .radio-title, .radio-description, .checkbox-option, .checkbox-icon, .checkbox-title, .toggle-container, .toggle-icon, .toggle-text-label, .toggle-description, .toggle-slider').forEach(el => {
+                el.classList.remove(otherTheme);
+                el.classList.add(theme);
+            });
+        }
+
+        // Form validation
+        function validateForm() {
+            const newErrors = {};
+            
+            if (!state.formData.projectName.trim()) {
+                newErrors.projectName = 'Project name is required';
+            }
+            
+            if (!state.formData.programmingLanguage) {
+                newErrors.programmingLanguage = 'Please select a programming language';
+            }
+            
+            if (!state.formData.complexityLevel) {
+                newErrors.complexityLevel = 'Please select a complexity level';
+            }
+            
+            if (state.formData.roadmapFormat.length === 0) {
+                newErrors.roadmapFormat = 'Please select at least one format';
+            }
+
+            state.errors = newErrors;
+            updateErrors();
+            return Object.keys(newErrors).length === 0;
+        }
+
+        // Update error display
+        function updateErrors() {
+            Object.keys(state.errors).forEach(field => {
+                const errorElement = document.getElementById(`${field}Error`);
+                const inputElement = document.getElementById(field) || document.querySelector(`[name="${field}"]`);
+                
+                if (state.errors[field]) {
+                    errorElement.textContent = state.errors[field];
+                    errorElement.classList.remove('hidden');
+                    if (inputElement) {
+                        inputElement.classList.add('error');
+                    }
+                } else {
+                    errorElement.classList.add('hidden');
+                    if (inputElement) {
+                        inputElement.classList.remove('error');
+                    }
+                }
+            });
+        }
+
+        // Clear error for a field
+        function clearError(fieldName) {
+            if (state.errors[fieldName]) {
+                delete state.errors[fieldName];
+                const errorElement = document.getElementById(`${fieldName}Error`);
+                const inputElement = document.getElementById(fieldName) || document.querySelector(`[name="${fieldName}"]`);
+                
+                errorElement.classList.add('hidden');
+                if (inputElement) {
+                    inputElement.classList.remove('error');
+                }
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) return;
+            
+            state.isSubmitting = true;
+            updateSubmitButton();
+            
+            // Simulate API call
+            setTimeout(() => {
+                console.log('Roadmap Generation Data:', state.formData);
+                alert('Roadmap generation started! Check console for data.');
+                state.isSubmitting = false;
+                updateSubmitButton();
+            }, 2000);
+        }
+
+        // Update submit button state
+        function updateSubmitButton() {
+            if (state.isSubmitting) {
+                elements.submitButton.className = 'submit-button submitting';
+                elements.submitIcon.innerHTML = '<div class="spinner"></div>';
+                elements.submitText.textContent = 'Generating...';
+                elements.submitButton.disabled = true;
+            } else {
+                elements.submitButton.className = 'submit-button normal';
+                elements.submitIcon.innerHTML = '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10,9 9,9 8,9"></polyline>';
+                elements.submitText.textContent = 'Generate Roadmap';
+                elements.submitButton.disabled = false;
+            }
+        }
+
+        // Handle input changes
+        function handleInputChange(e) {
+            const { name, value, type, checked } = e.target;
+            
+            if (name) {
+                state.formData[name] = type === 'checkbox' ? checked : value;
+                clearError(name);
+            }
+        }
+
+        // Handle radio button clicks
+        function handleRadioClick(e) {
+            const option = e.currentTarget;
+            const value = option.dataset.value;
+            
+            // Clear previous selection
+            document.querySelectorAll('.radio-option').forEach(opt => {
+                opt.classList.remove('selected');
+                opt.querySelector('.radio-indicator').classList.remove('selected');
+            });
+            
+            // Set new selection
+            option.classList.add('selected');
+            option.querySelector('.radio-indicator').classList.add('selected');
+            
+            state.formData.complexityLevel = value;
+            clearError('complexityLevel');
+        }
+
+        // Handle checkbox clicks
+        function handleCheckboxClick(e) {
+            const option = e.currentTarget;
+            const value = option.dataset.value;
+            const indicator = option.querySelector('.checkbox-indicator');
+            
+            if (state.formData.roadmapFormat.includes(value)) {
+                // Remove from selection
+                state.formData.roadmapFormat = state.formData.roadmapFormat.filter(format => format !== value);
+                option.classList.remove('selected');
+                indicator.classList.remove('selected');
+                indicator.classList.add('unselected');
+            } else {
+                // Add to selection
+                state.formData.roadmapFormat.push(value);
+                option.classList.add('selected');
+                indicator.classList.remove('unselected');
+                indicator.classList.add('selected');
+            }
+            
+            clearError('roadmapFormat');
+        }
+
+        // Handle AI suggestions toggle
+        function handleAIToggle() {
+            state.formData.aiSuggestions = !state.formData.aiSuggestions;
+            
+            if (state.formData.aiSuggestions) {
+                elements.toggleSlider.classList.remove('inactive');
+                elements.toggleSlider.classList.add('active');
+            } else {
+                elements.toggleSlider.classList.remove('active');
+                elements.toggleSlider.classList.add('inactive');
+            }
+        }
+
+        // Modal functions
+        function openModal() {
+            elements.modal.classList.add('open');
+        }
+
+        function closeModal() {
+            elements.modal.classList.remove('open');
+        }
+
+        // Event listeners
+        function initEventListeners() {
+            // Theme toggle
+            elements.themeToggle.addEventListener('click', toggleTheme);
+            
+            // Form submission
+            elements.form.addEventListener('submit', handleSubmit);
+            
+            // Input changes
+            document.getElementById('projectName').addEventListener('input', handleInputChange);
+            document.getElementById('programmingLanguage').addEventListener('change', handleInputChange);
+            
+            // Radio buttons
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.addEventListener('click', handleRadioClick);
+            });
+            
+            // Checkboxes
+            document.querySelectorAll('.checkbox-option').forEach(option => {
+                option.addEventListener('click', handleCheckboxClick);
+            });
+            
+            // AI suggestions toggle
+            elements.aiSuggestions.addEventListener('change', handleAIToggle);
+            elements.toggleSlider.addEventListener('click', () => {
+                elements.aiSuggestions.checked = !elements.aiSuggestions.checked;
+                handleAIToggle();
+            });
+            
+            // Modal
+            elements.modalClose.addEventListener('click', closeModal);
+            elements.modal.addEventListener('click', (e) => {
+                if (e.target === elements.modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && elements.modal.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Initialize the application
+        function init() {
+            initEventListeners();
+            updateTheme();
+            updateSubmitButton();
+        }
+
+        // Start the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

@@ -1,4 +1,5 @@
-from django.http import JsonResponse
+from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import google.generativeai as genai
@@ -9,26 +10,42 @@ from functools import wraps
 from dotenv import load_dotenv
 import os
 import requests
+import time
+import sys
 
-# Load environment variables
+# Create your views here.
+def app(request):
+    return render(request, 'app.html')
+
+def devenv(request):
+    phase_id = request.GET.get('phase', '1')  
+    return render(request, 'devenv.html', {'phase_id': phase_id})
+
 load_dotenv()
 
-# Configure Gemini API
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 genai.configure(api_key=GOOGLE_API_KEY)
 
-# Configure Logging
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='api.log'
+    filename='api.log',
+    force=True
 )
+# Add stream handler for terminal output
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 logger = logging.getLogger(__name__)
+if not any(isinstance(h, logging.StreamHandler) for h in logger.handlers):
+    logger.addHandler(console_handler)
 
-# Initialize cache
+
 roadmap_cache = {}
 
 DJANGO_API_URL = "http://127.0.0.1:8000/projects/save_project/"
+
 
 def log_request(func):
     @wraps(func)
@@ -95,6 +112,7 @@ def get_prompt_template(prompt):
         }},
         "phases": {{
             "phase1": {{
+                "id": "1",
                 "name": "Phase Name",
                 "overview": "Detailed phase description",
                 "duration": "Phase duration (e.g., 2-3 weeks)",
@@ -106,6 +124,7 @@ def get_prompt_template(prompt):
                     "Concrete deliverable 1",
                     "Concrete deliverable 2"
                 ],
+                "ide_link": "/devenv.html?phase=1",
                 "sub_phases": {{
                     "sub1": {{
                         "name": "Sub-phase Name",
@@ -160,21 +179,22 @@ def get_prompt_template(prompt):
     5. Ensure dependencies between phases are logical
     6. Add meaningful milestones for each phase
     7. Include comprehensive risk assessment
+    8. Each phase must have a unique ID (1-6) and an ide_link pointing to /devenv.html?phase=[phase_id]
     """
 
 def generate_roadmap(prompt):
     try:
-        # Check cache first
+        logger.info(f"Starting roadmap generation for prompt: {prompt}")
         cache_key = prompt.lower().strip()
+        logger.debug(f"Cache key generated: {cache_key}")
         if cache_key in roadmap_cache:
             logger.info(f"Returning cached roadmap for prompt: {prompt}")
             return roadmap_cache[cache_key]
 
-        # Initialize Gemini model
-        model = genai.GenerativeModel('gemini-1.5-pro')
-        logger.info(f"Initialized model: gemini-1.5-pro")
+        logger.info("Initializing generative model: models/gemini-2.5-flash-preview-05-20")
+        model = genai.GenerativeModel('models/gemini-2.5-flash-preview-05-20')
+        logger.info(f"Model initialized. Generating content...")
 
-        # Get response from model
         response = model.generate_content(
             get_prompt_template(prompt),
             generation_config=genai.types.GenerationConfig(
@@ -184,50 +204,45 @@ def generate_roadmap(prompt):
                 max_output_tokens=8192
             )
         )
+        logger.info("Model response received.")
         
         if not response or not response.text:
             logger.error("No response generated from model")
             return create_default_roadmap(prompt)
 
         try:
-            # Clean and parse the response
             response_text = response.text.strip()
+            logger.debug(f"Raw response text: {response_text[:200]}...")
             start_idx = response_text.find('{')
             end_idx = response_text.rfind('}') + 1
+            logger.debug(f"JSON extraction indices: start={start_idx}, end={end_idx}")
             
             if start_idx != -1 and end_idx != -1:
                 json_str = response_text[start_idx:end_idx]
-                
+                logger.debug(f"Extracted JSON string: {json_str[:200]}...")
                 try:
                     roadmap = json.loads(json_str)
-                    
-                    # Validate required fields
+                    logger.info("JSON parsed successfully.")
                     if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
                         logger.error("Invalid roadmap structure")
                         return create_default_roadmap(prompt)
-                    
-                    # Add metadata
                     roadmap['metadata'] = {
                         'generated_at': datetime.now().isoformat(),
                         'prompt': prompt,
                         'version': '2.0'
                     }
-                    
-                    # Cache the result
                     roadmap_cache[cache_key] = roadmap
+                    logger.info("Roadmap generation complete and cached.")
                     return roadmap
-                    
-                except json.JSONDecodeError:
-                    logger.error("Failed to parse JSON response")
+                except json.JSONDecodeError as e:
+                    logger.error(f"Failed to parse JSON response: {e}")
                     return create_default_roadmap(prompt)
             else:
                 logger.error("No JSON structure found in response")
                 return create_default_roadmap(prompt)
-                
         except Exception as e:
             logger.error(f"Error processing response: {str(e)}")
             return create_default_roadmap(prompt)
-            
     except Exception as e:
         logger.error(f"Error generating roadmap: {str(e)}")
         return create_default_roadmap(prompt)
@@ -296,18 +311,18 @@ def generate_roadmap_view(request):
         data = json.loads(request.body)
         prompt = data['prompt']
         
-        # Get the roadmap
+        # get the roadmap
         roadmap = generate_roadmap(prompt)
         if not roadmap:
             return JsonResponse({"error": "Failed to generate roadmap"}, status=500)
 
-        # Extract project name from the roadmap
+        
         project_name = roadmap["project_overview"]["name"]
 
-        # Get the auth token from request header
+        
         auth_token = request.headers.get('Authorization').split(' ')[1]
 
-        # Save to Django backend with user's token
+        
         django_headers = {
             'Authorization': f'Token {auth_token}',
             'Content-Type': 'application/json'
@@ -347,3 +362,120 @@ def clear_cache_view(request):
     except Exception as e:
         logger.error(f"Error clearing cache: {str(e)}")
         return JsonResponse({"error": str(e)}, status=500)
+
+@csrf_exempt
+@require_http_methods(["POST"])
+@log_request
+@validate_request
+def roadmap_view(request):
+    try:
+        data = json.loads(request.body)
+        prompt = data.get('prompt')
+        project_name = data.get('project_name')
+        duration = data.get('duration')
+
+        # roadmap using existing function
+        roadmap = generate_roadmap(prompt)
+        
+        # project name 
+        if project_name:
+            roadmap['project_overview']['name'] = project_name
+            
+        # duration 
+        if duration:
+            roadmap['project_overview']['estimated_duration'] = duration
+
+        return JsonResponse({
+            'status': 'success',
+            'roadmap': roadmap
+        })
+        
+    except Exception as e:
+        logger.error(f"Error in roadmap_view: {str(e)}")
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Failed to generate roadmap'
+        }, status=500)
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def generate_pdf(request):
+    if request.method == 'POST':
+        try:
+            # content from the request
+            data = json.loads(request.body)
+            content = data.get('content')
+            title = data.get('title', 'Project Roadmap')
+            
+            # payload for the PDF API
+            payload = {
+                'content': content,
+                'title': title,
+                'options': {
+                    'format': 'A4',
+                    'margin': '20mm',
+                    'printBackground': True
+                }
+            }
+            
+            # request to the PDF API
+            response = requests.post(
+                'https://api.market/store/yakpdf/pdf',
+                json=payload,
+                headers={
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/pdf'
+                }
+            )
+            
+            if response.status_code == 200:
+                # return PDF data 
+                response = HttpResponse(
+                    response.content,
+                    content_type='application/pdf'
+                )
+                response['Content-Disposition'] = f'attachment; filename="{title}.pdf"'
+                response['Access-Control-Allow-Origin'] = '*'
+                response['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+                response['Access-Control-Allow-Headers'] = 'Content-Type'
+                return response
+            else:
+                return JsonResponse(
+                    {'error': f'PDF generation failed with status {response.status_code}'},
+                    status=response.status_code,
+                    headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type'
+                    }
+                )
+                
+        except Exception as e:
+            return JsonResponse(
+                {'error': str(e)},
+                status=500,
+                headers={
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type'
+                }
+            )
+            
+    # CORS
+    if request.method == 'OPTIONS':
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+        
+    return JsonResponse(
+        {'error': 'Method not allowed'},
+        status=405,
+        headers={
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        }
+    )
+
