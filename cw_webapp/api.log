@@ -3810,3 +3810,59 @@ violations {
 2025-07-02 15:19:41,674 - INFO - JSON parsed successfully.
 2025-07-02 15:19:41,674 - INFO - Roadmap generation completed successfully
 2025-07-02 15:19:41,710 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 38.881056s | Status: 200
+2025-07-05 15:58:02,605 - WARNING - Not Found: /favicon.ico
+2025-07-05 15:58:47,470 - INFO - Starting roadmap generation for prompt: instagram clone based on blockchain tech
+2025-07-05 15:58:47,470 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 15:58:47,470 - INFO - Model initialized. Generating content...
+2025-07-05 15:59:34,409 - INFO - Model response received.
+2025-07-05 15:59:34,409 - ERROR - Failed to clean and parse JSON: Expecting ',' delimiter: line 502 column 14 (char 36579)
+2025-07-05 15:59:34,409 - ERROR - Failed to clean/parse JSON properly
+2025-07-05 15:59:34,409 - INFO - Falling back to default roadmap
+2025-07-05 15:59:34,448 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 46.978054s | Status: 200
+2025-07-05 16:48:45,107 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 16:54:16,870 - INFO - Starting roadmap generation for prompt: instagram clone based on blockchain tech
+2025-07-05 16:54:16,873 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 16:54:16,873 - INFO - Model initialized. Generating content...
+2025-07-05 16:54:58,045 - INFO - Model response received.
+2025-07-05 16:54:58,704 - INFO - JSON parsed successfully.
+2025-07-05 16:54:58,704 - INFO - Roadmap generation completed successfully
+2025-07-05 16:54:58,753 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 41.882927s | Status: 200
+2025-07-05 16:56:05,495 - INFO - Starting roadmap generation for prompt: a game based on Lord of the Mysteries
+2025-07-05 16:56:05,497 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 16:56:05,497 - INFO - Model initialized. Generating content...
+2025-07-05 16:56:55,108 - INFO - Model response received.
+2025-07-05 16:56:55,741 - ERROR - Failed to clean and parse JSON: <string>:504 Unexpected end of input at column 18
+2025-07-05 16:56:55,741 - ERROR - Failed to clean/parse JSON properly
+2025-07-05 16:56:55,741 - INFO - Falling back to default roadmap
+2025-07-05 16:56:55,807 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.312335s | Status: 200
+2025-07-05 17:00:39,257 - INFO - Starting roadmap generation for prompt: a stable web browser like opera gx with integrated ai features
+2025-07-05 17:00:39,258 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:00:39,259 - INFO - Model initialized. Generating content...
+2025-07-05 17:01:21,765 - INFO - Model response received.
+2025-07-05 17:01:21,912 - ERROR - Failed to clean and parse JSON: <string>:342 Unexpected end of input at column 18
+2025-07-05 17:01:21,912 - ERROR - Failed to clean/parse JSON properly
+2025-07-05 17:01:21,913 - INFO - Falling back to default roadmap
+2025-07-05 17:01:21,932 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 42.674849s | Status: 200
+2025-07-05 17:02:41,786 - INFO - Starting roadmap generation for prompt: Build a task management web application with features like user login, project boards, task cards, and deadlines.
+
+2025-07-05 17:02:41,786 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:02:41,787 - INFO - Model initialized. Generating content...
+2025-07-05 17:03:21,598 - INFO - Model response received.
+2025-07-05 17:03:21,847 - ERROR - Failed to clean and parse JSON: <string>:282 Unexpected end of input at column 10
+2025-07-05 17:03:21,848 - ERROR - Failed to clean/parse JSON properly
+2025-07-05 17:03:21,848 - INFO - Falling back to default roadmap
+2025-07-05 17:03:21,890 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 40.104655s | Status: 200
+2025-07-05 17:05:19,070 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:05:55,080 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:06:30,718 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:07:57,738 - INFO - Starting roadmap generation for prompt: Build a task management web application with features like user login, project boards, task cards, and deadlines.
+
+2025-07-05 17:07:57,740 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:07:57,740 - INFO - Model initialized. Generating content...
+2025-07-05 17:08:39,487 - INFO - Model response received.
+2025-07-05 17:08:39,703 - ERROR - Failed to clean and parse JSON: <string>:369 Unexpected end of input at column 18
+2025-07-05 17:08:39,704 - ERROR - Failed to clean/parse JSON properly
+2025-07-05 17:08:39,704 - INFO - Falling back to default roadmap
+2025-07-05 17:08:39,731 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 41.992166s | Status: 200
+2025-07-05 17:11:11,972 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:11:20,471 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.

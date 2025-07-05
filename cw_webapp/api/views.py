@@ -180,6 +180,9 @@ def get_prompt_template(prompt):
     6. Add meaningful milestones for each phase
     7. Include comprehensive risk assessment
     8. Each phase must have a unique ID (1-6) and an ide_link pointing to /devenv.html?phase=[phase_id]
+    9. Do not use trailing commas in arrays or objects.
+    10. Respond with raw, valid JSON only. Avoid markdown, explanations, or non-JSON wrappers.
+
     """
 
 def generate_roadmap(prompt):
@@ -221,6 +224,7 @@ def generate_roadmap(prompt):
                 logger.debug("Attempting to clean and parse model response...")
                 def clean_and_parse_json(response_text):
                     import re
+                    import json5
                     try:
                         response_text = response_text.strip().replace("```json", "").replace("```", "")
                         start_idx = response_text.find('{')
@@ -228,8 +232,10 @@ def generate_roadmap(prompt):
                         if start_idx == -1 or end_idx == -1:
                             return None
                         json_str = response_text[start_idx:end_idx]
+
+
                         json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
-                        return json.loads(json_str)
+                        return json5.loads(json_str)
                     except Exception as e:
                         logger.error(f"Failed to clean and parse JSON: {e}")
                         return None
