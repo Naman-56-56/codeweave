@@ -4074,3 +4074,11 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000
 2025-07-05 18:54:30,318 - INFO - JSON parsed successfully.
 2025-07-05 18:54:30,319 - INFO - Roadmap generation completed successfully
 2025-07-05 18:54:30,359 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 28.893086s | Status: 200
+2025-07-05 19:02:45,494 - WARNING - Not Found: /favicon.ico
+2025-07-05 19:03:19,442 - INFO - Starting roadmap generation for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
+2025-07-05 19:03:19,442 - INFO - Returning cached roadmap for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
+2025-07-05 19:03:19,492 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.050442s | Status: 200
+2025-07-05 19:06:57,891 - WARNING - Not Found: /favicon.ico
+2025-07-05 19:07:03,316 - INFO - Starting roadmap generation for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
+2025-07-05 19:07:03,317 - INFO - Returning cached roadmap for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
+2025-07-05 19:07:03,360 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.044043s | Status: 200
