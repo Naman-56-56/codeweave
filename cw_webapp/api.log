@@ -3947,3 +3947,130 @@ violations {
 2025-07-05 17:38:08,834 - INFO - JSON parsed successfully.
 2025-07-05 17:38:08,835 - INFO - Roadmap generation completed successfully
 2025-07-05 17:38:08,879 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.07403s | Status: 200
+2025-07-05 17:47:15,486 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:47:43,156 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:47:43,158 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:47:43,159 - INFO - Model initialized. Generating content...
+2025-07-05 17:48:13,196 - INFO - Model response received.
+2025-07-05 17:48:13,465 - INFO - JSON parsed successfully.
+2025-07-05 17:48:13,465 - INFO - Roadmap generation completed successfully
+2025-07-05 17:48:13,512 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 30.357489s | Status: 200
+2025-07-05 17:48:53,122 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:48:53,122 - INFO - Returning cached roadmap for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:48:53,167 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.046673s | Status: 200
+2025-07-05 17:48:56,795 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:48:56,797 - INFO - Returning cached roadmap for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:48:56,865 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.069433s | Status: 200
+2025-07-05 17:49:16,921 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 17:49:16,924 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:49:16,924 - INFO - Model initialized. Generating content...
+2025-07-05 17:49:46,867 - INFO - Model response received.
+2025-07-05 17:49:46,977 - INFO - JSON parsed successfully.
+2025-07-05 17:49:46,978 - INFO - Roadmap generation completed successfully
+2025-07-05 17:49:47,000 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 30.079675s | Status: 200
+2025-07-05 17:54:20,222 - ERROR - Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\utils\deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\http\request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+2025-07-05 17:54:20,405 - WARNING - Bad Request: /api/roadmap/
+2025-07-05 17:59:29,455 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 17:59:39,680 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:00:12,356 - WARNING - Method Not Allowed (OPTIONS): /api/roadmap/
+2025-07-05 18:14:28,466 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:14:55,875 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:15:11,399 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:15:33,130 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:15:33,131 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:15:33,132 - INFO - Model initialized. Generating content...
+2025-07-05 18:16:23,580 - INFO - Model response received.
+2025-07-05 18:16:23,646 - ERROR - Failed to clean and parse JSON: <string>:182 Unexpected end of input at column 10
+2025-07-05 18:16:23,646 - WARNING - Initial parse failed. Retrying with simplified prompt...
+2025-07-05 18:16:32,252 - INFO - Retry succeeded. JSON parsed.
+2025-07-05 18:16:32,252 - ERROR - Error in generate_roadmap_view: string indices must be integers, not 'str'
+2025-07-05 18:16:32,252 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 59.122067s | Status: 500
+2025-07-05 18:16:32,253 - ERROR - Internal Server Error: /api/roadmap/
+2025-07-05 18:26:15,253 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 18:26:34,011 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:26:34,013 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:26:34,014 - INFO - Model initialized. Generating content...
+2025-07-05 18:27:03,847 - INFO - Model response received.
+2025-07-05 18:27:04,117 - INFO - JSON parsed successfully.
+2025-07-05 18:27:04,118 - INFO - Roadmap generation completed successfully
+2025-07-05 18:27:04,158 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 30.146793s | Status: 200
+2025-07-05 18:28:26,943 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:28:26,943 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:28:26,944 - INFO - Model initialized. Generating content...
+2025-07-05 18:28:55,198 - INFO - Model response received.
+2025-07-05 18:28:55,319 - INFO - JSON parsed successfully.
+2025-07-05 18:28:55,319 - INFO - Roadmap generation completed successfully
+2025-07-05 18:28:55,345 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 28.402608s | Status: 200
+2025-07-05 18:32:35,735 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:32:35,736 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:32:35,737 - INFO - Model initialized. Generating content...
+2025-07-05 18:33:00,446 - INFO - Model response received.
+2025-07-05 18:33:00,744 - INFO - JSON parsed successfully.
+2025-07-05 18:33:00,745 - INFO - Roadmap generation completed successfully
+2025-07-05 18:33:00,802 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 25.068943s | Status: 200
+2025-07-05 18:33:33,827 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:33:33,827 - INFO - Returning cached roadmap for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:33:33,856 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.028611s | Status: 200
+2025-07-05 18:34:33,440 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:34:33,441 - INFO - Returning cached roadmap for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:34:33,471 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.030467s | Status: 200
+2025-07-05 18:34:50,609 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:34:50,610 - INFO - Returning cached roadmap for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:34:50,632 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.023s | Status: 200
+2025-07-05 18:41:15,536 - INFO - Starting roadmap generation for prompt: Build a ride-sharing mobile app with real-time tracking, booking, and payment integration.
+
+2025-07-05 18:41:15,537 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:41:15,538 - INFO - Model initialized. Generating content...
+2025-07-05 18:41:44,553 - INFO - Model response received.
+2025-07-05 18:41:44,656 - INFO - JSON parsed successfully.
+2025-07-05 18:41:44,656 - INFO - Roadmap generation completed successfully
+2025-07-05 18:41:44,683 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 29.146506s | Status: 200
+2025-07-05 18:44:35,310 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:49:34,644 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:49:42,815 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:50:01,205 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:50:17,781 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-05 18:51:43,969 - WARNING - Not Found: /favicon.ico
+2025-07-05 18:51:46,257 - INFO - Starting roadmap generation for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
+2025-07-05 18:51:46,259 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:51:46,260 - INFO - Model initialized. Generating content...
+2025-07-05 18:52:12,942 - INFO - Model response received.
+2025-07-05 18:52:13,228 - INFO - JSON parsed successfully.
+2025-07-05 18:52:13,229 - INFO - Roadmap generation completed successfully
+2025-07-05 18:52:13,270 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 27.013454s | Status: 200
+2025-07-05 18:54:01,466 - INFO - Starting roadmap generation for prompt: "Build a SaaS-based note-taking platform with rich-text editing, cloud sync, user authentication, team collaboration, and version history tracking."
+2025-07-05 18:54:01,467 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 18:54:01,467 - INFO - Model initialized. Generating content...
+2025-07-05 18:54:30,086 - INFO - Model response received.
+2025-07-05 18:54:30,318 - INFO - JSON parsed successfully.
+2025-07-05 18:54:30,319 - INFO - Roadmap generation completed successfully
+2025-07-05 18:54:30,359 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 28.893086s | Status: 200

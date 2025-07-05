@@ -90,100 +90,61 @@ def validate_auth(func):
     return wrapper
 
 def get_prompt_template(prompt):
-    return f"""Create a detailed project roadmap for: {prompt}
+    return f"""You're an expert software architect and engineer.
 
-    Return the response in this exact JSON format without any additional text or markdown:
-    {{
-        "project_overview": {{
-            "name": "Project Name",
-            "description": "Comprehensive project description",
-            "estimated_duration": "Total estimated timeline",
-            "team_size": "Recommended team size",
-            "objectives": [
-                "Clear objective 1 with measurable outcomes",
-                "Clear objective 2 with specific goals",
-                "Clear objective 3 with defined targets"
-            ],
-            "success_criteria": [
-                "Specific success metric 1",
-                "Specific success metric 2",
-                "Specific success metric 3"
-            ]
-        }},
-        "phases": {{
-            "phase1": {{
-                "id": "1",
-                "name": "Phase Name",
-                "overview": "Detailed phase description",
-                "duration": "Phase duration (e.g., 2-3 weeks)",
-                "objectives": [
-                    "Phase-specific objective 1",
-                    "Phase-specific objective 2"
-                ],
-                "deliverables": [
-                    "Concrete deliverable 1",
-                    "Concrete deliverable 2"
-                ],
-                "ide_link": "/devenv.html?phase=1",
-                "sub_phases": {{
-                    "sub1": {{
-                        "name": "Sub-phase Name",
-                        "description": "Detailed sub-phase description",
-                        "tasks": [
-                            "Specific task 1 with clear definition",
-                            "Specific task 2 with acceptance criteria",
-                            "Specific task 3 with dependencies"
-                        ],
-                        "deliverables": [
-                            "Sub-phase deliverable 1",
-                            "Sub-phase deliverable 2"
-                        ],
-                        "estimated_time": "Sub-phase duration"
-                    }},
-                    "sub2": {{
-                        "name": "Another Sub-phase",
-                        "description": "Another detailed description",
-                        "tasks": [
-                            "More specific tasks with clear outcomes",
-                            "Technical requirements and specifications",
-                            "Integration points and dependencies"
-                        ],
-                        "deliverables": [
-                            "More concrete deliverables",
-                            "Specific outputs and artifacts"
-                        ],
-                        "estimated_time": "Sub-phase duration"
-                    }}
-                }},
-                "dependencies": [
-                    "Dependency 1",
-                    "Dependency 2"
-                ],
-                "risks": [
-                    "Potential risk 1 with mitigation strategy",
-                    "Potential risk 2 with contingency plan"
-                ],
-                "milestones": [
-                    "Key milestone 1 with completion criteria",
-                    "Key milestone 2 with verification method"
-                ]
-            }}
+Generate a detailed, tech-oriented development roadmap for: "{prompt}"
+
+The roadmap must be returned in raw JSON format only — no markdown, no explanation, no comments.
+
+### JSON FORMAT:
+{{
+  "project_overview": {{
+    "name": "Project Name",
+    "description": "What the project does",
+    "tech_stack": {{
+      "frontend": "Frontend framework (e.g., React, Flutter)",
+      "backend": "Backend framework (e.g., Django, Node.js)",
+      "database": "Database (e.g., PostgreSQL, MongoDB)",
+      "libraries": ["Key libraries"],
+      "tools": ["Dev tools, linters, CI/CD, etc."],
+      "apis": ["External APIs or SDKs used"]
+    }},
+    "architecture": "High-level architecture (e.g., RESTful API + SPA frontend)",
+    "estimated_duration": "Overall dev time estimate",
+    "team_roles": ["Developer roles (e.g., Frontend Dev, DevOps)"]
+  }},
+  "phases": {{
+    "phase1": {{
+      "name": "Phase Name",
+      "overview": "Summary of what this phase covers",
+      "duration": "Time estimate",
+      "objectives": ["Phase goal 1", "Phase goal 2"],
+      "modules": [
+        {{
+          "name": "Module name (e.g., Auth System)",
+          "description": "Short technical summary",
+          "tasks": [
+            "Code-level task 1",
+            "Code-level task 2"
+          ],
+          "technologies": ["Libraries/APIs/tools used in this module"]
         }}
+      ]
+    }},
+    "phase2": {{
+      ...
     }}
+  }}
+}}
 
-    Important instructions:
-    1. Create at least 6 main phases
-    2. Each main phase should have 2-4 sub-phases
-    3. Provide detailed, specific tasks for each sub-phase
-    4. Include realistic time estimates
-    5. Ensure dependencies between phases are logical
-    6. Add meaningful milestones for each phase
-    7. Include comprehensive risk assessment
-    8. Each phase must have a unique ID (1-6) and an ide_link pointing to /devenv.html?phase=[phase_id]
-    9. Do not use trailing commas in arrays or objects.
-    10. Respond with raw, valid JSON only. Avoid markdown, explanations, or non-JSON wrappers.
+### INSTRUCTIONS:
+1. Suggest real frameworks/tools based on the project type.
+2. Ensure all JSON brackets are closed — no trailing commas.
+3. Respond ONLY with raw JSON.
+"""
 
-    """
+
+
 
 def generate_roadmap(prompt):
     try:
@@ -300,15 +261,22 @@ def generate_roadmap(prompt):
                                 max_output_tokens=6144  # safer token limit
                             )
                         )
-                        roadmap = clean_and_parse_json(retry_response.text.strip())
-                        if roadmap:
-                            logger.info("Retry succeeded. JSON parsed.")
+                        try:
+                            roadmap = clean_and_parse_json(retry_response.text)
 
-                            # Validate roadmap structure before using it
-                            if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
-                                logger.error("Retry returned invalid roadmap structure.")
-                                logger.info("Falling back to default roadmap after retry")
+                            # ✅ NEW: Check if roadmap is a valid dict
+                            if not roadmap or not isinstance(roadmap, dict):
+                                logger.error("Retry returned non-dict response. Type: %s", type(roadmap))
+                                logger.warning(f"Retry parsed value: {roadmap}")
                                 return create_default_roadmap(prompt)
+
+                            # ✅ Also check if required keys exist
+                            if "project_overview" not in roadmap or "phases" not in roadmap:
+                                logger.error("Retry missing required keys.")
+                                logger.warning(f"Retry result: {roadmap}")
+                                return create_default_roadmap(prompt)
+
+                            logger.info("Retry succeeded. JSON parsed.")
 
                             roadmap['metadata'] = {
                                 'generated_at': datetime.now().isoformat(),
@@ -318,9 +286,8 @@ def generate_roadmap(prompt):
                             roadmap_cache[cache_key] = roadmap
                             return roadmap
 
-                        
-                        else:
-                            logger.error("Retry also failed. Falling back to default roadmap")
+                        except Exception as e:
+                            logger.error(f"Retry parsing failed: {str(e)}")
                             return create_default_roadmap(prompt)
 
                     except Exception as retry_err:

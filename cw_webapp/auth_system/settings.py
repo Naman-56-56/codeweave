@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-$&r95^u$=-8t_d9ca*am%fp^6_1l_qd$0gtht_h#zwfmmr$0os
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['codeweave-4d5h.onrender.com', '127.0.0.1' ]
+ALLOWED_HOSTS = ['codeweave-4d5h.onrender.com', '127.0.0.1','localhost' ]
 
 
 # Application definition
@@ -49,12 +51,14 @@ INSTALLED_APPS = [
     'auth_system',
     'api',
     'dev_env',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -182,3 +186,13 @@ CSRF_TRUSTED_ORIGINS = [
     'https://codeweave-4d5h.onrender.com',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5000",
+    "http://localhost:3000",
+    "http://127.0.0.1:5000",
+    "https://codeweave-4d5h.onrender.com",
+]
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "Authorization",
+]

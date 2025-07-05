@@ -6,31 +6,45 @@
     <title>Project Roadmap Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- CSS is preserved in the head for functionality -->
+    <!-- Enhanced CSS with modern design -->
     <style>
-/* ====== GENERAL STYLES ====== */
+/* ====== MODERN COLOR PALETTE ====== */
 :root {
-  --primary: #007bff;
-  --primary-dark: #0069d9;
-  --primary-light: #e6f2ff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --danger: #dc3545;
-  --warning: #ffc107;
-  --info: #17a2b8;
-  --light: #f8f9fa;
-  --dark: #343a40;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #dbeafe;
+  --secondary: #6b7280;
+  --success: #059669;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --info: #0891b2;
+  --light: #f8fafc;
+  --dark: #1e293b;
   --white: #ffffff;
-  --border-radius: 0.25rem;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
   --transition-speed: 0.3s;
-  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 body {
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color: #333;
-  background-color: #f5f7fa;
-  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--gray-700);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  min-height: 100vh;
+  line-height: 1.7;
 }
 
 .container {
@@ -39,138 +53,232 @@ body {
   padding: 0 15px;
 }
 
-/* ====== NAVIGATION ====== */
+/* ====== ENHANCED NAVIGATION ====== */
 .navbar {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--box-shadow);
+  padding: 1rem 0;
 }
 
 .navbar-brand {
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: -0.5px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+.navbar-nav .nav-link {
+  color: var(--gray-600) !important;
+  font-weight: 500;
   padding: 0.5rem 1rem;
-  transition: color var(--transition-speed) ease;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  position: relative;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: rgba(255, 255, 255, 1);
+.navbar-nav .nav-link:hover {
+  color: var(--primary) !important;
+  background-color: var(--primary-light);
+  transform: translateY(-1px);
 }
 
-.navbar-dark .navbar-nav .nav-link.active {
-  color: white;
+.navbar-nav .nav-link.active {
+  color: var(--primary) !important;
+  background-color: var(--primary-light);
   font-weight: 600;
 }
 
-/* ====== HEADER SECTION ====== */
+/* ====== HERO SECTION ====== */
+.hero-section {
+  padding: 4rem 0 2rem;
+  text-align: center;
+  color: white;
+}
+
 .display-4 {
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: #222;
-  margin-bottom: 0.75rem;
+  font-weight: 800;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .lead {
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: #555;
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto 3rem;
 }
 
-/* ====== FORM ELEMENTS ====== */
+/* ====== ENHANCED CARDS ====== */
 .card {
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all var(--transition-speed) ease;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--box-shadow);
 }
 
 .card.shadow {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .card.shadow:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-xl);
 }
 
 .card-header {
-  padding: 1rem 1.25rem;
-  background-color: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 1.5rem 1.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-bottom: none;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
+/* ====== ENHANCED FORM ELEMENTS ====== */
 .form-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: #444;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--gray-700);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .form-control, .form-select {
-  border: 1px solid #dee2e6;
+  border: 2px solid var(--gray-200);
   border-radius: var(--border-radius);
-  padding: 0.625rem 0.875rem;
+  padding: 0.875rem 1rem;
   font-size: 1rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: all var(--transition-speed) ease;
+  background-color: white;
 }
 
 .form-control:focus, .form-select:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
 }
 
 textarea.form-control {
-  min-height: 120px;
+  min-height: 140px;
   resize: vertical;
 }
 
+/* ====== ENHANCED BUTTONS ====== */
 .btn {
-  font-weight: 500;
+  font-weight: 600;
   border-radius: var(--border-radius);
-  padding: 0.625rem 1.25rem;
-  transition: all 0.2s ease-in-out;
+  padding: 0.875rem 2rem;
+  transition: all var(--transition-speed) ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-dark);
-  border-color: var(--primary-dark);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .btn-outline-primary {
   color: var(--primary);
-  border-color: var(--primary);
+  border: 2px solid var(--primary);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .btn-outline-primary:hover {
-  background-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
-.btn-outline-secondary, .btn-outline-danger, .btn-outline-success {
-  transition: all 0.2s ease;
+.btn-outline-secondary {
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
 }
 
-.btn-outline-secondary:hover, .btn-outline-danger:hover, .btn-outline-success:hover {
-  transform: translateY(-1px);
+.btn-outline-secondary:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.btn-outline-danger {
+  color: var(--danger);
+  border: 2px solid var(--danger);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.btn-outline-danger:hover {
+  background: var(--danger);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.btn-outline-success {
+  color: var(--success);
+  border: 2px solid var(--success);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.btn-outline-success:hover {
+  background: var(--success);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .btn i {
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 }
 
-/* ====== LOADING SPINNER ====== */
+/* ====== ENHANCED LOADING SPINNER ====== */
 .loading {
   display: none;
   position: fixed;
@@ -178,9 +286,9 @@ textarea.form-control {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   z-index: 1000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
 
 .loading-content {
@@ -192,77 +300,95 @@ textarea.form-control {
 }
 
 .spinner-border {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-width: 0.25rem;
+  color: var(--primary);
 }
 
-/* ====== EXPORT BUTTONS ====== */
+/* ====== ENHANCED EXPORT BUTTONS ====== */
 #exportButtons {
   display: none;
-  margin-bottom: 20px;
-  padding: 1rem 0;
+  margin-bottom: 2rem;
+  padding: 1.5rem 0;
 }
 
 #exportButtons .btn {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   font-size: 0.95rem;
+  margin: 0 0.25rem;
 }
 
-/* ====== PROGRESS BAR ====== */
+/* ====== ENHANCED PROGRESS BAR ====== */
 .progress-bar-container {
-  height: 10px;
-  margin-bottom: 0.5rem;
-  background-color: #e9ecef;
-  border-radius: 5px;
+  height: 12px;
+  margin-bottom: 0.75rem;
+  background-color: var(--gray-200);
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   height: 100%;
   width: 0;
-  background-color: var(--primary);
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-size: 1rem 1rem;
-  animation: progress-bar-stripes 1s linear infinite;
-  transition: width 0.5s ease;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: 10px;
+  transition: width 0.8s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes progress-bar-stripes {
-  from { background-position: 1rem 0; }
-  to { background-position: 0 0; }
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 #progressStatus {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.9rem;
+  color: var(--gray-600);
   text-align: center;
   font-weight: 500;
 }
 
 #progressPercentage {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary);
+  font-size: 1.1rem;
 }
 
-/* ====== ROADMAP COMPONENTS ====== */
+/* ====== ENHANCED ROADMAP COMPONENTS ====== */
 .phase-card {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   border: none;
-  border-left: 4px solid var(--primary);
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: var(--border-radius-lg);
+  transition: all var(--transition-speed) ease;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--box-shadow);
 }
 
 .phase-card:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-xl);
 }
 
 .phase-card .card-header {
-  background-color: white;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .phase-heading {
@@ -271,74 +397,78 @@ textarea.form-control {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0;
 }
 
 .phase-heading h4 {
   margin: 0;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: var(--gray-800);
   display: flex;
   align-items: center;
+  font-size: 1.25rem;
 }
 
 .badge {
-  font-weight: 500;
-  padding: 0.5em 0.75em;
+  font-weight: 600;
+  padding: 0.5em 1em;
   border-radius: 50rem;
+  font-size: 0.85rem;
 }
 
 .badge.bg-primary {
-  background-color: var(--primary) !important;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
 }
 
 .risk-badge {
-  background-color: var(--danger);
+  background: linear-gradient(135deg, var(--danger), #dc2626);
   color: white;
   margin: 2px;
   font-size: 0.75rem;
 }
 
 .dependency-badge {
-  background-color: var(--success);
+  background: linear-gradient(135deg, var(--success), #059669);
   color: white;
   margin: 2px;
   font-size: 0.75rem;
 }
 
 .accordion-icon {
-  transition: transform 0.3s;
-  color: #888;
-  font-size: 1.2rem;
+  transition: transform var(--transition-speed);
+  color: var(--gray-500);
+  font-size: 1.5rem;
+  margin-left: 1rem;
 }
 
 .expanded .accordion-icon {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
   color: var(--primary);
 }
 
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  transition: max-height var(--transition-speed) ease-out;
 }
 
 .expanded .collapsible-content {
-  max-height: 1000px;
+  max-height: 2000px;
 }
 
 .alert-light {
-  background-color: var(--primary-light);
-  border-color: rgba(0, 123, 255, 0.2);
-  color: #333;
+  background: linear-gradient(135deg, var(--primary-light), #dbeafe);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--gray-800);
   font-size: 0.95rem;
+  border-radius: var(--border-radius);
 }
 
 .alert-light i {
   color: var(--primary);
 }
 
-/* ====== TASK LIST ====== */
+/* ====== ENHANCED TASK LIST ====== */
 .task-list {
   list-style-type: none;
   padding-left: 0;
@@ -346,15 +476,17 @@ textarea.form-control {
 }
 
 .task-list li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-200);
   display: flex;
   align-items: center;
-  transition: background-color 0.2s ease;
+  transition: all var(--transition-speed) ease;
 }
 
 .task-list li:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--gray-50);
+  padding-left: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .task-list li:last-child {
@@ -362,21 +494,22 @@ textarea.form-control {
 }
 
 .task-checkbox {
-  margin-right: 10px;
+  margin-right: 12px;
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .task-checkbox:checked + span {
   text-decoration: line-through;
-  color: #999;
+  color: var(--gray-500);
 }
 
-/* ====== TIMELINE ====== */
+/* ====== ENHANCED TIMELINE ====== */
 .timeline {
   position: relative;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 2rem 0;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
 }
 
 .timeline-line {
@@ -385,29 +518,32 @@ textarea.form-control {
   bottom: 0;
   left: 50%;
   width: 4px;
-  background-color: var(--primary);
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
   transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .timeline-item {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   width: 100%;
   display: flex;
 }
 
 .timeline-content {
   width: 45%;
-  padding: 1.5rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  transition: all var(--transition-speed) ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .timeline-content:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-xl);
 }
 
 .timeline-item:nth-child(odd) {
@@ -429,47 +565,48 @@ textarea.form-control {
 .timeline-dot {
   position: absolute;
   left: 50%;
-  top: 25px;
-  width: 20px;
-  height: 20px;
-  background-color: var(--primary);
+  top: 30px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border: 4px solid white;
   border-radius: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
 .timeline-content h4 {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--primary);
+  font-weight: 700;
 }
 
 .timeline-content p {
   margin-bottom: 0.75rem;
-  color: #555;
+  color: var(--gray-600);
 }
 
 .timeline-content .text-muted {
-  color: #888 !important;
+  color: var(--gray-500) !important;
 }
 
-/* ====== FOOTER ====== */
+/* ====== ENHANCED FOOTER ====== */
 footer {
-  background-color: var(--dark);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 2rem 0;
-  margin-top: 5rem;
+  background: linear-gradient(135deg, var(--gray-800), var(--gray-900));
+  color: rgba(255, 255, 255, 0.8);
+  padding: 3rem 0;
+  margin-top: 6rem;
 }
 
-/* ====== RESPONSIVENESS ====== */
+/* ====== ENHANCED RESPONSIVENESS ====== */
 @media (max-width: 991.98px) {
   .navbar-brand {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   
   .display-4 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
   
   .lead {
@@ -484,8 +621,8 @@ footer {
   }
   
   .timeline-content {
-    width: 80%;
-    margin: 0 0 30px 0;
+    width: 85%;
+    margin: 0 0 40px 0;
   }
   
   .timeline-line {
@@ -514,7 +651,7 @@ footer {
   
   #exportButtons {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
   
   #exportButtons > div {
@@ -530,7 +667,7 @@ footer {
 
 @media (max-width: 575.98px) {
   .display-4 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
   
   .timeline-content {
@@ -547,7 +684,7 @@ footer {
   }
   
   .card-body {
-    padding: 1rem;
+    padding: 1.5rem;
   }
   
   .row > [class*="col-"] {
@@ -555,10 +692,10 @@ footer {
   }
 }
 
-/* ====== PRINT STYLES ====== */
+/* ====== ENHANCED PRINT STYLES ====== */
 @media print {
   body {
-    background-color: white;
+    background: white;
   }
   
   .navbar, 
@@ -595,28 +732,33 @@ footer {
   }
 }
 
-/* ====== ANIMATIONS ====== */
+/* ====== ENHANCED ANIMATIONS ====== */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
+  from { transform: translateY(30px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 .phase-card {
-  animation: slideIn 0.4s ease forwards;
+  animation: slideIn 0.6s ease forwards;
 }
 
 .results {
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.8s ease;
 }
 
 #roadmapContent > div {
   opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
+  animation: scaleIn 0.6s ease forwards;
 }
 
 #roadmapContent > div:nth-child(1) { animation-delay: 0.1s; }
@@ -629,12 +771,186 @@ footer {
 #roadmapContent > div:nth-child(8) { animation-delay: 0.8s; }
 #roadmapContent > div:nth-child(9) { animation-delay: 0.9s; }
 #roadmapContent > div:nth-child(10) { animation-delay: 1.0s; }
+
+/* ====== ADDITIONAL ENHANCEMENTS ====== */
+.sub-phase-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+}
+
+.sub-phase-card:hover {
+  background: white;
+  box-shadow: var(--box-shadow);
+  transform: translateY(-2px);
+}
+
+.objectives-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.objectives-list li:last-child {
+  border-bottom: none;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+}
+
+/* ====== GLASSMORPHISM EFFECTS ====== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ====== FLOATING ELEMENTS ====== */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ====== ENHANCED TYPOGRAPHY ====== */
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* ====== ENHANCED SPACING ====== */
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+.py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/* ====== ENHANCED HOVER EFFECTS ====== */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--box-shadow-xl);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* ====== ENHANCED FOCUS STATES ====== */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ====== ENHANCED BADGES ====== */
+.badge {
+  font-weight: 600;
+  padding: 0.5em 1em;
+  border-radius: 50rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ====== ENHANCED ICONS ====== */
+.bi {
+  vertical-align: middle;
+}
+
+/* ====== ENHANCED ALERTS ====== */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+}
+
+/* ====== ENHANCED LISTS ====== */
+.list-unstyled li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gray-100);
+  transition: all var(--transition-speed) ease;
+}
+
+.list-unstyled li:hover {
+  background-color: var(--gray-50);
+  padding-left: 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+.list-unstyled li:last-child {
+  border-bottom: none;
+}
+
+/* ====== ENHANCED FORM CHECK ====== */
+.form-check-input {
+  border: 2px solid var(--gray-300);
+  border-radius: 4px;
+  transition: all var(--transition-speed) ease;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.form-check-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ====== ENHANCED NAVIGATION ====== */
+.navbar-nav .nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  transition: all var(--transition-speed) ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::before,
+.navbar-nav .nav-link.active::before {
+  width: 100%;
+}
     </style>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Roadmap Pro</a>
+            <a class="navbar-brand" href="#">🚀 Roadmap Pro</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -654,34 +970,41 @@ footer {
         </div>
     </nav>
 
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
-                <h1 class="display-4 mb-3">Project Roadmap Generator</h1>
-                <p class="lead mb-5">Create comprehensive project roadmaps with just a few clicks. Perfect for project managers, teams, and stakeholders.</p>
+    <div class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 mb-3 floating">Project Roadmap Generator</h1>
+                    <p class="lead mb-5">Create comprehensive project roadmaps with just a few clicks. Perfect for project managers, teams, and stakeholders.</p>
+                </div>
             </div>
         </div>
-        
+    </div>
+
+    <div class="container py-5">
         <!-- Input Form -->
         <div class="row justify-content-center mb-5">
             <div class="col-md-8">
-                <div class="card shadow">
+                <div class="card shadow glass-card">
+                    <div class="card-header">
+                        <h3 class="mb-0">📋 Project Details</h3>
+                    </div>
                     <div class="card-body">
                         <form id="roadmapForm">
-                            <div class="mb-3">
-                                <label for="prompt" class="form-label">Enter Your Project Description</label>
+                            <div class="mb-4">
+                                <label for="prompt" class="form-label">Project Description</label>
                                 <textarea class="form-control" id="prompt" rows="4" required 
                                     placeholder="Example: Build a social media platform for photographers with photo sharing, user profiles, and community features"></textarea>
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <label for="projectName" class="form-label">Project Name (optional)</label>
+                                    <label for="projectName" class="form-label">Project Name</label>
                                     <input type="text" class="form-control" id="projectName" placeholder="My Awesome Project">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="projectDuration" class="form-label">Estimated Duration (optional)</label>
+                                    <label for="projectDuration" class="form-label">Estimated Duration</label>
                                     <select class="form-select" id="projectDuration">
-                                        <option value="" selected>Choose...</option>
+                                        <option value="" selected>Choose duration...</option>
                                         <option value="1-3 months">1-3 months</option>
                                         <option value="3-6 months">3-6 months</option>
                                         <option value="6-12 months">6-12 months</option>
@@ -690,7 +1013,7 @@ footer {
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary py-2">
+                                <button type="submit" class="btn btn-primary py-3">
                                     <i class="bi bi-diagram-3"></i> Generate Roadmap
                                 </button>
                             </div>
@@ -703,7 +1026,7 @@ footer {
         <!-- Loading Spinner -->
         <div class="loading" id="loadingSpinner">
             <div class="loading-content">
-                <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                <div class="spinner-border mb-3" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 <p class="lead">Creating your roadmap...</p>
@@ -717,10 +1040,10 @@ footer {
                     <i class="bi bi-clock-history"></i> View Timeline
                 </button>
                 <div>
-                    <button id="printRoadmap" class="btn btn-outline-secondary me-2">
+                    <button id="printRoadmap" class="btn btn-outline-secondary">
                         <i class="bi bi-printer"></i> Print
                     </button>
-                    <button id="exportPDF" class="btn btn-outline-danger me-2">
+                    <button id="exportPDF" class="btn btn-outline-danger">
                         <i class="bi bi-file-earmark-pdf"></i> Export PDF
                     </button>
                     <button id="exportJSON" class="btn btn-outline-success">
@@ -733,16 +1056,16 @@ footer {
         <!-- Progress Indicator -->
         <div id="progressSection" class="row justify-content-center mb-4" style="display: none;">
             <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-body p-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Project Progress</span>
+                <div class="card shadow glass-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="fw-bold">Project Progress</span>
                             <span id="progressPercentage">0%</span>
                         </div>
                         <div class="progress-bar-container">
                             <div class="progress-bar" id="projectProgress"></div>
                         </div>
-                        <div id="progressStatus" class="small text-muted text-center">Not started</div>
+                        <div id="progressStatus" class="text-center mt-2">Not started</div>
                     </div>
                 </div>
             </div>
@@ -751,7 +1074,7 @@ footer {
         <!-- Results Section -->
         <div id="results" class="row" style="display: none;">
             <div class="col-12">
-                <h2 class="text-center mb-4">Project Roadmap</h2>
+                <h2 class="text-center mb-5 text-white">📊 Project Roadmap</h2>
                 <div id="roadmapContent"></div>
             </div>
         </div>
@@ -759,7 +1082,7 @@ footer {
         <!-- Timeline View (Hidden by default) -->
         <div id="timelineView" class="row" style="display: none;">
             <div class="col-12">
-                <h2 class="text-center mb-4">Project Timeline</h2>
+                <h2 class="text-center mb-5 text-white">⏰ Project Timeline</h2>
                 <div class="timeline">
                     <div class="timeline-line"></div>
                     <div id="timelineContent"></div>
@@ -768,9 +1091,9 @@ footer {
         </div>
     </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer>
         <div class="container text-center">
-            <p> 2025 Project Roadmap Generator. All rights reserved.</p>
+            <p>© 2025 Project Roadmap Generator. All rights reserved.</p>
         </div>
     </footer>
 
@@ -824,7 +1147,7 @@ footer {
                         duration: projectDuration || undefined
                     };
                     
-                    const response = await fetch('/api/roadmap/', {
+                    const response = await fetch('http://127.0.0.1:8000/api/roadmap/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -846,20 +1169,27 @@ footer {
                         const roadmap = data.roadmap;  // Get the actual roadmap data
 
                         // Display project overview
+                        const overview = roadmap.project_overview || {};
+                        const objectives = overview.objectives || [];
+
                         const overviewHtml = `
-                            <div class="card mb-4 shadow-sm">
-                                <div class="card-header bg-primary text-white py-3">
-                                    <h3 class="card-title mb-0">${roadmap.project_overview.name}</h3>
+                            <div class="card mb-4 shadow glass-card">
+                                <div class="card-header">
+                                    <h3 class="card-title mb-0">🎯 ${overview.name || 'Unnamed Project'}</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="overview-section mb-4">
-                                        <h4 class="text-primary mb-3">Project Overview</h4>
-                                        <p>${roadmap.project_overview.description}</p>
+                                        <h4 class="text-primary mb-3">
+                                            <i class="bi bi-info-circle-fill me-2"></i>Project Overview
+                                        </h4>
+                                        <p class="lead">${overview.description || 'No description provided.'}</p>
                                     </div>
                                     <div class="objectives-section">
-                                        <h4 class="text-primary mb-3">Key Objectives</h4>
+                                        <h4 class="text-primary mb-3">
+                                            <i class="bi bi-target me-2"></i>Key Objectives
+                                        </h4>
                                         <ul class="objectives-list">
-                                            ${roadmap.project_overview.objectives.map(obj => `
+                                            ${objectives.map(obj => `
                                                 <li class="mb-2">
                                                     <i class="bi bi-check-circle-fill text-success me-2"></i>
                                                     ${obj}
@@ -873,23 +1203,27 @@ footer {
                         roadmapContent.innerHTML = overviewHtml;
 
                         // Display phases
-                        Object.entries(roadmap.phases).forEach(([phaseKey, phase], index) => {
+                        Object.entries(roadmap.phases || {}).forEach(([phaseKey, phase], index) => {
                             const phaseNumber = index + 1;
                             
                             // Generate sub-phases HTML
                             const subPhasesHtml = Object.entries(phase.sub_phases || {}).map(([subPhaseKey, subPhase]) => `
                                 <div class="card sub-phase-card mb-3">
                                     <div class="card-header bg-light">
-                                        <h5 class="mb-0">${subPhase.name}</h5>
+                                        <h5 class="mb-0">
+                                            <i class="bi bi-list-task me-2"></i>${subPhase.name}
+                                        </h5>
                                     </div>
                                     <div class="card-body">
                                         <p class="mb-3">${subPhase.description}</p>
-                                        <h6 class="text-primary mb-2">Tasks:</h6>
+                                        <h6 class="text-primary mb-2">
+                                            <i class="bi bi-check2-square me-2"></i>Tasks:
+                                        </h6>
                                         <ul class="task-list">
                                             ${subPhase.tasks.map(task => `
                                                 <li class="task-item mb-2">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" onchange="updateProgress()">
+                                                        <input class="form-check-input task-checkbox" type="checkbox" onchange="updateProgress()">
                                                         <label class="form-check-label">${task}</label>
                                                     </div>
                                                 </li>
@@ -901,13 +1235,13 @@ footer {
 
                             // Generate phase HTML
                             const phaseHtml = `
-                                <div class="card phase-card shadow-sm mb-4" id="phase-${phaseKey}">
-                                    <div class="card-header bg-white">
+                                <div class="card phase-card shadow glass-card mb-4" id="phase-${phaseKey}">
+                                    <div class="card-header">
                                         <div class="phase-heading" onclick="togglePhase('phase-${phaseKey}')">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0">
-                                                    <i class="bi bi-chevron-right phase-icon me-2"></i>
-                                                    Phase ${phaseNumber}: ${phase.name}
+                                                    <i class="bi bi-chevron-right accordion-icon me-2"></i>
+                                                    📋 Phase ${phaseNumber}: ${phase.name}
                                                 </h4>
                                                 <span class="badge bg-primary">${phase.duration || 'N/A'}</span>
                                             </div>
@@ -920,9 +1254,11 @@ footer {
                                         </div>
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <h5 class="text-primary mb-3">Objectives</h5>
+                                                <h5 class="text-primary mb-3">
+                                                    <i class="bi bi-target me-2"></i>Objectives
+                                                </h5>
                                                 <ul class="list-unstyled">
-                                                    ${phase.objectives.map(obj => `
+                                                    ${(phase.objectives || []).map(obj => `
                                                         <li class="mb-2">
                                                             <i class="bi bi-check-circle-fill text-success me-2"></i>
                                                             ${obj}
@@ -931,9 +1267,11 @@ footer {
                                                 </ul>
                                             </div>
                                             <div class="col-md-6">
-                                                <h5 class="text-primary mb-3">Deliverables</h5>
+                                                <h5 class="text-primary mb-3">
+                                                    <i class="bi bi-box-seam me-2"></i>Deliverables
+                                                </h5>
                                                 <ul class="list-unstyled">
-                                                    ${phase.deliverables.map(del => `
+                                                    ${(phase.deliverables || []).map(del => `
                                                         <li class="mb-2">
                                                             <i class="bi bi-file-earmark-check-fill text-info me-2"></i>
                                                             ${del}
@@ -951,10 +1289,14 @@ footer {
                             // Add to timeline
                             const timelineItemHtml = `
                                 <div class="timeline-item">
-                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-dot"></div>
                                     <div class="timeline-content">
-                                        <h5 class="mb-2">Phase ${phaseNumber}: ${phase.name}</h5>
-                                        <p class="text-muted mb-0">${phase.duration || 'Duration: TBD'}</p>
+                                        <h5 class="mb-2">
+                                            <i class="bi bi-calendar-event me-2"></i>Phase ${phaseNumber}: ${phase.name}
+                                        </h5>
+                                        <p class="text-muted mb-0">
+                                            <i class="bi bi-clock me-1"></i>${phase.duration || 'Duration: TBD'}
+                                        </p>
                                     </div>
                                 </div>
                             `;
