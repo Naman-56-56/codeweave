@@ -3866,3 +3866,84 @@ violations {
 2025-07-05 17:08:39,731 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 41.992166s | Status: 200
 2025-07-05 17:11:11,972 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
 2025-07-05 17:11:20,471 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:12:26,886 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:15:28,416 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:16:00,351 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:17:17,790 - WARNING - Not Found: /favicon.ico
+2025-07-05 17:17:20,259 - INFO - Starting roadmap generation for prompt: Build a task management web application with features like user login, project boards, task cards, and deadlines.
+
+2025-07-05 17:17:20,260 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:17:20,261 - INFO - Model initialized. Generating content...
+2025-07-05 17:18:01,842 - INFO - Model response received.
+2025-07-05 17:18:02,377 - INFO - JSON parsed successfully.
+2025-07-05 17:18:02,378 - INFO - Roadmap generation completed successfully
+2025-07-05 17:18:02,428 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 42.169289s | Status: 200
+2025-07-05 17:18:55,274 - INFO - Starting roadmap generation for prompt: Build a personal finance tracker with expense categorization, monthly budgeting, charts, and recurring reminders.
+
+2025-07-05 17:18:55,275 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:18:55,276 - INFO - Model initialized. Generating content...
+2025-07-05 17:19:34,562 - INFO - Model response received.
+2025-07-05 17:19:34,745 - INFO - JSON parsed successfully.
+2025-07-05 17:19:34,745 - INFO - Roadmap generation completed successfully
+2025-07-05 17:19:34,766 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.492214s | Status: 200
+2025-07-05 17:20:33,211 - INFO - Starting roadmap generation for prompt: Design a collaborative note-taking web app with real-time syncing, Markdown support, user sharing, and offline mode.
+
+2025-07-05 17:20:33,212 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:20:33,212 - INFO - Model initialized. Generating content...
+2025-07-05 17:21:16,295 - INFO - Model response received.
+2025-07-05 17:21:16,706 - ERROR - Failed to clean and parse JSON: <string>:343 Unexpected end of input at column 18
+2025-07-05 17:21:16,707 - WARNING - Initial parse failed. Retrying with simplified prompt...
+2025-07-05 17:21:22,225 - INFO - Retry succeeded. JSON parsed.
+2025-07-05 17:21:22,229 - ERROR - Error in generate_roadmap_view: 'project_overview'
+2025-07-05 17:21:22,229 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 49.017476s | Status: 500
+2025-07-05 17:21:22,230 - ERROR - Internal Server Error: /api/roadmap/
+2025-07-05 17:23:25,139 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:24:59,473 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:25:15,243 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:25:43,854 - INFO - Starting roadmap generation for prompt: Design a collaborative note-taking web app with real-time syncing, Markdown support, user sharing, and offline mode.
+
+2025-07-05 17:25:43,855 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:25:43,855 - INFO - Model initialized. Generating content...
+2025-07-05 17:26:24,922 - INFO - Model response received.
+2025-07-05 17:26:24,923 - ERROR - Error generating roadmap: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-07-05 17:26:24,966 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 41.112877s | Status: 200
+2025-07-05 17:27:56,305 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:28:41,937 - INFO - Starting roadmap generation for prompt: Design a collaborative note-taking web app with real-time syncing, Markdown support, user sharing, and offline mode.
+2025-07-05 17:28:41,939 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:28:41,940 - INFO - Model initialized. Generating content...
+2025-07-05 17:29:26,208 - INFO - Model response received.
+2025-07-05 17:29:26,647 - ERROR - Failed to clean and parse JSON: <string>:338 Unexpected end of input at column 18
+2025-07-05 17:29:26,648 - WARNING - Initial parse failed. Retrying with simplified prompt...
+2025-07-05 17:29:32,847 - INFO - Retry succeeded. JSON parsed.
+2025-07-05 17:29:32,848 - ERROR - Retry returned invalid roadmap structure.
+2025-07-05 17:29:32,848 - INFO - Falling back to default roadmap after retry
+2025-07-05 17:29:32,893 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 50.957458s | Status: 200
+2025-07-05 17:31:16,960 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:31:29,439 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:32:10,501 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:32:36,639 - INFO - Starting roadmap generation for prompt: Design a collaborative note-taking web app with real-time syncing, Markdown support, user sharing, and offline mode.
+
+2025-07-05 17:32:36,641 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:32:36,642 - INFO - Model initialized. Generating content...
+2025-07-05 17:33:21,095 - INFO - Model response received.
+2025-07-05 17:33:21,275 - ERROR - Failed to clean and parse JSON: <string>:385 Unexpected end of input at column 18
+2025-07-05 17:33:21,275 - WARNING - Initial parse failed. Retrying with simplified prompt...
+2025-07-05 17:33:21,276 - ERROR - Error processing response: [Errno 2] No such file or directory: 'logs/invalid_retry_output.json'
+2025-07-05 17:33:21,307 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 44.66875s | Status: 200
+2025-07-05 17:35:23,596 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api\views.py changed, reloading.
+2025-07-05 17:35:47,815 - INFO - Starting roadmap generation for prompt: Design a collaborative note-taking web app with real-time syncing, Markdown support, user sharing, and offline mode.
+
+2025-07-05 17:35:47,817 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:35:47,817 - INFO - Model initialized. Generating content...
+2025-07-05 17:36:25,712 - INFO - Model response received.
+2025-07-05 17:36:26,168 - INFO - JSON parsed successfully.
+2025-07-05 17:36:26,168 - INFO - Roadmap generation completed successfully
+2025-07-05 17:36:26,219 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 38.405015s | Status: 200
+2025-07-05 17:37:29,806 - INFO - Starting roadmap generation for prompt: Develop a fitness tracking mobile app with workout logging, step counting, goal setting, and data visualization.
+
+2025-07-05 17:37:29,807 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 17:37:29,807 - INFO - Model initialized. Generating content...
+2025-07-05 17:38:08,400 - INFO - Model response received.
+2025-07-05 17:38:08,834 - INFO - JSON parsed successfully.
+2025-07-05 17:38:08,835 - INFO - Roadmap generation completed successfully
+2025-07-05 17:38:08,879 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.07403s | Status: 200

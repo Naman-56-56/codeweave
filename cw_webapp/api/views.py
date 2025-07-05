@@ -208,6 +208,12 @@ def generate_roadmap(prompt):
             )
         )
         logger.info("Model response received.")
+
+        if not response or not hasattr(response, "text") or not response.text.strip():
+            logger.error("No response text generated — likely due to token limit or model cutoff.")
+            logger.info("Falling back to retry with simplified prompt.")
+            raise ValueError("Empty response from Gemini — finish_reason likely indicates cutoff.")
+
         
         if not response or not response.text:
             logger.error("No response generated from model")
@@ -231,14 +237,21 @@ def generate_roadmap(prompt):
                         end_idx = response_text.rfind('}') + 1
                         if start_idx == -1 or end_idx == -1:
                             return None
+
                         json_str = response_text[start_idx:end_idx]
-
-
                         json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
+
+                        # Check if the JSON ends properly
+                        if not json_str.strip().endswith('}') and not json_str.strip().endswith(']'):
+                            raise ValueError("Response JSON appears incomplete or cut off.")
+
                         return json5.loads(json_str)
+
                     except Exception as e:
                         logger.error(f"Failed to clean and parse JSON: {e}")
                         return None
+
+
 
                 roadmap = clean_and_parse_json(response_text)
                 if roadmap:
@@ -257,9 +270,65 @@ def generate_roadmap(prompt):
                     logger.info("Roadmap generation completed successfully")
                     return roadmap
                 else:
-                    logger.error("Failed to clean/parse JSON properly")
-                    logger.info("Falling back to default roadmap")
-                    return create_default_roadmap(prompt)
+                    logger.warning("Initial parse failed. Retrying with simplified prompt...")
+                    short_prompt = (
+                        f"""Create a concise but complete project roadmap for: {prompt}
+
+                    Respond in **raw JSON** ONLY, no markdown or extra text.
+
+                    Your response MUST include these two top-level keys:
+                    - "project_overview"
+                    - "phases"
+
+                    Limit to 4 main phases, each with 1–2 subphases.
+                    Keep each task brief and realistic. Close all brackets and avoid trailing commas."""
+                    )
+
+                    os.makedirs("logs", exist_ok=True)
+                    with open("logs/invalid_retry_output.json", "w", encoding="utf-8") as f:
+                        json.dump(roadmap, f, indent=2)
+
+
+
+                    try:
+                        retry_response = model.generate_content(
+                            short_prompt,
+                            generation_config=genai.types.GenerationConfig(
+                                temperature=0.7,
+                                top_p=1,
+                                top_k=32,
+                                max_output_tokens=6144  # safer token limit
+                            )
+                        )
+                        roadmap = clean_and_parse_json(retry_response.text.strip())
+                        if roadmap:
+                            logger.info("Retry succeeded. JSON parsed.")
+
+                            # Validate roadmap structure before using it
+                            if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
+                                logger.error("Retry returned invalid roadmap structure.")
+                                logger.info("Falling back to default roadmap after retry")
+                                return create_default_roadmap(prompt)
+
+                            roadmap['metadata'] = {
+                                'generated_at': datetime.now().isoformat(),
+                                'prompt': prompt,
+                                'version': '2.0 (retry)'
+                            }
+                            roadmap_cache[cache_key] = roadmap
+                            return roadmap
+
+                        
+                        else:
+                            logger.error("Retry also failed. Falling back to default roadmap")
+                            return create_default_roadmap(prompt)
+
+                    except Exception as retry_err:
+                        logger.error(f"Retry generation error: {retry_err}")
+                        return create_default_roadmap(prompt)
+
+                
+
             else:
                 logger.error("No JSON structure found in response")
                 return create_default_roadmap(prompt)
