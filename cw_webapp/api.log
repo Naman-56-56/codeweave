@@ -4082,3 +4082,48 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000
 2025-07-05 19:07:03,316 - INFO - Starting roadmap generation for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
 2025-07-05 19:07:03,317 - INFO - Returning cached roadmap for prompt: "Develop a full-stack e-commerce platform with user authentication, product listing, shopping cart, order management, and payment gateway integration."
 2025-07-05 19:07:03,360 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.044043s | Status: 200
+2025-07-05 19:51:18,790 - WARNING - Not Found: /favicon.ico
+2025-07-05 19:51:44,178 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 19:51:44,179 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-05 19:51:44,179 - INFO - Model initialized. Generating content...
+2025-07-05 19:52:09,918 - INFO - Model response received.
+2025-07-05 19:52:10,062 - INFO - JSON parsed successfully.
+2025-07-05 19:52:10,063 - INFO - Roadmap generation completed successfully
+2025-07-05 19:52:10,089 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 25.911227s | Status: 200
+2025-07-05 19:57:31,881 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 19:57:31,882 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 19:57:31,905 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 19:57:31,908 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 19:57:31,911 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.029956s | Status: 401
+2025-07-05 19:57:31,912 - WARNING - Unauthorized: /api/roadmap/
+2025-07-05 19:57:40,545 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 19:57:40,546 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 19:57:40,562 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 19:57:40,565 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 19:57:40,565 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.020539s | Status: 401
+2025-07-05 19:57:40,565 - WARNING - Unauthorized: /api/roadmap/
+2025-07-05 19:58:10,330 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 19:58:10,331 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 19:58:10,347 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 19:58:10,348 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 19:58:10,349 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.019292s | Status: 401
+2025-07-05 19:58:10,350 - WARNING - Unauthorized: /api/roadmap/
+2025-07-05 19:59:18,123 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 19:59:18,124 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 19:59:18,138 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 19:59:18,141 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 19:59:18,142 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.019169s | Status: 401
+2025-07-05 19:59:18,142 - WARNING - Unauthorized: /api/roadmap/
+2025-07-05 20:01:51,588 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 20:01:51,589 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 20:01:51,600 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 20:01:51,603 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 20:01:51,605 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.015476s | Status: 401
+2025-07-05 20:01:51,605 - WARNING - Unauthorized: /api/roadmap/
+2025-07-05 20:02:06,651 - INFO - Starting roadmap generation for prompt: build a social media platform for anime lovers
+2025-07-05 20:02:06,652 - INFO - Returning cached roadmap for prompt: build a social media platform for anime lovers
+2025-07-05 20:02:06,665 - WARNING - Unauthorized: /projects/save_project/
+2025-07-05 20:02:06,667 - ERROR - Failed to save project to Django: {"detail":"Invalid token."}
+2025-07-05 20:02:06,668 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.017213s | Status: 401
+2025-07-05 20:02:06,668 - WARNING - Unauthorized: /api/roadmap/
+2025-07-06 23:31:18,248 - WARNING - Not Found: /favicon.ico
