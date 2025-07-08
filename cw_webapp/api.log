@@ -4194,3 +4194,142 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000
 2025-07-08 17:20:09,575 - INFO - Roadmap generation completed successfully
 2025-07-08 17:20:09,615 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 31.072086s | Status: 200
 2025-07-08 17:22:41,123 - INFO - Successfully generated fresh roadmap for goal: learn ruby programming language (Request ID: 8d3d40bc-1e3b-4bb5-93b1-131948df2099)
+2025-07-08 23:56:00,588 - WARNING - Not Found: /favicon.ico
+2025-07-08 23:56:35,999 - INFO - Generating fresh roadmap for goal: learn social media management (Request ID: 98b300b4-accf-4692-906d-22eeb7618ca0)
+2025-07-08 23:57:42,889 - INFO - Successfully generated fresh roadmap for goal: learn social media management (Request ID: 98b300b4-accf-4692-906d-22eeb7618ca0)
+2025-07-09 00:08:54,002 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:09:06,883 - INFO - Generating fresh roadmap for goal: learn social media management (Request ID: 3690f57a-0d88-49dc-bb4a-36a29822453a)
+2025-07-09 00:09:40,239 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\gemini_api.py changed, reloading.
+2025-07-09 00:10:09,101 - INFO - Generating fresh roadmap for goal: learn social media management (Request ID: 1ee69809-e103-41de-bc50-aa2b803e5886)
+2025-07-09 00:11:16,286 - INFO - Successfully generated fresh roadmap for goal: learn social media management (Request ID: 1ee69809-e103-41de-bc50-aa2b803e5886)
+2025-07-09 00:14:23,871 - INFO - Generating fresh roadmap for goal: learn social media management (Request ID: 92da2c64-77da-45f4-b726-14c82607b2cb)
+2025-07-09 00:16:12,301 - INFO - Successfully generated fresh roadmap for goal: learn social media management (Request ID: 92da2c64-77da-45f4-b726-14c82607b2cb)
+2025-07-09 00:20:22,943 - INFO - Generating fresh roadmap for goal: learn video editing (Request ID: 844204cc-7479-4379-bdc5-e80bdbae6599)
+2025-07-09 00:21:23,908 - INFO - Successfully generated fresh roadmap for goal: learn video editing (Request ID: 844204cc-7479-4379-bdc5-e80bdbae6599)
+2025-07-09 00:24:50,660 - WARNING - Bad Request: /users/login/
+2025-07-09 00:25:17,710 - WARNING - Forbidden (CSRF token from POST incorrect.): /users/login/
+2025-07-09 00:30:07,687 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:31:09,343 - WARNING - Not Found: /login/
+2025-07-09 00:34:38,742 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:38:14,642 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:41:33,011 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'provider_login_url'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 69, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1813: 'provider_login_url'. Did you forget to register or load this tag?
+2025-07-09 00:41:33,234 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:41:40,859 - ERROR - Internal Server Error: /users/login/
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'provider_login_url'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\users\views.py", line 69, in login_view
+    return render(request, "login.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Naman Sharma\Documents\codeweave\env\Lib\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1813: 'provider_login_url'. Did you forget to register or load this tag?
+2025-07-09 00:48:17,908 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-09 00:48:36,563 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-09 00:51:53,377 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-09 00:55:10,796 - WARNING - Bad Request: /users/login/
+2025-07-09 00:55:16,081 - WARNING - Bad Request: /users/login/
+2025-07-09 00:55:19,011 - WARNING - Bad Request: /users/login/
+2025-07-09 00:55:28,776 - WARNING - Bad Request: /users/login/
+2025-07-09 00:56:05,318 - WARNING - Not Found: /favicon.ico
+2025-07-09 00:56:14,036 - WARNING - Bad Request: /users/login/
+2025-07-09 00:56:30,793 - WARNING - Bad Request: /users/login/
+2025-07-09 00:57:05,161 - WARNING - Bad Request: /users/login/
+2025-07-09 00:59:34,630 - WARNING - Bad Request: /users/login/

@@ -129,9 +129,9 @@
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -146,10 +146,10 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
   transition: all var(--transition-normal);
-    position: relative;
+  position: relative;
 }
 
 /* Enhanced Background Animation */
@@ -314,7 +314,7 @@ body {
   width: 30px;
   height: 17px;
   background: var(--secondary-500);
-    position: relative;
+  position: relative;
   top: 80%;
   left: 70%;
   animation-delay: 10s;
@@ -352,7 +352,7 @@ body {
 /* Light Rays */
 .light-rays {
   position: absolute;
-    width: 100%;
+  width: 100%;
   height: 100%;
 }
 
@@ -477,7 +477,7 @@ body {
 .login-container {
   width: 100%;
   max-width: 480px;
-    position: relative;
+  position: relative;
 }
 
 /* Enhanced Login Card */
@@ -494,7 +494,7 @@ body {
 }
 
 .login-card::before {
-    content: '';
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -509,20 +509,20 @@ body {
 }
 
 .card-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: conic-gradient(from 0deg, var(--primary-500), var(--accent-500), var(--secondary-500), var(--primary-500));
   opacity: 0.1;
   animation: cardGlow 8s linear infinite;
-    z-index: -1;
+  z-index: -1;
 }
 
 /* Enhanced Card Header */
 .card-header {
-    text-align: center;
+  text-align: center;
   margin-bottom: var(--space-12);
 }
 
@@ -608,7 +608,7 @@ body {
 }
 
 .title-line {
-    display: block;
+  display: block;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -632,7 +632,7 @@ body {
 }
 
 .input-container {
-    position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -670,12 +670,12 @@ body {
 }
 
 .input-wrapper label {
-    position: absolute;
+  position: absolute;
   left: var(--space-12);
-    top: 50%;
-    transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--text-secondary);
-    font-size: 1rem;
+  font-size: 1rem;
   pointer-events: none;
   transition: all var(--transition-normal);
   background: var(--bg-secondary);
@@ -734,7 +734,7 @@ body {
 
 .input-focus-effect {
   position: absolute;
-    top: 0;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -760,7 +760,7 @@ body {
 }
 
 .validation-icon.show {
-    opacity: 1;
+  opacity: 1;
 }
 
 .success-icon {
@@ -819,7 +819,7 @@ body {
   align-items: center;
   cursor: pointer;
   user-select: none;
-    position: relative;
+  position: relative;
 }
 
 .checkbox-container input {
@@ -862,12 +862,12 @@ body {
 .checkbox-text {
   color: var(--text-secondary);
   font-size: 0.875rem;
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .forgot-password {
   color: var(--primary-500);
-    text-decoration: none;
+  text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
   display: flex;
@@ -896,9 +896,9 @@ body {
   width: 100%;
   height: 64px;
   background: var(--gradient-primary);
-    border: none;
+  border: none;
   border-radius: var(--radius-xl);
-    color: white;
+  color: white;
   font-size: 1.125rem;
   font-weight: 600;
   cursor: pointer;
@@ -909,7 +909,7 @@ body {
 }
 
 .login-button:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-xl);
 }
 
@@ -1019,10 +1019,10 @@ body {
   cursor: pointer;
   transition: all var(--transition-normal);
   backdrop-filter: blur(8px);
-    display: flex;
+  display: flex;
   flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
   gap: var(--space-1);
   overflow: hidden;
 }
@@ -1039,7 +1039,7 @@ body {
 
 .social-text {
   font-size: 0.75rem;
-    font-weight: 500;
+  font-weight: 500;
   opacity: 0.8;
 }
 
@@ -1116,11 +1116,11 @@ body {
 
 /* Enhanced Modal */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1136,7 +1136,7 @@ body {
 }
 
 .modal-backdrop {
-    position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1176,8 +1176,8 @@ body {
 }
 
 .success-circle {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
   background: var(--gradient-success);
   border-radius: 50%;
   display: flex;
@@ -1193,7 +1193,7 @@ body {
 }
 
 .success-particles {
-    position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1204,7 +1204,7 @@ body {
   width: 6px;
   height: 6px;
   background: var(--gradient-success);
-    border-radius: 50%;
+  border-radius: 50%;
   animation: successParticle 2s infinite ease-out;
 }
 
@@ -1245,9 +1245,9 @@ body {
 
 /* Loading Overlay */
 .loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -1279,11 +1279,11 @@ body {
 }
 
 .spinner-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: 3px solid transparent;
   border-radius: 50%;
   animation: spinnerRotate 2s linear infinite;
@@ -1463,9 +1463,9 @@ body {
   
   .logo-inner {
     width: 50px;
-        height: 50px;
-    }
-    
+    height: 50px;
+  }
+  
   .logo-inner i {
     font-size: 24px;
   }
@@ -1526,9 +1526,9 @@ body {
   
   .card-header {
     margin-bottom: var(--space-8);
-    }
-    
-    .form-group {
+  }
+  
+  .form-group {
     margin-bottom: var(--space-6);
   }
   
@@ -1634,7 +1634,7 @@ a:focus-visible {
   
   .divider {
     margin: var(--space-4) 0;
-    }
+  }
 }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1686,7 +1686,7 @@ a:focus-visible {
             <div class="shape shape-square"></div>
             <div class="shape shape-hexagon"></div>
             <div class="shape shape-circle"></div>
-    </div>
+        </div>
         
         <!-- Light Rays -->
         <div class="light-rays">
@@ -1710,7 +1710,7 @@ a:focus-visible {
 
     <!-- Main Container -->
     <div class="main-container">
-    <div class="login-container">
+        <div class="login-container">
             <!-- Enhanced Login Card -->
             <div class="login-card">
                 <!-- Card Glow Effect -->
@@ -1739,13 +1739,18 @@ a:focus-visible {
 
                 <!-- Enhanced Form -->
                 <form class="login-form" id="loginForm" method="post" action="" novalidate>
-            {% csrf_token %}
-            <div class="form-group">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
                                 <i class="fas fa-user input-icon"></i>
-                                <input type="text" id="username" name="username" required autocomplete="username" spellcheck="false">
-                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required autocomplete="username" spellcheck="false" value="{{ form.username.value|default:'' }}" placeholder=" ">
+                                <label for="username">Username</label>
                                 <div class="input-border"></div>
                                 <div class="input-focus-effect"></div>
                             </div>
@@ -1754,15 +1759,14 @@ a:focus-visible {
                                 <i class="fas fa-times error-icon"></i>
                             </div>
                         </div>
-                <div class="error-message" id="usernameError"></div>
-            </div>
-
-            <div class="form-group">
+                        <div class="error-message" id="usernameError">{{ form.username.errors }}</div>
+                    </div>
+                    <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
                                 <i class="fas fa-lock input-icon"></i>
-                                <input type="password" id="password" name="password" required autocomplete="current-password">
-                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" required autocomplete="current-password" placeholder=" ">
+                                <label for="password">Password</label>
                                 <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
                                     <i class="fas fa-eye"></i>
                                 </button>
@@ -1774,10 +1778,8 @@ a:focus-visible {
                                 <i class="fas fa-times error-icon"></i>
                             </div>
                         </div>
-                <div class="error-message" id="passwordError"></div>
-            </div>
-
-                    <!-- Enhanced Form Options -->
+                        <div class="error-message" id="passwordError">{{ form.password.errors }}</div>
+                    </div>
                     <div class="form-options">
                         <label class="checkbox-container">
                             <input type="checkbox" id="rememberMe" name="rememberMe">
@@ -1790,9 +1792,7 @@ a:focus-visible {
                             <span>Forgot password?</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                </div>
-
-                    <!-- Enhanced Login Button -->
+                    </div>
                     <button type="submit" class="login-button" id="loginButton">
                         <span class="button-content">
                             <span class="button-text">Sign In</span>
@@ -1803,41 +1803,21 @@ a:focus-visible {
                         </div>
                         <div class="button-ripple"></div>
                     </button>
-        </form>
-
-                <!-- Enhanced Divider -->
+                </form>
                 <div class="divider">
                     <div class="divider-line"></div>
                     <span class="divider-text">or continue with</span>
                     <div class="divider-line"></div>
                 </div>
-
-                <!-- Enhanced Social Login -->
                 <div class="social-login">
-                    <button class="social-button google" type="button">
+                    <a href="{% provider_login_url 'google' %}" class="social-button google" type="button">
                         <div class="social-icon">
                             <i class="fab fa-google"></i>
                         </div>
                         <span class="social-text">Google</span>
                         <div class="social-ripple"></div>
-                    </button>
-                    <button class="social-button github" type="button">
-                        <div class="social-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <span class="social-text">GitHub</span>
-                        <div class="social-ripple"></div>
-                    </button>
-                    <button class="social-button apple" type="button">
-                        <div class="social-icon">
-                            <i class="fab fa-apple"></i>
-                        </div>
-                        <span class="social-text">Apple</span>
-                        <div class="social-ripple"></div>
-                    </button>
+                    </a>
                 </div>
-
-                <!-- Enhanced Signup Link -->
                 <div class="signup-link">
                     <p>Don't have an account? 
                         <a href="{% url 'register' %}" class="signup-link-text">
@@ -1887,10 +1867,10 @@ a:focus-visible {
                 <div class="spinner-ring"></div>
             </div>
             <p>Authenticating...</p>
+        </div>
     </div>
-</div>
 
-<script>
+    <script>
         // Enhanced Theme Management
 class ThemeManager {
   constructor() {
@@ -1959,6 +1939,7 @@ class FormValidator {
     this.usernameError = document.getElementById('usernameError');
     this.passwordError = document.getElementById('passwordError');
     this.loginButton = document.getElementById('loginButton');
+    
     this.rules = {
       username: {
         required: true,
@@ -1970,9 +1951,11 @@ class FormValidator {
       password: {
         required: true,
         minLength: 6,
-        message: 'Password must be at least 6 characters'
+        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+        message: 'Password must contain at least one uppercase letter, one lowercase letter, and one number'
       }
     };
+    
     this.init();
   }
 
@@ -1982,6 +1965,8 @@ class FormValidator {
     this.usernameInput.addEventListener('blur', () => this.validateField('username'));
     this.passwordInput.addEventListener('input', () => this.validateField('password'));
     this.passwordInput.addEventListener('blur', () => this.validateField('password'));
+    
+    // Real-time validation feedback
     this.usernameInput.addEventListener('input', () => this.debounce(() => this.validateField('username'), 300));
     this.passwordInput.addEventListener('input', () => this.debounce(() => this.validateField('password'), 300));
   }
@@ -1998,10 +1983,15 @@ class FormValidator {
     const validationIcon = input.closest('.input-container').querySelector('.validation-icon');
     const value = input.value.trim();
     const rule = this.rules[fieldName];
+
+    // Clear previous state
     wrapper.classList.remove('error', 'success');
     errorElement.classList.remove('show');
     validationIcon.classList.remove('show');
+
+    // Validate field
     let errorMessage = '';
+
     if (rule.required && !value) {
       errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
     } else if (value && rule.minLength && value.length < rule.minLength) {
@@ -2011,6 +2001,7 @@ class FormValidator {
     } else if (value && rule.pattern && !rule.pattern.test(value)) {
       errorMessage = rule.message;
     }
+
     if (errorMessage) {
       wrapper.classList.add('error');
       errorElement.textContent = errorMessage;
@@ -2021,6 +2012,7 @@ class FormValidator {
       wrapper.classList.add('success');
       validationIcon.classList.add('show');
     }
+
     return true;
   }
 
@@ -2032,54 +2024,56 @@ class FormValidator {
 
   async handleSubmit(e) {
     e.preventDefault();
+
     if (!this.validateForm()) {
       this.shakeForm();
       return;
     }
+
     this.setLoading(true);
+
     try {
-      // Serialize form as x-www-form-urlencoded
-      const formData = new URLSearchParams();
-      formData.append('username', this.usernameInput.value);
-      formData.append('password', this.passwordInput.value);
-      // Get CSRF token
-      const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-      // Send POST to backend
-      const response = await fetch(this.form.action || window.location.pathname, {
-        method: 'POST',
-        body: formData,
-        credentials: 'same-origin',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRFToken': csrfToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      });
-      const data = await response.json();
-      if (response.ok) {
-        this.showSuccessModal();
-        setTimeout(() => {
-          window.location.href = data.redirect || '/dashboard/';
-        }, 1800);
-      } else {
-        if (data.errors) {
-          if (data.errors.username) this.usernameError.textContent = data.errors.username.join(' ');
-          if (data.errors.password) this.passwordError.textContent = data.errors.password.join(' ');
-          if (data.errors['__all__']) this.showError(data.errors['__all__'].join(' '));
-        }
-        this.showError(data.message || 'Invalid username or password.');
-        this.shakeForm();
-      }
+      await this.simulateLogin();
+      this.showSuccessModal();
     } catch (error) {
-      this.showError('An error occurred during login.');
+      this.showError(error.message);
       this.shakeForm();
     } finally {
       this.setLoading(false);
     }
   }
 
+  async simulateLogin() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const username = this.usernameInput.value.trim();
+        const password = this.passwordInput.value.trim();
+
+        // Enhanced demo credentials
+        const validCredentials = [
+          { username: 'admin', password: 'Admin123' },
+          { username: 'demo', password: 'Demo123' },
+          { username: 'user', password: 'User123' },
+          { username: 'test', password: 'Test123' }
+        ];
+
+        const isValid = validCredentials.some(cred => 
+          cred.username === username && cred.password === password
+        );
+
+        if (isValid) {
+          resolve({ success: true, message: 'Login successful' });
+        } else {
+          reject(new Error('Invalid username or password. Try: admin/Admin123 or demo/Demo123'));
+        }
+      }, 2000);
+    });
+  }
+
   setLoading(isLoading) {
     this.loginButton.classList.toggle('loading', isLoading);
+    
+    // Disable all form inputs during loading
     const inputs = this.form.querySelectorAll('input, button');
     inputs.forEach(input => {
       if (input !== this.loginButton) {
@@ -2108,6 +2102,7 @@ class FormValidator {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
+
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -2119,6 +2114,8 @@ class FormValidator {
         <i class="fas fa-times"></i>
       </button>
     `;
+
+    // Add styles
     notification.style.cssText = `
       position: fixed;
       top: 20px;
@@ -2139,7 +2136,10 @@ class FormValidator {
       gap: 12px;
       backdrop-filter: blur(10px);
     `;
+
     document.body.appendChild(notification);
+
+    // Auto-hide after 5 seconds
     setTimeout(() => {
       notification.style.animation = 'slideOutRight 0.3s ease';
       setTimeout(() => {
@@ -2151,16 +2151,26 @@ class FormValidator {
   showSuccessModal() {
     const modal = document.getElementById('successModal');
     modal.classList.add('show');
+
+    // Animate success particles
     this.animateSuccessParticles();
+
+    // Auto-redirect after 3 seconds
+    setTimeout(() => {
+      modal.classList.remove('show');
+      // Simulate redirect
+      console.log('Redirecting to dashboard...');
+    }, 3000);
   }
 
   animateSuccessParticles() {
     const particles = document.querySelectorAll('.success-particles .particle');
     particles.forEach((particle, index) => {
-      const angle = (index * 72) * Math.PI / 180;
+      const angle = (index * 72) * Math.PI / 180; // 360/5 = 72 degrees
       const distance = 60;
       const x = Math.cos(angle) * distance;
       const y = Math.sin(angle) * distance;
+      
       particle.style.setProperty('--random-x', `${x}px`);
       particle.style.setProperty('--random-y', `${y}px`);
     });
@@ -2271,9 +2281,9 @@ class SocialLogin {
     try {
       await this.simulateOAuth(provider);
       this.showSuccess(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login successful!`);
-        } catch (error) {
+    } catch (error) {
       this.showError(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login failed. Please try again.`);
-        } finally {
+    } finally {
       this.setButtonLoading(button, false);
     }
   }

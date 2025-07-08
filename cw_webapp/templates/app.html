@@ -10,9 +10,9 @@
     <style>
 /* ====== MODERN COLOR PALETTE ====== */
 :root {
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --primary-light: #dbeafe;
+  --primary: #7c3aed; /* purple-600 */
+  --primary-dark: #5b21b6; /* purple-800 */
+  --primary-light: #ede9fe; /* purple-100 */
   --secondary: #6b7280;
   --success: #059669;
   --danger: #dc2626;
@@ -31,37 +31,98 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-  --border-radius: 12px;
-  --border-radius-lg: 16px;
+  --border-radius: 14px;
+  --border-radius-lg: 20px;
   --transition-speed: 0.3s;
-  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --box-shadow: 0 4px 16px 0 rgba(124,58,237,0.08), 0 2px 4px 0 rgba(91,33,182,0.06);
+  --box-shadow-lg: 0 10px 24px 0 rgba(124,58,237,0.12), 0 4px 8px 0 rgba(91,33,182,0.08);
+  --box-shadow-xl: 0 20px 40px 0 rgba(124,58,237,0.16), 0 10px 20px 0 rgba(91,33,182,0.10);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color: var(--gray-700);
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: var(--gray-900);
+  background: linear-gradient(135deg, #ede9fe 0%, #c4b5fd 40%, #a78bfa 80%, #7c3aed 100%);
   min-height: 100vh;
   line-height: 1.7;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+.container, .container.py-5 {
+  background: #fff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  padding: 2.5rem 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.card, .glass-card, .phase-card, .timeline-content, .sub-phase-card {
+  background: #fff !important;
+  color: var(--gray-900) !important;
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--gray-100);
+}
+
+/* Fix text color for card headers, badges, buttons, alerts, etc. */
+.card-header, .phase-card .card-header {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(60,0,100,0.18);
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #ede9fe 0%, #a78bfa 100%);
+  color: var(--primary-dark);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+footer {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #fff !important;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  margin-top: 4rem;
+}
+
+/* Remove transparent backgrounds */
+.card, .glass-card, .phase-card, .timeline-content, .sub-phase-card {
+  backdrop-filter: none !important;
+}
+
+/* Ensure all roadmap/timeline/results sections have white backgrounds */
+#results, #timelineView, #roadmapContent, #timelineContent {
+  background: #fff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  padding: 2rem 1.5rem;
+}
+
+/* Remove any remaining transparent/blur backgrounds */
+.loading {
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: none;
+}
+
+/* Adjust nav for contrast */
+.navbar {
+  background: linear-gradient(135deg, #ede9fe 0%, #a78bfa 100%) !important;
+  border-bottom: 1px solid var(--primary-light);
+  box-shadow: var(--box-shadow);
+}
+
+.navbar-nav .nav-link {
+  color: var(--primary-dark) !important;
+}
+
+.navbar-nav .nav-link.active {
+  color: #fff !important;
+  background: var(--primary);
 }
 
 /* ====== ENHANCED NAVIGATION ====== */
-.navbar {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--box-shadow);
-  padding: 1rem 0;
-}
-
 .navbar-brand {
   font-weight: 800;
   font-size: 1.5rem;
@@ -950,7 +1011,9 @@ h1, h2, h3, h4, h5, h6 {
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#">🚀 Roadmap Pro</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <span style="font-weight: 900; font-size: 1.7rem; background: linear-gradient(90deg, #7c3aed, #00f5ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">CodeWeave</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -974,8 +1037,8 @@ h1, h2, h3, h4, h5, h6 {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h1 class="display-4 mb-3 floating">Project Roadmap Generator</h1>
-                    <p class="lead mb-5">Create comprehensive project roadmaps with just a few clicks. Perfect for project managers, teams, and stakeholders.</p>
+                    <h1 class="display-4 mb-3 floating" style="font-weight: 900; background: linear-gradient(90deg, #7c3aed, #00f5ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px;">CodeWeave Dev Pathway</h1>
+                    <p class="lead mb-5" style="color: #4b5563; font-weight: 500;">Create comprehensive developer roadmaps and pathways with AI-powered guidance. Perfect for teams, learners, and innovators.</p>
                 </div>
             </div>
         </div>
@@ -1134,6 +1197,84 @@ h1, h2, h3, h4, h5, h6 {
                     this.innerHTML = '<i class="bi bi-clock-history"></i> View Timeline';
                 }
             });
+
+            // --- Non-Tech Roadmap Rendering Function ---
+            function renderNonTechRoadmap(roadmap) {
+                roadmapContent.innerHTML = '';
+                timelineContent.innerHTML = '';
+                // Field-Specific Data Overview
+                if (roadmap.field_specific_data) {
+                    roadmapContent.innerHTML += `
+                    <section class="mb-4">
+                        <div class="card mb-3">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="bi bi-bar-chart-line me-2"></i>Field-Specific Insights</h4>
+                            </div>
+                            <div class="card-body row">
+                                ${roadmap.field_specific_data.industry_insights ? `<div class='col-md-6 mb-3'><h6 class='text-primary'><i class='bi bi-graph-up-arrow me-2'></i>Industry Insights</h6><p class='text-muted'>${roadmap.field_specific_data.industry_insights}</p></div>` : ''}
+                                ${roadmap.field_specific_data.market_analysis ? `<div class='col-md-6 mb-3'><h6 class='text-success'><i class='bi bi-search me-2'></i>Market Analysis</h6><p class='text-muted'>${roadmap.field_specific_data.market_analysis}</p></div>` : ''}
+                                ${roadmap.field_specific_data.skill_requirements ? `<div class='col-md-6 mb-3'><h6 class='text-warning'><i class='bi bi-tools me-2'></i>Skill Requirements</h6><p class='text-muted'>${roadmap.field_specific_data.skill_requirements}</p></div>` : ''}
+                                ${roadmap.field_specific_data.certification_paths ? `<div class='col-md-6 mb-3'><h6 class='text-info'><i class='bi bi-award me-2'></i>Certification Paths</h6><p class='text-muted'>${roadmap.field_specific_data.certification_paths}</p></div>` : ''}
+                                ${roadmap.field_specific_data.networking_opportunities ? `<div class='col-12'><h6 class='text-dark'><i class='bi bi-diagram-3 me-2'></i>Networking Opportunities</h6><p class='text-muted'>${roadmap.field_specific_data.networking_opportunities}</p></div>` : ''}
+                            </div>
+                        </div>
+                    </section>`;
+                }
+                // Overview Cards
+                if (roadmap.prerequisites || roadmap.success_metrics || roadmap.timeline_overview) {
+                    roadmapContent.innerHTML += `
+                    <section class="mb-4">
+                        <div class="row">
+                            ${roadmap.prerequisites ? `<div class='col-md-4 mb-4'><div class='card h-100'><div class='card-body'><h5 class='card-title text-primary'><i class='bi bi-clipboard-check me-2'></i>Prerequisites</h5><ul class='list-unstyled'>${roadmap.prerequisites.map(p => `<li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>${p}</li>`).join('')}</ul></div></div></div>` : ''}
+                            ${roadmap.success_metrics ? `<div class='col-md-4 mb-4'><div class='card h-100'><div class='card-body'><h5 class='card-title text-success'><i class='bi bi-bullseye me-2'></i>Success Metrics</h5><ul class='list-unstyled'>${roadmap.success_metrics.map(m => `<li class='mb-2'><i class='bi bi-bullseye text-success me-2'></i>${m}</li>`).join('')}</ul></div></div></div>` : ''}
+                            ${roadmap.timeline_overview ? `<div class='col-md-4 mb-4'><div class='card h-100'><div class='card-body'><h5 class='card-title text-info'><i class='bi bi-calendar-event me-2'></i>Timeline Overview</h5><p class='card-text'>${roadmap.timeline_overview}</p></div></div></div>` : ''}
+                        </div>
+                    </section>`;
+                }
+                // Phases, Subphases, Steps
+                if (roadmap.phases) {
+                    roadmap.phases.forEach((phase, phaseIdx) => {
+                        let phaseHtml = `<div class='roadmap-phase mb-5'><div class='phase-header mb-4'><h2 class='mb-2'><span class='badge bg-primary me-3'>Phase ${phaseIdx+1}</span>${phase.title}</h2>${phase.description ? `<p class='text-muted mb-2'>${phase.description}</p>` : ''}${phase.estimated_duration ? `<small class='text-info'><i class='bi bi-clock me-1'></i>Estimated Duration: ${phase.estimated_duration}</small>` : ''}${phase.field_relevance ? `<div class='mt-2'><small class='text-success'><i class='bi bi-diagram-3 me-1'></i><strong>Field Relevance:</strong> ${phase.field_relevance}</small></div>` : ''}</div>`;
+                        if (phase.sub_phases) {
+                            phase.sub_phases.forEach((sub, subIdx) => {
+                                phaseHtml += `<div class='sub-phase mb-4'><h4 class='mb-3'><span class='badge bg-secondary me-2'>${phaseIdx+1}.${subIdx+1}</span>${sub.title}</h4>${sub.description ? `<p class='text-muted mb-3'>${sub.description}</p>` : ''}${sub.estimated_duration ? `<small class='text-info d-block mb-3'><i class='bi bi-clock me-1'></i>Duration: ${sub.estimated_duration}</small>` : ''}${sub.field_context ? `<div class='mb-3'><small class='text-success'><i class='bi bi-diagram-3 me-1'></i><strong>Field Context:</strong> ${sub.field_context}</small></div>` : ''}`;
+                                if (sub.steps) {
+                                    sub.steps.forEach((step, stepIdx) => {
+                                        phaseHtml += `<div class='roadmap-step mb-3'><div class='step-header'><div class='step-number'>${stepIdx+1}</div><div class='flex-grow-1'><h5 class='mb-1'>${step.title}</h5><div class='step-meta'><small class='text-muted me-3'><i class='bi bi-clock me-1'></i>${step.estimated_time || ''}</small>${step.difficulty ? `<small class='text-muted'><i class='bi bi-bar-chart me-1'></i>${step.difficulty}</small>` : ''}</div></div></div><div class='step-content'><p class='mb-3'>${step.description || ''}</p>`;
+                                        if (step.field_specific_guidance) phaseHtml += `<div class='mb-3'><div class='alert alert-info'><h6 class='alert-heading'><i class='bi bi-diagram-3 me-2'></i>Field-Specific Guidance</h6><p class='mb-0'>${step.field_specific_guidance}</p></div></div>`;
+                                        if (step.resources) phaseHtml += `<div class='mb-3'><h6 class='text-primary mb-2'><i class='bi bi-tools me-2'></i>Resources:</h6>${step.resources.map(resource => `<div class='resource-item mb-2'><strong>${resource.name}</strong>${resource.type ? `<span class='badge bg-light text-dark ms-2'>${resource.type}</span>` : ''}${resource.description ? `<p class='text-muted mb-1 small'>${resource.description}</p>` : ''}${resource.field_relevance ? `<p class='text-success mb-1 small'><i class='bi bi-diagram-3 me-1'></i>${resource.field_relevance}</p>` : ''}${resource.url ? `<a href='${resource.url}' target='_blank' class='btn btn-sm btn-outline-primary'><i class='bi bi-box-arrow-up-right me-1'></i>Visit</a>` : ''}</div>`).join('')}</div>`;
+                                        if (step.milestones) phaseHtml += `<div class='mb-3'><h6 class='text-success mb-2'><i class='bi bi-flag me-2'></i>Milestones:</h6><ul class='list-unstyled'>${step.milestones.map(m => `<li class='mb-1'><i class='bi bi-flag-fill text-success me-2'></i>${m}</li>`).join('')}</ul></div>`;
+                                        if (step.potential_challenges) phaseHtml += `<div class='mb-3'><h6 class='text-warning mb-2'><i class='bi bi-exclamation-triangle me-2'></i>Potential Challenges:</h6><ul class='list-unstyled'>${step.potential_challenges.map(c => `<li class='mb-1'><i class='bi bi-exclamation-circle text-warning me-2'></i>${c}</li>`).join('')}</ul></div>`;
+                                        if (step.tips) phaseHtml += `<div class='mb-3'><h6 class='text-info mb-2'><i class='bi bi-lightbulb me-2'></i>Pro Tips:</h6><ul class='list-unstyled'>${step.tips.map(t => `<li class='mb-1'><i class='bi bi-lightbulb text-info me-2'></i>${t}</li>`).join('')}</ul></div>`;
+                                        if (step.success_indicators) phaseHtml += `<div class='mb-3'><h6 class='text-success mb-2'><i class='bi bi-graph-up-arrow me-2'></i>Success Indicators:</h6><ul class='list-unstyled'>${step.success_indicators.map(i => `<li class='mb-1'><i class='bi bi-check-circle-fill text-success me-2'></i>${i}</li>`).join('')}</ul></div>`;
+                                        if (step.motivation) phaseHtml += `<div class='motivation-box'><h6 class='text-warning mb-2'><i class='bi bi-heart me-2'></i>Why This Matters:</h6><p class='mb-0'>${step.motivation}</p></div>`;
+                                        phaseHtml += `</div></div>`;
+                                    });
+                                }
+                                phaseHtml += `</div>`;
+                            });
+                        }
+                        phaseHtml += `</div>`;
+                        roadmapContent.innerHTML += phaseHtml;
+                        // Timeline
+                        timelineContent.innerHTML += `<div class='timeline-item'><div class='timeline-dot'></div><div class='timeline-content'><h5 class='mb-2'><i class='bi bi-calendar-event me-2'></i>Phase ${phaseIdx+1}: ${phase.title}</h5><p class='text-muted mb-0'><i class='bi bi-clock me-1'></i>${phase.estimated_duration || 'Duration: TBD'}</p></div></div>`;
+                    });
+                }
+                // Field-Specific Considerations
+                if (roadmap.field_specific_considerations) {
+                    roadmapContent.innerHTML += `<section class='mb-4'><div class='card'><div class='card-header bg-info text-white'><h4 class='mb-0'><i class='bi bi-diagram-3 me-2'></i>Field-Specific Considerations</h4></div><div class='card-body row'>${roadmap.field_specific_considerations.industry_trends ? `<div class='col-md-6 mb-3'><h6 class='text-primary'><i class='bi bi-graph-up-arrow me-2'></i>Industry Trends</h6><p class='text-muted'>${roadmap.field_specific_considerations.industry_trends}</p></div>` : ''}${roadmap.field_specific_considerations.competitive_landscape ? `<div class='col-md-6 mb-3'><h6 class='text-warning'><i class='bi bi-people me-2'></i>Competitive Landscape</h6><p class='text-muted'>${roadmap.field_specific_considerations.competitive_landscape}</p></div>` : ''}${roadmap.field_specific_considerations.regulatory_requirements ? `<div class='col-md-6 mb-3'><h6 class='text-danger'><i class='bi bi-gavel me-2'></i>Regulatory Requirements</h6><p class='text-muted'>${roadmap.field_specific_considerations.regulatory_requirements}</p></div>` : ''}${roadmap.field_specific_considerations.technology_impact ? `<div class='col-md-6 mb-3'><h6 class='text-info'><i class='bi bi-cpu me-2'></i>Technology Impact</h6><p class='text-muted'>${roadmap.field_specific_considerations.technology_impact}</p></div>` : ''}${roadmap.field_specific_considerations.future_outlook ? `<div class='col-12'><h6 class='text-success'><i class='bi bi-lightning-charge me-2'></i>Future Outlook</h6><p class='text-muted'>${roadmap.field_specific_considerations.future_outlook}</p></div>` : ''}</div></div></div></section>`;
+                }
+                // Field-Specific Resources
+                if (roadmap.field_specific_resources) {
+                    roadmapContent.innerHTML += `<section class='mb-4'><div class='card'><div class='card-header bg-success text-white'><h4 class='mb-0'><i class='bi bi-book me-2'></i>Field-Specific Resources</h4></div><div class='card-body row'>${roadmap.field_specific_resources.industry_publications ? `<div class='col-md-6 mb-3'><h6 class='text-primary'><i class='bi bi-newspaper me-2'></i>Industry Publications</h6><p class='text-muted'>${roadmap.field_specific_resources.industry_publications}</p></div>` : ''}${roadmap.field_specific_resources.professional_organizations ? `<div class='col-md-6 mb-3'><h6 class='text-success'><i class='bi bi-building me-2'></i>Professional Organizations</h6><p class='text-muted'>${roadmap.field_specific_resources.professional_organizations}</p></div>` : ''}${roadmap.field_specific_resources.conferences_events ? `<div class='col-md-6 mb-3'><h6 class='text-warning'><i class='bi bi-calendar-event me-2'></i>Conferences & Events</h6><p class='text-muted'>${roadmap.field_specific_resources.conferences_events}</p></div>` : ''}${roadmap.field_specific_resources.online_communities ? `<div class='col-md-6 mb-3'><h6 class='text-info'><i class='bi bi-globe me-2'></i>Online Communities</h6><p class='text-muted'>${roadmap.field_specific_resources.online_communities}</p></div>` : ''}${roadmap.field_specific_resources.mentorship_opportunities ? `<div class='col-12'><h6 class='text-dark'><i class='bi bi-person-badge me-2'></i>Mentorship Opportunities</h6><p class='text-muted'>${roadmap.field_specific_resources.mentorship_opportunities}</p></div>` : ''}</div></div></div></section>`;
+                }
+                // Additional Info
+                if (roadmap.budget_considerations || roadmap.risk_factors || roadmap.alternative_paths) {
+                    roadmapContent.innerHTML += `<section class='mb-4'><div class='row'>${roadmap.budget_considerations ? `<div class='col-md-6 mb-4'><div class='card'><div class='card-body'><h5 class='card-title text-primary'><i class='bi bi-currency-dollar me-2'></i>Budget Considerations</h5><p class='card-text'>${roadmap.budget_considerations}</p></div></div></div>` : ''}${roadmap.risk_factors ? `<div class='col-md-6 mb-4'><div class='card'><div class='card-body'><h5 class='card-title text-warning'><i class='bi bi-shield-exclamation me-2'></i>Risk Factors</h5><ul class='list-unstyled'>${roadmap.risk_factors.map(r => `<li class='mb-2'><i class='bi bi-exclamation-triangle text-warning me-2'></i>${r}</li>`).join('')}</ul></div></div></div>` : ''}${roadmap.alternative_paths ? `<div class='col-12'><div class='card'><div class='card-body'><h5 class='card-title text-info'><i class='bi bi-signpost-split me-2'></i>Alternative Paths</h5><div class='row'>${roadmap.alternative_paths.map(p => `<div class='col-md-6 mb-2'><i class='bi bi-arrow-right text-info me-2'></i>${p}</div>`).join('')}</div></div></div></div>` : ''}</div></section>`;
+                }
+                // Tips for Success
+                roadmapContent.innerHTML += `<section class='mb-4'><div class='card'><div class='card-body'><h4 class='card-title'><i class='bi bi-lightbulb me-2 text-warning'></i>Tips for Success</h4><div class='row'><div class='col-md-6'><ul class='list-unstyled'><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Start with the first step of each phase</li><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Set realistic deadlines for each step</li><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Track your progress regularly</li></ul></div><div class='col-md-6'><ul class='list-unstyled'><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Celebrate small wins along the way</li><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Adjust the roadmap as needed</li><li class='mb-2'><i class='bi bi-check-circle-fill text-success me-2'></i>Stay motivated by reviewing your goal</li></ul></div></div></div></div></section>`;
+            }
             
             // Form submit handler
             roadmapForm.addEventListener('submit', async (e) => {
@@ -1194,149 +1335,154 @@ h1, h2, h3, h4, h5, h6 {
 
                         const roadmap = data.roadmap;  // Get the actual roadmap data
 
-                        // Display project overview
-                        const overview = roadmap.project_overview || {};
-                        const objectives = overview.objectives || [];
+                        // --- Branch for non-tech rendering ---
+                        if (roadmapType === 'non-tech') {
+                            renderNonTechRoadmap(roadmap);
+                        } else {
+                            // Display project overview
+                            const overview = roadmap.project_overview || {};
+                            const objectives = overview.objectives || [];
 
-                        const overviewHtml = `
-                            <div class="card mb-4 shadow glass-card">
-                                <div class="card-header">
-                                    <h3 class="card-title mb-0">🎯 ${overview.name || 'Unnamed Project'}</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="overview-section mb-4">
-                                        <h4 class="text-primary mb-3">
-                                            <i class="bi bi-info-circle-fill me-2"></i>Project Overview
-                                        </h4>
-                                        <p class="lead">${overview.description || 'No description provided.'}</p>
-                                    </div>
-                                    <div class="objectives-section">
-                                        <h4 class="text-primary mb-3">
-                                            <i class="bi bi-target me-2"></i>Key Objectives
-                                        </h4>
-                                        <ul class="objectives-list">
-                                            ${objectives.map(obj => `
-                                                <li class="mb-2">
-                                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                                    ${obj}
-                                                </li>
-                                            `).join('')}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        roadmapContent.innerHTML = overviewHtml;
-
-                        // Display phases
-                        Object.entries(roadmap.phases || {}).forEach(([phaseKey, phase], index) => {
-                            const phaseNumber = index + 1;
-                            
-                            // Generate sub-phases HTML
-                            const subPhasesHtml = Object.entries(phase.sub_phases || {}).map(([subPhaseKey, subPhase]) => `
-                                <div class="card sub-phase-card mb-3">
-                                    <div class="card-header bg-light">
-                                        <h5 class="mb-0">
-                                            <i class="bi bi-list-task me-2"></i>${subPhase.name}
-                                        </h5>
+                            const overviewHtml = `
+                                <div class="card mb-4 shadow glass-card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">🎯 ${overview.name || 'Unnamed Project'}</h3>
                                     </div>
                                     <div class="card-body">
-                                        <p class="mb-3">${subPhase.description}</p>
-                                        <h6 class="text-primary mb-2">
-                                            <i class="bi bi-check2-square me-2"></i>Tasks:
-                                        </h6>
-                                        <ul class="task-list">
-                                            ${(subPhase.tasks || []).map(task => `
-                                                <li class="task-item mb-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input task-checkbox" type="checkbox" onchange="updateProgress()">
-                                                        <label class="form-check-label">${task}</label>
-                                                    </div>
-                                                </li>
-                                            `).join('')}
-                                        </ul>
-                                    </div>
-                                </div>
-                            `).join('');
-
-                            // Generate phase HTML
-                            const phaseHtml = `
-                                <div class="card phase-card shadow glass-card mb-4" id="phase-${phaseKey}">
-                                    <div class="card-header">
-                                        <div class="phase-heading" onclick="togglePhase('phase-${phaseKey}')">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0">
-                                                    <i class="bi bi-chevron-right accordion-icon me-2"></i>
-                                                    📋 Phase ${phaseNumber}: ${phase.name}
-                                                </h4>
-                                                <span class="badge bg-primary">${phase.duration || 'N/A'}</span>
-                                            </div>
+                                        <div class="overview-section mb-4">
+                                            <h4 class="text-primary mb-3">
+                                                <i class="bi bi-info-circle-fill me-2"></i>Project Overview
+                                            </h4>
+                                            <p class="lead">${overview.description || 'No description provided.'}</p>
                                         </div>
-                                    </div>
-                                    <div class="card-body collapsible-content">
-                                        <div class="alert alert-light mb-4">
-                                            <i class="bi bi-info-circle-fill text-primary me-2"></i>
-                                            ${phase.overview}
+                                        <div class="objectives-section">
+                                            <h4 class="text-primary mb-3">
+                                                <i class="bi bi-target me-2"></i>Key Objectives
+                                            </h4>
+                                            <ul class="objectives-list">
+                                                ${objectives.map(obj => `
+                                                    <li class="mb-2">
+                                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                                        ${obj}
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
                                         </div>
-                                        <div class="row mb-4">
-                                            <div class="col-md-6">
-                                                <h5 class="text-primary mb-3">
-                                                    <i class="bi bi-target me-2"></i>Objectives
-                                                </h5>
-                                                <ul class="list-unstyled">
-                                                    ${(phase.objectives || []).map(obj => `
-                                                        <li class="mb-2">
-                                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                                            ${obj}
-                                                        </li>
-                                                    `).join('')}
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h5 class="text-primary mb-3">
-                                                    <i class="bi bi-box-seam me-2"></i>Deliverables
-                                                </h5>
-                                                <ul class="list-unstyled">
-                                                    ${(phase.deliverables || []).map(del => `
-                                                        <li class="mb-2">
-                                                            <i class="bi bi-file-earmark-check-fill text-info me-2"></i>
-                                                            ${del}
-                                                        </li>
-                                                    `).join('')}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        ${subPhasesHtml}
                                     </div>
                                 </div>
                             `;
-                            roadmapContent.innerHTML += phaseHtml;
+                            roadmapContent.innerHTML = overviewHtml;
 
-                            // Add to timeline
-                            const timelineItemHtml = `
-                                <div class="timeline-item">
-                                    <div class="timeline-dot"></div>
-                                    <div class="timeline-content">
-                                        <h5 class="mb-2">
-                                            <i class="bi bi-calendar-event me-2"></i>Phase ${phaseNumber}: ${phase.name}
-                                        </h5>
-                                        <p class="text-muted mb-0">
-                                            <i class="bi bi-clock me-1"></i>${phase.duration || 'Duration: TBD'}
-                                        </p>
+                            // Display phases
+                            Object.entries(roadmap.phases || {}).forEach(([phaseKey, phase], index) => {
+                                const phaseNumber = index + 1;
+                                
+                                // Generate sub-phases HTML
+                                const subPhasesHtml = Object.entries(phase.sub_phases || {}).map(([subPhaseKey, subPhase]) => `
+                                    <div class="card sub-phase-card mb-3">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0">
+                                                <i class="bi bi-list-task me-2"></i>${subPhase.name}
+                                            </h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-3">${subPhase.description}</p>
+                                            <h6 class="text-primary mb-2">
+                                                <i class="bi bi-check2-square me-2"></i>Tasks:
+                                            </h6>
+                                            <ul class="task-list">
+                                                ${(subPhase.tasks || []).map(task => `
+                                                    <li class="task-item mb-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input task-checkbox" type="checkbox" onchange="updateProgress()">
+                                                            <label class="form-check-label">${task}</label>
+                                                        </div>
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            `;
-                            timelineContent.innerHTML += timelineItemHtml;
-                        });
+                                `).join('');
 
-                        // Auto-expand the first phase
-                        setTimeout(() => {
-                            const firstPhase = document.querySelector('.phase-card');
-                            if (firstPhase) {
-                                firstPhase.classList.add('expanded');
-                                firstPhase.querySelector('.collapsible-content').style.maxHeight = '1000px';
-                            }
-                        }, 100);
+                                // Generate phase HTML
+                                const phaseHtml = `
+                                    <div class="card phase-card shadow glass-card mb-4" id="phase-${phaseKey}">
+                                        <div class="card-header">
+                                            <div class="phase-heading" onclick="togglePhase('phase-${phaseKey}')">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0">
+                                                        <i class="bi bi-chevron-right accordion-icon me-2"></i>
+                                                        📋 Phase ${phaseNumber}: ${phase.name}
+                                                    </h4>
+                                                    <span class="badge bg-primary">${phase.duration || 'N/A'}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body collapsible-content">
+                                            <div class="alert alert-light mb-4">
+                                                <i class="bi bi-info-circle-fill text-primary me-2"></i>
+                                                ${phase.overview}
+                                            </div>
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <h5 class="text-primary mb-3">
+                                                        <i class="bi bi-target me-2"></i>Objectives
+                                                    </h5>
+                                                    <ul class="list-unstyled">
+                                                        ${(phase.objectives || []).map(obj => `
+                                                            <li class="mb-2">
+                                                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                                                ${obj}
+                                                            </li>
+                                                        `).join('')}
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5 class="text-primary mb-3">
+                                                        <i class="bi bi-box-seam me-2"></i>Deliverables
+                                                    </h5>
+                                                    <ul class="list-unstyled">
+                                                        ${(phase.deliverables || []).map(del => `
+                                                            <li class="mb-2">
+                                                                <i class="bi bi-file-earmark-check-fill text-info me-2"></i>
+                                                                ${del}
+                                                            </li>
+                                                        `).join('')}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            ${subPhasesHtml}
+                                        </div>
+                                    </div>
+                                `;
+                                roadmapContent.innerHTML += phaseHtml;
+
+                                // Add to timeline
+                                const timelineItemHtml = `
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5 class="mb-2">
+                                                <i class="bi bi-calendar-event me-2"></i>Phase ${phaseNumber}: ${phase.name}
+                                            </h5>
+                                            <p class="text-muted mb-0">
+                                                <i class="bi bi-clock me-1"></i>${phase.duration || 'Duration: TBD'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                `;
+                                timelineContent.innerHTML += timelineItemHtml;
+                            });
+
+                            // Auto-expand the first phase
+                            setTimeout(() => {
+                                const firstPhase = document.querySelector('.phase-card');
+                                if (firstPhase) {
+                                    firstPhase.classList.add('expanded');
+                                    firstPhase.querySelector('.collapsible-content').style.maxHeight = '1000px';
+                                }
+                            }, 100);
+                        }
                         
                         // Show results and export buttons
                         results.style.display = 'block';

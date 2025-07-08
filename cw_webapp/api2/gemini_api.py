@@ -6,6 +6,7 @@ import logging
 import uuid
 from datetime import datetime
 import re
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +15,8 @@ class GeminiRoadmapGenerator:
     
     def __init__(self):
         # Hardcoded Gemini API key for immediate use (TEMPORARY)
-        api_key = 'AIzaSyD1Jv1-dbLE7Tpvj9S08TpnHNTWYldmlHU'
+        load_dotenv()
+        api_key = os.getenv('NON_TECH_KEY')
         genai.configure(api_key=api_key)
         # Use the correct model name for the current API version
         self.model = genai.GenerativeModel('models/gemini-2.5-flash-preview-05-20')
