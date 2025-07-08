@@ -4127,3 +4127,70 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000
 2025-07-05 20:02:06,668 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.017213s | Status: 401
 2025-07-05 20:02:06,668 - WARNING - Unauthorized: /api/roadmap/
 2025-07-06 23:31:18,248 - WARNING - Not Found: /favicon.ico
+2025-07-06 23:31:49,125 - WARNING - Bad Request: /users/login/
+2025-07-06 23:40:48,680 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-06 23:40:58,753 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-06 23:48:20,091 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-08 16:19:44,376 - WARNING - Not Found: /favicon.ico
+2025-07-08 16:22:22,910 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 0.0s | Status: 401
+2025-07-08 16:28:03,374 - INFO - Starting roadmap generation for prompt: Build a fintech app
+2025-07-08 16:28:03,374 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-08 16:28:03,374 - INFO - Model initialized. Generating content...
+2025-07-08 16:28:40,858 - INFO - Model response received.
+2025-07-08 16:28:41,074 - INFO - JSON parsed successfully.
+2025-07-08 16:28:41,074 - INFO - Roadmap generation completed successfully
+2025-07-08 16:28:43,121 - ERROR - Error in generate_roadmap_view: HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /projects/save_project/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001995B265CA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-07-08 16:28:43,124 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 39.749969s | Status: 500
+2025-07-08 16:35:17,866 - INFO - Starting roadmap generation for prompt: twitter like app based on blockchain
+2025-07-08 16:35:17,866 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-08 16:35:17,866 - INFO - Model initialized. Generating content...
+2025-07-08 16:35:52,376 - INFO - Model response received.
+2025-07-08 16:35:52,486 - INFO - JSON parsed successfully.
+2025-07-08 16:35:52,486 - INFO - Roadmap generation completed successfully
+2025-07-08 16:35:52,516 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 34.650007s | Status: 200
+2025-07-08 16:36:29,145 - WARNING - Bad Request: /api2/roadmap/
+2025-07-08 16:36:42,876 - WARNING - Bad Request: /api2/roadmap/
+2025-07-08 16:37:31,776 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 1f9e3a08-2c8b-4ebe-a0c1-169c0b91455d)
+2025-07-08 16:38:58,975 - INFO - Successfully generated fresh roadmap for goal: learn python programming language (Request ID: 1f9e3a08-2c8b-4ebe-a0c1-169c0b91455d)
+2025-07-08 16:38:58,977 - ERROR - API Error generating roadmap for goal 'learn python programming language': no such table: api2_roadmaprequest
+2025-07-08 16:38:58,979 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 16:42:19,615 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\views.py changed, reloading.
+2025-07-08 16:42:34,684 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 0fd2cc31-8012-49ee-8c92-ba50a74a7dc8)
+2025-07-08 16:44:25,819 - ERROR - Failed to parse Gemini response as JSON for goal 'learn python programming language' (Request ID: 0fd2cc31-8012-49ee-8c92-ba50a74a7dc8): Invalid control character at: line 791 column 116 (char 72855)
+2025-07-08 16:44:25,826 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 16:46:14,777 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\gemini_api.py changed, reloading.
+2025-07-08 16:46:37,411 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 6e6ab824-03cf-4e3e-bad1-bdbc170d9d45)
+2025-07-08 16:48:01,289 - ERROR - Error generating roadmap for goal 'learn python programming language' (Request ID: 6e6ab824-03cf-4e3e-bad1-bdbc170d9d45): Failed to parse Gemini response as JSON: Expecting ',' delimiter: line 533 column 17 (char 46578)
+2025-07-08 16:48:01,305 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 16:52:03,968 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\gemini_api.py changed, reloading.
+2025-07-08 16:52:26,321 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 2651818c-8677-4a59-bde4-406545a7f2d8)
+2025-07-08 16:55:41,721 - ERROR - Error generating roadmap for goal 'learn python programming language' (Request ID: 2651818c-8677-4a59-bde4-406545a7f2d8): Failed to parse Gemini response as JSON: Extra data: line 1 column 112496 (char 112495)
+2025-07-08 16:55:41,730 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 16:57:26,020 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\gemini_api.py changed, reloading.
+2025-07-08 16:57:48,883 - WARNING - Not Found: /favicon.ico
+2025-07-08 16:57:57,750 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 8b2d264d-e202-43d8-93c8-45eb5cd1a00e)
+2025-07-08 16:59:41,408 - INFO - Successfully generated fresh roadmap for goal: learn python programming language (Request ID: 8b2d264d-e202-43d8-93c8-45eb5cd1a00e)
+2025-07-08 16:59:41,644 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 17:01:59,928 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 9932a4d8-7c62-42cf-85d0-49ead4d465c4)
+2025-07-08 17:03:08,582 - INFO - Successfully generated fresh roadmap for goal: learn python programming language (Request ID: 9932a4d8-7c62-42cf-85d0-49ead4d465c4)
+2025-07-08 17:03:54,378 - WARNING - Not Found: /favicon.ico
+2025-07-08 17:04:12,373 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: 09edaace-feee-42f7-9faa-c5b018317bc2)
+2025-07-08 17:04:41,015 - INFO - Successfully generated fresh roadmap for goal: learn python programming language (Request ID: 09edaace-feee-42f7-9faa-c5b018317bc2)
+2025-07-08 17:06:04,857 - INFO - Generating fresh roadmap for goal: learn python programming language (Request ID: bb6f5078-bef0-4637-9d22-a11c686d51cc)
+2025-07-08 17:09:36,126 - ERROR - Error generating roadmap for goal 'learn python programming language' (Request ID: bb6f5078-bef0-4637-9d22-a11c686d51cc): Failed to parse Gemini response as JSON: Extra data: line 1 column 81588 (char 81587)
+2025-07-08 17:09:36,138 - ERROR - Internal Server Error: /api2/roadmap/
+2025-07-08 17:10:42,092 - INFO - C:\Users\Naman Sharma\Documents\codeweave\cw_webapp\api2\gemini_api.py changed, reloading.
+2025-07-08 17:11:06,703 - INFO - Generating fresh roadmap for goal: learn java programming language (Request ID: 45474a44-f3d7-4229-88a8-225a3ce08ba5)
+2025-07-08 17:12:35,092 - INFO - Successfully generated fresh roadmap for goal: learn java programming language (Request ID: 45474a44-f3d7-4229-88a8-225a3ce08ba5)
+2025-07-08 17:15:26,485 - INFO - Generating fresh roadmap for goal: learn ruby programming language (Request ID: 2fb443b6-2342-4de9-8e7e-eac14ae4c763)
+2025-07-08 17:17:06,052 - INFO - Successfully generated fresh roadmap for goal: learn ruby programming language (Request ID: 2fb443b6-2342-4de9-8e7e-eac14ae4c763)
+2025-07-08 17:19:35,826 - WARNING - Not Found: /favicon.ico
+2025-07-08 17:19:38,543 - INFO - Starting roadmap generation for prompt: learn ruby programming language
+2025-07-08 17:19:38,544 - INFO - Initializing generative model: models/gemini-2.5-flash-preview-05-20
+2025-07-08 17:19:38,545 - INFO - Model initialized. Generating content...
+2025-07-08 17:19:47,844 - INFO - Generating fresh roadmap for goal: learn ruby programming language (Request ID: 8d3d40bc-1e3b-4bb5-93b1-131948df2099)
+2025-07-08 17:20:09,285 - INFO - Model response received.
+2025-07-08 17:20:09,575 - INFO - JSON parsed successfully.
+2025-07-08 17:20:09,575 - INFO - Roadmap generation completed successfully
+2025-07-08 17:20:09,615 - INFO - Endpoint: /api/roadmap/ | Method: POST | Duration: 31.072086s | Status: 200
+2025-07-08 17:22:41,123 - INFO - Successfully generated fresh roadmap for goal: learn ruby programming language (Request ID: 8d3d40bc-1e3b-4bb5-93b1-131948df2099)

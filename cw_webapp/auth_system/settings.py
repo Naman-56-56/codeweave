@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'api',
     'dev_env',
     'corsheaders',
+    'api2',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+NON_TECH_KEY = os.getenv("NON_TECH_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
 
 # Use PostgreSQL if DATABASE_URL is set 
 if os.environ.get('DATABASE_URL'):

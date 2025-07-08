@@ -27,4 +27,5 @@ urlpatterns = [
     path("dashboard/", dashboard_view, name="dashboard"),
     path("", home_view, name="home"),
     path('api/', include('api.urls', namespace='api')),
+    path('api2/', include('api2.urls', namespace='api2')),
 ]

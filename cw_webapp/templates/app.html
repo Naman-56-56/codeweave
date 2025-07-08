@@ -1012,6 +1012,17 @@ h1, h2, h3, h4, h5, h6 {
                                     </select>
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <label class="form-label">Choose Roadmap Type</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="roadmapType" id="techOption" value="tech" checked>
+                                    <label class="form-check-label" for="techOption">Tech</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="roadmapType" id="nonTechOption" value="non-tech">
+                                    <label class="form-check-label" for="nonTechOption">Non-Tech</label>
+                                </div>
+                            </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary py-3">
                                     <i class="bi bi-diagram-3"></i> Generate Roadmap
@@ -1141,18 +1152,33 @@ h1, h2, h3, h4, h5, h6 {
 
                 try {
                     // Prepare the request payload
-                    const payload = { 
-                        prompt,
-                        project_name: projectName || undefined,
-                        duration: projectDuration || undefined
-                    };
+                    const roadmapType = document.querySelector('input[name="roadmapType"]:checked').value;
+                    let payload;
+                    if (roadmapType === 'non-tech') {
+                        payload = { goal: prompt };
+                    } else {
+                        payload = {
+                            prompt,
+                            project_name: projectName || undefined,
+                            duration: projectDuration || undefined
+                        };
+                    }
                     
-                    const response = await fetch('http://127.0.0.1:8000/api/roadmap/', {
+                    // Get roadmap type and endpoint
+                    const endpoint = roadmapType === 'non-tech' 
+                        ? 'http://127.0.0.1:8000/api2/roadmap/' 
+                        : 'http://127.0.0.1:8000/api/roadmap/';
+
+                    const headers = {
+                        'Content-Type': 'application/json',
+                    };
+                    if (roadmapType !== 'non-tech') {
+                        headers['Authorization'] = `Token ${localStorage.getItem('authToken')}`;
+                    }
+
+                    const response = await fetch(endpoint, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Token ${localStorage.getItem('authToken')}`
-                        },
+                        headers: headers,
                         body: JSON.stringify(payload)
                     });
 
@@ -1220,7 +1246,7 @@ h1, h2, h3, h4, h5, h6 {
                                             <i class="bi bi-check2-square me-2"></i>Tasks:
                                         </h6>
                                         <ul class="task-list">
-                                            ${subPhase.tasks.map(task => `
+                                            ${(subPhase.tasks || []).map(task => `
                                                 <li class="task-item mb-2">
                                                     <div class="form-check">
                                                         <input class="form-check-input task-checkbox" type="checkbox" onchange="updateProgress()">
