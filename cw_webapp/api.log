@@ -4333,3 +4333,2147 @@ django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 1813: 
 2025-07-09 00:56:30,793 - WARNING - Bad Request: /users/login/
 2025-07-09 00:57:05,161 - WARNING - Bad Request: /users/login/
 2025-07-09 00:59:34,630 - WARNING - Bad Request: /users/login/
+2025-07-28 14:11:33,994 - WARNING - Not Found: /favicon.ico
+2025-07-28 14:11:49,812 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+2025-07-28 14:53:20,364 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1035, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'navbar_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1097, in load
+    lib = find_library(parser, name)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1037, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'navbar_tags' is not a registered tag library. Must be one of:
+account
+admin_list
+admin_modify
+admin_urls
+allauth
+cache
+i18n
+l10n
+log
+rest_framework
+socialaccount
+static
+tz
+2025-07-28 14:55:00,808 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1035, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'navbar_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1097, in load
+    lib = find_library(parser, name)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\defaulttags.py", line 1037, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'navbar_tags' is not a registered tag library. Must be one of:
+account
+admin_list
+admin_modify
+admin_urls
+allauth
+cache
+i18n
+l10n
+log
+rest_framework
+socialaccount
+static
+tz
+2025-07-28 14:56:46,190 - INFO - C:\Users\abc\Desktop\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-28 18:02:07,380 - WARNING - Not Found: /js/gsap.min.js
+2025-07-28 18:02:07,397 - WARNING - Not Found: /js/smoothscroll.js
+2025-07-28 18:02:07,435 - WARNING - Not Found: /css/base.css
+2025-07-28 18:02:07,464 - WARNING - Not Found: /js/imagesloaded.pkgd.min.js
+2025-07-28 18:02:07,473 - WARNING - Not Found: /js/ScrollTrigger.min.js
+2025-07-28 18:02:07,477 - WARNING - Not Found: /js/lenis.min.js
+2025-07-28 18:02:07,493 - WARNING - Not Found: /js/index.js
+2025-07-28 18:02:08,015 - WARNING - Not Found: /css/base.css
+2025-07-28 18:02:09,182 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:02:09,198 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:02:09,211 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:02:09,218 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:02:09,225 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:02:09,232 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:02:09,240 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:02:09,252 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:02:09,266 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:02:09,281 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:02:09,288 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:02:09,307 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:02:09,309 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:02:09,334 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:02:09,456 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:02:09,544 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:02:09,555 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:02:09,565 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:02:09,582 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:02:09,618 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:03:09,828 - WARNING - Not Found: /js/gsap.min.js
+2025-07-28 18:03:09,856 - WARNING - Not Found: /js/lenis.min.js
+2025-07-28 18:03:09,861 - WARNING - Not Found: /js/index.js
+2025-07-28 18:03:09,870 - WARNING - Not Found: /js/ScrollTrigger.min.js
+2025-07-28 18:03:09,881 - WARNING - Not Found: /js/imagesloaded.pkgd.min.js
+2025-07-28 18:03:09,887 - WARNING - Not Found: /js/smoothscroll.js
+2025-07-28 18:03:10,093 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:03:10,110 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:03:10,129 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:03:10,131 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:03:10,143 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:03:10,149 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:03:10,159 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:03:10,189 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:03:10,200 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:03:10,215 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:03:10,224 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:03:10,234 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:03:10,242 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:03:10,254 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:03:10,269 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:03:10,279 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:03:10,289 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:03:10,298 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:03:10,309 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:03:10,336 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:03:10,345 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:12:37,981 - WARNING - Not Found: /js/ScrollTrigger.min.js
+2025-07-28 18:12:37,987 - WARNING - Not Found: /js/gsap.min.js
+2025-07-28 18:12:37,997 - WARNING - Not Found: /js/lenis.min.js
+2025-07-28 18:12:38,007 - WARNING - Not Found: /js/imagesloaded.pkgd.min.js
+2025-07-28 18:12:38,020 - WARNING - Not Found: /js/smoothscroll.js
+2025-07-28 18:12:38,031 - WARNING - Not Found: /js/index.js
+2025-07-28 18:12:38,663 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:12:38,671 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:12:38,681 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:12:38,689 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:12:38,696 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:12:38,703 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:12:38,728 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:12:38,734 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:12:38,740 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:12:38,750 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:12:38,767 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:12:38,774 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:12:38,780 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:12:38,783 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:12:38,797 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:12:38,805 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:12:38,812 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:12:38,817 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:12:38,832 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:12:38,836 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:12:38,844 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:15:56,332 - WARNING - Not Found: /js/ScrollTrigger.min.js
+2025-07-28 18:15:56,338 - WARNING - Not Found: /js/gsap.min.js
+2025-07-28 18:15:56,348 - WARNING - Not Found: /js/lenis.min.js
+2025-07-28 18:15:56,356 - WARNING - Not Found: /js/imagesloaded.pkgd.min.js
+2025-07-28 18:15:56,377 - WARNING - Not Found: /js/smoothscroll.js
+2025-07-28 18:15:56,389 - WARNING - Not Found: /js/index.js
+2025-07-28 18:15:57,322 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:15:57,330 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:15:57,341 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:15:57,351 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:15:57,360 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:15:57,370 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:15:57,395 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:15:57,401 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:15:57,411 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:15:57,414 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:15:57,428 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:15:57,431 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:15:57,444 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:15:57,456 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:15:57,464 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:15:57,489 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:15:57,476 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:15:57,498 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:15:57,512 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:15:57,524 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:15:57,537 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:17:06,716 - WARNING - Not Found: /js/gsap.min.js
+2025-07-28 18:17:06,722 - WARNING - Not Found: /js/ScrollTrigger.min.js
+2025-07-28 18:17:06,730 - WARNING - Not Found: /js/index.js
+2025-07-28 18:17:06,736 - WARNING - Not Found: /js/imagesloaded.pkgd.min.js
+2025-07-28 18:17:06,746 - WARNING - Not Found: /js/smoothscroll.js
+2025-07-28 18:17:06,755 - WARNING - Not Found: /js/lenis.min.js
+2025-07-28 18:17:07,274 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:17:07,283 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:17:07,293 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:17:07,303 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:17:07,311 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:17:07,318 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:17:07,334 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:17:07,350 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:17:07,364 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:17:07,387 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:17:07,399 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:17:07,412 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:17:07,426 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:17:07,440 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:17:07,457 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:17:07,469 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:17:07,481 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:17:07,494 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:17:07,507 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:17:07,520 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:17:07,532 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:17:11,093 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:17:11,357 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:17:13,204 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:18:22,279 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:18:22,291 - WARNING - Not Found: /cw_webapp/templates/js/ScrollTrigger.min.js
+2025-07-28 18:18:22,299 - WARNING - Not Found: /cw_webapp/templates/js/smoothscroll.js
+2025-07-28 18:18:22,299 - WARNING - Not Found: /cw_webapp/templates/js/lenis.min.js
+2025-07-28 18:18:22,305 - WARNING - Not Found: /cw_webapp/templates/js/gsap.min.js
+2025-07-28 18:18:22,315 - WARNING - Not Found: /cw_webapp/templates/js/imagesloaded.pkgd.min.js
+2025-07-28 18:18:22,329 - WARNING - Not Found: /js/index.js
+2025-07-28 18:18:23,079 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:18:23,092 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:18:23,101 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:18:23,113 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:18:23,123 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:18:23,124 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:18:23,136 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:18:23,149 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:18:23,162 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:18:23,173 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:18:23,185 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:18:23,233 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:18:23,277 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:18:23,309 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:18:23,328 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:18:23,343 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:18:23,355 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:18:23,367 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:18:23,383 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:18:23,393 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:18:23,405 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:18:30,700 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:18:30,724 - WARNING - Not Found: /cw_webapp/templates/js/imagesloaded.pkgd.min.js
+2025-07-28 18:18:30,732 - WARNING - Not Found: /js/index.js
+2025-07-28 18:18:30,736 - WARNING - Not Found: /cw_webapp/templates/js/gsap.min.js
+2025-07-28 18:18:30,741 - WARNING - Not Found: /cw_webapp/templates/js/ScrollTrigger.min.js
+2025-07-28 18:18:30,748 - WARNING - Not Found: /cw_webapp/templates/js/lenis.min.js
+2025-07-28 18:18:30,755 - WARNING - Not Found: /cw_webapp/templates/js/smoothscroll.js
+2025-07-28 18:18:31,484 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:18:31,490 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:18:31,499 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:18:31,510 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:18:31,520 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:18:31,533 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:18:31,547 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:18:31,558 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:18:31,572 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:18:31,586 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:18:31,614 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:18:31,631 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:18:31,652 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:18:31,673 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:18:31,686 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:18:31,699 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:18:31,710 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:18:31,726 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:18:31,735 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:18:31,739 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:18:31,751 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:19:55,121 - WARNING - Not Found: /cw_webapp/templates/js/gsap.min.js
+2025-07-28 18:19:55,135 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:19:55,142 - WARNING - Not Found: /cw_webapp/templates/js/ScrollTrigger.min.js
+2025-07-28 18:19:55,150 - WARNING - Not Found: /cw_webapp/templates/js/imagesloaded.pkgd.min.js
+2025-07-28 18:19:55,159 - WARNING - Not Found: /cw_webapp/templates/js/lenis.min.js
+2025-07-28 18:19:55,169 - WARNING - Not Found: /cw_webapp/templates/js/smoothscroll.js
+2025-07-28 18:19:55,180 - WARNING - Not Found: /js/index.js
+2025-07-28 18:19:55,846 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:19:55,854 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:19:55,859 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:19:55,870 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:19:55,878 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:19:55,901 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:19:55,918 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:19:55,936 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:19:55,960 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:19:55,983 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:19:56,018 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:19:56,039 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:19:56,053 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:19:56,065 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:19:56,077 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:19:56,091 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:19:56,106 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:19:56,117 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:19:56,132 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:19:56,142 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:19:56,153 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:19:58,463 - WARNING - Not Found: /cw_webapp/templates/js/gsap.min.js
+2025-07-28 18:19:58,480 - WARNING - Not Found: /cw_webapp/templates/js/imagesloaded.pkgd.min.js
+2025-07-28 18:19:58,493 - WARNING - Not Found: /js/index.js
+2025-07-28 18:19:58,501 - WARNING - Not Found: /cw_webapp/templates/js/lenis.min.js
+2025-07-28 18:19:58,515 - WARNING - Not Found: /cw_webapp/templates/js/ScrollTrigger.min.js
+2025-07-28 18:19:58,521 - WARNING - Not Found: /cw_webapp/templates/js/smoothscroll.js
+2025-07-28 18:19:58,535 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:19:59,270 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:19:59,281 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:19:59,290 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:19:59,301 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:19:59,310 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:19:59,319 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:19:59,332 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:19:59,346 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:19:59,359 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:19:59,371 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:19:59,378 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:19:59,384 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:19:59,395 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:19:59,406 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:19:59,415 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:19:59,430 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:19:59,441 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:19:59,452 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:19:59,464 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:19:59,476 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:19:59,488 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:20:20,765 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:20:20,792 - WARNING - Not Found: /cw_webapp/templates/js/gsap.min.js
+2025-07-28 18:20:20,801 - WARNING - Not Found: /cw_webapp/templates/js/imagesloaded.pkgd.min.js
+2025-07-28 18:20:20,809 - WARNING - Not Found: /cw_webapp/templates/js/ScrollTrigger.min.js
+2025-07-28 18:20:20,814 - WARNING - Not Found: /cw_webapp/templates/js/lenis.min.js
+2025-07-28 18:20:20,822 - WARNING - Not Found: /cw_webapp/templates/js/smoothscroll.js
+2025-07-28 18:20:20,830 - WARNING - Not Found: /js/index.js
+2025-07-28 18:20:21,325 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:20:21,336 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:20:21,342 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:20:21,361 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:20:21,350 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:20:21,370 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:20:21,379 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:20:21,411 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:20:21,423 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:20:21,437 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:20:21,455 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:20:21,471 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:20:21,486 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:20:21,499 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:20:21,512 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:20:21,526 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:20:21,539 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:20:21,552 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:20:21,563 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:20:21,578 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:20:21,587 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:21:03,943 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:21:03,981 - WARNING - Not Found: /js/index.js
+2025-07-28 18:21:04,646 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:21:04,652 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:21:04,661 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:21:04,669 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:21:04,678 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:21:04,686 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:21:04,694 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:21:04,704 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:21:04,711 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:21:04,721 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:21:04,737 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:21:04,747 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:21:04,758 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:21:04,768 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:21:04,788 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:21:04,796 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:21:04,818 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:21:04,833 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:21:04,931 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:21:04,941 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:21:04,955 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:21:07,193 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:21:08,257 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:21:38,316 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:21:38,336 - WARNING - Not Found: /js/index.js
+2025-07-28 18:21:38,965 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:21:38,977 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:21:38,989 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:21:38,999 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:21:39,005 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:21:39,014 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:21:39,021 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:21:39,031 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:21:39,041 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:21:39,053 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:21:39,066 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:21:39,077 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:21:39,083 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:21:39,095 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:21:39,101 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:21:39,112 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:21:39,125 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:21:39,145 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:21:39,162 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:21:39,169 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:21:39,177 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:22:09,173 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-28 18:22:09,794 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:22:09,801 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:22:09,810 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:22:09,816 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:22:09,825 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:22:09,832 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:22:09,843 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:22:09,853 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:22:09,865 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:22:09,874 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:22:09,885 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:22:09,895 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:22:09,901 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:22:09,914 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:22:09,930 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:22:09,948 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:22:09,956 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:22:09,965 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:22:09,980 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:22:09,986 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:22:09,999 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:22:10,045 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:22:10,049 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:22:10,054 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:22:10,063 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:22:10,072 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:22:10,078 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:22:10,089 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:22:10,102 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:22:10,109 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:22:10,123 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:22:10,130 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:22:10,143 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:22:10,151 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:22:10,164 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:22:10,178 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:22:10,181 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:22:10,190 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:22:10,199 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:22:10,209 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:22:10,217 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:22:13,378 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:22:25,292 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:22:25,442 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:23:53,239 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:23:53,251 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:23:53,260 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:23:53,268 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:23:53,273 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:23:53,281 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:23:53,289 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:23:53,306 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:23:53,318 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:23:53,329 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:23:53,336 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:23:53,343 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:23:53,350 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:23:53,358 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:23:53,371 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:23:53,385 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:23:53,394 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:23:53,407 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:23:53,425 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:23:53,439 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:23:53,458 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:23:53,467 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:23:53,474 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:23:53,484 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:23:53,489 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:23:53,497 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:23:53,506 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:23:53,518 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:23:53,523 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:23:53,537 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:23:53,540 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:23:53,551 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:23:53,556 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:23:53,573 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:23:53,580 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:23:55,455 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:25:27,816 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:25:27,833 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:25:27,848 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:25:27,858 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:25:27,866 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:25:27,876 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:25:27,889 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:25:27,909 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:25:27,918 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:25:27,926 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:25:27,937 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:25:27,949 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:25:27,963 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:25:27,988 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:25:28,008 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:25:28,025 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:25:28,047 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:25:28,062 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:25:28,087 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:25:28,102 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:25:28,115 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:25:28,127 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:25:28,145 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:25:28,160 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:25:28,176 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:25:28,190 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:25:28,201 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:25:28,218 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:25:28,230 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:25:28,248 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:25:28,257 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:25:30,329 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:25:35,689 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:25:35,695 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:25:35,703 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:25:35,710 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:25:35,715 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:25:35,721 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:25:35,729 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:25:35,744 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:25:35,750 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:25:35,759 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:25:35,769 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:25:35,778 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:25:35,790 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:25:35,798 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:25:35,808 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:25:35,825 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:25:35,826 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:25:35,831 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:25:35,844 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:25:35,854 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:25:35,864 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:25:35,873 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:25:35,885 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:25:35,891 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:25:35,905 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:25:35,915 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:25:35,926 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:25:35,936 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:25:36,591 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:25:37,075 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:26:24,675 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:26:24,684 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:26:24,689 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:26:24,693 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:26:24,697 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:26:24,703 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:26:24,720 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:26:24,727 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:26:24,733 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:26:24,737 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:26:24,743 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:26:24,749 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:26:24,762 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:26:24,771 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:26:24,777 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:26:24,783 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:26:24,790 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:26:24,796 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:26:24,803 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:26:24,813 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:26:24,819 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:26:24,828 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:26:24,834 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:26:24,843 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:26:24,851 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:26:24,860 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:26:25,474 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:26:25,919 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:28:38,630 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:28:39,241 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:34,253 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:34,257 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:42:34,262 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:42:34,267 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:42:34,270 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:42:34,273 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:42:34,283 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:42:34,286 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:42:34,300 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:42:34,303 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:42:34,307 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:42:34,313 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:42:34,320 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:42:34,326 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:42:34,336 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:42:34,342 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:42:34,347 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:42:34,351 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:42:34,354 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:42:34,361 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:42:34,366 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:42:34,370 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:42:34,376 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:42:34,382 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:42:34,384 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:42:34,388 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:42:34,393 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:42:34,398 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:42:34,403 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:42:34,408 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:42:34,411 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:42:34,418 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:42:34,422 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:42:34,428 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:42:35,778 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:35,857 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:45,579 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:45,585 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:42:45,589 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:42:45,595 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:42:45,600 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:42:45,606 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:42:45,615 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:42:45,625 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:42:45,630 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:42:45,639 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:42:45,649 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:42:45,657 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:42:45,671 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:42:45,680 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:42:45,756 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:42:45,848 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:42:45,856 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:42:45,866 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:42:45,881 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:42:45,917 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:42:45,921 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:42:45,940 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:42:45,949 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:42:45,958 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:42:45,968 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:42:45,972 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:42:45,979 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:42:45,988 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:42:45,997 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:42:46,403 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:42:46,845 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:43:37,028 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:43:37,037 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:43:37,041 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:43:37,047 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:43:37,054 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:43:37,060 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:43:37,069 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:43:37,075 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:43:37,082 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:43:37,091 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:43:37,098 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:43:37,105 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:43:37,115 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:43:37,126 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:43:37,143 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:43:37,150 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:43:37,158 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:43:37,170 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:43:37,175 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:43:37,185 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:43:37,191 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:43:37,199 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:43:37,210 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:43:37,219 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:43:37,226 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:43:37,235 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:43:37,246 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:43:37,255 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:43:37,260 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:43:37,268 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:43:37,276 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:43:37,284 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:43:39,148 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:43:46,684 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:45:15,414 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:45:15,422 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:45:15,427 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:45:15,432 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:45:15,440 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:45:15,447 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:45:15,454 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:45:15,464 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:45:15,472 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:45:15,480 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:45:15,490 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:45:15,503 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:45:15,512 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:45:15,523 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:45:15,532 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:45:15,541 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:45:15,550 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:45:15,558 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:45:15,567 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:45:15,576 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:45:15,583 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:45:15,591 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:45:15,599 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:45:15,616 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:45:15,623 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:45:15,632 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:45:15,642 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:45:17,671 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:45:19,850 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:27,850 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:27,858 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:27,865 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:27,872 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:27,881 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:27,888 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:46:27,901 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:46:27,909 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:46:27,923 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:46:27,931 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:46:27,946 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:46:27,955 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:46:27,982 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:46:27,991 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:46:28,008 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:46:28,018 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:46:28,031 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:46:28,044 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:46:28,055 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:46:28,068 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:46:28,084 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:28,090 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:46:28,102 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:28,115 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:46:28,123 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:28,134 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:28,148 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:46:28,159 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:46:28,172 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:46:30,338 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:32,213 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:40,328 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:40,336 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:40,345 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:40,349 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:40,355 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:40,363 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:46:40,370 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:46:40,382 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:46:40,391 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:46:40,400 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:46:40,410 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:46:40,419 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:46:40,431 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:46:40,439 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:46:40,448 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:46:40,457 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:46:40,468 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:46:40,474 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:46:40,486 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:46:40,497 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:46:40,504 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:40,518 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:40,532 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:40,542 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:46:40,554 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:41,097 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:41,624 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:52,870 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:52,877 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:46:52,879 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:52,882 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:52,886 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:52,891 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:52,897 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:46:52,903 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:46:52,909 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:46:52,916 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:46:52,921 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:46:52,928 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:46:52,931 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:46:52,939 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:46:52,946 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:46:52,951 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:46:52,958 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:46:52,965 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:46:52,973 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:46:52,979 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:46:52,982 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:46:52,989 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:46:52,996 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:46:53,003 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:46:53,008 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:46:53,014 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:46:53,020 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:46:53,022 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:46:53,516 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:46:54,016 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:03,466 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:03,475 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:03,482 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:03,487 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:03,493 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:03,500 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:03,507 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:47:03,515 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:47:03,523 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:47:03,531 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:47:03,539 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:47:03,550 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:47:03,557 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:47:03,566 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:47:03,578 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:47:03,588 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:47:03,598 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:47:03,607 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:47:03,615 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:47:03,623 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:47:03,636 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:47:03,643 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:03,653 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:03,665 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:03,674 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:03,681 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:04,241 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:04,728 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:26,310 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:26,319 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:26,325 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:26,333 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:26,339 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:26,346 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:26,355 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:47:26,364 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:47:26,373 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:47:26,386 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:47:26,394 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:47:26,404 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:47:26,417 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:47:26,429 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:47:26,439 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:47:26,454 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:47:26,463 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:47:26,472 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:47:26,483 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:47:26,494 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:47:26,503 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:47:26,514 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:26,525 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:26,539 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:26,552 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:26,565 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:27,171 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:27,652 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:38,508 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:38,514 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:38,518 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:38,522 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:38,526 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:38,532 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:38,536 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:47:38,543 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:47:38,549 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:47:38,555 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:47:38,560 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:47:38,567 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:47:38,572 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:47:38,584 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:47:38,586 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:47:38,599 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:47:38,604 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:47:38,607 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:47:38,612 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:47:38,619 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:47:38,623 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:47:38,630 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:47:38,637 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:47:38,645 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:47:38,649 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:47:38,655 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:47:38,660 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:47:39,174 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:47:39,239 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:50:11,673 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:50:11,677 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:50:11,681 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:50:11,684 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:50:11,689 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:50:11,693 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:50:11,698 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:50:11,707 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:50:11,709 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:50:11,714 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:50:11,722 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:50:11,727 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:50:11,730 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:50:11,740 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:50:11,743 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:50:11,749 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:50:11,757 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:50:11,766 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:50:11,776 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:50:11,781 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:50:11,789 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:50:11,794 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:50:11,799 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:50:11,803 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:50:11,808 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:50:11,812 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:50:11,817 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:50:11,824 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:50:11,827 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:50:11,831 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:50:11,837 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:50:11,842 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:50:11,846 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:50:11,850 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:50:11,856 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:50:11,859 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:50:11,863 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:50:11,868 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:50:12,446 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:50:13,041 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:51:10,600 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:51:10,610 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:51:10,618 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:51:10,623 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:51:10,631 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:51:10,638 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:51:10,648 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:51:10,659 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:51:10,666 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:51:10,675 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:51:10,684 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:51:10,695 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:51:10,701 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:51:10,713 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:51:10,722 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:51:10,731 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:51:10,737 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:51:10,747 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:51:10,757 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:51:10,766 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:51:10,775 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:51:10,786 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:51:10,796 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:51:10,803 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:51:10,808 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:51:10,819 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:51:10,829 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:51:10,839 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:51:10,848 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:51:10,859 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:51:10,869 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:51:10,880 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:51:13,138 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:51:19,280 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:52:12,179 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:52:12,184 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:52:12,190 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:52:12,195 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:52:12,200 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:52:12,204 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:52:12,209 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:52:12,213 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:52:12,219 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:52:12,227 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:52:12,235 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:52:12,239 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:52:12,246 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:52:12,263 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:52:12,266 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:52:12,270 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:52:12,275 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:52:12,282 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:52:12,288 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:52:12,301 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:52:12,305 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:52:12,310 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:52:12,313 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:52:12,316 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:52:12,322 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:52:12,327 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:52:12,335 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:52:12,341 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:52:12,347 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:52:12,352 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:52:12,357 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:52:13,703 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:53:09,587 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:53:09,594 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:53:09,607 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:53:09,613 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:53:09,621 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:53:09,626 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:53:09,641 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:53:09,652 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:53:09,659 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:53:09,673 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:53:09,674 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:53:09,683 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:53:09,695 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:53:09,710 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:53:09,721 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:53:09,730 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:53:09,740 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:53:09,746 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:53:09,759 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:53:09,771 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:53:09,780 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:53:09,790 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:53:09,802 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:53:09,808 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:53:09,822 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:53:09,834 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:53:11,684 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:54:50,965 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:54:50,972 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:54:50,975 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:54:50,980 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:54:50,985 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:54:50,993 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:54:50,997 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:54:51,006 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:54:51,011 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:54:51,015 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:54:51,025 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:54:51,032 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:54:51,040 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:54:51,043 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:54:51,046 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:54:51,050 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:54:51,059 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:54:51,069 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:54:51,073 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:54:51,077 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:54:51,081 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:54:51,086 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:54:51,092 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:54:51,096 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:54:51,099 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:54:51,105 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:54:51,110 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:54:51,114 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:54:51,119 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:54:51,126 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:54:51,129 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:54:51,703 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:54:52,337 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:56:20,322 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:56:20,336 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:56:20,342 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:56:20,348 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:56:20,363 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:56:20,368 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:56:20,379 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:56:20,392 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:56:20,404 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:56:20,420 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:56:20,431 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:56:20,442 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:56:20,456 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:56:20,468 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:56:20,475 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:56:20,488 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:56:20,506 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:56:20,508 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:56:20,522 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:56:20,532 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:56:20,548 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:56:20,554 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:56:20,564 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:56:20,581 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:56:20,594 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:56:24,622 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:59:13,981 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:59:13,997 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:59:14,016 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:59:14,016 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:59:14,025 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:59:14,032 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:59:14,044 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:59:14,055 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:59:14,067 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:59:14,082 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:59:14,094 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:59:14,111 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:59:14,127 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:59:14,145 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:59:14,146 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:59:14,158 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:59:14,175 - WARNING - Not Found: /img/6.jpg
+2025-07-28 18:59:14,189 - WARNING - Not Found: /img/17.jpg
+2025-07-28 18:59:14,199 - WARNING - Not Found: /img/18.jpg
+2025-07-28 18:59:14,213 - WARNING - Not Found: /img/20.jpg
+2025-07-28 18:59:14,229 - WARNING - Not Found: /img/3.jpg
+2025-07-28 18:59:14,244 - WARNING - Not Found: /img/19.jpg
+2025-07-28 18:59:14,257 - WARNING - Not Found: /img/1.jpg
+2025-07-28 18:59:14,270 - WARNING - Not Found: /img/2.jpg
+2025-07-28 18:59:14,284 - WARNING - Not Found: /img/4.jpg
+2025-07-28 18:59:14,297 - WARNING - Not Found: /img/7.jpg
+2025-07-28 18:59:14,310 - WARNING - Not Found: /img/5.jpg
+2025-07-28 18:59:14,325 - WARNING - Not Found: /img/8.jpg
+2025-07-28 18:59:14,334 - WARNING - Not Found: /img/9.jpg
+2025-07-28 18:59:14,347 - WARNING - Not Found: /img/10.jpg
+2025-07-28 18:59:14,362 - WARNING - Not Found: /img/11.jpg
+2025-07-28 18:59:14,374 - WARNING - Not Found: /img/12.jpg
+2025-07-28 18:59:14,387 - WARNING - Not Found: /img/13.jpg
+2025-07-28 18:59:14,397 - WARNING - Not Found: /img/15.jpg
+2025-07-28 18:59:14,412 - WARNING - Not Found: /img/14.jpg
+2025-07-28 18:59:14,430 - WARNING - Not Found: /img/16.jpg
+2025-07-28 18:59:16,453 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 18:59:17,698 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:19:04,652 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:19:08,026 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:24:45,155 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:24:45,163 - WARNING - Not Found: /image.png
+2025-07-28 19:24:45,271 - WARNING - Not Found: /image.png
+2025-07-28 19:24:47,604 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:24:53,485 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:25:07,672 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:25:08,419 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:25:09,180 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:26:20,812 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:26:22,010 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:26:23,065 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:27:17,923 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:27:20,185 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:28:26,227 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:28:28,545 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:28:29,764 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:18,328 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:19,609 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:22,634 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:31,739 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:32,460 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:30:33,925 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:32:10,410 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:32:12,811 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:32:14,547 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:33:21,707 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:33:24,186 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:36:15,031 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:36:16,080 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:36:17,090 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:37:04,186 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:37:04,921 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:37:30,699 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:37:31,497 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:37:43,573 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:38:57,587 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:39:00,974 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:39:46,150 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:39:47,415 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:39:48,880 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:18,519 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:21,837 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:25,575 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:26,449 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:31,599 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:42,628 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:43,343 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:43:43,902 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:44:21,497 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:44:21,503 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:44:21,577 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:44:22,183 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:44:22,680 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:46:03,380 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:46:03,395 - WARNING - Not Found: /cw_webapp/static/img/2.jpg
+2025-07-28 19:46:03,402 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:46:03,411 - WARNING - Not Found: /cw_webapp/static/img/3.jpg
+2025-07-28 19:46:03,421 - WARNING - Not Found: /cw_webapp/static/img/4.jpg
+2025-07-28 19:46:03,449 - WARNING - Not Found: /cw_webapp/static/img/5.jpg
+2025-07-28 19:46:03,467 - WARNING - Not Found: /cw_webapp/static/img/8.jpg
+2025-07-28 19:46:03,485 - WARNING - Not Found: /cw_webapp/static/img/7.jpg
+2025-07-28 19:46:03,487 - WARNING - Not Found: /cw_webapp/static/img/10.jpg
+2025-07-28 19:46:03,497 - WARNING - Not Found: /cw_webapp/static/img/9.jpg
+2025-07-28 19:46:03,507 - WARNING - Not Found: /cw_webapp/static/img/6.jpg
+2025-07-28 19:46:03,519 - WARNING - Not Found: /cw_webapp/static/img/11.jpg
+2025-07-28 19:46:03,534 - WARNING - Not Found: /cw_webapp/static/img/12.jpg
+2025-07-28 19:46:03,551 - WARNING - Not Found: /cw_webapp/static/img/13.jpg
+2025-07-28 19:46:03,568 - WARNING - Not Found: /cw_webapp/static/img/15.jpg
+2025-07-28 19:46:03,579 - WARNING - Not Found: /cw_webapp/static/img/14.jpg
+2025-07-28 19:46:03,597 - WARNING - Not Found: /cw_webapp/static/img/16.jpg
+2025-07-28 19:46:03,606 - WARNING - Not Found: /cw_webapp/static/img/17.jpg
+2025-07-28 19:46:03,619 - WARNING - Not Found: /cw_webapp/static/img/18.jpg
+2025-07-28 19:46:03,630 - WARNING - Not Found: /cw_webapp/static/img/20.jpg
+2025-07-28 19:46:03,638 - WARNING - Not Found: /cw_webapp/static/img/19.jpg
+2025-07-28 19:46:03,649 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:46:03,665 - WARNING - Not Found: /cw_webapp/static/img/2.jpg
+2025-07-28 19:46:03,674 - WARNING - Not Found: /cw_webapp/static/img/5.jpg
+2025-07-28 19:46:03,685 - WARNING - Not Found: /cw_webapp/static/img/3.jpg
+2025-07-28 19:46:03,701 - WARNING - Not Found: /cw_webapp/static/img/4.jpg
+2025-07-28 19:46:03,722 - WARNING - Not Found: /cw_webapp/static/img/7.jpg
+2025-07-28 19:46:03,723 - WARNING - Not Found: /cw_webapp/static/img/6.jpg
+2025-07-28 19:46:03,733 - WARNING - Not Found: /cw_webapp/static/img/8.jpg
+2025-07-28 19:46:03,742 - WARNING - Not Found: /cw_webapp/static/img/10.jpg
+2025-07-28 19:46:03,753 - WARNING - Not Found: /cw_webapp/static/img/9.jpg
+2025-07-28 19:46:03,764 - WARNING - Not Found: /cw_webapp/static/img/11.jpg
+2025-07-28 19:46:03,781 - WARNING - Not Found: /cw_webapp/static/img/12.jpg
+2025-07-28 19:46:03,790 - WARNING - Not Found: /cw_webapp/static/img/13.jpg
+2025-07-28 19:46:03,803 - WARNING - Not Found: /cw_webapp/static/img/15.jpg
+2025-07-28 19:46:07,504 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:48:00,321 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:48:00,330 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:48:00,337 - WARNING - Not Found: /cw_webapp/static/img/2.jpg
+2025-07-28 19:48:00,348 - WARNING - Not Found: /cw_webapp/static/img/3.jpg
+2025-07-28 19:48:00,354 - WARNING - Not Found: /cw_webapp/static/img/5.jpg
+2025-07-28 19:48:00,361 - WARNING - Not Found: /cw_webapp/static/img/4.jpg
+2025-07-28 19:48:00,371 - WARNING - Not Found: /cw_webapp/static/img/7.jpg
+2025-07-28 19:48:00,381 - WARNING - Not Found: /cw_webapp/static/img/10.jpg
+2025-07-28 19:48:00,389 - WARNING - Not Found: /cw_webapp/static/img/15.jpg
+2025-07-28 19:48:00,398 - WARNING - Not Found: /cw_webapp/static/img/9.jpg
+2025-07-28 19:48:00,405 - WARNING - Not Found: /cw_webapp/static/img/12.jpg
+2025-07-28 19:48:00,414 - WARNING - Not Found: /cw_webapp/static/img/11.jpg
+2025-07-28 19:48:00,423 - WARNING - Not Found: /cw_webapp/static/img/13.jpg
+2025-07-28 19:48:00,433 - WARNING - Not Found: /cw_webapp/static/img/14.jpg
+2025-07-28 19:48:00,445 - WARNING - Not Found: /cw_webapp/static/img/6.jpg
+2025-07-28 19:48:00,453 - WARNING - Not Found: /cw_webapp/static/img/8.jpg
+2025-07-28 19:48:00,464 - WARNING - Not Found: /cw_webapp/static/img/17.jpg
+2025-07-28 19:48:00,475 - WARNING - Not Found: /cw_webapp/static/img/18.jpg
+2025-07-28 19:48:00,482 - WARNING - Not Found: /cw_webapp/static/img/20.jpg
+2025-07-28 19:48:00,496 - WARNING - Not Found: /cw_webapp/static/img/19.jpg
+2025-07-28 19:48:00,505 - WARNING - Not Found: /cw_webapp/static/img/16.jpg
+2025-07-28 19:48:00,515 - WARNING - Not Found: /cw_webapp/static/img/1.jpg
+2025-07-28 19:48:00,521 - WARNING - Not Found: /cw_webapp/static/img/2.jpg
+2025-07-28 19:48:00,532 - WARNING - Not Found: /cw_webapp/static/img/3.jpg
+2025-07-28 19:48:00,542 - WARNING - Not Found: /cw_webapp/static/img/4.jpg
+2025-07-28 19:48:00,554 - WARNING - Not Found: /cw_webapp/static/img/5.jpg
+2025-07-28 19:48:00,565 - WARNING - Not Found: /cw_webapp/static/img/7.jpg
+2025-07-28 19:48:00,580 - WARNING - Not Found: /cw_webapp/static/img/10.jpg
+2025-07-28 19:48:04,306 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:50:05,393 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:50:09,843 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:50:12,719 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:52:20,285 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 19:52:36,195 - WARNING - Not Found: /img/bg.jpg
+2025-07-28 23:15:41,671 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:05,163 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:08,704 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:12,952 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:13,473 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:13,913 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:37,847 - WARNING - Not Found: /src/main.tsx
+2025-07-29 13:57:38,013 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:57:41,150 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:59:41,038 - WARNING - Not Found: /src/main.tsx
+2025-07-29 13:59:41,463 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:59:52,504 - WARNING - Not Found: /src/main.tsx
+2025-07-29 13:59:52,650 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 13:59:55,125 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:01:49,159 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:01:49,614 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:01:51,711 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:05:53,739 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:05:54,488 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:05:59,395 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:19:04,546 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:19:05,258 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:19:07,688 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:13,308 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:21:13,524 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:14,101 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:14,326 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:27,418 - INFO - C:\Users\abc\Desktop\codeweave\cw_webapp\api2\templatetags\navbar_tags.py changed, reloading.
+2025-07-29 14:21:36,741 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:21:36,871 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:37,444 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:21:37,856 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:22:30,367 - INFO - C:\Users\abc\Desktop\codeweave\cw_webapp\auth_system\settings.py changed, reloading.
+2025-07-29 14:22:37,812 - WARNING - Not Found: /src/main.tsx
+2025-07-29 14:22:38,026 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:22:40,436 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:23:09,993 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:23:12,552 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:08,463 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:10,624 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:13,799 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:32,966 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:35,570 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:26:38,023 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:33:14,172 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:33:16,862 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:34:08,565 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:34:10,448 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:35:55,997 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:35:58,812 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:38:59,957 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:39:11,246 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:46:58,972 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:47:00,591 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:52:21,379 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:52:24,729 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:53:32,125 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:53:32,892 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:55:30,768 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:58:45,272 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:58:49,585 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:58:51,029 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:59:05,167 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:59:08,796 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:59:17,926 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 14:59:20,684 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:02:02,916 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:02:11,269 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:02:28,997 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:02:32,045 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:03:45,153 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:02,843 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:04,327 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:05,525 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:07,480 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:19,398 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:32,236 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:41,619 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:43,109 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:49,627 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:04:51,049 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:04,145 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:05,825 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:17,206 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:20,208 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:29,967 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:33,446 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:44,017 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:46,758 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:55,168 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:05:58,315 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:25,167 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:27,774 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:41,227 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:42,019 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:44,616 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:06:59,577 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:07:00,161 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:07:00,588 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:25:52,434 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:26:16,148 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:26:19,939 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:29:17,003 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:29:18,935 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:31:37,317 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:31:39,281 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:31:53,582 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:31:54,499 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:32:49,439 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:32:51,255 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:35:46,519 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:35:55,149 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:36:11,936 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:36:12,523 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:36:12,711 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:37:14,614 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 15:37:47,809 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:16:30,363 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:16:33,319 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:16:36,501 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:16:46,186 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:16:49,394 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:27:19,807 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:27:21,420 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:30:21,603 - WARNING - Not Found: /script.js
+2025-07-29 22:30:22,389 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:30:26,619 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:30:53,117 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:30:53,745 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:30:53,788 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:33:22,087 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:33:25,469 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:33:25,722 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-29 22:33:39,099 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:34:10,574 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 321, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\api2\templatetags\hero_tags.py", line 8, in hero
+    return render_to_string('hero.html')
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 762: 'static'. Did you forget to register or load this tag?
+2025-07-29 22:34:12,544 - WARNING - Not Found: /favicon.ico
+2025-07-29 22:34:21,623 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 321, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\api2\templatetags\hero_tags.py", line 8, in hero
+    return render_to_string('hero.html')
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 762: 'static'. Did you forget to register or load this tag?
+2025-07-29 22:34:32,627 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 321, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\api2\templatetags\hero_tags.py", line 8, in hero
+    return render_to_string('hero.html')
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 762: 'static'. Did you forget to register or load this tag?
+2025-07-29 22:34:48,110 - ERROR - Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\users\views.py", line 94, in home_view
+    return render(request, "index.html")
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\library.py", line 321, in render
+    output = self.func(*resolved_args, **resolved_kwargs)
+  File "C:\Users\abc\Desktop\codeweave\cw_webapp\api2\templatetags\hero_tags.py", line 8, in hero
+    return render_to_string('hero.html')
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abc\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 762: 'static'. Did you forget to register or load this tag?
+2025-07-29 22:35:09,720 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:35:13,183 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:36:24,321 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:36:31,851 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:37:22,354 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:37:26,929 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:39:50,633 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:40:05,879 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:40:16,109 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:42:45,240 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:42:49,460 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:44:10,838 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:44:11,446 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:44:11,756 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:44:18,661 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:45:01,063 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:45:12,575 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:45:14,969 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:47:24,318 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:47:27,815 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:47:37,676 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:51:27,425 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:51:35,597 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:55:00,534 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:55:01,236 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-29 22:55:04,586 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:55:26,046 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:58:32,020 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 22:58:33,718 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:01:51,494 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:01:56,311 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:09:06,318 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:09:11,169 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:09:33,896 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:09:35,382 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:15:26,605 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:15:27,696 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:15:28,705 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:16:34,199 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:16:34,864 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:16:35,136 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:16:52,620 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:16:54,456 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:18:50,782 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:18:52,778 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:21:33,461 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:21:35,541 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:21:40,229 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:21:42,171 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:23:29,245 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:23:31,167 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:23:59,398 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:24:01,419 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:26:10,425 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:26:13,058 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:26:14,066 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:27:01,874 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:27:04,207 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:27:05,417 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:31:11,690 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:31:16,408 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:33:17,011 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:33:22,235 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:34:30,139 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:34:36,367 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:34:44,600 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:34:53,580 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:34:55,876 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:36:57,695 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:37:02,345 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:37:03,266 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:37:04,293 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:37:12,052 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:38:21,341 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:38:23,243 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:42:11,640 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:42:13,990 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:43:41,640 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:43:59,201 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:45:20,353 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:45:22,958 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:46:57,157 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:46:59,546 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:47:01,662 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:47:02,028 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-29 23:47:54,249 - WARNING - Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-07-29 23:47:55,740 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:47:57,471 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:01,390 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:04,246 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:22,426 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:46,713 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:51,479 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:48:53,036 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:49:34,317 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:49:47,704 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:52:29,302 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:52:33,620 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:52:34,592 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:52:35,545 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:52:44,234 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:53:50,344 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:53:57,164 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:53:59,266 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:54:00,942 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:54:01,789 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:55:56,742 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:56:08,376 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:56:10,024 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:58:01,905 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:58:09,000 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:59:28,379 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:59:34,536 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:59:36,458 - WARNING - Not Found: /img/bg.jpg
+2025-07-29 23:59:50,545 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:00:03,717 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:01:07,496 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:01:17,758 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:02:10,715 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:02:16,779 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:02:20,936 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:02:24,562 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:04:38,188 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:04:41,678 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:05:34,024 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:05:36,299 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:05:42,089 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:06:17,585 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:06:30,674 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:07:09,918 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:07:15,913 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:07:48,459 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:07:55,983 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:08:10,892 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:08:18,832 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:08:35,860 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:08:41,048 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:09:42,458 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:09:47,133 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:09:47,756 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:09:48,742 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:09:50,798 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:11:25,725 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:11:35,571 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:13:56,664 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:14:00,568 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:14:01,506 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:20,367 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:22,992 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:25,063 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:27,383 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:36,831 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:39,133 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:16:43,143 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:20:48,151 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:21:00,539 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:23:25,856 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:23:32,894 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:26:18,075 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:26:22,804 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:26:25,026 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:26:45,610 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:27:17,250 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:27:21,304 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:27:42,630 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:28:30,546 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:28:34,684 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:28:35,810 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:29:23,139 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:29:25,492 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:29:28,194 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:30:12,375 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:30:13,761 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:30:27,859 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:30:29,062 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:31:30,139 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:31:32,393 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:10,903 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:20,185 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:22,867 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:23,754 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:23,822 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:33:24,266 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:35:48,247 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:35:52,747 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:35:54,194 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:39:09,572 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:39:13,985 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:39:20,825 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:39:28,115 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:39:30,989 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:41:05,908 - WARNING - Not Found: /fonts/Galano-Grotesque/galano-grotesque-regular.woff
+2025-07-30 00:41:05,914 - WARNING - Not Found: /fonts/Galano-Grotesque/galano-grotesque-light.woff
+2025-07-30 00:41:07,140 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:41:08,031 - WARNING - Not Found: /fonts/Canela-Light/canela-light-web.woff
+2025-07-30 00:41:08,098 - WARNING - Not Found: /fonts/Canela-Light/canela-light-web.woff2
+2025-07-30 00:41:09,400 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:41:40,540 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:43:55,195 - WARNING - Not Found: /fonts/Galano-Grotesque/galano-grotesque-regular.woff
+2025-07-30 00:43:55,207 - WARNING - Not Found: /fonts/Galano-Grotesque/galano-grotesque-light.woff
+2025-07-30 00:43:56,530 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:43:57,565 - WARNING - Not Found: /fonts/Canela-Light/canela-light-web.woff
+2025-07-30 00:43:57,633 - WARNING - Not Found: /fonts/Canela-Light/canela-light-web.woff2
+2025-07-30 00:44:00,338 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:44:09,042 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:44:11,642 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:53:57,442 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:54:02,624 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:54:03,646 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:59:34,609 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:59:37,053 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 00:59:38,383 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:00:17,497 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:00:19,739 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:00:22,316 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:01:45,750 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:01:49,519 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:04:11,715 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:04:14,997 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:05:33,797 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:05:36,431 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:05:39,621 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:07:43,050 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:07:46,109 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:10:17,062 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:10:20,283 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:13:02,708 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:13:04,980 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:18:17,527 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:18:21,550 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:22:51,349 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:22:55,979 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:23:47,768 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:23:50,566 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:23:55,541 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:23:58,925 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:24:12,549 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:24:14,779 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:26:23,020 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:26:26,193 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:26:29,141 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:27:02,349 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:27:03,437 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:27:05,229 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:27:49,537 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:27:51,974 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:28:15,457 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:28:17,773 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:29:00,783 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:29:02,271 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:29:09,934 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:31:18,353 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:31:21,408 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:31:22,329 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:32:10,949 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:32:19,466 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:33:47,613 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:33:48,335 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:33:54,437 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:34:11,303 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:34:13,452 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:34:53,707 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:34:55,285 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:36:26,535 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:36:31,302 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:36:32,173 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:37:10,916 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:37:17,111 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:41:34,088 - WARNING - Not Found: /img/bg.jpg
+2025-07-30 01:41:39,434 - WARNING - Not Found: /img/bg.jpg

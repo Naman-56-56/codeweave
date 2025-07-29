@@ -1,0 +1,184 @@
+@import "compass/css3";
+
+$box-w: 200px;
+$box-h: 400px;
+$box-d: 30px;
+$box-r: 20px;
+$piece-num: 16;
+
+// create a 3d box
+@mixin box($width, $height, $depth) {
+  width: $width;
+  height: $height;
+  position: relative;
+  @include transform-style(preserve-3d);
+
+  [class$="face"] {
+    position: absolute;
+  }
+
+  .front-face,
+  .back-face {
+    width: $width;
+    height: $height;
+  }
+
+  .front-face {
+    @include transform( translateZ($depth / 2) );
+  }
+
+  .back-face {
+    @include transform( rotateY(180deg) translateZ($depth / 2) );
+  }
+
+  .top-face,
+  .bottom-face {
+    width: $width;
+    height: $depth;
+  }
+
+  .top-face {
+    top: 0;
+    @include transform( rotateX(90deg) translateZ($depth / 2) );
+  }
+
+  .bottom-face {
+    bottom: 0;
+    @include transform( rotateX(-90deg) translateZ($depth / 2) );
+  }
+
+  .left-face,
+  .right-face {
+    width: $depth;
+    height: $height;
+  }
+
+  .left-face {
+    left: 0;
+    @include transform( rotateY(-90deg) translateZ($depth / 2) );
+  }
+
+  .right-face {
+    right: 0;
+    @include transform( rotateY(90deg) translateZ($depth / 2) );
+  }
+}
+
+// make some space for corners
+@mixin clip-corner($width, $height, $radius) {
+  .front-face,
+  .back-face {
+    border-radius: $radius;
+  }
+
+  .top-face,
+  .bottom-face {
+    width: $width - 2 * $radius;
+    margin-left: $radius;
+  }
+
+  .left-face,
+  .right-face {
+    height: $height - 2 * $radius;
+    margin-top: $radius;
+  }
+}
+
+// create a circle
+@mixin roll($angle, $radius, $piece-num, $height) {
+  @include transform-style(preserve-3d);
+
+  $a: $angle / $piece-num;
+  $k: $radius * cos($a / 2);
+  $width: round(2 * $radius * sin($a / 2));
+
+  @for $i from 1 through $piece-num {
+    $b: $a * ($i - 1) + $a / 2;
+    $x: round($k * cos($b));
+    $y: round($k * sin($b));
+    $rotate: 90deg - $b;
+
+    .piece-#{$i} {
+      width: $width;
+      height: $height;
+      position: absolute;
+      -webkit-transform: translateX($x) translateZ($y) rotateY($rotate);
+    }
+  }
+}
+
+// seperate circle, and put them in the right position
+@mixin round-corner($radius, $piece-num, $depth) {
+
+  $a: 360deg / $piece-num;
+  $k: $radius * cos($a / 2);
+  $w: round(2 * $radius * sin($a / 2));
+
+  .tr-corner, .tl-corner, .bl-corner, .br-corner {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotateX(90deg) translateY(-$depth / 2);
+  }
+
+  .tr-corner {
+    top: $radius;
+    right: $radius + $w / 2;
+  }
+
+  .tl-corner {
+    top: $radius;
+    left: $radius - $w / 2;
+  }
+
+  .bl-corner {
+    bottom: $radius;
+    left: $radius - $w / 2;
+  }
+
+  .br-corner {
+    bottom: $radius;
+    right: $radius + $w / 2;
+  }
+}
+  
+@mixin phone-generator($width, $height, $depth, $radius, $piece-num) {
+  @include box($width, $height, $depth);
+  @include clip-corner($width, $height, $radius);
+  @include roll(360deg, $radius, $piece-num, $depth);
+  @include round-corner($radius, $piece-num, $depth);
+}
+
+.camera {
+  perspective: 1500px;
+}
+
+.object {
+  margin: 100px auto;  
+  @include phone-generator($box-w, $box-h, $box-d, $box-r, $piece-num);
+  animation: 26s rotate ease infinite;
+}
+
+[class^="piece"],
+[class$="face"] { border: 1px solid rgba(blue, 0.8) }
+
+ @keyframes rotate {
+   0% { -webkit-transform:  rotateX(0) rotateY(0) rotateZ(0); }
+   10% { -webkit-transform:  rotateX(0) rotateY(0) rotateZ(0); }
+
+   15% { -webkit-transform:  rotateX(320deg) rotateY(0deg) rotateZ(10deg); }
+   20% { -webkit-transform:  rotateX(360deg) rotateY(360deg) rotateZ(0deg); }
+   25% { -webkit-transform:  rotateX(320deg) rotateY(320deg) rotateZ(-10deg); }
+   30% { -webkit-transform:  rotateX(360deg) rotateY(0deg) rotateZ(0deg); }
+
+   40% { -webkit-transform:  rotateX(390deg) rotateY(370deg) rotateZ(-92deg); }
+   45% { -webkit-transform:  rotateX(390deg) rotateY(370deg) rotateZ(-92deg); }
+
+   55% { -webkit-transform:  rotateX(390deg) rotateY(350deg) rotateZ(-92deg); }
+   60% { -webkit-transform:  rotateX(390deg) rotateY(350deg) rotateZ(-92deg); }
+
+   70% { -webkit-transform: rotateX(-20deg) rotateY(-26deg); }
+   75% { -webkit-transform: rotateX(-20deg) rotateY(-26deg); }
+
+   85% { -webkit-transform: rotateX(20deg) rotateY(26deg); }
+   95% { -webkit-transform: rotateX(20deg) rotateY(26deg); }
+ }
