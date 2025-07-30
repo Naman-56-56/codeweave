@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Developing Projects By Learning | Coderzz</title>
+  <meta name="keywords" content="scroll animation, grid, gsap, 3d, filter" />
+  <meta name="author" content="Codrops" />
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://use.typekit.net/pxn8wdc.css">
+  <style>
+    *,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-link: #fff;
+  --color-link-hover: #ef5d36;
+  --color-title: #fff;
+  --perspective: 0px;
+  --grid-width: 100%;
+  --grid-max-width: 300px;
+  --grid-item-ratio: 1.2;
+  --grid-item-radius: 4px;
+  --grid-gap: 2rem;
+  --grid-columns: 2;
+  --grid-columns-full: 7;
+  --grid-rows-full: 5;
+  --grid-item-translate: 0px;
+  --grid-item-height: auto;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: "brisbane", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.font-alt {
+  font-family: "lores-12", sans-serif;
+  font-weight: 400;
+}
+
+.credits {
+  font-size: clamp(1rem,5vw,3rem);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 50vh auto 0;
+  padding-bottom: 10vh;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+  content: '';
+  position: fixed;
+  z-index: 10000;
+}
+
+.js .loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+.js .loading::after {
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: var(--color-link);
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+  to {
+    opacity: 1;
+    transform: scale3d(0.5,0.5,1);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:not(.card__image):focus {
+  /* Provide a fallback style for browsers
+   that don't support :focus-visible */
+  outline: none;
+  background: lightgrey;
+}
+
+a:not(.card__image):focus:not(:focus-visible) {
+  /* Remove the focus indicator on mouse-focus for browsers
+   that do support :focus-visible */
+  background: transparent;
+}
+
+a:not(.card__image):focus-visible {
+  /* Draw a very noticeable focus style for
+   keyboard-focus on browsers that do support
+   :focus-visible */
+  outline: 2px solid red;
+  background: transparent;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.unbutton:focus {
+  outline: none;
+}
+
+.frame {
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding: 1.5rem;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'back archive github' 'sponsor sponsor sponsor' ;
+  grid-gap: 1.5rem;
+  z-index: 6000;
+}
+
+.frame__title {
+  grid-area: title;
+  font-size: inherit;
+  margin: 0;
+  font-weight: inherit;
+}
+
+.frame__back {
+  grid-area: back;
+}
+
+.frame__archive {
+  grid-area: archive;
+}
+
+.frame__github {
+  grid-area: github;
+}
+
+.intro {
+  height: calc(100vh - 4rem);
+  text-align: center;
+  justify-items: center;
+  display: grid;
+  align-content: start;
+  margin-bottom: 30vh;
+  grid-auto-rows: 1fr;
+  gap: 1.5rem;
+  background: linear-gradient(to bottom, var(--color-bg), rgba(0,0,0,0.4), var(--color-bg)), url(../img/bg.jpg) no-repeat 50% -10%;
+  background-size: cover;
+  
+}
+
+.intro__title {
+  margin: 0;
+  line-height: .9;
+  align-self: end;
+  margin: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2rem,6vw,4rem);
+  color: var(--color-title);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-self: start;
+}
+
+.intro__info {
+  max-width: 18ch;
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+  line-height: 1.2;
+  opacity: 0.4;
+  position: relative;
+  align-self: end;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-self: end;
+}
+
+.intro__info::after {
+  content: "";
+  width: 4px;
+  height: 4rem;
+  background: linear-gradient(to bottom, #fff, black);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+}
+
+.mark {
+  position: fixed;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100vw;
+  left: 0;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.mark__inner {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  position: relative;
+  transform: translateX(100vw);
+  will-change: transform;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.mark__inner span {
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+section {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.shadow::after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--color-bg), transparent, var(--color-bg));
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.grid {
+  padding: 20vh 0;
+  width: var(--grid-width);
+  max-width: var(--grid-max-width);
+  grid-template-columns: repeat(var(--grid-columns),1fr);
+  position: relative;
+  display: grid;
+  gap: var(--grid-gap);
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+}
+
+.grid--full {
+  width: 100%;
+  margin: 10vh 0;
+  height: auto;
+  aspect-ratio: 1.5;
+  max-width: none;
+  --grid-gap: 1rem;
+  --grid-item-height: 100%;
+  --grid-item-ratio: auto;
+  padding: var(--grid-gap);
+  grid-template-columns: repeat(var(--grid-columns-full),1fr);
+  grid-template-rows: repeat(var(--grid-rows-full),1fr);
+}
+
+.grid__item {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  perspective: 800px;
+  will-change: transform, opacity;
+}
+
+.grid__item > .grid__item-img,
+.grid__item-imgwrap {
+  width: 100%;
+  aspect-ratio: var(--grid-item-ratio);
+  height: var(--grid-item-height);
+  border-radius: var(--grid-item-radius);
+  transform-style: preserve-3d;
+}
+
+.grid__item-imgwrap {
+  position: relative;
+  overflow: hidden;
+  will-change: filter;
+}
+
+.grid__item-img {
+  background-size: cover;
+  background-position: 50% 20%;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.grid__item-imgwrap > .grid__item-img {
+  position: absolute;
+  top: calc(-1 * var(--grid-item-translate));
+  left: calc(-1 * var(--grid-item-translate));
+  height: calc(100% + var(--grid-item-translate) * 2);
+  width: calc(100% + var(--grid-item-translate) * 2);
+}
+
+.text {
+  text-transform: uppercase;
+  display: flex;
+  align-content: center;
+  font-size: clamp(3rem,14vw,10rem);
+  line-height: 0.7;
+}
+
+.frame #cdawrap {
+  opacity: 1;
+  transition: opacity 0.3s 1s linear;
+}
+
+.loading .frame #cdawrap {
+  opacity: 0;
+}
+
+@media screen and (min-width: 53em) {
+  .frame {
+    grid-template-columns: auto auto auto 1fr;
+    grid-template-areas: 'back archive github sponsor';
+  }
+  .frame #cdawrap {
+    max-width: 300px;
+    text-align: right;
+  }
+}
+  </style>
+  <script>document.documentElement.className="js";</script>
+  <script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+  {% load static %}
+</head>
+<body class="loading">
+  <main class="shadow">
+    
+    <div class="intro"> 
+      <h1 class="intro__title font-alt">To Enhance Not Replace<br>CodeWeave</h1> 
+      
+      <span class="intro__info">Glide through <br> &amp; <br>Get inspire</span> 
+    </div>
+    <section>
+      <div class="grid">
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/1.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/2.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/3.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/4.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/5.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/6.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/7.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/7.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/8.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/9.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/10.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/11.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/12.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/13.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/14.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/15.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/17.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/18.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/19.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/20.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/1.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/2.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/3.jpg" %}')"></div>
+          </div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-imgwrap">
+            <div class="grid__item-img" style="background-image: url('{% static "img/4.jpg" %}')"></div>
+          </div>
+        </figure>
+      </div><!-- grid -->
+      <div class="mark">
+        <div class="mark__inner font-alt">
+            <span>CodeWeave</span> <span>— Crafted at the edge of imagination</span>
+            <span>Weaving Code into Experience</span> <span>— A symphony of logic and design</span>
+            <span>Pixels with Purpose</span> <span>— Every dot tells a story</span>
+            <span>Motion in Every Line</span> <span>— Where code learns to dance</span>
+            <span>Design that Breathes</span> <span>— Interfaces with soul</span>
+            <span>Fluid. Intuitive. Alive.</span> <span>— Like thought flowing into form</span>
+            <span>The Art of Interaction</span> <span>— Conversations between user and screen</span>
+            <span>Scroll to Discover</span> <span>— Unfold the woven canvas</span>
+            <span>Innovation, Line by Line</span> <span>— Precision inked in logic</span>
+            <span>Beyond the Static</span> <span>— Breaking silence with movement</span>            
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="text font-alt">CODEWEAVE</div>
+    </section>
+    <section>
+      <div class="grid grid--full">
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/1.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/2.jpg" %}')"></div> 
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/3.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/4.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/5.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/6.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/7.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/8.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/9.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/10.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/11.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/12.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/13.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/14.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/15.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/16.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/17.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/18.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/19.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/20.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/1.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/2.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/3.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/4.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/5.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/6.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/7.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/8.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/9.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/10.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/11.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/12.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/13.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/14.jpg" %}')"></div>
+        </figure>
+        <figure class="grid__item">
+          <div class="grid__item-img" style="background-image: url('{% static "img/15.jpg" %}')"></div>
+        </figure>
+      </div>
+    </section>
+    <p class="credits font-alt">Made by <a href="https://x.com/codrops">@coderzz</a></p>
+    <p class="credits font-alt"><a href="https://tympanus.net/codrops/demos">Make Your Own</a></p>
+  </main>
+  <script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+  <!-- GSAP library -->
+  <script src="{% static 'js/gsap.min.js' %}"></script>
+  <!-- GSAP ScrollTrigger plugin -->
+  <script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+  <!-- GSAP SplitText (Club Membership), Trial only https://gsap.com/resources/trial/ -->
+  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+
+  <!-- ImagesLoaded -->
+  <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+  
+  <!-- Add (Lenis) smooth scroll -->
+  <script src="{% static 'js/lenis.min.js' %}"></script>
+  <script src="{% static 'js/smoothscroll.js' %}"></script>
+
+  <!-- Scripts for the effect -->
+  <script type="module" src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
