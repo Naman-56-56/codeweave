@@ -1006,9 +1006,70 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-nav .nav-link.active::before {
   width: 100%;
 }
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #6366f1 0%, #38bdf8 100%);
+            box-shadow: 0 4px 16px rgba(99,102,241,0.10);
+            z-index: 100;
+            padding: 0.75rem 0;
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0 2rem;
+            justify-content: flex-start;
+        }
+        .nav-logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 2rem;
+        }
+        .nav-home-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            background: rgba(255,255,255,0.10);
+            box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+            border: none;
+        }
+        .nav-home-btn:hover {
+            background: #fff;
+            color: #6366f1;
+            box-shadow: 0 4px 16px rgba(99,102,241,0.18);
+        }
+        main, .main-content, .content-area {
+            margin-top: 3.5rem !important;
+        }
     </style>
 </head>
 <body>
+    <nav class="top-nav">
+        <div class="nav-content">
+            <span class="nav-logo"><i class="fas fa-cube"></i> DevHub</span>
+            <a href="{% url 'home' %}" class="nav-home-btn"><i class="fas fa-home"></i> Home</a>
+        </div>
+    </nav>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
