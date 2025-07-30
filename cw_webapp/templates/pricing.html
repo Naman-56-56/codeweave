@@ -1,4 +1,425 @@
 <!-- Pricing Section -->
 <section class="pricing" id="pricing">
-    <!-- ... pricing content ... (copy from index.html) ... -->
+    <div class="pricing-container">
+        <!-- Header -->
+        <div class="pricing-header">
+            <h2 class="pricing-title">Choose Your Plan</h2>
+            <p class="pricing-subtitle">Start building with AI-powered guidance</p>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-cards">
+            <!-- Starter Plan -->
+            <div class="pricing-card starter">
+                <div class="card-header">
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">0</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">Perfect for beginners and small projects</p>
+                </div>
+                
+                <div class="card-features">
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 3 AI-powered project roadmaps</li>
+                        <li><i class="fas fa-check"></i> Basic code generation</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                        <li><i class="fas fa-check"></i> Standard templates</li>
+                        <li><i class="fas fa-check"></i> 1GB storage</li>
+                    </ul>
+                </div>
+                
+                <div class="card-action">
+                    <button class="btn btn-outline">Get Started Free</button>
+                </div>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card pro featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="card-header">
+                    <h3 class="plan-name">Pro</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">29</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">For serious developers and teams</p>
+                </div>
+                
+                <div class="card-features">
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Unlimited AI roadmaps</li>
+                        <li><i class="fas fa-check"></i> Advanced code generation</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Custom templates</li>
+                        <li><i class="fas fa-check"></i> 10GB storage</li>
+                        <li><i class="fas fa-check"></i> Team collaboration</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                        <li><i class="fas fa-check"></i> API access</li>
+                    </ul>
+                </div>
+                
+                <div class="card-action">
+                    <button class="btn btn-primary">Start Pro Trial</button>
+                </div>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card enterprise">
+                <div class="card-header">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="price">
+                        <span class="currency">$</span>
+                        <span class="amount">99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">For large organizations</p>
+                </div>
+                
+                <div class="card-features">
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Everything in Pro</li>
+                        <li><i class="fas fa-check"></i> Custom AI models</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                        <li><i class="fas fa-check"></i> White-label options</li>
+                        <li><i class="fas fa-check"></i> Unlimited storage</li>
+                        <li><i class="fas fa-check"></i> Advanced security</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                        <li><i class="fas fa-check"></i> SLA guarantee</li>
+                    </ul>
+                </div>
+                
+                <div class="card-action">
+                    <button class="btn btn-outline">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <style>
+        .pricing {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #ef5d36 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .pricing-subtitle {
+            font-size: 1rem;
+            color: #a0a0a0;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(60px) scale(0.8) rotateY(-15deg);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(239, 93, 54, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured {
+            border-color: #ef5d36;
+            background: linear-gradient(135deg, rgba(239, 93, 54, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ef5d36 0%, #ff6b35 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .currency {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #a0a0a0;
+        }
+
+        .amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0.25rem;
+        }
+
+        .period {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .features-list i {
+            color: #ef5d36;
+            margin-right: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .card-action {
+            text-align: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ef5d36 0%, #ff6b35 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 93, 54, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: #ef5d36;
+            color: #ef5d36;
+            transform: translateY(-2px);
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .pricing-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-container {
+                padding: 0 1rem;
+            }
+
+            .pricing-title {
+                font-size: 1.75rem;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pricing-card {
+                padding: 1.25rem;
+            }
+
+            .amount {
+                font-size: 2.25rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing {
+                padding: 1.5rem 0;
+            }
+
+            .pricing-title {
+                font-size: 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 1rem;
+            }
+
+            .amount {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+    <!-- GSAP Animation Script -->
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if GSAP is available
+            if (typeof gsap !== 'undefined') {
+                // Pricing Cards Animation
+                const pricingTitle = document.querySelector('.pricing-title');
+                const pricingSubtitle = document.querySelector('.pricing-subtitle');
+                const pricingCards = document.querySelectorAll('.pricing-card');
+                
+                // Create timeline for pricing section animations with scroll binding
+                const pricingTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.pricing',
+                        start: 'top 80%',
+                        end: 'center center',
+                        scrub: 1,
+                        pin: false,
+                        markers: false
+                    }
+                });
+
+                // Animate pricing title and subtitle with scroll binding
+                pricingTimeline.fromTo(pricingTitle, 
+                    {
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.9
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1,
+                        ease: 'power2.out'
+                    }
+                );
+
+                pricingTimeline.fromTo(pricingSubtitle,
+                    {
+                        opacity: 0,
+                        y: 20
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    },
+                    '-=0.5'
+                );
+
+                // Animate pricing cards with stagger and scroll binding
+                pricingTimeline.fromTo(pricingCards,
+                    {
+                        opacity: 0,
+                        y: 60,
+                        scale: 0.8,
+                        rotationY: -15
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        rotationY: 0,
+                        duration: 1,
+                        stagger: 0.3,
+                        ease: 'back.out(1.7)'
+                    },
+                    '-=0.3'
+                );
+
+            } else {
+                console.warn('GSAP not loaded, FAQ animations disabled');
+                // Fallback: show elements without animation
+                document.querySelectorAll('[data-animate]').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                });
+            }
+        });
+    </script>
+    </style>
 </section> 
