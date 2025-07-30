@@ -1,4 +1,918 @@
-<!-- CTA Section -->
-<section class="cta-section">
-    <!-- ... cta content ... (copy from index.html) ... -->
-</section> 
+<!-- Call to Action Section -->
+<section class="cta-section" id="cta">
+    <div class="cta-container">
+        <div class="cta-content">
+            <div class="cta-text">
+                <h2 class="cta-title">Ready to Transform Your Ideas?</h2>
+                <p class="cta-description">
+                    Join thousands of developers who are already building amazing projects with AI-powered guidance. 
+                    Start your journey today and turn your vision into reality.
+                </p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary cta-btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Start Building Now
+                    </button>
+                    <button class="btn btn-outline cta-btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="cta-visual" id="ctaVisual">
+                <div class="cta-image">
+                    <img src="https://images.unsplash.com/photo-1498721441674-67b1e1e17a5b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=80c78f30e18bcaa9022a3bd9c2ff8a42&auto=format&fit=crop&w=1050&q=80" alt="AI Development Platform" class="hero-image">
+                    <div class="image-overlay"></div>
+                    
+                    <!-- Bubble Container -->
+                    <div class="bubble-container">
+                        <div class="bubble bubble-1"></div>
+                        <div class="bubble bubble-2"></div>
+                        <div class="bubble bubble-3"></div>
+                        <div class="bubble bubble-4"></div>
+                        <div class="bubble bubble-5"></div>
+                        <div class="bubble bubble-6"></div>
+                        <div class="bubble bubble-7"></div>
+                        <div class="bubble bubble-8"></div>
+                        <div class="bubble bubble-9"></div>
+                        <div class="bubble bubble-10"></div>
+                        <div class="bubble bubble-11"></div>
+                        <div class="bubble bubble-12"></div>
+                        <div class="bubble bubble-13"></div>
+                        <div class="bubble bubble-14"></div>
+                        <div class="bubble bubble-15"></div>
+                        <div class="bubble bubble-16"></div>
+                        <div class="bubble bubble-17"></div>
+                        <div class="bubble bubble-18"></div>
+                        <div class="bubble bubble-19"></div>
+                        <div class="bubble bubble-20"></div>
+                    </div>
+                </div>
+                <div class="cta-graphic">
+                    <div class="floating-element element-1" data-tech="react">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="floating-element element-2" data-tech="python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="floating-element element-3" data-tech="nodejs">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="floating-element element-4" data-tech="javascript">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="floating-element element-5" data-tech="angular">
+                        <i class="fab fa-angular"></i>
+                    </div>
+                    <div class="floating-element element-6" data-tech="vuejs">
+                        <i class="fab fa-vuejs"></i>
+                    </div>
+                    <div class="floating-element element-7" data-tech="docker">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="floating-element element-8" data-tech="aws">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="floating-element element-9" data-tech="github">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="floating-element element-10" data-tech="database">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="floating-element element-11" data-tech="html5">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="floating-element element-12" data-tech="css3">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.cta-section {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(239, 93, 54, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(239, 93, 54, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.cta-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.cta-text {
+    color: #fff;
+}
+
+.cta-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #ef5d36 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.1);
+    }
+}
+
+.cta-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b3b3b3;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ef5d36 0%, #ff6b3d 100%);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(239, 93, 54, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(239, 93, 54, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+    border-color: #ef5d36;
+    background: rgba(239, 93, 54, 0.1);
+    transform: translateY(-2px);
+}
+
+.cta-visual {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(239, 93, 54, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    backdrop-filter: blur(3px);
+}
+
+/* Bubble Container and Bubbles */
+.bubble-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(239, 93, 54, 0.9) 0%, 
+        rgba(255, 107, 61, 0.7) 30%, 
+        rgba(255, 119, 85, 0.5) 60%, 
+        rgba(255, 140, 100, 0.3) 80%, 
+        rgba(255, 160, 120, 0.1) 90%, 
+        transparent 100%);
+    border-radius: 50%;
+    animation: bubbleRise 2s linear infinite;
+    opacity: 0.8;
+    box-shadow: 
+        inset 1px 1px 2px rgba(255, 140, 100, 0.4),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.3),
+        0 0 6px rgba(239, 93, 54, 0.3),
+        0 0 12px rgba(255, 107, 61, 0.2);
+}
+
+.bubble-1 {
+    width: 8px;
+    height: 8px;
+    left: 12%;
+    animation-delay: 0s;
+    animation-duration: 1.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-2 {
+    width: 6px;
+    height: 6px;
+    left: 23%;
+    animation-delay: 0.3s;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-3 {
+    width: 10px;
+    height: 10px;
+    left: 37%;
+    animation-delay: 0.7s;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-4 {
+    width: 5px;
+    height: 5px;
+    left: 48%;
+    animation-delay: 1.1s;
+    animation-duration: 1.3s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-5 {
+    width: 7px;
+    height: 7px;
+    left: 61%;
+    animation-delay: 0.5s;
+    animation-duration: 1.9s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-6 {
+    width: 9px;
+    height: 9px;
+    left: 74%;
+    animation-delay: 1.8s;
+    animation-duration: 2.1s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-7 {
+    width: 6px;
+    height: 6px;
+    left: 85%;
+    animation-delay: 0.9s;
+    animation-duration: 1.6s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-8 {
+    width: 8px;
+    height: 8px;
+    left: 18%;
+    animation-delay: 2.1s;
+    animation-duration: 1.7s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-9 {
+    width: 5px;
+    height: 5px;
+    left: 29%;
+    animation-delay: 1.4s;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-10 {
+    width: 7px;
+    height: 7px;
+    left: 42%;
+    animation-delay: 0.2s;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-11 {
+    width: 9px;
+    height: 9px;
+    left: 55%;
+    animation-delay: 1.6s;
+    animation-duration: 1.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-12 {
+    width: 6px;
+    height: 6px;
+    left: 68%;
+    animation-delay: 0.8s;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-13 {
+    width: 8px;
+    height: 8px;
+    left: 81%;
+    animation-delay: 2.3s;
+    animation-duration: 2.1s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-14 {
+    width: 5px;
+    height: 5px;
+    left: 15%;
+    animation-delay: 1.2s;
+    animation-duration: 1.6s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-15 {
+    width: 7px;
+    height: 7px;
+    left: 33%;
+    animation-delay: 0.6s;
+    animation-duration: 1.9s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-16 {
+    width: 6px;
+    height: 6px;
+    left: 47%;
+    animation-delay: 1.9s;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-17 {
+    width: 8px;
+    height: 8px;
+    left: 59%;
+    animation-delay: 0.4s;
+    animation-duration: 2.3s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-18 {
+    width: 5px;
+    height: 5px;
+    left: 72%;
+    animation-delay: 1.7s;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-19 {
+    width: 7px;
+    height: 7px;
+    left: 88%;
+    animation-delay: 0.1s;
+    animation-duration: 1.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bubble-20 {
+    width: 6px;
+    height: 6px;
+    left: 25%;
+    animation-delay: 2.0s;
+    animation-duration: 1.7s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes bubbleRise {
+    0% {
+        bottom: -15px;
+        opacity: 0;
+        transform: translateX(0) scale(0.3) rotate(0deg);
+    }
+    15% {
+        opacity: 0.9;
+        transform: translateX(8px) scale(0.8) rotate(5deg);
+    }
+    30% {
+        transform: translateX(-3px) scale(1) rotate(-3deg);
+    }
+    50% {
+        transform: translateX(6px) scale(1.1) rotate(2deg);
+    }
+    70% {
+        transform: translateX(-4px) scale(1) rotate(-1deg);
+    }
+    85% {
+        opacity: 0.7;
+        transform: translateX(2px) scale(0.9) rotate(1deg);
+    }
+    100% {
+        bottom: 115%;
+        opacity: 0;
+        transform: translateX(0) scale(0.2) rotate(0deg);
+    }
+}
+
+.cta-graphic {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.floating-element {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(239, 93, 54, 0.15) 0%, rgba(239, 93, 54, 0.05) 100%);
+    border: 1px solid rgba(239, 93, 54, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ef5d36;
+    backdrop-filter: blur(10px);
+    animation: float 8s ease-in-out infinite;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    will-change: transform;
+    z-index: 10;
+}
+
+.floating-element:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(239, 93, 54, 0.4);
+    border-color: rgba(239, 93, 54, 0.6);
+    background: linear-gradient(135deg, rgba(239, 93, 54, 0.25) 0%, rgba(239, 93, 54, 0.1) 100%);
+}
+
+
+
+.floating-element i {
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.element-1 {
+    top: 15px;
+    left: 15px;
+    animation-delay: 0s;
+}
+
+.element-2 {
+    top: 25px;
+    right: 25px;
+    animation-delay: 1s;
+}
+
+.element-3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 2s;
+}
+
+.element-4 {
+    bottom: 25px;
+    left: 25px;
+    animation-delay: 3s;
+}
+
+.element-5 {
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 4s;
+}
+
+.element-6 {
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    animation-delay: 5s;
+}
+
+.element-7 {
+    bottom: 35px;
+    right: 35px;
+    animation-delay: 0.5s;
+}
+
+.element-8 {
+    top: 45px;
+    left: 35px;
+    animation-delay: 1.5s;
+}
+
+.element-9 {
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 2.5s;
+}
+
+.element-10 {
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    animation-delay: 3.5s;
+}
+
+.element-11 {
+    top: 65px;
+    right: 45px;
+    animation-delay: 4.5s;
+}
+
+.element-12 {
+    bottom: 65px;
+    right: 15px;
+    animation-delay: 5.5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-12px) rotate(1deg) scale(1.02);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-1deg) scale(1.05);
+    }
+    75% {
+        transform: translateY(-8px) rotate(0.5deg) scale(1.03);
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    25% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    75% {
+        transform: scale(1.03);
+        opacity: 0.95;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 60px 0;
+    }
+    
+    .cta-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .cta-actions {
+        justify-content: center;
+    }
+    
+    .cta-visual {
+        height: 250px;
+    }
+    
+    .cta-graphic {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .floating-element {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 260px;
+        justify-content: center;
+    }
+    
+    .cta-visual {
+        height: 200px;
+    }
+    
+    .cta-graphic {
+        width: 170px;
+        height: 170px;
+    }
+    
+    .floating-element {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctaVisual = document.getElementById('ctaVisual');
+    const floatingElements = document.querySelectorAll('.floating-element');
+    
+    // Physics properties
+    const elements = [];
+    const containerWidth = 320;
+    const containerHeight = 320;
+    const elementSize = 50;
+    const bounceStrength = 0.7;
+    const friction = 0.95;
+    const minDistance = 70; // Minimum distance between elements
+    let animationId = null;
+    let isActive = true;
+    
+    // Initialize physics for each element
+    floatingElements.forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+        const containerRect = ctaVisual.getBoundingClientRect();
+        
+        elements.push({
+            element: element,
+            x: rect.left - containerRect.left + elementSize / 2,
+            y: rect.top - containerRect.top + elementSize / 2,
+            vx: 0,
+            vy: 0,
+            originalX: rect.left - containerRect.left + elementSize / 2,
+            originalY: rect.top - containerRect.top + elementSize / 2
+        });
+    });
+    
+    // Mouse interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    let mouseInContainer = false;
+    
+    ctaVisual.addEventListener('mousemove', function(e) {
+        const rect = ctaVisual.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        mouseInContainer = true;
+    });
+    
+    ctaVisual.addEventListener('mouseleave', function() {
+        mouseInContainer = false;
+    });
+    
+    // Keep the physics active by preventing it from stopping
+    ctaVisual.addEventListener('mouseenter', function() {
+        if (!isActive) {
+            isActive = true;
+            updatePhysics();
+        }
+    });
+    
+    // Prevent the animation from stopping
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden && isActive) {
+            updatePhysics();
+        }
+    });
+    
+    // Physics update function
+    function updatePhysics() {
+        elements.forEach((el, index) => {
+            // Enhanced mouse repulsion with better responsiveness
+            if (mouseInContainer) {
+                const deltaX = mouseX - el.x;
+                const deltaY = mouseY - el.y;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const repulsionRadius = 120;
+                const repulsionStrength = 0.4;
+                
+                if (distance < repulsionRadius && distance > 0) {
+                    // Enhanced force calculation with better responsiveness
+                    const normalizedDistance = distance / repulsionRadius;
+                    const force = Math.pow(1 - normalizedDistance, 1.5);
+                    let repulsionX = (deltaX / distance) * force * repulsionStrength;
+                    let repulsionY = (deltaY / distance) * force * repulsionStrength;
+                    
+                    // Check if repulsion would push element out of bounds
+                    const repulsionMargin = 5;
+                    const newX = el.x - repulsionX;
+                    const newY = el.y - repulsionY;
+                    
+                    if (newX - elementSize / 2 < repulsionMargin || newX + elementSize / 2 > containerWidth - repulsionMargin) {
+                        repulsionX *= 0.3; // Reduce horizontal repulsion near boundaries
+                    }
+                    if (newY - elementSize / 2 < repulsionMargin || newY + elementSize / 2 > containerHeight - repulsionMargin) {
+                        repulsionY *= 0.3; // Reduce vertical repulsion near boundaries
+                    }
+                    
+                    el.vx -= repulsionX;
+                    el.vy -= repulsionY;
+                }
+            }
+            
+            // Wall bouncing with stricter boundaries
+            const boundaryMargin = 5; // Keep elements away from edges
+            
+            if (el.x - elementSize / 2 <= boundaryMargin) {
+                el.x = boundaryMargin + elementSize / 2;
+                el.vx = Math.abs(el.vx) * bounceStrength;
+            }
+            if (el.x + elementSize / 2 >= containerWidth - boundaryMargin) {
+                el.x = containerWidth - boundaryMargin - elementSize / 2;
+                el.vx = -Math.abs(el.vx) * bounceStrength;
+            }
+            if (el.y - elementSize / 2 <= boundaryMargin) {
+                el.y = boundaryMargin + elementSize / 2;
+                el.vy = Math.abs(el.vy) * bounceStrength;
+            }
+            if (el.y + elementSize / 2 >= containerHeight - boundaryMargin) {
+                el.y = containerHeight - boundaryMargin - elementSize / 2;
+                el.vy = -Math.abs(el.vy) * bounceStrength;
+            }
+            
+            // Element-to-element collision with improved spacing
+            elements.forEach((otherEl, otherIndex) => {
+                if (index !== otherIndex) {
+                    const deltaX = otherEl.x - el.x;
+                    const deltaY = otherEl.y - el.y;
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    
+                    if (distance < minDistance && distance > 0) {
+                        // Repulsion force for better spacing
+                        const angle = Math.atan2(deltaY, deltaX);
+                        const overlap = minDistance - distance;
+                        const repulsionForce = (overlap / minDistance) * 0.8;
+                        
+                        // Apply repulsion force
+                        const repulsionX = Math.cos(angle) * repulsionForce;
+                        const repulsionY = Math.sin(angle) * repulsionForce;
+                        
+                        el.vx -= repulsionX;
+                        el.vy -= repulsionY;
+                        otherEl.vx += repulsionX;
+                        otherEl.vy += repulsionY;
+                        
+                        // Gentle collision response
+                        const moveX = (overlap * Math.cos(angle)) / 2;
+                        const moveY = (overlap * Math.sin(angle)) / 2;
+                        
+                        el.x -= moveX;
+                        el.y -= moveY;
+                        otherEl.x += moveX;
+                        otherEl.y += moveY;
+                    }
+                }
+            });
+            
+            // Apply velocity
+            el.x += el.vx;
+            el.y += el.vy;
+            
+            // Ensure elements stay within bounds (final safety check)
+            const safetyMargin = 5;
+            el.x = Math.max(safetyMargin + elementSize / 2, Math.min(containerWidth - safetyMargin - elementSize / 2, el.x));
+            el.y = Math.max(safetyMargin + elementSize / 2, Math.min(containerHeight - safetyMargin - elementSize / 2, el.y));
+            
+            // Apply friction
+            el.vx *= friction;
+            el.vy *= friction;
+            
+            // Smooth return to original position when mouse is not in container
+            if (!mouseInContainer) {
+                const targetX = el.originalX;
+                const targetY = el.originalY;
+                const dx = targetX - el.x;
+                const dy = targetY - el.y;
+                
+                // Smooth easing for return movement
+                el.x += dx * 0.03;
+                el.y += dy * 0.03;
+                el.vx *= 0.85;
+                el.vy *= 0.85;
+            }
+            
+            // Update element position with better performance
+            const transformX = el.x - el.originalX;
+            const transformY = el.y - el.originalY;
+            el.element.style.transform = `translate(${transformX}px, ${transformY}px)`;
+        });
+        
+        if (isActive) {
+            animationId = requestAnimationFrame(updatePhysics);
+        }
+    }
+    
+    // Start physics loop with restart mechanism
+    updatePhysics();
+    
+    // Restart physics if it stops (safety mechanism)
+    setInterval(() => {
+        if (!isActive && mouseInContainer) {
+            isActive = true;
+            updatePhysics();
+        }
+    }, 1000);
+});
+</script>

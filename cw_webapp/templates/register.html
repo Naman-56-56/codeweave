@@ -3,546 +3,2941 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Login | Codeweave Portal</title>
     <style>
-        :root {
-            /* Light Theme Variables */
-            --light-bg: #f0f4ff;
-            --light-card-bg: rgba(255, 255, 255, 0.7);
-            --light-text: #333;
-            --light-primary: #4361ee;
-            --light-secondary: #3f37c9;
-            --light-border: rgba(255, 255, 255, 0.4);
-            --light-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-            --light-form-border: rgba(209, 213, 219, 0.8);
-            --light-input-bg: rgba(255, 255, 255, 0.9);
-            --light-backdrop: blur(16px);
-            
-            /* Dark Theme Variables */
-            --dark-bg: #0f172a;
-            --dark-card-bg: rgba(15, 23, 42, 0.7);
-            --dark-text: #f8fafc;
-            --dark-primary: #818cf8;
-            --dark-secondary: #6366f1;
-            --dark-border: rgba(30, 41, 59, 0.4);
-            --dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --dark-form-border: rgba(55, 65, 81, 0.8);
-            --dark-input-bg: rgba(30, 41, 59, 0.6);
-            --dark-backdrop: blur(16px);
-            
-            /* Active Theme (default: light) */
-            --bg: var(--light-bg);
-            --card-bg: var(--light-card-bg);
-            --text: var(--light-text);
-            --primary: var(--light-primary);
-            --secondary: var(--light-secondary);
-            --border: var(--light-border);
-            --shadow: var(--light-shadow);
-            --form-border: var(--light-form-border);
-            --input-bg: var(--light-input-bg);
-            --backdrop: var(--light-backdrop);
-        }
-        
-        [data-theme="dark"] {
-            --bg: var(--dark-bg);
-            --card-bg: var(--dark-card-bg);
-            --text: var(--dark-text);
-            --primary: var(--dark-primary);
-            --secondary: var(--dark-secondary);
-            --border: var(--dark-border);
-            --shadow: var(--dark-shadow);
-            --form-border: var(--dark-form-border);
-            --input-bg: var(--dark-input-bg);
-            --backdrop: var(--dark-backdrop);
-        }
+        /* Enhanced CSS Variables */
+:root {
+  /* Enhanced Color Palette */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+  
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #bbf7d0;
+  --secondary-300: #86efac;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #14532d;
+  
+  --accent-50: #faf5ff;
+  --accent-100: #f3e8ff;
+  --accent-200: #e9d5ff;
+  --accent-300: #d8b4fe;
+  --accent-400: #c084fc;
+  --accent-500: #a855f7;
+  --accent-600: #9333ea;
+  --accent-700: #7c3aed;
+  --accent-800: #6b21a8;
+  --accent-900: #581c87;
+  
+  /* Light Mode Colors - Matching Theme */
+  --bg-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  --bg-secondary: rgba(26, 26, 46, 0.95);
+  --bg-tertiary: rgba(22, 33, 62, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #666666;
+  --text-muted: #888888;
+  --border-primary: rgba(102, 126, 234, 0.2);
+  --border-secondary: rgba(118, 75, 162, 0.2);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(26, 26, 46, 0.3);
+  --glass-border: rgba(102, 126, 234, 0.1);
+  --backdrop-blur: 20px;
+  
+  /* Enhanced Gradients - Matching Theme */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #ef5d36 0%, #ff6b3d 100%);
+  --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-error: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+  --gradient-rainbow: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #ef5d36 50%, #ff6b3d 75%, #4facfe 100%);
+  
+  /* Animation Variables */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Spacing System */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding: 20px;
-        }
-        
-        /* Mesh Background */
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .mesh-gradient {
-            position: absolute;
-            width: 80vmax;
-            height: 80vmax;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.6;
-            transition: all 0.8s ease;
-        }
-        
-        .mesh-1 {
-            background: radial-gradient(circle at center, var(--primary), transparent 70%);
-            top: -20%;
-            left: -20%;
-            animation: float 12s ease-in-out infinite;
-        }
-        
-        .mesh-2 {
-            background: radial-gradient(circle at center, var(--secondary), transparent 70%);
-            bottom: -30%;
-            right: -20%;
-            animation: float 15s ease-in-out infinite 2s;
-        }
-        
-        .mesh-3 {
-            background: radial-gradient(circle at center, #22d3ee, transparent 70%);
-            top: 60%;
-            left: 20%;
-            animation: float 18s ease-in-out infinite 1s;
-        }
-        
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(3%, 3%) rotate(5deg); }
-            66% { transform: translate(-3%, 1%) rotate(-3deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
+/* Dark Mode Colors - Enhanced for Theme */
+.dark-mode {
+  --bg-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  --bg-secondary: rgba(26, 26, 46, 0.95);
+  --bg-tertiary: rgba(22, 33, 62, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #666666;
+  --text-muted: #888888;
+  --border-primary: rgba(102, 126, 234, 0.3);
+  --border-secondary: rgba(118, 75, 162, 0.3);
+  --glass-bg: rgba(26, 26, 46, 0.4);
+  --glass-border: rgba(102, 126, 234, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
 
-        .register-container {
-            max-width: 500px;
-            margin: 40px auto;
-            background: var(--card-bg);
-            backdrop-filter: var(--backdrop);
-            -webkit-backdrop-filter: var(--backdrop);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        
-        /* Glassmorphism Shine Effect */
-        .register-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: 0.5s;
-            pointer-events: none;
-        }
-        
-        .register-container:hover::before {
-            left: 100%;
-        }
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .form-group {
-            margin-bottom: 24px;
-            position: relative;
-        }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-        .form-control {
-            background: var(--input-bg);
-            border: 1px solid var(--form-border);
-            color: var(--text);
-            padding: 14px 16px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            width: 100%;
-            backdrop-filter: blur(5px);
-        }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
 
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-            outline: none;
-        }
+/* Enhanced Background Animation */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
 
-        .form-label {
-            font-weight: 500;
-            margin-bottom: 10px;
-            color: var(--text);
-            display: block;
-            transition: all 0.3s ease;
-        }
+/* Animated Grid */
+.animated-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
 
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        /* Button Animation Effect */
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--secondary);
-            transition: all 0.5s ease-in-out;
-            z-index: -1;
-        }
-        
-        .btn-primary:hover::before {
-            width: 100%;
-        }
+.grid-line {
+  position: absolute;
+  background: var(--gradient-primary);
+  animation: gridPulse 4s ease-in-out infinite;
+}
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+.grid-line-vertical {
+  width: 1px;
+  height: 100%;
+  animation-delay: calc(var(--i, 0) * 0.5s);
+}
 
-        .social-btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            border: 1px solid var(--form-border);
-            background: var(--input-bg);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            color: var(--text);
-            font-weight: 500;
-            cursor: pointer;
-        }
+.grid-line-horizontal {
+  width: 100%;
+  height: 1px;
+  animation-delay: calc(var(--i, 0) * 0.5s + 2s);
+}
 
-        .social-btn:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
+/* Enhanced Particle System */
+.particle-system {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-        .social-icon {
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
 
-        .form-error {
-            color: #ef4444;
-            font-size: 0.875rem;
-            margin-top: 8px;
-            font-weight: 500;
-        }
+.particle-glow {
+  width: 6px;
+  height: 6px;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 20px currentColor;
+  animation: particleFloat 20s infinite linear;
+}
 
-        .already-account {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 0.95rem;
-            color: var(--text);
-        }
+.particle-pulse {
+  width: 4px;
+  height: 4px;
+  background: var(--gradient-secondary);
+  animation: particlePulse 3s infinite ease-in-out;
+}
 
-        .already-account a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+.particle-orbit {
+  width: 8px;
+  height: 8px;
+  background: var(--gradient-tertiary);
+  animation: particleOrbit 15s infinite linear;
+}
 
-        .already-account a:hover {
-            text-decoration: underline;
-        }
+.particle-float {
+  width: 3px;
+  height: 3px;
+  background: var(--gradient-success);
+  animation: particleFloat 25s infinite linear;
+}
 
-        .title {
-            text-align: center;
-            margin-bottom: 32px;
-        }
+/* Dynamic Gradient Orbs */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: orbFloat 20s infinite ease-in-out;
+}
 
-        .title h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--gradient-primary);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
 
-        .title p {
-            color: var(--text);
-            opacity: 0.7;
-            font-size: 1rem;
-        }
+.orb-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--gradient-secondary);
+  top: 50%;
+  right: -150px;
+  animation-delay: 5s;
+}
 
-        .divider {
-            text-align: center;
-            margin: 24px 0;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--gradient-tertiary);
+  bottom: -125px;
+  left: 30%;
+  animation-delay: 10s;
+}
 
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--form-border);
-        }
+.orb-4 {
+  width: 350px;
+  height: 350px;
+  background: var(--gradient-success);
+  top: 20%;
+  left: 50%;
+  animation-delay: 15s;
+}
 
-        .divider span {
-            padding: 0 16px;
-            color: var(--text);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
+/* Floating Geometric Shapes */
+.geometric-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-        /* Theme Toggle */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            cursor: pointer;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(30deg);
-        }
-        
-        .theme-toggle i {
-            font-size: 1.2rem;
-            color: var(--text);
-            transition: all 0.3s ease;
-        }
-        
-        /* Form animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .form-group {
-            animation: fadeIn 0.5s ease forwards;
-            opacity: 0;
-        }
-        
-        .form-group:nth-child(1) { animation-delay: 0.1s; }
-        .form-group:nth-child(2) { animation-delay: 0.2s; }
-        .form-group:nth-child(3) { animation-delay: 0.3s; }
-        .btn-primary { animation: fadeIn 0.5s ease forwards 0.4s; opacity: 0; }
-        
-        @media (max-width: 768px) {
-            .register-container {
-                margin: 20px;
-                padding: 30px 20px;
-            }
-            
-            .title h2 {
-                font-size: 1.75rem;
-            }
-        }
+.shape {
+  position: absolute;
+  opacity: 0.1;
+  animation: shapeFloat 30s infinite linear;
+}
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid var(--primary-500);
+  top: 20%;
+  left: 10%;
+}
+
+.shape-square {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-500);
+  transform: rotate(45deg);
+  top: 60%;
+  right: 20%;
+  animation-delay: 5s;
+}
+
+.shape-hexagon {
+  width: 30px;
+  height: 17px;
+  background: var(--secondary-500);
+    position: relative;
+  top: 80%;
+  left: 70%;
+  animation-delay: 10s;
+}
+
+.shape-hexagon::before,
+.shape-hexagon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.shape-hexagon::before {
+  bottom: 100%;
+  border-bottom: 8.5px solid var(--secondary-500);
+}
+
+.shape-hexagon::after {
+  top: 100%;
+  border-top: 8.5px solid var(--secondary-500);
+}
+
+.shape-circle {
+  width: 25px;
+  height: 25px;
+  background: var(--gradient-warning);
+  border-radius: 50%;
+  top: 40%;
+  left: 80%;
+  animation-delay: 15s;
+}
+
+/* Light Rays */
+.light-rays {
+  position: absolute;
+    width: 100%;
+  height: 100%;
+}
+
+.light-ray {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--primary-400), transparent);
+  opacity: 0.3;
+  animation: rayMove 8s infinite ease-in-out;
+}
+
+.ray-1 {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.ray-2 {
+  top: 50%;
+  right: 30%;
+  animation-delay: 2s;
+}
+
+.ray-3 {
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 4s;
+}
+
+
+
+/* Main Container */
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-6);
+  position: relative;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 480px;
+    position: relative;
+}
+
+/* Enhanced Login Card - Matching Theme */
+.login-card {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(102, 126, 234, 0.1) inset;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+}
+
+.login-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.25);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+  background: conic-gradient(from 0deg, var(--primary-500), var(--accent-500), var(--secondary-500), var(--primary-500));
+  opacity: 0.1;
+  animation: cardGlow 8s linear infinite;
+    z-index: -1;
+}
+
+/* Enhanced Card Header */
+.card-header {
+    text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-8);
+}
+
+.logo {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.logo-inner {
+  width: 50px;
+  height: 50px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.logo-inner i {
+  font-size: 24px;
+  color: white;
+}
+
+.logo-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid var(--primary-400);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: ringPulse 3s infinite ease-in-out;
+}
+
+.ring-1 {
+  width: 70px;
+  height: 70px;
+  top: -35px;
+  left: -35px;
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  width: 85px;
+  height: 85px;
+  top: -42.5px;
+  left: -42.5px;
+  animation-delay: 1s;
+}
+
+.ring-3 {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: -50px;
+  animation-delay: 2s;
+}
+
+.welcome-title {
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.title-line {
+    display: block;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.welcome-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Enhanced Form Styles */
+.login-form {
+  margin-bottom: var(--space-10);
+}
+
+.form-group {
+  margin-bottom: var(--space-8);
+}
+
+.input-container {
+    position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 56px;
+  background: rgba(26, 26, 46, 0.3);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  padding: 0 1.5rem 0 3rem;
+  font-size: 0.95rem;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  background: rgba(26, 26, 46, 0.5);
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+  transform: translateY(-32px) scale(0.875);
+  color: #667eea;
+  font-weight: 500;
+}
+
+.input-wrapper label {
+    position: absolute;
+  left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+  color: #b3b3b3;
+    font-size: 0.9rem;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(26, 26, 46, 0.95);
+  padding: 0 0.5rem;
+  border-radius: 6px;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666666;
+  font-size: 1rem;
+  transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.input-wrapper input:focus ~ .input-icon {
+  color: #667eea;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 1.125rem;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.password-toggle:hover {
+  color: var(--primary-500);
+  background: var(--glass-bg);
+}
+
+.input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--gradient-primary);
+  transition: width var(--transition-normal);
+  border-radius: var(--radius-full);
+}
+
+.input-wrapper input:focus ~ .input-border {
+  width: 100%;
+}
+
+.input-focus-effect {
+  position: absolute;
+    top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-xl);
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+}
+
+.input-wrapper input:focus ~ .input-focus-effect {
+  opacity: 0.05;
+}
+
+.validation-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all var(--transition-normal);
+}
+
+.validation-icon.show {
+    opacity: 1;
+}
+
+.success-icon {
+  color: var(--secondary-500);
+}
+
+.error-icon {
+  color: #ef4444;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: var(--space-2);
+  margin-left: var(--space-12);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all var(--transition-normal);
+}
+
+.error-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input-wrapper.error input {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.input-wrapper.error .input-icon {
+  color: #ef4444;
+}
+
+.input-wrapper.success input {
+  border-color: var(--secondary-500);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+.input-wrapper.success .input-icon {
+  color: var(--secondary-500);
+}
+
+/* Enhanced Form Options */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+    position: relative;
+}
+
+.checkbox-container input {
+  display: none;
+}
+
+.checkmark {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  margin-right: var(--space-3);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark i {
+  font-size: 12px;
+  color: white;
+  opacity: 0;
+  transform: scale(0);
+  transition: all var(--transition-bounce);
+}
+
+.checkbox-container input:checked + .checkmark {
+  background: var(--gradient-primary);
+  border-color: var(--primary-500);
+  transform: scale(1.1);
+}
+
+.checkbox-container input:checked + .checkmark i {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkbox-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.forgot-password {
+  color: var(--primary-500);
+    text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: all var(--transition-normal);
+}
+
+.forgot-password:hover {
+  color: var(--primary-600);
+  transform: translateX(4px);
+}
+
+.forgot-password i {
+  font-size: 0.75rem;
+  transition: transform var(--transition-normal);
+}
+
+.forgot-password:hover i {
+  transform: translateX(2px);
+}
+
+/* Enhanced Login Button - Matching Theme */
+.login-button {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #ef5d36 50%, #ff6b3d 100%);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  margin-bottom: 2rem;
+  animation: gradientFlow 4s ease-in-out infinite;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition: opacity var(--transition-normal);
+}
+
+.button-arrow {
+  font-size: 1rem;
+  transition: transform var(--transition-normal);
+}
+
+.login-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+.button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.loader-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.login-button.loading .button-content {
+  opacity: 0;
+}
+
+.login-button.loading .button-loader {
+  opacity: 1;
+}
+
+.button-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.login-button:active .button-ripple {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0s;
+}
+
+/* Enhanced Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-10) 0;
+  gap: var(--space-4);
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
+}
+
+.divider-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0 var(--space-2);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+/* Enhanced Social Login */
+.social-login {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.social-button {
+  position: relative;
+  height: 56px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(8px);
+    display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  gap: var(--space-1);
+  overflow: hidden;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.social-icon {
+  font-size: 1.25rem;
+  transition: transform var(--transition-normal);
+}
+
+.social-text {
+  font-size: 0.75rem;
+    font-weight: 500;
+  opacity: 0.8;
+}
+
+.social-button:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-button.google:hover {
+  border-color: #ea4335;
+  box-shadow: 0 8px 32px rgba(234, 67, 53, 0.2);
+}
+
+.social-button.github:hover {
+  border-color: #333;
+  box-shadow: 0 8px 32px rgba(51, 51, 51, 0.2);
+}
+
+.social-button.apple:hover {
+  border-color: #000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.social-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.social-button:active .social-ripple {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0s;
+}
+
+/* Enhanced Error Box */
+.error-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 8px 32px rgba(239, 68, 68, 0.15),
+    0 0 0 1px rgba(239, 68, 68, 0.1) inset;
+  transform: translateY(-10px);
+  opacity: 0;
+  animation: errorSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  overflow: hidden;
+}
+
+.error-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.error-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  animation: errorPulse 2s ease-in-out infinite;
+}
+
+.error-icon i {
+  color: white;
+  font-size: 1.25rem;
+  animation: errorShake 0.6s ease-in-out;
+}
+
+.error-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.error-title {
+  color: #fca5a5;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.error-message {
+  color: #fecaca;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.error-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: #fca5a5;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.error-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+  transform: scale(1.1);
+}
+
+.error-close:active {
+  transform: scale(0.95);
+}
+
+.error-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  border-radius: 0 0 16px 16px;
+  animation: errorProgress 5s linear forwards;
+}
+
+/* Error Animations */
+@keyframes errorSlideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes errorPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes errorProgress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Error Box States */
+.error-box.show {
+  display: block;
+}
+
+.error-box.hide {
+  animation: errorSlideOut 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes errorSlideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Signup Link */
+.signup-link {
+  text-align: center;
+}
+
+.signup-link p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.signup-link-text {
+  color: var(--primary-500);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: all var(--transition-normal);
+}
+
+.signup-link-text:hover {
+  color: var(--primary-600);
+  transform: translateX(2px);
+}
+
+.signup-link-text i {
+  font-size: 0.75rem;
+  transition: transform var(--transition-normal);
+}
+
+.signup-link-text:hover i {
+  transform: translateX(2px);
+}
+
+/* Enhanced Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-3xl);
+  padding: var(--space-10);
+  max-width: 400px;
+  width: 90%;
+  backdrop-filter: blur(var(--backdrop-blur));
+  box-shadow: var(--shadow-2xl);
+  transform: scale(0.9);
+  transition: transform var(--transition-normal);
+  position: relative;
+  z-index: 1;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.success-animation {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-6);
+}
+
+.success-circle {
+    width: 80px;
+    height: 80px;
+  background: var(--gradient-success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+  animation: successPulse 2s infinite ease-in-out;
+}
+
+.success-circle i {
+  font-size: 32px;
+  color: white;
+}
+
+.success-particles {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.success-particles .particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--gradient-success);
+    border-radius: 50%;
+  animation: successParticle 2s infinite ease-out;
+}
+
+.success-particles .particle:nth-child(1) { animation-delay: 0s; }
+.success-particles .particle:nth-child(2) { animation-delay: 0.2s; }
+.success-particles .particle:nth-child(3) { animation-delay: 0.4s; }
+.success-particles .particle:nth-child(4) { animation-delay: 0.6s; }
+.success-particles .particle:nth-child(5) { animation-delay: 0.8s; }
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.modal-body p {
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border-primary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-success);
+  border-radius: var(--radius-full);
+  animation: progressFill 3s ease-in-out;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  backdrop-filter: blur(8px);
+}
+
+.loading-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+}
+
+.loading-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-6);
+}
+
+.spinner-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: spinnerRotate 2s linear infinite;
+}
+
+.spinner-ring:nth-child(1) {
+  border-top-color: var(--primary-500);
+  animation-delay: 0s;
+}
+
+.spinner-ring:nth-child(2) {
+  border-right-color: var(--accent-500);
+  animation-delay: 0.3s;
+}
+
+.spinner-ring:nth-child(3) {
+  border-bottom-color: var(--secondary-500);
+  animation-delay: 0.6s;
+}
+
+.loading-content p {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes particlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes particleOrbit {
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -30px) rotate(90deg); }
+  50% { transform: translate(-20px, 20px) rotate(180deg); }
+  75% { transform: translate(20px, -40px) rotate(270deg); }
+}
+
+@keyframes shapeFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+@keyframes rayMove {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+  50% { transform: translateY(-50px) scaleY(1.5); opacity: 0.6; }
+}
+
+@keyframes cardGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes successPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes successParticle {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--random-x, 50px), var(--random-y, -50px)) scale(0); opacity: 0; }
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes spinnerRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+  .orb-1, .orb-4 { width: 300px; height: 300px; }
+  .orb-2, .orb-3 { width: 200px; height: 200px; }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: var(--space-4);
+  }
+  
+  .login-card {
+    padding: var(--space-8);
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .theme-toggle-container {
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+  
+  .social-login {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .social-button {
+    flex-direction: row;
+    gap: var(--space-3);
+  }
+  
+  .social-text {
+    font-size: 0.875rem;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .orb-1, .orb-2, .orb-3, .orb-4 {
+    width: 200px;
+    height: 200px;
+    opacity: 0.2;
+  }
+  
+  .geometric-shapes {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: var(--space-3);
+  }
+  
+  .login-card {
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+  }
+  
+  .welcome-title {
+    font-size: 1.75rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+  
+  .logo-inner {
+    width: 50px;
+        height: 50px;
+    }
+    
+  .logo-inner i {
+    font-size: 24px;
+  }
+  
+  .input-wrapper input {
+    height: 56px;
+    padding: 0 var(--space-4) 0 var(--space-10);
+  }
+  
+  .input-wrapper label {
+    left: var(--space-10);
+  }
+  
+  .input-icon {
+    left: var(--space-3);
+  }
+  
+  .login-button {
+    height: 56px;
+    font-size: 1rem;
+  }
+  
+  .social-button {
+    height: 48px;
+  }
+  
+  .theme-toggle {
+    width: 60px;
+    height: 32px;
+  }
+  
+  .toggle-thumb {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .dark-mode .toggle-thumb {
+    transform: translateX(28px);
+  }
+  
+  .particle-system {
+    opacity: 0.5;
+  }
+  
+  .light-rays {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-card {
+    padding: var(--space-5);
+  }
+  
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-header {
+    margin-bottom: var(--space-8);
+    }
+    
+    .form-group {
+    margin-bottom: var(--space-6);
+  }
+  
+  .input-wrapper input {
+    height: 52px;
+  }
+  
+  .login-button {
+    height: 52px;
+  }
+  
+  .social-button {
+    height: 44px;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particle-system,
+  .gradient-orb,
+  .geometric-shapes,
+  .light-rays {
+    display: none;
+  }
+}
+
+/* Focus Styles */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .background-animation,
+  .theme-toggle-container,
+  .modal,
+  .loading-overlay {
+    display: none !important;
+  }
+  
+  .login-card {
+    box-shadow: none;
+    border: 1px solid var(--border-primary);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark-mode {
+    --glass-bg: rgba(0, 0, 0, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .main-container {
+    padding: var(--space-2);
+  }
+  
+  .login-card {
+    padding: var(--space-4);
+  }
+  
+  .card-header {
+    margin-bottom: var(--space-4);
+  }
+  
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+  
+  .logo-inner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-inner i {
+    font-size: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-4);
+  }
+  
+  .login-button {
+    margin-bottom: var(--space-4);
+  }
+  
+  .divider {
+    margin: var(--space-4) 0;
+    }
+}
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <!-- Mesh Background -->
-    <div class="mesh-bg">
-        <div class="mesh-gradient mesh-1"></div>
-        <div class="mesh-gradient mesh-2"></div>
-        <div class="mesh-gradient mesh-3"></div>
+<body class="light-mode">
+    <!-- Enhanced Background Animation -->
+    <div class="background-animation">
+        <!-- Animated Grid -->
+        <div class="animated-grid">
+            <div class="grid-line grid-line-vertical" style="left: 10%;"></div>
+            <div class="grid-line grid-line-vertical" style="left: 25%;"></div>
+            <div class="grid-line grid-line-vertical" style="left: 50%;"></div>
+            <div class="grid-line grid-line-vertical" style="left: 75%;"></div>
+            <div class="grid-line grid-line-vertical" style="left: 90%;"></div>
+            <div class="grid-line grid-line-horizontal" style="top: 20%;"></div>
+            <div class="grid-line grid-line-horizontal" style="top: 40%;"></div>
+            <div class="grid-line grid-line-horizontal" style="top: 60%;"></div>
+            <div class="grid-line grid-line-horizontal" style="top: 80%;"></div>
+        </div>
+        
+        <!-- Enhanced Particle System -->
+        <div class="particle-system">
+            <div class="particle particle-glow"></div>
+            <div class="particle particle-pulse"></div>
+            <div class="particle particle-orbit"></div>
+            <div class="particle particle-float"></div>
+            <div class="particle particle-glow"></div>
+            <div class="particle particle-pulse"></div>
+            <div class="particle particle-orbit"></div>
+            <div class="particle particle-float"></div>
+            <div class="particle particle-glow"></div>
+            <div class="particle particle-pulse"></div>
+            <div class="particle particle-orbit"></div>
+            <div class="particle particle-float"></div>
+        </div>
+        
+        <!-- Dynamic Gradient Orbs -->
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        
+        <!-- Floating Geometric Shapes -->
+        <div class="geometric-shapes">
+            <div class="shape shape-triangle"></div>
+            <div class="shape shape-square"></div>
+            <div class="shape shape-hexagon"></div>
+            <div class="shape shape-circle"></div>
     </div>
-
-    <!-- Theme Toggle Button -->
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </div>
-
-    <div class="container">
-        <div class="register-container">
-            <div class="title">
-                <h2>Create Account</h2>
-                <p>Join our community today</p>
-            </div>
-
-            <form method="post">
-                {% csrf_token %}
-                
-                {% for field in form %}
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                        {{ field }}
-                        
-                        {% if field.errors %}
-                            <div class="form-error">
-                                {% for error in field.errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-
-                <button type="submit" class="btn btn-primary">Get Started</button>
-
-                <div class="divider">
-                    <span>or</span>
-                </div>
-
-                <button type="button" class="social-btn">
-                    <i class="fab fa-google social-icon"></i>
-                    Continue with Google
-                </button>
-
-                <div class="already-account">
-                    <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
-                </div>
-            </form>
+        
+        <!-- Light Rays -->
+        <div class="light-rays">
+            <div class="light-ray ray-1"></div>
+            <div class="light-ray ray-2"></div>
+            <div class="light-ray ray-3"></div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference or use device preference
-        const savedTheme = localStorage.getItem('theme');
-        
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-            updateIcon(savedTheme);
-        } else {
-            // Use device preference
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (prefersDark) {
-                htmlElement.setAttribute('data-theme', 'dark');
-                updateIcon('dark');
-            }
-        }
-        
-        // Toggle theme on click
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            updateIcon(newTheme);
-        });
-        
-        // Update icon based on theme
-        function updateIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
-        
-        // Adjust mesh gradients on theme change
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'data-theme') {
-                    // Animate the meshes slightly when theme changes
-                    document.querySelectorAll('.mesh-gradient').forEach(mesh => {
-                        mesh.style.opacity = '0.4';
-                        setTimeout(() => {
-                            mesh.style.opacity = '0.6';
-                        }, 400);
-                    });
-                }
-            });
-        });
-        
-        observer.observe(htmlElement, { attributes: true });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const registerForm = document.querySelector('form');
-            
-            registerForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
+    <!-- Enhanced Theme Toggle -->
+
+
+    <!-- Main Container -->
+    <div class="main-container">
+    <div class="login-container">
+            <!-- Enhanced Login Card -->
+            <div class="login-card">
+                <!-- Card Glow Effect -->
+                <div class="card-glow"></div>
                 
-                try {
-                    const formData = new FormData(registerForm);
-                    const response = await fetch(registerForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                        }
-                    });
+                <!-- Card Header with Enhanced Logo -->
+                <div class="card-header">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <div class="logo-inner">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                            <div class="logo-rings">
+                                <div class="ring ring-1"></div>
+                                <div class="ring ring-2"></div>
+                                <div class="ring ring-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="welcome-title">
+                        <span class="title-line">Join</span>
+                        <span class="title-line">Codeweave</span>
+                    </h1>
+                    <p class="welcome-subtitle">Create your account and start building</p>
+                </div>
+
+                <!-- Enhanced Form -->
+                <form class="login-form" id="loginForm" method="post" action="" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="username" name="username" required autocomplete="username" spellcheck="false">
+                <label for="username">Username</label>
+                                <div class="input-border"></div>
+                                <div class="input-focus-effect"></div>
+                            </div>
+                            <div class="validation-icon">
+                                <i class="fas fa-check success-icon"></i>
+                                <i class="fas fa-times error-icon"></i>
+                            </div>
+                        </div>
+                <div class="error-message" id="usernameError"></div>
+            </div>
+
+            <div class="form-group">
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                <label for="email">Email Address</label>
+                                <div class="input-border"></div>
+                                <div class="input-focus-effect"></div>
+                            </div>
+                            <div class="validation-icon">
+                                <i class="fas fa-check success-icon"></i>
+                                <i class="fas fa-times error-icon"></i>
+                            </div>
+                        </div>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="password1" name="password1" required autocomplete="new-password">
+                <label for="password1">Password</label>
+                                <button type="button" class="password-toggle" id="password1Toggle" aria-label="Toggle password visibility">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <div class="input-border"></div>
+                                <div class="input-focus-effect"></div>
+                            </div>
+                            <div class="validation-icon">
+                                <i class="fas fa-check success-icon"></i>
+                                <i class="fas fa-times error-icon"></i>
+                            </div>
+                        </div>
+                <div class="error-message" id="password1Error"></div>
+            </div>
+
+            <div class="form-group">
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" id="password2" name="password2" required autocomplete="new-password">
+                <label for="password2">Confirm Password</label>
+                                <button type="button" class="password-toggle" id="password2Toggle" aria-label="Toggle password visibility">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <div class="input-border"></div>
+                                <div class="input-focus-effect"></div>
+                            </div>
+                            <div class="validation-icon">
+                                <i class="fas fa-check success-icon"></i>
+                                <i class="fas fa-times error-icon"></i>
+                            </div>
+                        </div>
+                <div class="error-message" id="password2Error"></div>
+            </div>
+
+                    <!-- Enhanced Form Options -->
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <span class="checkmark">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            <span class="checkbox-text">I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a></span>
+                        </label>
+                </div>
+
+                    <!-- Enhanced Sign Up Button -->
+                    <button type="submit" class="login-button" id="signupButton">
+                        <span class="button-content">
+                            <span class="button-text">Create Account</span>
+                            <i class="fas fa-arrow-right button-arrow"></i>
+                        </span>
+                        <div class="button-loader">
+                            <div class="loader-spinner"></div>
+                        </div>
+                        <div class="button-ripple"></div>
+                    </button>
                     
-                    const data = await response.json();
-                    
-                    if (response.ok) {
-                        // Store the auth token
-                        localStorage.setItem('authToken', data.token);
-                        
-                        // Show success message
-                        const messageDiv = document.createElement('div');
-                        messageDiv.className = 'alert alert-success';
-                        messageDiv.textContent = data.message;
-                        registerForm.insertBefore(messageDiv, registerForm.firstChild);
-                        
-                        // Redirect after a short delay
-                        setTimeout(() => {
-                            window.location.href = data.redirect;
-                        }, 1000);
-                    } else {
-                        // Show error message
-                        const messageDiv = document.createElement('div');
-                        messageDiv.className = 'alert alert-danger';
-                        messageDiv.textContent = Object.values(data.errors).flat().join('\n');
-                        registerForm.insertBefore(messageDiv, registerForm.firstChild);
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Show error message
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = 'alert alert-danger';
-                    messageDiv.textContent = 'An error occurred. Please try again.';
-                    registerForm.insertBefore(messageDiv, registerForm.firstChild);
-                }
-            });
-        });
+                    <!-- Test Error Button (for demonstration) -->
+                  
+
+                <!-- Enhanced Error Box -->
+                <div class="error-box" id="errorBox" style="display: none;">
+                    <div class="error-content">
+                        <div class="error-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="error-details">
+                            <h3 class="error-title">Login Failed</h3>
+                            <p class="error-message" id="errorMessage">Invalid username or password. Please try again.</p>
+                        </div>
+                        <button class="error-close" id="errorClose" aria-label="Close error">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="error-progress"></div>
+                </div>
+
+                <!-- Enhanced Divider -->
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">or continue with</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Enhanced Social Login -->
+                <div class="social-login">
+                    <button class="social-button google" type="button">
+                        <div class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <span class="social-text">Google</span>
+                        <div class="social-ripple"></div>
+                    </button>
+                    <button class="social-button github" type="button">
+                        <div class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <span class="social-text">GitHub</span>
+                        <div class="social-ripple"></div>
+                    </button>
+                    <button class="social-button apple" type="button">
+                        <div class="social-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <span class="social-text">Apple</span>
+                        <div class="social-ripple"></div>
+                    </button>
+                </div>
+
+                <!-- Enhanced Login Link -->
+                <div class="signup-link">
+                    <p>Already have an account? 
+                        <a href="{% url 'login' %}" class="signup-link-text">
+                            <span>Sign in</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-animation">
+                    <div class="success-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="success-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
+                </div>
+                <h3>Welcome to Codeweave!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your account has been created successfully. Redirecting to your dashboard...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <p>Authenticating...</p>
+    </div>
+</div>
+
+<script>
+        // Enhanced Theme Management
+class ThemeManager {
+  constructor() {
+    this.themeToggle = document.getElementById('themeToggle');
+    this.currentTheme = localStorage.getItem('theme') || 'light-mode';
+    this.init();
+  }
+
+  init() {
+    this.applyTheme(this.currentTheme);
+    this.themeToggle.addEventListener('click', () => this.toggleTheme());
+    
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          this.applyTheme(e.matches ? 'dark-mode' : 'light-mode');
+        }
+      });
+    }
+  }
+
+  toggleTheme() {
+    this.currentTheme = this.currentTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
+    this.applyTheme(this.currentTheme);
+    localStorage.setItem('theme', this.currentTheme);
+    
+    // Add theme transition effect
+    document.body.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      document.body.style.transition = '';
+    }, 300);
+  }
+
+  applyTheme(theme) {
+    document.body.className = theme;
+    this.updateThemeToggle();
+    this.updateParticleColors();
+  }
+
+  updateThemeToggle() {
+    const isDark = this.currentTheme === 'dark-mode';
+    this.themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+  }
+
+  updateParticleColors() {
+    const particles = document.querySelectorAll('.particle');
+    const isDark = this.currentTheme === 'dark-mode';
+    
+    particles.forEach(particle => {
+      if (isDark) {
+        particle.style.filter = 'brightness(1.2) saturate(1.3)';
+      } else {
+        particle.style.filter = 'brightness(0.9) saturate(1.1)';
+      }
+    });
+  }
+}
+
+// Enhanced Form Validation
+class FormValidator {
+  constructor() {
+    this.form = document.getElementById('loginForm');
+    this.usernameInput = document.getElementById('username');
+    this.emailInput = document.getElementById('email');
+    this.password1Input = document.getElementById('password1');
+    this.password2Input = document.getElementById('password2');
+    this.usernameError = document.getElementById('usernameError');
+    this.emailError = document.getElementById('emailError');
+    this.password1Error = document.getElementById('password1Error');
+    this.password2Error = document.getElementById('password2Error');
+    this.signupButton = document.getElementById('signupButton');
+    this.rules = {
+      username: {
+        required: true,
+        minLength: 3,
+        maxLength: 20,
+        pattern: /^[a-zA-Z0-9_]+$/,
+        message: 'Username must be 3-20 characters and contain only letters, numbers, and underscores'
+      },
+      email: {
+        required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: 'Please enter a valid email address'
+      },
+      password1: {
+        required: true,
+        minLength: 8,
+        message: 'Password must be at least 8 characters'
+      },
+      password2: {
+        required: true,
+        message: 'Please confirm your password'
+      }
+    };
+    this.init();
+  }
+
+  init() {
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    this.usernameInput.addEventListener('input', () => this.validateField('username'));
+    this.usernameInput.addEventListener('blur', () => this.validateField('username'));
+    this.emailInput.addEventListener('input', () => this.validateField('email'));
+    this.emailInput.addEventListener('blur', () => this.validateField('email'));
+    this.password1Input.addEventListener('input', () => this.validateField('password1'));
+    this.password1Input.addEventListener('blur', () => this.validateField('password1'));
+    this.password2Input.addEventListener('input', () => this.validateField('password2'));
+    this.password2Input.addEventListener('blur', () => this.validateField('password2'));
+    this.usernameInput.addEventListener('input', () => this.debounce(() => this.validateField('username'), 300));
+    this.emailInput.addEventListener('input', () => this.debounce(() => this.validateField('email'), 300));
+    this.password1Input.addEventListener('input', () => this.debounce(() => this.validateField('password1'), 300));
+    this.password2Input.addEventListener('input', () => this.debounce(() => this.validateField('password2'), 300));
+    
+    // Prevent any form submission that might cause page redirect
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
+  }
+
+  debounce(func, wait) {
+    clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(func, wait);
+  }
+
+  validateField(fieldName) {
+    const input = document.getElementById(fieldName);
+    const errorElement = document.getElementById(`${fieldName}Error`);
+    const wrapper = input.closest('.input-wrapper');
+    const validationIcon = input.closest('.input-container').querySelector('.validation-icon');
+    const value = input.value.trim();
+    const rule = this.rules[fieldName];
+    wrapper.classList.remove('error', 'success');
+    errorElement.classList.remove('show');
+    validationIcon.classList.remove('show');
+    let errorMessage = '';
+    if (rule.required && !value) {
+      errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
+    } else if (value && rule.minLength && value.length < rule.minLength) {
+      errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be at least ${rule.minLength} characters`;
+    } else if (value && rule.maxLength && value.length > rule.maxLength) {
+      errorMessage = `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be no more than ${rule.maxLength} characters`;
+    } else if (value && rule.pattern && !rule.pattern.test(value)) {
+      errorMessage = rule.message;
+    }
+    if (errorMessage) {
+      wrapper.classList.add('error');
+      errorElement.textContent = errorMessage;
+      errorElement.classList.add('show');
+      validationIcon.classList.add('show');
+      return false;
+    } else if (value) {
+      wrapper.classList.add('success');
+      validationIcon.classList.add('show');
+    }
+    return true;
+  }
+
+  validateForm() {
+    const isUsernameValid = this.validateField('username');
+    const isEmailValid = this.validateField('email');
+    const isPassword1Valid = this.validateField('password1');
+    const isPassword2Valid = this.validateField('password2');
+    
+    // Check if passwords match
+    if (isPassword1Valid && isPassword2Valid && this.password1Input.value !== this.password2Input.value) {
+      this.password2Error.textContent = 'Passwords do not match';
+      this.password2Error.classList.add('show');
+      return false;
+    }
+    
+    return isUsernameValid && isEmailValid && isPassword1Valid && isPassword2Valid;
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    if (!this.validateForm()) {
+      this.shakeForm();
+      return;
+    }
+    this.setLoading(true);
+    try {
+      // Serialize form as x-www-form-urlencoded
+      const formData = new URLSearchParams();
+      formData.append('username', this.usernameInput.value);
+      formData.append('email', this.emailInput.value);
+      formData.append('password1', this.password1Input.value);
+      formData.append('password2', this.password2Input.value);
+      // Get CSRF token
+      const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      // Send POST to backend
+      const response = await fetch(this.form.action || window.location.pathname, {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': csrfToken,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+      const data = await response.json();
+      if (response.ok) {
+        this.showSuccessModal();
+        setTimeout(() => {
+          window.location.href = data.redirect || '/dashboard/';
+        }, 1800);
+      } else {
+        console.log('Login failed with response:', data);
+        if (data.errors) {
+          if (data.errors.username) this.usernameError.textContent = data.errors.username.join(' ');
+          if (data.errors.email) this.emailError.textContent = data.errors.email.join(' ');
+          if (data.errors.password1) this.password1Error.textContent = data.errors.password1.join(' ');
+          if (data.errors.password2) this.password2Error.textContent = data.errors.password2.join(' ');
+          if (data.errors['__all__']) this.showError(data.errors['__all__'].join(' '));
+        }
+        this.showError(data.message || 'Invalid username or password.');
+        this.shakeForm();
+        
+        // Fallback alert in case error box doesn't work
+        setTimeout(() => {
+          if (!document.getElementById('errorBox')?.style.display || 
+              document.getElementById('errorBox').style.display === 'none') {
+            alert(data.message || 'Invalid username or password.');
+          }
+        }, 100);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      this.showError('An error occurred during login. Please try again.');
+      this.shakeForm();
+    } finally {
+      this.setLoading(false);
+    }
+  }
+
+  setLoading(isLoading) {
+    this.signupButton.classList.toggle('loading', isLoading);
+    const inputs = this.form.querySelectorAll('input, button');
+    inputs.forEach(input => {
+      if (input !== this.signupButton) {
+        input.disabled = isLoading;
+      }
+    });
+  }
+
+  shakeForm() {
+    const loginCard = document.querySelector('.login-card');
+    loginCard.style.animation = 'shake 0.5s ease-in-out';
+    setTimeout(() => {
+      loginCard.style.animation = '';
+    }, 500);
+  }
+
+  showError(message) {
+    console.log('Showing error:', message);
+    // Use the ErrorBoxHandler if available, otherwise fall back to notification
+    if (window.errorBoxHandler) {
+      console.log('Using ErrorBoxHandler');
+      window.errorBoxHandler.showError(message);
+    } else {
+      console.log('Using fallback notification');
+      this.createNotification(message, 'error');
+    }
+  }
+
+  showSuccess(message) {
+    this.createNotification(message, 'success');
+  }
+
+  createNotification(message, type) {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <i class="fas ${type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+        <span>${message}</span>
+      </div>
+      <button class="notification-close" onclick="this.parentElement.remove()">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${type === 'error' ? 'linear-gradient(135deg, #fc466b 0%, #3f5efb 100%)' : 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'};
+      color: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      z-index: 3000;
+      font-size: 14px;
+      font-weight: 500;
+      max-width: 350px;
+      animation: slideInRight 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+      notification.style.animation = 'slideOutRight 0.3s ease';
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 5000);
+  }
+
+  showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.add('show');
+    this.animateSuccessParticles();
+  }
+
+  animateSuccessParticles() {
+    const particles = document.querySelectorAll('.success-particles .particle');
+    particles.forEach((particle, index) => {
+      const angle = (index * 72) * Math.PI / 180;
+      const distance = 60;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+      particle.style.setProperty('--random-x', `${x}px`);
+      particle.style.setProperty('--random-y', `${y}px`);
+    });
+  }
+}
+
+// Enhanced Password Toggle
+class PasswordToggle {
+  constructor() {
+    this.password1Input = document.getElementById('password1');
+    this.password2Input = document.getElementById('password2');
+    this.toggle1Button = document.getElementById('password1Toggle');
+    this.toggle2Button = document.getElementById('password2Toggle');
+    this.init();
+  }
+
+  init() {
+    this.toggle1Button.addEventListener('click', () => this.toggle(this.password1Input, this.toggle1Button));
+    this.toggle2Button.addEventListener('click', () => this.toggle(this.password2Input, this.toggle2Button));
+  }
+
+  toggle(input, toggleButton) {
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    
+    const icon = toggleButton.querySelector('i');
+    icon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+    
+    toggleButton.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+    
+    // Add visual feedback
+    toggleButton.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      toggleButton.style.transform = 'scale(1)';
+    }, 150);
+  }
+}
+
+// Enhanced Particle Controller
+class ParticleController {
+  constructor() {
+    this.particles = document.querySelectorAll('.particle');
+    this.init();
+  }
+
+  init() {
+    this.particles.forEach((particle, index) => {
+      this.randomizeParticle(particle, index);
+    });
+    
+    // Update particles based on mouse movement
+    document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+  }
+
+  randomizeParticle(particle, index) {
+    const colors = [
+      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+      'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+    ];
+    
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const size = Math.random() * 6 + 3; // 3-9px
+    const left = Math.random() * 100;
+    const animationDuration = Math.random() * 20 + 15; // 15-35s
+    const animationDelay = Math.random() * 10; // 0-10s
+    
+    particle.style.background = randomColor;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${left}%`;
+    particle.style.animationDuration = `${animationDuration}s`;
+    particle.style.animationDelay = `${animationDelay}s`;
+  }
+
+  handleMouseMove(e) {
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    this.particles.forEach((particle, index) => {
+      const speed = (index % 3 + 1) * 0.5;
+      const x = (mouseX - 0.5) * speed * 20;
+      const y = (mouseY - 0.5) * speed * 20;
+      
+      particle.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  }
+}
+
+// Enhanced Social Login
+class SocialLogin {
+  constructor() {
+    this.googleButton = document.querySelector('.social-button.google');
+    this.githubButton = document.querySelector('.social-button.github');
+    this.appleButton = document.querySelector('.social-button.apple');
+    this.init();
+  }
+
+  init() {
+    this.googleButton.addEventListener('click', () => this.handleSocialLogin('google'));
+    this.githubButton.addEventListener('click', () => this.handleSocialLogin('github'));
+    this.appleButton.addEventListener('click', () => this.handleSocialLogin('apple'));
+  }
+
+  async handleSocialLogin(provider) {
+    const button = document.querySelector(`.social-button.${provider}`);
+    this.setButtonLoading(button, true);
+    
+    try {
+      await this.simulateOAuth(provider);
+      this.showSuccess(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login successful!`);
+        } catch (error) {
+      this.showError(`${provider.charAt(0).toUpperCase() + provider.slice(1)} login failed. Please try again.`);
+        } finally {
+      this.setButtonLoading(button, false);
+    }
+  }
+
+  async simulateOAuth(provider) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Simulate random success/failure (90% success rate)
+        if (Math.random() > 0.1) {
+          resolve({ success: true, provider });
+        } else {
+          reject(new Error(`${provider} login failed`));
+        }
+      }, 1500);
+    });
+  }
+
+  setButtonLoading(button, isLoading) {
+    const icon = button.querySelector('.social-icon i');
+    const text = button.querySelector('.social-text');
+    
+    if (isLoading) {
+      icon.className = 'fas fa-spinner fa-spin';
+      text.textContent = 'Connecting...';
+      button.disabled = true;
+      button.style.opacity = '0.7';
+    } else {
+      const provider = button.classList.contains('google') ? 'google' : 
+                     button.classList.contains('github') ? 'github' : 'apple';
+      icon.className = `fab fa-${provider}`;
+      text.textContent = provider.charAt(0).toUpperCase() + provider.slice(1);
+      button.disabled = false;
+      button.style.opacity = '1';
+    }
+  }
+
+  showSuccess(message) {
+    const formValidator = new FormValidator();
+    formValidator.showSuccess(message);
+    
+    setTimeout(() => {
+      const modal = document.getElementById('successModal');
+      const modalBody = modal.querySelector('.modal-body p');
+      modalBody.textContent = message + ' Redirecting to your dashboard...';
+      modal.classList.add('show');
+
+      setTimeout(() => {
+        modal.classList.remove('show');
+        console.log('Redirecting to dashboard...');
+      }, 2000);
+    }, 1000);
+  }
+
+  showError(message) {
+    const formValidator = new FormValidator();
+    formValidator.showError(message);
+  }
+}
+
+// Enhanced Keyboard Navigation
+class KeyboardNavigation {
+  constructor() {
+    this.focusableElements = [];
+    this.currentFocus = -1;
+    this.init();
+  }
+
+  init() {
+    this.updateFocusableElements();
+    document.addEventListener('keydown', (e) => this.handleKeyDown(e));
+    
+    // Update focusable elements when DOM changes
+    const observer = new MutationObserver(() => {
+      this.updateFocusableElements();
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['disabled', 'tabindex']
+    });
+  }
+
+  updateFocusableElements() {
+    this.focusableElements = Array.from(document.querySelectorAll(
+      'input:not([disabled]), button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetParent !== null);
+  }
+
+  handleKeyDown(e) {
+    // Enhanced keyboard shortcuts
+    if (e.key === 'Tab') {
+      this.updateFocusableElements();
+    }
+    
+    if (e.key === 'Enter' && e.target.type === 'submit') {
+      e.preventDefault();
+      e.target.click();
+    }
+    
+    // Escape key to close modals
+    if (e.key === 'Escape') {
+      const modal = document.querySelector('.modal.show');
+      if (modal) {
+        modal.classList.remove('show');
+      }
+    }
+    
+    // Alt + T for theme toggle
+    if (e.altKey && e.key === 't') {
+      e.preventDefault();
+      document.getElementById('themeToggle').click();
+    }
+  }
+}
+
+// Enhanced Performance Optimizer
+class PerformanceOptimizer {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.setupIntersectionObserver();
+    this.setupResizeHandler();
+    this.preloadResources();
+    this.optimizeAnimations();
+  }
+
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        } else {
+          // Pause animations for elements not in view to save performance
+          if (window.innerWidth < 768) {
+            entry.target.style.animationPlayState = 'paused';
+          }
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px'
+    });
+
+    document.querySelectorAll('.particle, .gradient-orb, .shape').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  setupResizeHandler() {
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        this.handleResize();
+      }, 250);
+    });
+  }
+
+  handleResize() {
+    // Recalculate particle positions and optimize for mobile
+    if (window.innerWidth < 768) {
+      this.optimizeForMobile();
+    } else {
+      this.optimizeForDesktop();
+    }
+  }
+
+  optimizeForMobile() {
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach((particle, index) => {
+      if (index > 6) { // Reduce particle count on mobile
+        particle.style.display = 'none';
+      }
+    });
+  }
+
+  optimizeForDesktop() {
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach(particle => {
+      particle.style.display = 'block';
+    });
+  }
+
+  preloadResources() {
+    // Preload critical fonts
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'preload';
+    fontLink.as = 'font';
+    fontLink.type = 'font/woff2';
+    fontLink.href = 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2';
+    fontLink.crossOrigin = 'anonymous';
+    document.head.appendChild(fontLink);
+  }
+
+  optimizeAnimations() {
+    // Reduce animations based on user preferences
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.setProperty('--transition-fast', '0.01ms');
+      document.documentElement.style.setProperty('--transition-normal', '0.01ms');
+      document.documentElement.style.setProperty('--transition-slow', '0.01ms');
+    }
+  }
+}
+
+// Enhanced Error Box Handler
+class ErrorBoxHandler {
+  constructor() {
+    this.errorBox = document.getElementById('errorBox');
+    this.errorMessage = document.getElementById('errorMessage');
+    this.errorClose = document.getElementById('errorClose');
+    this.errorTimeout = null;
+    this.init();
+  }
+
+  init() {
+    this.setupEventListeners();
+  }
+
+  setupEventListeners() {
+    // Close button functionality
+    this.errorClose.addEventListener('click', () => {
+      this.hideError();
+    });
+
+    // Auto-hide after 5 seconds
+    this.errorBox.addEventListener('animationend', (e) => {
+      if (e.animationName === 'errorSlideIn') {
+        this.startAutoHide();
+      }
+    });
+  }
+
+  showError(message = 'Invalid username or password. Please try again.') {
+    console.log('ErrorBoxHandler.showError called with:', message);
+    
+    // Clear any existing timeout
+    if (this.errorTimeout) {
+      clearTimeout(this.errorTimeout);
+    }
+
+    // Update error message
+    if (this.errorMessage) {
+      this.errorMessage.textContent = message;
+    } else {
+      console.error('Error message element not found');
+    }
+    
+    // Show error box
+    if (this.errorBox) {
+      this.errorBox.style.display = 'block';
+      this.errorBox.classList.remove('hide');
+      this.errorBox.classList.add('show');
+      console.log('Error box should now be visible');
+    } else {
+      console.error('Error box element not found');
+    }
+    
+    // Reset progress bar
+    const progressBar = this.errorBox?.querySelector('.error-progress');
+    if (progressBar) {
+      progressBar.style.animation = 'none';
+      progressBar.offsetHeight; // Trigger reflow
+      progressBar.style.animation = 'errorProgress 5s linear forwards';
+    }
+  }
+
+  hideError() {
+    this.errorBox.classList.add('hide');
+    this.errorBox.classList.remove('show');
+    
+    // Hide after animation completes
+    setTimeout(() => {
+      this.errorBox.style.display = 'none';
+      this.errorBox.classList.remove('hide');
+    }, 300);
+  }
+
+  startAutoHide() {
+    this.errorTimeout = setTimeout(() => {
+      this.hideError();
+    }, 5000);
+  }
+
+  // Method to show different types of errors
+  showLoginError() {
+    this.showError('Invalid username or password. Please check your credentials and try again.');
+  }
+
+  showNetworkError() {
+    this.showError('Network error. Please check your connection and try again.');
+  }
+
+  showServerError() {
+    this.showError('Server error. Please try again later or contact support.');
+  }
+
+  showValidationError(field) {
+    const messages = {
+      username: 'Please enter a valid username.',
+      password: 'Please enter your password.',
+      email: 'Please enter a valid email address.'
+    };
+    this.showError(messages[field] || 'Please check your input and try again.');
+  }
+}
+
+// Enhanced Ripple Effect
+class RippleEffect {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.login-button, .social-button')) {
+        this.createRipple(e);
+      }
+    });
+  }
+
+  createRipple(e) {
+    const button = e.target.closest('.login-button, .social-button');
+    const ripple = button.querySelector('.button-ripple, .social-ripple');
+    
+    if (ripple) {
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      
+      ripple.classList.add('animate');
+      
+      setTimeout(() => {
+        ripple.classList.remove('animate');
+      }, 600);
+    }
+  }
+}
+
+// Add CSS for additional animations
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .notification-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .notification-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .button-ripple.animate,
+  .social-ripple.animate {
+    animation: ripple 0.6s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(additionalStyles);
+
+// Initialize all components when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  new ThemeManager();
+  new FormValidator();
+  new PasswordToggle();
+  new ParticleController();
+  new SocialLogin();
+  new KeyboardNavigation();
+  new PerformanceOptimizer();
+  new RippleEffect();
+  window.errorBoxHandler = new ErrorBoxHandler();
+  
+  // Add loading animation
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.opacity = '1';
+  }, 100);
+});
+
+// Handle modal close on outside click
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('successModal');
+  if (e.target === modal || e.target.classList.contains('modal-backdrop')) {
+    modal.classList.remove('show');
+  }
+});
+
+// Enhanced error handling
+window.addEventListener('error', (e) => {
+  console.error('Application error:', e.error);
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled promise rejection:', e.reason);
+});
+
+// Service Worker registration for PWA capabilities (optional)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Uncomment to enable service worker
+    // navigator.serviceWorker.register('/sw.js')
+    //   .then(registration => console.log('SW registered'))
+    //   .catch(error => console.log('SW registration failed'));
+  });
+}
     </script>
 </body>
 </html>

@@ -41,33 +41,33 @@
   --accent-800: #6b21a8;
   --accent-900: #581c87;
   
-  /* Light Mode Colors */
-  --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --bg-secondary: rgba(255, 255, 255, 0.95);
-  --bg-tertiary: rgba(248, 250, 252, 0.8);
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-tertiary: #64748b;
-  --text-muted: #94a3b8;
-  --border-primary: rgba(226, 232, 240, 0.8);
-  --border-secondary: rgba(203, 213, 225, 0.6);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  /* Light Mode Colors - Matching Theme */
+  --bg-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  --bg-secondary: rgba(26, 26, 46, 0.95);
+  --bg-tertiary: rgba(22, 33, 62, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #666666;
+  --text-muted: #888888;
+  --border-primary: rgba(102, 126, 234, 0.2);
+  --border-secondary: rgba(118, 75, 162, 0.2);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(26, 26, 46, 0.3);
+  --glass-border: rgba(102, 126, 234, 0.1);
   --backdrop-blur: 20px;
   
-  /* Enhanced Gradients */
+  /* Enhanced Gradients - Matching Theme */
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-secondary: linear-gradient(135deg, #ef5d36 0%, #ff6b3d 100%);
   --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
   --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-error: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
-  --gradient-rainbow: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+  --gradient-rainbow: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #ef5d36 50%, #ff6b3d 75%, #4facfe 100%);
   
   /* Animation Variables */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -105,24 +105,24 @@
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 }
 
-/* Dark Mode Colors */
+/* Dark Mode Colors - Enhanced for Theme */
 .dark-mode {
-  --bg-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --bg-secondary: rgba(30, 41, 59, 0.95);
-  --bg-tertiary: rgba(15, 23, 42, 0.8);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --text-muted: #64748b;
-  --border-primary: rgba(51, 65, 85, 0.8);
-  --border-secondary: rgba(71, 85, 105, 0.6);
-  --glass-bg: rgba(30, 41, 59, 0.3);
-  --glass-border: rgba(148, 163, 184, 0.1);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --bg-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  --bg-secondary: rgba(26, 26, 46, 0.95);
+  --bg-tertiary: rgba(22, 33, 62, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #666666;
+  --text-muted: #888888;
+  --border-primary: rgba(102, 126, 234, 0.3);
+  --border-secondary: rgba(118, 75, 162, 0.3);
+  --glass-bg: rgba(26, 26, 46, 0.4);
+  --glass-border: rgba(102, 126, 234, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
 }
 
 /* Reset and Base Styles */
@@ -142,14 +142,14 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: #ffffff;
   line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-  transition: all var(--transition-normal);
-    position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 }
 
 /* Enhanced Background Animation */
@@ -383,86 +383,7 @@ body {
   animation-delay: 4s;
 }
 
-/* Enhanced Theme Toggle */
-.theme-toggle-container {
-  position: fixed;
-  top: var(--space-6);
-  right: var(--space-6);
-  z-index: 1000;
-}
 
-.theme-toggle {
-  position: relative;
-  width: 70px;
-  height: 36px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  backdrop-filter: blur(var(--backdrop-blur));
-  overflow: hidden;
-}
-
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.toggle-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-full);
-}
-
-.toggle-thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 32px;
-  height: 32px;
-  background: var(--bg-secondary);
-  border-radius: 50%;
-  transition: transform var(--transition-normal);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dark-mode .toggle-thumb {
-  transform: translateX(34px);
-}
-
-.sun-icon,
-.moon-icon {
-  position: absolute;
-  font-size: 14px;
-  transition: all var(--transition-normal);
-}
-
-.sun-icon {
-  color: #f59e0b;
-  opacity: 0;
-  transform: rotate(-90deg) scale(0.5);
-}
-
-.moon-icon {
-  color: #6366f1;
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-.dark-mode .sun-icon {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-.dark-mode .moon-icon {
-  opacity: 0;
-  transform: rotate(90deg) scale(0.5);
-}
 
 /* Main Container */
 .main-container {
@@ -480,15 +401,17 @@ body {
     position: relative;
 }
 
-/* Enhanced Login Card */
+/* Enhanced Login Card - Matching Theme */
 .login-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-3xl);
-  padding: var(--space-12);
-  backdrop-filter: blur(var(--backdrop-blur));
-  box-shadow: var(--shadow-2xl);
-  transition: all var(--transition-normal);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(102, 126, 234, 0.1) inset;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
 }
@@ -534,8 +457,8 @@ body {
 
 .logo {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -543,8 +466,8 @@ body {
 }
 
 .logo-inner {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: var(--gradient-primary);
   border-radius: var(--radius-2xl);
   display: flex;
@@ -556,7 +479,7 @@ body {
 }
 
 .logo-inner i {
-  font-size: 28px;
+  font-size: 24px;
   color: white;
 }
 
@@ -601,7 +524,7 @@ body {
 
 .welcome-title {
   font-family: var(--font-secondary);
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: var(--space-4);
   line-height: 1.2;
@@ -618,7 +541,7 @@ body {
 
 .welcome-subtitle {
   color: var(--text-secondary);
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -645,56 +568,57 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  height: 64px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: 0 var(--space-6) 0 var(--space-12);
-  font-size: 1rem;
-  color: var(--text-primary);
-  transition: all var(--transition-normal);
+  height: 56px;
+  background: rgba(26, 26, 46, 0.3);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  padding: 0 1.5rem 0 3rem;
+  font-size: 0.95rem;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   backdrop-filter: blur(8px);
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: var(--primary-500);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  background: rgba(26, 26, 46, 0.5);
 }
 
 .input-wrapper input:focus + label,
 .input-wrapper input:not(:placeholder-shown) + label {
   transform: translateY(-32px) scale(0.875);
-  color: var(--primary-500);
+  color: #667eea;
   font-weight: 500;
 }
 
 .input-wrapper label {
     position: absolute;
-  left: var(--space-12);
+  left: 3rem;
     top: 50%;
     transform: translateY(-50%);
-  color: var(--text-secondary);
-    font-size: 1rem;
+  color: #b3b3b3;
+    font-size: 0.9rem;
   pointer-events: none;
-  transition: all var(--transition-normal);
-  background: var(--bg-secondary);
-  padding: 0 var(--space-2);
-  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(26, 26, 46, 0.95);
+  padding: 0 0.5rem;
+  border-radius: 6px;
 }
 
 .input-icon {
   position: absolute;
-  left: var(--space-4);
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-tertiary);
-  font-size: 1.125rem;
-  transition: color var(--transition-normal);
+  color: #666666;
+  font-size: 1rem;
+  transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .input-wrapper input:focus ~ .input-icon {
-  color: var(--primary-500);
+  color: #667eea;
 }
 
 .password-toggle {
@@ -890,22 +814,24 @@ body {
   transform: translateX(2px);
 }
 
-/* Enhanced Login Button */
+/* Enhanced Login Button - Matching Theme */
 .login-button {
   position: relative;
   width: 100%;
-  height: 64px;
-  background: var(--gradient-primary);
-    border: none;
-  border-radius: var(--radius-xl);
-    color: white;
-  font-size: 1.125rem;
+  height: 56px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #ef5d36 50%, #ff6b3d 100%);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--space-8);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  margin-bottom: 2rem;
+  animation: gradientFlow 4s ease-in-out infinite;
 }
 
 .login-button:hover {
@@ -1078,6 +1004,174 @@ body {
   transform: scale(1);
   opacity: 1;
   transition: all 0s;
+}
+
+/* Enhanced Error Box */
+.error-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 8px 32px rgba(239, 68, 68, 0.15),
+    0 0 0 1px rgba(239, 68, 68, 0.1) inset;
+  transform: translateY(-10px);
+  opacity: 0;
+  animation: errorSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  overflow: hidden;
+}
+
+.error-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.error-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  animation: errorPulse 2s ease-in-out infinite;
+}
+
+.error-icon i {
+  color: white;
+  font-size: 1.25rem;
+  animation: errorShake 0.6s ease-in-out;
+}
+
+.error-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.error-title {
+  color: #fca5a5;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.error-message {
+  color: #fecaca;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.error-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: #fca5a5;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.error-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+  transform: scale(1.1);
+}
+
+.error-close:active {
+  transform: scale(0.95);
+}
+
+.error-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  border-radius: 0 0 16px 16px;
+  animation: errorProgress 5s linear forwards;
+}
+
+/* Error Animations */
+@keyframes errorSlideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes errorPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes errorProgress {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Error Box States */
+.error-box.show {
+  display: block;
+}
+
+.error-box.hide {
+  animation: errorSlideOut 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes errorSlideOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
 }
 
 /* Enhanced Signup Link */
@@ -1367,6 +1461,11 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes successPulse {
@@ -1697,16 +1796,7 @@ a:focus-visible {
     </div>
 
     <!-- Enhanced Theme Toggle -->
-    <div class="theme-toggle-container">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <div class="toggle-track">
-                <div class="toggle-thumb">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </div>
-            </div>
-        </button>
-    </div>
+
 
     <!-- Main Container -->
     <div class="main-container">
@@ -1803,7 +1893,26 @@ a:focus-visible {
                         </div>
                         <div class="button-ripple"></div>
                     </button>
-        </form>
+                    
+                    <!-- Test Error Button (for demonstration) -->
+                  
+
+                <!-- Enhanced Error Box -->
+                <div class="error-box" id="errorBox" style="display: none;">
+                    <div class="error-content">
+                        <div class="error-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="error-details">
+                            <h3 class="error-title">Login Failed</h3>
+                            <p class="error-message" id="errorMessage">Invalid username or password. Please try again.</p>
+                        </div>
+                        <button class="error-close" id="errorClose" aria-label="Close error">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="error-progress"></div>
+                </div>
 
                 <!-- Enhanced Divider -->
                 <div class="divider">
@@ -1984,6 +2093,22 @@ class FormValidator {
     this.passwordInput.addEventListener('blur', () => this.validateField('password'));
     this.usernameInput.addEventListener('input', () => this.debounce(() => this.validateField('username'), 300));
     this.passwordInput.addEventListener('input', () => this.debounce(() => this.validateField('password'), 300));
+    
+    // Prevent any form submission that might cause page redirect
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
+    
+    // Test error button functionality
+    const testErrorButton = document.getElementById('testErrorButton');
+    if (testErrorButton) {
+      testErrorButton.addEventListener('click', () => {
+        if (window.errorBoxHandler) {
+          window.errorBoxHandler.showError('This is a test error message to demonstrate the error box functionality.');
+        }
+      });
+    }
   }
 
   debounce(func, wait) {
@@ -2062,6 +2187,7 @@ class FormValidator {
           window.location.href = data.redirect || '/dashboard/';
         }, 1800);
       } else {
+        console.log('Login failed with response:', data);
         if (data.errors) {
           if (data.errors.username) this.usernameError.textContent = data.errors.username.join(' ');
           if (data.errors.password) this.passwordError.textContent = data.errors.password.join(' ');
@@ -2069,9 +2195,18 @@ class FormValidator {
         }
         this.showError(data.message || 'Invalid username or password.');
         this.shakeForm();
+        
+        // Fallback alert in case error box doesn't work
+        setTimeout(() => {
+          if (!document.getElementById('errorBox')?.style.display || 
+              document.getElementById('errorBox').style.display === 'none') {
+            alert(data.message || 'Invalid username or password.');
+          }
+        }, 100);
       }
     } catch (error) {
-      this.showError('An error occurred during login.');
+      console.error('Login error:', error);
+      this.showError('An error occurred during login. Please try again.');
       this.shakeForm();
     } finally {
       this.setLoading(false);
@@ -2097,7 +2232,15 @@ class FormValidator {
   }
 
   showError(message) {
-    this.createNotification(message, 'error');
+    console.log('Showing error:', message);
+    // Use the ErrorBoxHandler if available, otherwise fall back to notification
+    if (window.errorBoxHandler) {
+      console.log('Using ErrorBoxHandler');
+      window.errorBoxHandler.showError(message);
+    } else {
+      console.log('Using fallback notification');
+      this.createNotification(message, 'error');
+    }
   }
 
   showSuccess(message) {
@@ -2482,6 +2625,108 @@ class PerformanceOptimizer {
   }
 }
 
+// Enhanced Error Box Handler
+class ErrorBoxHandler {
+  constructor() {
+    this.errorBox = document.getElementById('errorBox');
+    this.errorMessage = document.getElementById('errorMessage');
+    this.errorClose = document.getElementById('errorClose');
+    this.errorTimeout = null;
+    this.init();
+  }
+
+  init() {
+    this.setupEventListeners();
+  }
+
+  setupEventListeners() {
+    // Close button functionality
+    this.errorClose.addEventListener('click', () => {
+      this.hideError();
+    });
+
+    // Auto-hide after 5 seconds
+    this.errorBox.addEventListener('animationend', (e) => {
+      if (e.animationName === 'errorSlideIn') {
+        this.startAutoHide();
+      }
+    });
+  }
+
+  showError(message = 'Invalid username or password. Please try again.') {
+    console.log('ErrorBoxHandler.showError called with:', message);
+    
+    // Clear any existing timeout
+    if (this.errorTimeout) {
+      clearTimeout(this.errorTimeout);
+    }
+
+    // Update error message
+    if (this.errorMessage) {
+      this.errorMessage.textContent = message;
+    } else {
+      console.error('Error message element not found');
+    }
+    
+    // Show error box
+    if (this.errorBox) {
+      this.errorBox.style.display = 'block';
+      this.errorBox.classList.remove('hide');
+      this.errorBox.classList.add('show');
+      console.log('Error box should now be visible');
+    } else {
+      console.error('Error box element not found');
+    }
+    
+    // Reset progress bar
+    const progressBar = this.errorBox?.querySelector('.error-progress');
+    if (progressBar) {
+      progressBar.style.animation = 'none';
+      progressBar.offsetHeight; // Trigger reflow
+      progressBar.style.animation = 'errorProgress 5s linear forwards';
+    }
+  }
+
+  hideError() {
+    this.errorBox.classList.add('hide');
+    this.errorBox.classList.remove('show');
+    
+    // Hide after animation completes
+    setTimeout(() => {
+      this.errorBox.style.display = 'none';
+      this.errorBox.classList.remove('hide');
+    }, 300);
+  }
+
+  startAutoHide() {
+    this.errorTimeout = setTimeout(() => {
+      this.hideError();
+    }, 5000);
+  }
+
+  // Method to show different types of errors
+  showLoginError() {
+    this.showError('Invalid username or password. Please check your credentials and try again.');
+  }
+
+  showNetworkError() {
+    this.showError('Network error. Please check your connection and try again.');
+  }
+
+  showServerError() {
+    this.showError('Server error. Please try again later or contact support.');
+  }
+
+  showValidationError(field) {
+    const messages = {
+      username: 'Please enter a valid username.',
+      password: 'Please enter your password.',
+      email: 'Please enter a valid email address.'
+    };
+    this.showError(messages[field] || 'Please check your input and try again.');
+  }
+}
+
 // Enhanced Ripple Effect
 class RippleEffect {
   constructor() {
@@ -2598,6 +2843,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new KeyboardNavigation();
   new PerformanceOptimizer();
   new RippleEffect();
+  window.errorBoxHandler = new ErrorBoxHandler();
   
   // Add loading animation
   document.body.style.opacity = '0';
