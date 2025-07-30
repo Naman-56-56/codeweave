@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include 
-from users.views import home_view, dashboard_view, features_view
+from users.views import home_view, dashboard_view, features_view, pay_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('dev_env/', include('dev_env.urls')),
     path("dashboard/", dashboard_view, name="dashboard"),
     path("features/", features_view, name="features"),
+    path("pay/", pay_view, name="pay"),
     path("", home_view, name="home"),
     path('api/', include('api.urls', namespace='api')),
     path('api2/', include('api2.urls', namespace='api2')),

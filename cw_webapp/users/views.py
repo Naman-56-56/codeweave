@@ -120,6 +120,9 @@ def home_view(request):
 def features_view(request):
     return render(request, "features.html")
 
+def pay_view(request):
+    return render(request, "pay.html")
+
 from django.contrib.auth import get_user
 from django.http import JsonResponse
 
