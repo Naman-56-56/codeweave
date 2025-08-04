@@ -25,7 +25,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 9999;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); /* More solid background */
             /* Removed: backdrop-filter: blur(25px) saturate(180%); */
             border-bottom: 1px solid rgba(102, 126, 234, 0.2);
@@ -467,7 +467,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 998;
+            z-index: 9998;
         }
 
         .mobile-overlay.active {
@@ -505,7 +505,7 @@
                 box-shadow: 
                     0 20px 60px rgba(0, 0, 0, 0.5),
                     0 0 0 1px rgba(102, 126, 234, 0.1) inset;
-                z-index: 999;
+                z-index: 9997;
                 max-height: calc(100vh - 90px);
                 overflow-y: auto;
             }
@@ -715,7 +715,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         .floating-dot {

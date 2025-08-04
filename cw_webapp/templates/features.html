@@ -58,6 +58,18 @@ body {
   text-align: center;
   margin: 50vh auto 0;
   padding-bottom: 10vh;
+  position: relative;
+  z-index: 10;
+}
+
+.credits a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.credits a:hover {
+  color: var(--color-link-hover);
 }
 
 /* Page Loader */
@@ -392,7 +404,7 @@ section {
       
       <span class="intro__info">Glide through <br> &amp; <br>Get inspire</span> 
     </div>
-    <section>
+    <section id="features">
       <div class="grid">
         <figure class="grid__item">
           <div class="grid__item-imgwrap">

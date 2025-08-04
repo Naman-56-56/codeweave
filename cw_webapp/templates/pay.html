@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeWeave Pro - Secure Checkout</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .bg-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(239, 93, 54, 0.5);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    .checkout-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(239, 93, 54, 0.15);
+      padding: 45px 35px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      position: relative;
+      z-index: 2;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .checkout-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .checkout-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ef5d36, #ff6b35, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 10px rgba(239, 93, 54, 0.3));
+      }
+
+      to {
+        filter: drop-shadow(0 0 20px rgba(239, 93, 54, 0.6));
+      }
+    }
+
+    .checkout-subtitle {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin: 25px 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ef5d36, #ff6b35);
+      border-radius: 2px;
+      width: 33%;
+      transition: width 0.5s ease;
+    }
+
+    .checkout-summary {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 35px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checkout-summary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .summary-row:last-child {
+      margin-bottom: 0;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .summary-label {
+      color: #bbb;
+      font-size: 1rem;
+    }
+
+    .summary-value {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .total-value {
+      background: linear-gradient(135deg, #ef5d36, #ff6b35);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.3rem;
+    }
+
+    .payment-methods {
+      margin-bottom: 30px;
+    }
+
+    .payment-method-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .payment-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .payment-tab {
+      flex: 1;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .payment-tab.active {
+      background: linear-gradient(135deg, #ef5d36, #ff6b35);
+      color: #fff;
+      border: 1px solid rgba(239, 93, 54, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .payment-tab:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .saved-cards {
+      margin-bottom: 25px;
+    }
+
+    .saved-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .saved-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .saved-card.selected {
+      border: 2px solid #ef5d36;
+      background: rgba(239, 93, 54, 0.15);
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      color: #ef5d36;
+    }
+
+    .card-info {
+      flex: 1;
+    }
+
+    .card-number {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-type {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .add-new-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #aaa;
+      font-weight: 500;
+    }
+
+    .add-new-card:hover {
+      border-color: #ef5d36;
+      color: #ef5d36;
+      background: rgba(239, 93, 54, 0.05);
+    }
+
+    .checkout-form {
+      display: none;
+    }
+
+    .checkout-form.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #bbb;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      border: 2px solid #ef5d36;
+      outline: none;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(239, 93, 54, 0.1);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .security-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #34d399;
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ef5d36, #ff6b35);
+      border: none;
+      border-radius: 16px;
+      color: #fff;
+      padding: 18px 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s;
+      margin-top: 25px;
+      box-shadow: 0 8px 30px rgba(239, 93, 54, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checkout-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(239, 93, 54, 0.3);
+    }
+
+    .checkout-btn:active {
+      transform: translateY(0);
+    }
+
+    .checkout-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .checkout-btn:hover::before {
+      left: 100%;
+    }
+
+    .checkout-success {
+      background: rgba(52, 211, 153, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 16px;
+      padding: 25px;
+      margin-top: 25px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      animation: successPulse 0.6s ease-out;
+    }
+
+    @keyframes successPulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .loading .checkout-btn {
+      background: #555;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .checkout-container {
+        padding: 25px 20px;
+        margin: 10px;
+      }
+
+      .checkout-title {
+        font-size: 2rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .payment-tabs {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-particles"></div>
+
+  <div class="checkout-container">
+    <div class="checkout-header">
+      <div class="checkout-title">
+        <i class="fas fa-code"></i> CodeWeave Pro
+      </div>
+      <div class="checkout-subtitle">Unlock AI-powered development tools</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="checkout-summary" id="checkoutSummary">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="payment-methods">
+      <div class="payment-method-title">
+        <i class="fas fa-credit-card"></i> Payment Method
+      </div>
+
+      <div class="payment-tabs">
+        <div class="payment-tab active" data-tab="card">
+          <i class="fas fa-credit-card"></i> Card
+        </div>
+        <div class="payment-tab" data-tab="bank">
+          <i class="fas fa-university"></i> Bank
+        </div>
+        <div class="payment-tab" data-tab="crypto">
+          <i class="fab fa-bitcoin"></i> Crypto
+        </div>
+      </div>
+
+      <div class="payment-content" id="cardContent">
+        <div class="saved-cards">
+          <div class="saved-card selected" data-card="1">
+            <i class="fab fa-cc-visa card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">•••• •••• •••• 4242</div>
+              <div class="card-type">Visa • Expires 12/25</div>
+            </div>
+            <i class="fas fa-check-circle" style="color: #ef5d36;"></i>
+          </div>
+
+          <div class="saved-card" data-card="2">
+            <i class="fab fa-cc-mastercard card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">•••• •••• •••• 8888</div>
+              <div class="card-type">Mastercard • Expires 08/26</div>
+            </div>
+          </div>
+
+          <div class="add-new-card" id="addNewCard">
+            <i class="fas fa-plus"></i> Add New Card
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-content" id="bankContent" style="display: none;">
+        <div class="saved-cards">
+          <div class="saved-card" data-bank="1">
+            <i class="fas fa-university card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">Chase Bank •••• 5678</div>
+              <div class="card-type">Checking Account</div>
+            </div>
+          </div>
+
+          <div class="saved-card" data-bank="2">
+            <i class="fas fa-university card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">Wells Fargo •••• 9012</div>
+              <div class="card-type">Savings Account</div>
+            </div>
+          </div>
+
+          <div class="add-new-card" id="addNewBank">
+            <i class="fas fa-plus"></i> Add New Bank Account
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-content" id="cryptoContent" style="display: none;">
+        <div class="saved-cards">
+          <div class="saved-card" data-crypto="btc">
+            <i class="fab fa-bitcoin card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">Bitcoin Wallet</div>
+              <div class="card-type">BTC • 1.2 BTC Available</div>
+            </div>
+          </div>
+
+          <div class="saved-card" data-crypto="eth">
+            <i class="fab fa-ethereum card-icon"></i>
+            <div class="card-info">
+              <div class="card-number">Ethereum Wallet</div>
+              <div class="card-type">ETH • 5.8 ETH Available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="checkout-form" id="checkoutForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="card">Card Number</label>
+        <input type="text" id="card" maxlength="19" placeholder="1234 5678 9012 3456" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="exp">Expiry Date</label>
+          <input type="text" id="exp" maxlength="5" placeholder="MM/YY" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cvc">CVC</label>
+          <input type="text" id="cvc" maxlength="4" placeholder="123" required>
+        </div>
+      </div>
+
+      <div class="security-badge">
+        <i class="fas fa-shield-alt"></i>
+        <span>Secured with 256-bit SSL encryption</span>
+      </div>
+    </form>
+
+    <button class="checkout-btn" type="button" id="checkoutBtn">
+      <i class="fas fa-lock"></i> Complete Secure Payment
+    </button>
+
+    <div class="checkout-success" id="checkoutSuccess" style="display:none;">
+      <i class="fas fa-check-circle"></i>
+      <div>Welcome to CodeWeave Pro!</div>
+      <div style="font-size: 1rem; margin-top: 10px; opacity: 0.8;">
+        Redirecting to your development dashboard...
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createParticles() {
+      const container = document.querySelector('.bg-particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        container.appendChild(particle);
+      }
+    }
+    createParticles();
+
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    const planId = getQueryParam('planId') || 'pro';
+    const qty = parseInt(getQueryParam('qty')) || 1;
+    let currentStep = 1;
+    let selectedPaymentMethod = 'card';
+    let selectedCard = '1';
+    let plan = null;
+    const mockPlan = {
+      id: 'pro',
+      title: 'CodeWeave Pro Plan',
+      description: 'AI-powered development platform',
+      price: 29,
+      features: [
+        'Unlimited AI roadmaps',
+        'Advanced code generation',
+        'Priority support',
+        'Custom templates',
+        '10GB storage',
+        'Team collaboration',
+        'Advanced analytics',
+        'API access'
+      ]
+    };
+
+    function loadPlan() {
+      plan = mockPlan;
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const subtotal = qty * plan.price;
+      const fees = Math.round(subtotal * 0.025);
+      const total = subtotal + fees;
+      document.getElementById('checkoutSummary').innerHTML = `
+        <div class="summary-row">
+          <span class="summary-label">${plan.title}</span>
+          <span class="summary-value">$${plan.price.toLocaleString()}</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Description</span>
+          <span class="summary-value">${plan.description}</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Months × ${qty}</span>
+          <span class="summary-value">$${subtotal.toLocaleString()}</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Platform Fee (2.5%)</span>
+          <span class="summary-value">$${fees.toLocaleString()}</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Total</span>
+          <span class="summary-value total-value">$${total.toLocaleString()}</span>
+        </div>
+      `;
+    }
+
+    function updateProgress() {
+      const progressFill = document.getElementById('progressFill');
+      const percentage = (currentStep / 3) * 100;
+      progressFill.style.width = percentage + '%';
+    }
+    document.querySelectorAll('.payment-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        selectedPaymentMethod = this.dataset.tab;
+        document.querySelectorAll('.payment-content').forEach(content => {
+          content.style.display = 'none';
+        });
+        document.getElementById(selectedPaymentMethod + 'Content').style.display = 'block';
+        currentStep = 2;
+        updateProgress();
+      });
+    });
+    document.querySelectorAll('.saved-card').forEach(card => {
+      card.addEventListener('click', function() {
+        if (this.id === 'addNewCard' || this.id === 'addNewBank') return;
+        document.querySelectorAll('.saved-card').forEach(c => c.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedCard = this.dataset.card || this.dataset.bank || this.dataset.crypto;
+        currentStep = 3;
+        updateProgress();
+      });
+    });
+    document.getElementById('addNewCard').addEventListener('click', function() {
+      document.getElementById('checkoutForm').classList.add('active');
+      currentStep = 2;
+      updateProgress();
+    });
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'translateY(-2px)';
+      });
+      input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'translateY(0)';
+      });
+    });
+    document.getElementById('card').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+      e.target.value = formattedValue;
+    });
+    // Expiry date formatting
+    document.getElementById('exp').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+      }
+      e.target.value = value;
+    });
+    document.getElementById('checkoutBtn').addEventListener('click', async function() {
+      const btn = this;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<div class="spinner"></div>Processing Payment...';
+      btn.disabled = true;
+      document.querySelector('.checkout-container').classList.add('loading');
+      try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        const USER_ID = "192831283128312";
+        const paymentData = {
+          planId: plan.id,
+          months: qty,
+          paymentMethod: selectedPaymentMethod,
+          selectedCard: selectedCard,
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value
+        };
+        document.getElementById('checkoutForm').style.display = 'none';
+        document.querySelector('.payment-methods').style.display = 'none';
+        btn.style.display = 'none';
+        document.getElementById('checkoutSuccess').style.display = 'block';
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 3000);
+      } catch (error) {
+        alert("Payment failed. Please try again.");
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        document.querySelector('.checkout-container').classList.remove('loading');
+      }
+    });
+    // Initialize
+    loadPlan();
+    updateProgress();
+  </script>
+</body>
+
+</html>

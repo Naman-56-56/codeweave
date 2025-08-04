@@ -9,6 +9,10 @@ from django.http import JsonResponse
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 _all_ = ['CustomObtainAuthToken', 'register_view', 'login_view', 'logout_view', 'home_view', 'test_user_auth']
 
@@ -47,21 +51,41 @@ def register_view(request):
 # User Login View
 def login_view(request):
     if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
+        # Log the request details for debugging
+        logger.info(f"Login POST request - Headers: {dict(request.headers)}")
+        logger.info(f"Login POST request - POST data: {dict(request.POST)}")
+        
+        # Always handle as AJAX request to prevent page redirects
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        logger.info(f"Processing login - Username: {username}, Password provided: {bool(password)}")
+        
+        if not username or not password:
+            logger.warning("Login failed - Missing username or password")
+            return JsonResponse({
+                "message": "Username and password are required.",
+                "errors": {"__all__": ["Username and password are required."]}
+            }, status=400)
+        
+        # Authenticate user
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
             login(request, user)
             # Create or get auth token
             token, _ = Token.objects.get_or_create(user=user)
-            messages.success(request, "Login successful! Redirecting...")
+            logger.info(f"Login successful for user: {username}")
             return JsonResponse({
                 "message": "Login successful",
                 "token": token.key,
                 "redirect": "/dashboard/"
             })
         else:
-            messages.error(request, "Invalid username or password.")
-            return JsonResponse({"errors": form.errors}, status=400)
+            logger.warning(f"Login failed for username: {username}")
+            return JsonResponse({
+                "message": "Invalid username or password.",
+                "errors": {"__all__": ["Invalid username or password."]}
+            }, status=400)
     
     else:
         form = AuthenticationForm()
@@ -92,6 +116,12 @@ def create_project(request):
 
 def home_view(request):
     return render(request, "index.html")
+
+def features_view(request):
+    return render(request, "features.html")
+
+def pay_view(request):
+    return render(request, "pay.html")
 
 from django.contrib.auth import get_user
 from django.http import JsonResponse

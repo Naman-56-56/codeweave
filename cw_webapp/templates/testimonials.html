@@ -1,4 +1,534 @@
-<!-- Testimonials Section -->
-<section class="testimonials" id="testimonials">
-    <!-- ... testimonials content ... (copy from index.html) ... -->
-</section> 
+<!-- Disclaimer: The testimonials and restaurant name presented here are entirely fictional and created for demonstrational purposes only. Shining Yam is not a real establishment or enterprise. These fictional testimonials are designed to showcase the functionality of the Animated Testimonials component and do not represent real customer experiences or opinions. Any resemblance to actual persons, living or dead, or actual businesses is purely coincidental. This demonstration is intended solely for illustrative purposes in a web development context. -->
+<!-- This component is based on https://ui.aceternity.com/components/animated-testimonials -->
+<!-- Credit -->
+<!-- https://www.perplexity.ai/ -->
+<!-- Used Photos -->
+<!-- https://unsplash.com/photos/woman-standing-beside-lights-xE87C_OvVO4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash -->
+<!-- https://unsplash.com/photos/man-in-gray-crew-neck-t-shirt-standing-beside-white-wall-MbYgpI1D-cA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash -->
+<!-- https://unsplash.com/photos/closed-eye-woman-wearing-brown-hat-YbzfTr0pwLE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash -->
+
+<style>
+:root {
+  --primary: #ef5d36;
+  --primary-dark: #d94a2b;
+  --primary-light: #ff6b35;
+  --secondary: #4a90e2;
+  --accent: #50c878;
+  --bg-dark: #0a0a0a;
+  --bg-darker: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-muted: #6b7280;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --backdrop-blur: 12px;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonials-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.testimonials-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.testimonials-subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.testimonial-container {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+}
+
+.testimonial-grid {
+  display: grid;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  perspective: 1000px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.testimonial-image-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.designation {
+  font-size: 0.75rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quote {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.arrow-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.arrow-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(var(--backdrop-blur));
+  position: relative;
+}
+
+.arrow-button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.arrow-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--text-primary);
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.arrow-button:hover svg {
+  fill: var(--text-primary);
+}
+
+/* Card positioning states */
+.testimonial-image-card.active {
+  transform: translateX(0) translateY(0) rotateY(0deg) scale(1);
+  z-index: 10;
+  opacity: 1;
+}
+
+.testimonial-image-card.prev {
+  transform: translateX(-50%) translateY(-5%) rotateY(-20deg) scale(0.85);
+  z-index: 5;
+  opacity: 0.6;
+}
+
+.testimonial-image-card.next {
+  transform: translateX(50%) translateY(-5%) rotateY(20deg) scale(0.85);
+  z-index: 5;
+  opacity: 0.6;
+}
+
+.testimonial-image-card.hidden {
+  transform: translateX(0) translateY(100%) rotateY(0deg) scale(0.7);
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Scroll animation classes */
+.fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.fade-in-up-header {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (min-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  .image-container {
+    height: 20rem;
+  }
+  
+  .arrow-buttons {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials-section {
+    padding: 2rem 1rem;
+    min-height: 70vh;
+  }
+  
+  .testimonial-container {
+    padding: 1.5rem;
+  }
+  
+  .testimonial-grid {
+    gap: 2rem;
+  }
+  
+  .image-container {
+    height: 16rem;
+  }
+  
+  .name {
+    font-size: 1.125rem;
+  }
+  
+  .quote {
+    font-size: 0.875rem;
+  }
+  
+  /* Adjust card positioning for mobile */
+  .testimonial-image-card.prev {
+    transform: translateX(-35%) translateY(-3%) rotateY(-15deg) scale(0.9);
+  }
+  
+  .testimonial-image-card.next {
+    transform: translateX(35%) translateY(-3%) rotateY(15deg) scale(0.9);
+  }
+}
+
+</style>
+
+<div class="testimonials-section" id="testimonials">
+  <div class="testimonials-wrapper">
+    <div class="testimonials-header">
+      <h2 class="testimonials-title">What Our Customers Say</h2>
+      <p class="testimonials-subtitle">Discover the experiences of our valued customers and see why they choose us for their dining needs.</p>
+    </div>
+    
+    <div class="testimonial-container">
+      <div class="testimonial-grid">
+        <div class="image-container" id="image-container"></div>
+        <div class="testimonial-content">
+          <div>
+            <h3 class="name" id="name"></h3>
+            <p class="designation" id="designation"></p>
+            <p class="quote" id="quote"></p>
+          </div>
+          <div class="arrow-buttons">
+            <button class="arrow-button prev-button" id="prev-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+              </svg>
+            </button>
+            <button class="arrow-button next-button" id="next-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const testimonials = [
+            {
+                quote: "I was impressed by the food — every dish is bursting with flavor! And I could really tell that they use high-quality ingredients. The staff was friendly and attentive, going the extra mile. I'll definitely be back for more!",
+                name: "Tamar Mendelson",
+                designation: "Restaurant Critic",
+                src: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+            {
+                quote: "This place exceeded all expectations! The atmosphere is inviting, and the staff truly goes above and beyond to ensure a fantastic visit. I'll definitely keep returning for more exceptional dining experience.",
+                name: "Joe Charlescraft",
+                designation: "Frequent Visitor",
+                src: "https://images.unsplash.com/photo-1628749528992-f5702133b686?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D",
+            },
+            {
+                quote: "Shining Yam is a hidden gem! From the moment I walked in, I knew I was in for a treat. The impeccable service and overall attention to detail created a memorable experience. I highly recommend it!",
+                name: "Martina Edelweist",
+                designation: "Satisfied Customer",
+                src: "https://images.unsplash.com/photo-1524267213992-b76e8577d046?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D",
+            },
+        ];
+
+        let activeIndex = 0;
+        const imageContainer = document.getElementById('image-container');
+        const nameElement = document.getElementById('name');
+        const designationElement = document.getElementById('designation');
+        const quoteElement = document.getElementById('quote');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        // Scroll animations
+        function initScrollAnimations() {
+            // Header animation
+            gsap.fromTo('.testimonials-header', 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: '.testimonials-header',
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            // Container animation
+            gsap.fromTo('.testimonial-container', 
+                { opacity: 0, y: 50, scale: 0.95 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: '.testimonial-container',
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        }
+
+        // Create image cards
+        function createImageCards() {
+            testimonials.forEach((testimonial, index) => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-image-card';
+                card.dataset.index = index;
+                
+                const img = document.createElement('img');
+                img.src = testimonial.src;
+                img.alt = testimonial.name;
+                img.loading = 'lazy';
+                
+                card.appendChild(img);
+                imageContainer.appendChild(card);
+            });
+        }
+
+        function updateTestimonial(direction) {
+            const oldIndex = activeIndex;
+            activeIndex = (activeIndex + direction + testimonials.length) % testimonials.length;
+
+            // Update image cards
+            const cards = imageContainer.querySelectorAll('.testimonial-image-card');
+            cards.forEach((card, index) => {
+                const offset = (index - activeIndex + testimonials.length) % testimonials.length;
+                
+                // Remove all classes first
+                card.classList.remove('active', 'prev', 'next', 'hidden');
+                
+                // Add appropriate class based on position
+                if (offset === 0) {
+                    card.classList.add('active');
+                } else if (offset === 1) {
+                    card.classList.add('next');
+                } else if (offset === -1 || offset === testimonials.length - 1) {
+                    card.classList.add('prev');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Animate text content
+            gsap.to([nameElement, designationElement], {
+                opacity: 0,
+                y: -15,
+                duration: 0.2,
+                ease: "power2.in",
+                onComplete: () => {
+                    nameElement.textContent = testimonials[activeIndex].name;
+                    designationElement.textContent = testimonials[activeIndex].designation;
+                    gsap.to([nameElement, designationElement], {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                }
+            });
+
+            gsap.to(quoteElement, {
+                opacity: 0,
+                y: -15,
+                duration: 0.2,
+                ease: "power2.in",
+                onComplete: () => {
+                    quoteElement.innerHTML = testimonials[activeIndex].quote.split(' ').map(word => `<span class="word">${word}</span>`).join(' ');
+                    gsap.to(quoteElement, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                    animateWords();
+                }
+            });
+        }
+
+        function animateWords() {
+            gsap.from('.word', {
+                opacity: 0,
+                y: 8,
+                stagger: 0.015,
+                duration: 0.15,
+                ease: "power2.out"
+            });
+        }
+
+        function handleNext() {
+            updateTestimonial(1);
+        }
+
+        function handlePrev() {
+            updateTestimonial(-1);
+        }
+
+        // Initialize
+        function init() {
+            createImageCards();
+            updateTestimonial(0);
+            initScrollAnimations();
+        }
+
+        prevButton.addEventListener('click', handlePrev);
+        nextButton.addEventListener('click', handleNext);
+
+        // Initial setup
+        init();
+
+        // Autoplay functionality
+        const autoplayInterval = setInterval(handleNext, 5000);
+
+        // Stop autoplay on user interaction
+        [prevButton, nextButton].forEach(button => {
+            button.addEventListener('click', () => {
+                clearInterval(autoplayInterval);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Reinitialize cards on resize
+            imageContainer.innerHTML = '';
+            createImageCards();
+            updateTestimonial(0);
+        });
+  </script>

@@ -15,11 +15,75 @@ const gridFull = document.querySelector('.grid--full'); // Select the full grid 
 
 const creditsTexts = document.querySelectorAll('.credits'); // Select all elements with the class '.credits'
 
+// New text elements for animation
+const introTitle = document.querySelector('.intro__title'); // Select the intro title
+const introInfo = document.querySelector('.intro__info'); // Select the intro info text
+
 // Helper function to determine if the element is on the left or right side of the viewport
 const isLeftSide = (element) => {
   const elementCenter = element.getBoundingClientRect().left + element.offsetWidth / 2; // Calculate the center of the element
   const viewportCenter = window.innerWidth / 2; // Calculate the center of the viewport
   return elementCenter < viewportCenter; // Return true if the element's center is to the left of the viewport's center
+};
+
+// Function to animate the intro title with a dramatic entrance
+const animateIntroTitle = () => {
+  if (!introTitle) return;
+  
+  const splitIntroTitle = new SplitText(introTitle, { type: 'chars, words' });
+  
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: introTitle,
+      start: 'top bottom',
+      end: 'center center',
+      scrub: true,
+    }
+  })
+  .from(splitIntroTitle.chars, {
+    yPercent: 200,
+    rotationX: 90,
+    autoAlpha: 0,
+    stagger: {
+      each: 0.02,
+      from: 'start'
+    },
+    ease: 'power2.out'
+  })
+  .from(splitIntroTitle.words, {
+    yPercent: 50,
+    autoAlpha: 0,
+    stagger: {
+      each: 0.1,
+      from: 'start'
+    },
+    ease: 'power2.out'
+  }, 0);
+};
+
+// Function to animate the intro info text
+const animateIntroInfo = () => {
+  if (!introInfo) return;
+  
+  const splitIntroInfo = new SplitText(introInfo, { type: 'chars' });
+  
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: introInfo,
+      start: 'top bottom',
+      end: 'center center',
+      scrub: true,
+    }
+  })
+  .from(splitIntroInfo.chars, {
+    yPercent: 100,
+    autoAlpha: 0,
+    stagger: {
+      each: 0.03,
+      from: 'start'
+    },
+    ease: 'power2.out'
+  });
 };
 
 // Function to animate the grid items as they scroll into and out of view
@@ -179,6 +243,8 @@ const animateCredits = () => {
 
 // Main initialization function
 const init = () => {
+  animateIntroTitle();  // Animate the intro title
+  animateIntroInfo();   // Animate the intro info text
   animateScrollGrid();    // Animate the grid items on scroll
   animateMarquee();       // Animate the marquee on scroll
   animateTextElement();   // Animate the split text on scroll
