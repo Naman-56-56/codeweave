@@ -88,6 +88,23 @@ def delete_project(request, project_id):
         logger.error(f"Error deleting project: {str(e)}")
         return JsonResponse({"error": str(e)}, status=500)
 
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def get_project_roadmap(request, project_id):
+    """Fetch the roadmap JSON for a specific project (owned by the user)"""
+    try:
+        project = get_object_or_404(Project, id=project_id, user=request.user)
+        return JsonResponse({
+            "roadmap": project.roadmap,
+            "name": project.name,
+            "created_at": project.created_at.isoformat(),
+            "id": project.id
+        })
+    except Exception as e:
+        logger.error(f"Error fetching roadmap: {str(e)}")
+        return JsonResponse({"error": str(e)}, status=500)
+
 @login_required
 def dev_environment(request, project_id):
     """

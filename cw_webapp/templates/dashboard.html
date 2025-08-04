@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevHub Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap" rel="stylesheet">
     <style>
         /* Root Variables */
         :root {
-            --primary: #2563eb;
-            --secondary: #3b82f6;
-            --success: #22c55e;
-            --error: #ef4444;
-            --warning: #f59e0b;
-            --info: #3b82f6;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-muted: #9ca3af;
-            --bg-color: #f3f4f6;
+            --primary: #6366f1;
+            --secondary: #a5b4fc;
+            --success: #22d3ee;
+            --error: #f87171;
+            --warning: #fbbf24;
+            --info: #38bdf8;
+            --text-primary: #18181b;
+            --text-secondary: #71717a;
+            --text-muted: #a1a1aa;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            --gradient-1: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-            --gradient-2: linear-gradient(135deg, #22c55e 0%, #34d399 100%);
-            --gradient-3: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-            --gradient-4: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-            --glass-bg: rgba(255, 255, 255, 0.9);
+            --border-color: #e0e7ef;
+            --shadow-color: rgba(99, 102, 241, 0.08);
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+            --gradient-2: linear-gradient(135deg, #22d3ee 0%, #a5b4fc 100%);
+            --gradient-3: linear-gradient(135deg, #fbbf24 0%, #f87171 100%);
+            --gradient-4: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
             --sidebar-width: 280px;
         }
 
@@ -37,7 +38,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-color);
@@ -1055,7 +1056,7 @@
             font-size: 2rem;
             font-weight: 700;
             color: white;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1066,6 +1067,23 @@
             display: flex;
             gap: 1rem;
             align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            min-width: 220px;
+        }
+        .search-bar:focus {
+            border: 1.5px solid var(--primary);
+            box-shadow: 0 4px 16px var(--shadow-color);
         }
 
         .action-btn {
@@ -1737,6 +1755,12 @@
     </style>
 </head>
 <body>
+    <nav class="top-nav">
+        <div class="nav-content">
+            <span class="nav-logo"><i class="fas fa-cube"></i> DevHub</span>
+            <a href="{% url 'home' %}" class="nav-home-btn"><i class="fas fa-home"></i> Home</a>
+        </div>
+    </nav>
     <div class="dashboard-container">
         <div class="sidebar">
             <div class="sidebar-header">
@@ -1762,7 +1786,7 @@
                 <a href="#" class="nav-item">
                     <i class="fas fa-project-diagram"></i>
                     <span>Projects</span>
-                    <span class="badge">12</span>
+                    <span class="badge">{{ projects|length }}</span>
                 </a>
                 <a href="#" class="nav-item">
                     <i class="fas fa-users"></i>
@@ -1962,6 +1986,7 @@
             <div class="header">
                 <h1 class="header-title">Dashboard</h1>
                 <div class="header-actions">
+                    <input type="text" class="search-bar" placeholder="Search projects...">
                     <button class="action-btn" onclick="toggleSidebar()">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -2001,9 +2026,9 @@
                                     </div>
                                 </div>
                                 <div class="project-card-actions">
-                                    <a href="{% url 'projects_1:dev_environment' project.id %}" class="project-card-action-btn">
+                                    <button class="project-card-action-btn" onclick="showRoadmapModal({{ project.id }})">
                                         <i class="fas fa-eye"></i> View
-                                    </a>
+                                    </button>
                                     <a href="{% url 'projects_1:dev_environment' project.id %}" class="project-card-action-btn">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
@@ -2031,6 +2056,16 @@
             </div>
             
         </div>
+
+    <!-- Roadmap Modal -->
+    <div id="roadmapModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+        <div class="modal-content" style="background:#18181b; color:white; border-radius:1rem; max-width:900px; width:95vw; max-height:90vh; overflow-y:auto; position:relative; padding:2rem;">
+            <button onclick="closeRoadmapModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+            <div id="roadmapModalContent">
+                <div style="text-align:center; padding:2rem;">Loading...</div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // DOM Elements
@@ -2173,6 +2208,154 @@
                     </div>
                 `;
                 return card;
+            }
+        }
+
+        // --- Roadmap Modal Logic ---
+        function showRoadmapModal(projectId) {
+            const modal = document.getElementById('roadmapModal');
+            const content = document.getElementById('roadmapModalContent');
+            modal.style.display = 'flex';
+            content.innerHTML = '<div style="text-align:center; padding:2rem;">Loading...</div>';
+            // Fetch roadmap JSON from API
+            fetch(`/projects/${projectId}/roadmap/`, {
+                headers: {
+                    'Authorization': `Token ${localStorage.getItem('authToken')}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.roadmap) {
+                    // Render roadmap using the same logic as app.html
+                    content.innerHTML = '';
+                    renderDashboardRoadmap(data.roadmap, content);
+                } else {
+                    content.innerHTML = '<div style="color:red; text-align:center;">Failed to load roadmap.</div>';
+                }
+            })
+            .catch(() => {
+                content.innerHTML = '<div style="color:red; text-align:center;">Failed to load roadmap.</div>';
+            });
+        }
+        function closeRoadmapModal() {
+            document.getElementById('roadmapModal').style.display = 'none';
+        }
+
+        // --- Roadmap Rendering Logic (adapted from app.html) ---
+        function renderDashboardRoadmap(roadmap, container) {
+            // Only tech roadmap supported for now (project_overview, phases)
+            if (roadmap.project_overview) {
+                const overview = roadmap.project_overview;
+                const objectives = overview.objectives || [];
+                let html = `
+                    <div class="card mb-4 shadow glass-card" style="background:#232336; color:white;">
+                        <div class="card-header">
+                            <h3 class="card-title mb-0">🎯 ${overview.name || 'Unnamed Project'}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="overview-section mb-4">
+                                <h4 class="text-primary mb-3">
+                                    <i class="fas fa-info-circle me-2"></i>Project Overview
+                                </h4>
+                                <p class="lead">${overview.description || 'No description provided.'}</p>
+                            </div>
+                            <div class="objectives-section">
+                                <h4 class="text-primary mb-3">
+                                    <i class="fas fa-bullseye me-2"></i>Key Objectives
+                                </h4>
+                                <ul class="objectives-list">
+                                    ${objectives.map(obj => `
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            ${obj}
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            }
+            if (roadmap.phases) {
+                Object.entries(roadmap.phases).forEach(([phaseKey, phase], index) => {
+                    const phaseNumber = index + 1;
+                    // Sub-phases
+                    const subPhasesHtml = phase.sub_phases ? Object.entries(phase.sub_phases).map(([subKey, subPhase]) => `
+                        <div class="card sub-phase-card mb-3" style="background:#232336; color:white;">
+                            <div class="card-header bg-light" style="background:#232336 !important; color:white;">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-tasks me-2"></i>${subPhase.name}
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-3">${subPhase.description || ''}</p>
+                                <h6 class="text-primary mb-2">
+                                    <i class="fas fa-check-square me-2"></i>Tasks:
+                                </h6>
+                                <ul class="task-list">
+                                    ${(subPhase.tasks || []).map(task => `
+                                        <li class="task-item mb-2">
+                                            <span><i class="fas fa-check-circle text-success me-2"></i>${task}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `).join('') : '';
+                    // Phase HTML
+                    const phaseHtml = `
+                        <div class="card phase-card shadow glass-card mb-4" style="background:#232336; color:white;">
+                            <div class="card-header">
+                                <div class="phase-heading">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="mb-0">
+                                            <i class="fas fa-list-alt me-2"></i>
+                                            📋 Phase ${phaseNumber}: ${phase.name}
+                                        </h4>
+                                        <span class="badge bg-primary">${phase.duration || 'N/A'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-light mb-4" style="background:#232336; color:white; border:1px solid #444;">
+                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                                    ${phase.overview || ''}
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary mb-3">
+                                            <i class="fas fa-bullseye me-2"></i>Objectives
+                                        </h5>
+                                        <ul class="list-unstyled">
+                                            ${(phase.objectives || []).map(obj => `
+                                                <li class="mb-2">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    ${obj}
+                                                </li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="text-primary mb-3">
+                                            <i class="fas fa-box me-2"></i>Deliverables
+                                        </h5>
+                                        <ul class="list-unstyled">
+                                            ${(phase.deliverables || []).map(del => `
+                                                <li class="mb-2">
+                                                    <i class="fas fa-file-alt text-info me-2"></i>
+                                                    ${del}
+                                                </li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                </div>
+                                ${subPhasesHtml}
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += phaseHtml;
+                });
             }
         }
     </script>

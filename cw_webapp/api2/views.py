@@ -87,6 +87,7 @@ def generate_roadmap_api(request):
         generator = GeminiRoadmapGenerator()
         roadmap_data = generator.generate_roadmap(goal)
 
+        # Only create DB entry after successful generation
         roadmap_request = RoadmapRequest.objects.create(
             goal=goal,
             roadmap_data=roadmap_data
