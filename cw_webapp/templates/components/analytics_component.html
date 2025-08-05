@@ -1,0 +1,264 @@
+<style>
+    .analytics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .analytics-card {
+        background: var(--glass-bg);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+    }
+
+    .analytics-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-primary);
+    }
+
+    .analytics-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .analytics-card:hover::before {
+        opacity: 1;
+    }
+
+    .analytics-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .analytics-title {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .analytics-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .analytics-label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1rem 0;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--gradient-primary);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+    }
+
+    .chart-container {
+        height: 200px;
+        margin: 1rem 0;
+        position: relative;
+    }
+
+    .chart-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .filter-controls {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+        .analytics-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .filter-controls {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="section">
+    <div class="section-header">
+        <div>
+            <h2 class="section-title">Analytics</h2>
+            <p class="section-subtitle">Track your project performance and insights</p>
+        </div>
+    </div>
+    
+    <div class="filter-controls">
+        <button class="filter-btn active">All Time</button>
+        <button class="filter-btn">This Month</button>
+        <button class="filter-btn">This Week</button>
+        <button class="filter-btn">Today</button>
+    </div>
+    
+    <div class="analytics-grid">
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Project Completion</h3>
+                <i class="fas fa-chart-pie" style="color: var(--primary);"></i>
+            </div>
+            <div class="analytics-value">78%</div>
+            <div class="analytics-label">Average completion rate</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 78%;"></div>
+            </div>
+        </div>
+        
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Time Tracking</h3>
+                <i class="fas fa-clock" style="color: var(--success);"></i>
+            </div>
+            <div class="analytics-value">45h</div>
+            <div class="analytics-label">Total hours this week</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 65%;"></div>
+            </div>
+        </div>
+        
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Team Productivity</h3>
+                <i class="fas fa-users" style="color: var(--info);"></i>
+            </div>
+            <div class="analytics-value">92%</div>
+            <div class="analytics-label">Team efficiency score</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 92%;"></div>
+            </div>
+        </div>
+        
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Code Quality</h3>
+                <i class="fas fa-code" style="color: var(--warning);"></i>
+            </div>
+            <div class="analytics-value">A+</div>
+            <div class="analytics-label">Code quality score</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+        </div>
+        
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Bug Resolution</h3>
+                <i class="fas fa-bug" style="color: var(--error);"></i>
+            </div>
+            <div class="analytics-value">24h</div>
+            <div class="analytics-label">Average resolution time</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+        </div>
+        
+        <div class="analytics-card">
+            <div class="analytics-header">
+                <h3 class="analytics-title">Deployment Success</h3>
+                <i class="fas fa-rocket" style="color: var(--accent);"></i>
+            </div>
+            <div class="analytics-value">98%</div>
+            <div class="analytics-label">Successful deployments</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 98%;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="analytics-card" style="grid-column: 1 / -1; margin-top: 1.5rem;">
+        <div class="analytics-header">
+            <h3 class="analytics-title">Performance Trends</h3>
+            <div style="display: flex; gap: 0.5rem;">
+                <button class="filter-btn active">Weekly</button>
+                <button class="filter-btn">Monthly</button>
+                <button class="filter-btn">Yearly</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <div class="chart-placeholder">
+                <i class="fas fa-chart-line" style="font-size: 2rem; margin-right: 1rem;"></i>
+                Performance chart will be displayed here
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add interactivity to filter buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons in the same group
+                const parent = this.closest('.filter-controls') || this.parentElement;
+                parent.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Here you would typically update the analytics data
+                console.log('Filter changed:', this.textContent);
+            });
+        });
+    });
+</script> 

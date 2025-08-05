@@ -613,12 +613,18 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: #666666;
-  font-size: 1rem;
-  transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 1.125rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
 }
 
 .input-wrapper input:focus ~ .input-icon {
   color: #667eea;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.input-wrapper:hover .input-icon {
+  color: #888888;
 }
 
 .password-toggle {
@@ -786,7 +792,33 @@ body {
 .checkbox-text {
   color: var(--text-secondary);
   font-size: 0.875rem;
-    font-weight: 500;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checkbox-text i {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.terms-link, .privacy-link {
+  color: var(--primary-500);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.terms-link:hover, .privacy-link:hover {
+  color: var(--primary-600);
+  text-decoration: underline;
+}
+
+.terms-link i, .privacy-link i {
+  font-size: 0.75rem;
 }
 
 .forgot-password {
@@ -847,8 +879,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   transition: opacity var(--transition-normal);
+}
+
+.button-content i:first-child {
+  font-size: 1.125rem;
 }
 
 .button-arrow {
@@ -925,6 +961,14 @@ body {
   padding: 0 var(--space-2);
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.divider-text i {
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 /* Enhanced Social Login */
@@ -1182,6 +1226,15 @@ body {
 .signup-link p {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.signup-link p i:first-child {
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .signup-link-text {
@@ -1833,7 +1886,7 @@ a:focus-visible {
             <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
-                                <i class="fas fa-user input-icon"></i>
+                                <i class="fas fa-user-circle input-icon"></i>
                                 <input type="text" id="username" name="username" required autocomplete="username" spellcheck="false">
                 <label for="username">Username</label>
                                 <div class="input-border"></div>
@@ -1850,7 +1903,7 @@ a:focus-visible {
             <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
-                                <i class="fas fa-envelope input-icon"></i>
+                                <i class="fas fa-envelope-open input-icon"></i>
                                 <input type="email" id="email" name="email" required autocomplete="email">
                 <label for="email">Email Address</label>
                                 <div class="input-border"></div>
@@ -1867,7 +1920,7 @@ a:focus-visible {
             <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
-                                <i class="fas fa-lock input-icon"></i>
+                                <i class="fas fa-key input-icon"></i>
                                 <input type="password" id="password1" name="password1" required autocomplete="new-password">
                 <label for="password1">Password</label>
                                 <button type="button" class="password-toggle" id="password1Toggle" aria-label="Toggle password visibility">
@@ -1887,7 +1940,7 @@ a:focus-visible {
             <div class="form-group">
                         <div class="input-container">
                             <div class="input-wrapper">
-                                <i class="fas fa-lock input-icon"></i>
+                                <i class="fas fa-key input-icon"></i>
                                 <input type="password" id="password2" name="password2" required autocomplete="new-password">
                 <label for="password2">Confirm Password</label>
                                 <button type="button" class="password-toggle" id="password2Toggle" aria-label="Toggle password visibility">
@@ -1911,13 +1964,17 @@ a:focus-visible {
                             <span class="checkmark">
                                 <i class="fas fa-check"></i>
                             </span>
-                            <span class="checkbox-text">I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="privacy-link">Privacy Policy</a></span>
+                            <span class="checkbox-text">
+                                <i class="fas fa-shield-alt"></i>
+                                I agree to the <a href="#" class="terms-link"><i class="fas fa-file-contract"></i> Terms of Service</a> and <a href="#" class="privacy-link"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+                            </span>
                         </label>
                 </div>
 
                     <!-- Enhanced Sign Up Button -->
                     <button type="submit" class="login-button" id="signupButton">
                         <span class="button-content">
+                            <i class="fas fa-user-plus"></i>
                             <span class="button-text">Create Account</span>
                             <i class="fas fa-arrow-right button-arrow"></i>
                         </span>
@@ -1950,7 +2007,10 @@ a:focus-visible {
                 <!-- Enhanced Divider -->
                 <div class="divider">
                     <div class="divider-line"></div>
-                    <span class="divider-text">or continue with</span>
+                    <span class="divider-text">
+                        <i class="fas fa-share-alt"></i>
+                        or continue with
+                    </span>
                     <div class="divider-line"></div>
                 </div>
 
@@ -1981,8 +2041,10 @@ a:focus-visible {
 
                 <!-- Enhanced Login Link -->
                 <div class="signup-link">
-                    <p>Already have an account? 
-                        <a href="{% url 'login' %}" class="signup-link-text">
+                    <p>
+                        <i class="fas fa-sign-in-alt"></i>
+                        Already have an account? 
+                        <a href="{% url 'users:login' %}" class="signup-link-text">
                             <span>Sign in</span>
                             <i class="fas fa-external-link-alt"></i>
                         </a>
@@ -2209,63 +2271,55 @@ class FormValidator {
 
   async handleSubmit(e) {
     e.preventDefault();
-    if (!this.validateForm()) {
-      this.shakeForm();
-      return;
-    }
-    this.setLoading(true);
+    this.hideError();
+    this.hideSuccess();
+    this.clearErrors();
+    
+    const formData = new FormData(this.form);
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
     try {
-      // Serialize form as x-www-form-urlencoded
-      const formData = new URLSearchParams();
-      formData.append('username', this.usernameInput.value);
-      formData.append('email', this.emailInput.value);
-      formData.append('password1', this.password1Input.value);
-      formData.append('password2', this.password2Input.value);
-      // Get CSRF token
-      const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-      // Send POST to backend
-      const response = await fetch(this.form.action || window.location.pathname, {
-        method: 'POST',
-        body: formData,
-        credentials: 'same-origin',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRFToken': csrfToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
-      });
-      const data = await response.json();
-      if (response.ok) {
-        this.showSuccessModal();
-        setTimeout(() => {
-          window.location.href = data.redirect || '/dashboard/';
-        }, 1800);
-      } else {
-        console.log('Login failed with response:', data);
-        if (data.errors) {
-          if (data.errors.username) this.usernameError.textContent = data.errors.username.join(' ');
-          if (data.errors.email) this.emailError.textContent = data.errors.email.join(' ');
-          if (data.errors.password1) this.password1Error.textContent = data.errors.password1.join(' ');
-          if (data.errors.password2) this.password2Error.textContent = data.errors.password2.join(' ');
-          if (data.errors['__all__']) this.showError(data.errors['__all__'].join(' '));
-        }
-        this.showError(data.message || 'Invalid username or password.');
-        this.shakeForm();
+        const response = await fetch(this.form.action || window.location.pathname, {
+            method: 'POST',
+            body: formData,
+            credentials: 'same-origin',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': csrfToken,
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        });
         
-        // Fallback alert in case error box doesn't work
-        setTimeout(() => {
-          if (!document.getElementById('errorBox')?.style.display || 
-              document.getElementById('errorBox').style.display === 'none') {
-            alert(data.message || 'Invalid username or password.');
-          }
-        }, 100);
-      }
+        if (response.ok) {
+            // Server returns HTTP redirect (302), browser will automatically follow it
+            // No need to manually redirect or parse JSON
+            window.location.href = response.url || '/users/dashboard/';
+        } else {
+            // Only parse JSON for error handling
+            const data = await response.json();
+            console.log('Registration failed with response:', data);
+            if (data.errors) {
+                if (data.errors.username) this.usernameError.textContent = data.errors.username.join(' ');
+                if (data.errors.email) this.emailError.textContent = data.errors.email.join(' ');
+                if (data.errors.password1) this.password1Error.textContent = data.errors.password1.join(' ');
+                if (data.errors.password2) this.password2Error.textContent = data.errors.password2.join(' ');
+                if (data.errors['__all__']) this.showError(data.errors['__all__'].join(' '));
+            }
+            this.showError(data.message || 'Registration failed. Please check your information.');
+            this.shakeForm();
+            
+            // Fallback alert in case error box doesn't work
+            setTimeout(() => {
+                if (!document.getElementById('errorBox')?.style.display || 
+                    document.getElementById('errorBox').style.display === 'none') {
+                    alert(data.message || 'Registration failed. Please check your information.');
+                }
+            }, 100);
+        }
     } catch (error) {
-      console.error('Login error:', error);
-      this.showError('An error occurred during login. Please try again.');
-      this.shakeForm();
-    } finally {
-      this.setLoading(false);
+        console.error('Registration error:', error);
+        this.showError('An error occurred during registration. Please try again.');
+        this.shakeForm();
     }
   }
 
@@ -2513,20 +2567,9 @@ class SocialLogin {
   }
 
   showSuccess(message) {
-    const formValidator = new FormValidator();
-    formValidator.showSuccess(message);
-    
-    setTimeout(() => {
-      const modal = document.getElementById('successModal');
-      const modalBody = modal.querySelector('.modal-body p');
-      modalBody.textContent = message + ' Redirecting to your dashboard...';
-      modal.classList.add('show');
-
-      setTimeout(() => {
-        modal.classList.remove('show');
-        console.log('Redirecting to dashboard...');
-      }, 2000);
-    }, 1000);
+    // Direct redirect to dashboard on success
+    console.log('Social registration successful, redirecting to dashboard...');
+    window.location.href = '/users/dashboard/';
   }
 
   showError(message) {

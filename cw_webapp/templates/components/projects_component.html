@@ -1,0 +1,845 @@
+<style>
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-card {
+        background: var(--glass-bg);
+        border-radius: 1.25rem;
+        padding: 2rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-primary);
+        border-color: var(--primary);
+    }
+
+    .project-card:active {
+        transform: translateY(-4px);
+    }
+
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .project-card:hover::before {
+        opacity: 1;
+    }
+
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        gap: 1rem;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+        flex: 1;
+    }
+
+    .project-status {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: rgba(79, 172, 254, 0.15);
+        color: #4facfe;
+        border: 1px solid rgba(79, 172, 254, 0.3);
+        white-space: nowrap;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .project-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .project-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 44px;
+        padding: 0.5rem 0;
+    }
+
+    .project-meta-item i {
+        font-size: 1rem;
+        color: var(--text-muted);
+    }
+
+    .project-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: auto;
+    }
+
+    .project-btn {
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        min-width: 120px;
+        justify-content: center;
+    }
+
+    .project-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-secondary);
+        border-color: var(--primary);
+    }
+
+    .project-btn:active {
+        transform: translateY(0);
+    }
+
+    .delete-project-btn {
+        background: var(--gradient-secondary);
+        border: none;
+        border-radius: 0.75rem;
+        color: white;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        min-width: 120px;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(240, 147, 251, 0.3);
+    }
+
+    .delete-project-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(240, 147, 251, 0.4);
+    }
+
+    .delete-project-btn:active {
+        transform: translateY(0);
+    }
+
+    .delete-project-btn i {
+        font-size: 1rem;
+    }
+
+    .delete-project-btn .spinner {
+        display: none;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        border-radius: 1.5rem;
+        background: var(--glass-bg);
+        margin: 2rem 0;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+    }
+
+    .empty-state-icon {
+        font-size: 4rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+        opacity: 0.6;
+    }
+
+    .empty-state-title {
+        font-size: 2rem;
+        margin: 0 0 1rem 0;
+        color: var(--text-primary);
+        font-weight: 700;
+    }
+
+    .empty-state-message {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin: 0 0 2rem 0;
+        line-height: 1.5;
+    }
+
+    .create-project-btn {
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        min-height: 56px;
+        min-width: 200px;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    }
+
+    .create-project-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+    }
+
+    .create-project-btn:active {
+        transform: translateY(-1px);
+    }
+
+    /* Enhanced responsive design */
+    @media (max-width: 1400px) {
+        .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+        
+        .project-card {
+            padding: 1.75rem;
+        }
+        
+        .project-title {
+            font-size: 1.35rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            min-height: 180px;
+        }
+
+        .project-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+        }
+
+        .project-status {
+            align-self: flex-start;
+            min-height: 40px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .project-meta {
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-meta-item {
+            min-height: 40px;
+            font-size: 0.85rem;
+        }
+
+        .project-actions {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .project-btn,
+        .delete-project-btn {
+            width: 100%;
+            min-height: 48px;
+            justify-content: center;
+        }
+
+        .empty-state {
+            padding: 3rem 1.5rem;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.75rem;
+        }
+
+        .empty-state-message {
+            font-size: 1rem;
+        }
+
+        .create-project-btn {
+            width: 100%;
+            min-height: 56px;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .project-card {
+            padding: 1.25rem;
+            min-height: 160px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+        }
+
+        .project-meta {
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .project-meta-item {
+            min-height: 36px;
+            font-size: 0.8rem;
+        }
+
+        .project-btn,
+        .delete-project-btn {
+            min-height: 44px;
+            font-size: 0.85rem;
+            padding: 0.6rem 1rem;
+        }
+
+        .empty-state {
+            padding: 2rem 1rem;
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+        }
+
+        .empty-state-message {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+        .project-card:hover {
+            transform: none;
+        }
+        
+        .project-card:active {
+            transform: scale(0.98);
+        }
+        
+        .project-btn:hover,
+        .delete-project-btn:hover,
+        .create-project-btn:hover {
+            transform: none;
+        }
+        
+        .project-btn:active,
+        .delete-project-btn:active,
+        .create-project-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .project-btn,
+        .delete-project-btn {
+            min-height: 52px;
+        }
+        
+        .create-project-btn {
+            min-height: 60px;
+        }
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .project-card,
+        .project-btn,
+        .delete-project-btn,
+        .create-project-btn {
+            border-width: 2px;
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .project-card,
+        .project-btn,
+        .delete-project-btn,
+        .create-project-btn {
+            transition: none;
+        }
+        
+        .project-card:hover,
+        .project-btn:hover,
+        .delete-project-btn:hover,
+        .create-project-btn:hover {
+            transform: none;
+        }
+    }
+
+    /* Focus styles for accessibility */
+    .project-btn:focus,
+    .delete-project-btn:focus,
+    .create-project-btn:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    /* Prominent Create Project Section */
+    .create-project-section {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .prominent-create-btn {
+        padding: 1.25rem 2.5rem;
+        border-radius: 1.25rem;
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        min-height: 64px;
+        min-width: 240px;
+        justify-content: center;
+        box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .prominent-create-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .prominent-create-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(102, 126, 234, 0.5);
+    }
+
+    .prominent-create-btn:hover::before {
+        opacity: 1;
+    }
+
+    .prominent-create-btn:active {
+        transform: translateY(-2px);
+    }
+
+    .prominent-create-btn i {
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+        .prominent-create-btn {
+            width: 100%;
+            min-height: 60px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .prominent-create-btn {
+            min-height: 56px;
+            font-size: 0.95rem;
+            padding: 0.875rem 1.75rem;
+        }
+    }
+
+    /* Touch-friendly improvements for prominent button */
+    @media (hover: none) and (pointer: coarse) {
+        .prominent-create-btn:hover {
+            transform: none;
+        }
+        
+        .prominent-create-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .prominent-create-btn {
+            min-height: 68px;
+        }
+    }
+</style>
+
+<div class="section">
+    <div class="section-header">
+        <div>
+            <h2 class="section-title">Your Projects</h2>
+            <p class="section-subtitle">Manage and track your development projects</p>
+        </div>
+    </div>
+    
+    <!-- Prominent Create Project Button at Top -->
+    <div class="create-project-section">
+        <a href="{% url 'users:create_project' %}" class="prominent-create-btn" role="button" aria-label="Create new project">
+            <i class="fas fa-plus"></i>
+            Create Project
+        </a>
+    </div>
+    
+    {% if projects %}
+        <div class="projects-grid">
+            {% for project in projects %}
+                <div class="project-card" role="article" aria-label="Project: {{ project.name }}">
+                    <div class="project-header">
+                        <h3 class="project-title">{{ project.name }}</h3>
+                        <span class="project-status" aria-label="Project status: Active">Active</span>
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-meta-item" aria-label="Created on {{ project.created_at|date:'M d, Y' }}">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span>{{ project.created_at|date:"M d, Y" }}</span>
+                        </div>
+                        <div class="project-meta-item" aria-label="Owner: {{ request.user.username }}">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span>{{ request.user.username }}</span>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button class="project-btn" onclick="showRoadmapModal({{ project.id }})" aria-label="View roadmap for {{ project.name }}">
+                            <i class="fas fa-eye" aria-hidden="true"></i> View
+                        </button>
+                        <a href="{% url 'projects_1:dev_environment' project.id %}" class="project-btn" aria-label="Edit project {{ project.name }}">
+                            <i class="fas fa-edit" aria-hidden="true"></i> Edit
+                        </a>
+                        <button class="delete-project-btn" onclick="deleteProject('{{ project.id }}')" aria-label="Delete project {{ project.name }}">
+                            <i class="fas fa-trash" aria-hidden="true"></i>
+                            Delete
+                            <div class="spinner" aria-hidden="true"></div>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state" role="status" aria-label="No projects available">
+            <i class="fas fa-folder-open empty-state-icon" aria-hidden="true"></i>
+            <h3 class="empty-state-title">No Projects Yet</h3>
+            <p class="empty-state-message">Use the Create Project button above to get started!</p>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Enhanced keyboard navigation and accessibility
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectCards = document.querySelectorAll('.project-card');
+        const actionButtons = document.querySelectorAll('.project-btn, .delete-project-btn, .create-project-btn');
+        
+        // Add keyboard navigation for project cards
+        projectCards.forEach(card => {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    // Focus the first action button in the card
+                    const firstButton = this.querySelector('.project-btn, .delete-project-btn');
+                    if (firstButton) {
+                        firstButton.focus();
+                    }
+                }
+            });
+        });
+        
+        // Enhanced button interactions
+        actionButtons.forEach(button => {
+            button.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Add focus styles
+            button.addEventListener('focus', function() {
+                this.style.outline = '2px solid var(--primary)';
+                this.style.outlineOffset = '2px';
+            });
+            
+            button.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+    });
+
+    function showRoadmapModal(projectId) {
+        const modal = document.getElementById('roadmapModal');
+        const content = document.getElementById('roadmapModalContent');
+        modal.style.display = 'flex';
+        content.innerHTML = '<div style="text-align:center; padding:2rem;">Loading...</div>';
+        
+        fetch(`/projects/${projectId}/roadmap/`, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('authToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.roadmap) {
+                content.innerHTML = '';
+                renderDashboardRoadmap(data.roadmap, content);
+            } else {
+                content.innerHTML = '<div style="color:red; text-align:center;">Failed to load roadmap.</div>';
+            }
+        })
+        .catch(() => {
+            content.innerHTML = '<div style="color:red; text-align:center;">Failed to load roadmap.</div>';
+        });
+    }
+
+    function closeRoadmapModal() {
+        document.getElementById('roadmapModal').style.display = 'none';
+    }
+
+    function deleteProject(projectId) {
+        if (confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
+            const deleteBtn = event.target.closest('.delete-project-btn');
+            const spinner = deleteBtn.querySelector('.spinner');
+            const icon = deleteBtn.querySelector('i');
+            
+            // Show loading state
+            if (spinner && icon) {
+                spinner.style.display = 'block';
+                icon.style.display = 'none';
+                deleteBtn.disabled = true;
+            }
+            
+            fetch(`/projects/${projectId}/delete/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert('Failed to delete project. Please try again.');
+                    // Reset button state
+                    if (spinner && icon) {
+                        spinner.style.display = 'none';
+                        icon.style.display = 'block';
+                        deleteBtn.disabled = false;
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the project.');
+                // Reset button state
+                if (spinner && icon) {
+                    spinner.style.display = 'none';
+                    icon.style.display = 'block';
+                    deleteBtn.disabled = false;
+                }
+            });
+        }
+    }
+
+    function renderDashboardRoadmap(roadmap, container) {
+        if (roadmap.project_overview) {
+            const overview = roadmap.project_overview;
+            const objectives = overview.objectives || [];
+            let html = `
+                <div class="card mb-4 shadow glass-card" style="background:#232336; color:white;">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">🎯 ${overview.name || 'Unnamed Project'}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="overview-section mb-4">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-info-circle me-2"></i>Project Overview
+                            </h4>
+                            <p class="lead">${overview.description || 'No description provided.'}</p>
+                        </div>
+                        <div class="objectives-section">
+                            <h4 class="text-primary mb-3">
+                                <i class="fas fa-bullseye me-2"></i>Key Objectives
+                            </h4>
+                            <ul class="objectives-list">
+                                ${objectives.map(obj => `
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        ${obj}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        }
+        
+        if (roadmap.phases) {
+            Object.entries(roadmap.phases).forEach(([phaseKey, phase], index) => {
+                const phaseNumber = index + 1;
+                const subPhasesHtml = phase.sub_phases ? Object.entries(phase.sub_phases).map(([subKey, subPhase]) => `
+                    <div class="card sub-phase-card mb-3" style="background:#232336; color:white;">
+                        <div class="card-header bg-light" style="background:#232336 !important; color:white;">
+                            <h5 class="mb-0">
+                                <i class="fas fa-tasks me-2"></i>${subPhase.name}
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-3">${subPhase.description || ''}</p>
+                            <h6 class="text-primary mb-2">
+                                <i class="fas fa-check-square me-2"></i>Tasks:
+                            </h6>
+                            <ul class="task-list">
+                                ${(subPhase.tasks || []).map(task => `
+                                    <li class="task-item mb-2">
+                                        <span><i class="fas fa-check-circle text-success me-2"></i>${task}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `).join('') : '';
+                
+                const phaseHtml = `
+                    <div class="card phase-card shadow glass-card mb-4" style="background:#232336; color:white;">
+                        <div class="card-header">
+                            <div class="phase-heading">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-list-alt me-2"></i>
+                                        📋 Phase ${phaseNumber}: ${phase.name}
+                                    </h4>
+                                    <span class="badge bg-primary">${phase.duration || 'N/A'}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-light mb-4" style="background:#232336; color:white; border:1px solid #444;">
+                                <i class="fas fa-info-circle text-primary me-2"></i>
+                                ${phase.overview || ''}
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fas fa-bullseye me-2"></i>Objectives
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        ${(phase.objectives || []).map(obj => `
+                                            <li class="mb-2">
+                                                <i class="fas fa-check-circle text-success me-2"></i>
+                                                ${obj}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-primary mb-3">
+                                        <i class="fas fa-box me-2"></i>Deliverables
+                                    </h5>
+                                    <ul class="list-unstyled">
+                                        ${(phase.deliverables || []).map(del => `
+                                            <li class="mb-2">
+                                                <i class="fas fa-file-alt text-info me-2"></i>
+                                                ${del}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                            ${subPhasesHtml}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += phaseHtml;
+            });
+        }
+    }
+</script>
+
+<!-- Roadmap Modal -->
+<div id="roadmapModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+    <div class="modal-content" style="background:#18181b; color:white; border-radius:1rem; max-width:900px; width:95vw; max-height:90vh; overflow-y:auto; position:relative; padding:2rem;">
+        <button onclick="closeRoadmapModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer; min-height:44px; min-width:44px; display:flex; align-items:center; justify-content:center;" aria-label="Close modal"><i class="fas fa-times"></i></button>
+        <div id="roadmapModalContent">
+            <div style="text-align:center; padding:2rem;">Loading...</div>
+        </div>
+    </div>
+</div> 

@@ -5,10 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import login, get_backends
 from rest_framework.authtoken.models import Token
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from projects.models import Project
 import logging
 
 # Set up logging
@@ -35,11 +36,8 @@ def register_view(request):
             token, _ = Token.objects.get_or_create(user=user)
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, "Registration successful! Welcome.")
-            return JsonResponse({
-                "message": "Registration successful",
-                "token": token.key,
-                "redirect": "/dashboard/"
-            })
+            # Return HTTP redirect instead of JSON response
+            return HttpResponseRedirect('/users/dashboard/')
         else:
             messages.error(request, "Error registering. Please try again.")
             return JsonResponse({"errors": form.errors}, status=400)
@@ -75,11 +73,8 @@ def login_view(request):
             # Create or get auth token
             token, _ = Token.objects.get_or_create(user=user)
             logger.info(f"Login successful for user: {username}")
-            return JsonResponse({
-                "message": "Login successful",
-                "token": token.key,
-                "redirect": "/dashboard/"
-            })
+            # Return HTTP redirect instead of JSON response
+            return HttpResponseRedirect('/users/dashboard/')
         else:
             logger.warning(f"Login failed for username: {username}")
             return JsonResponse({
@@ -96,7 +91,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.info(request, "Logged out successfully.")
-    return redirect("login")
+    return redirect("users:login")
 
 # Dashboard View (Only Accessible After Login)
 @login_required
@@ -129,11 +124,3 @@ from django.http import JsonResponse
 def test_user_auth(request):
     user = get_user(request)
     return JsonResponse({"logged_in_user": str(user)})
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from projects.models import Project 
-
-@login_required
-def dashboard_view(request):
-    projects = Project.objects.filter(user=request.user)  # Fetch only the logged-in user's projects
-    return render(request, "dashboard.html", {"projects": projects})

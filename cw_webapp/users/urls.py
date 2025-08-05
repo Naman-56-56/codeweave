@@ -3,6 +3,8 @@ from . import views
 from .views import CustomObtainAuthToken
 from django.urls import include
 
+app_name = 'users'
+
 urlpatterns = [
     path('projects/', include('projects.urls', namespace='projects_1')),
     path("register/", views.register_view, name="register"),

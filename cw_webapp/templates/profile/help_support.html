@@ -1,0 +1,979 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}Help & Support - CodeWeave{% endblock %}
+
+{% block page_title %}Help & Support{% endblock %}
+
+{% block page_subtitle %}Get help with CodeWeave and find answers to common questions{% endblock %}
+
+{% block dashboard_content %}
+<div class="help-container">
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <div class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <h3>Search Help</h3>
+            <p>Find answers quickly</p>
+            <input type="text" class="search-input" placeholder="Search for help...">
+        </div>
+        
+        <div class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h3>Contact Support</h3>
+            <p>Get direct assistance</p>
+            <button class="action-btn secondary" onclick="openContactModal()">
+                <i class="fas fa-envelope"></i>
+                Contact Us
+            </button>
+        </div>
+        
+        <div class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <h3>Documentation</h3>
+            <p>Browse guides and tutorials</p>
+            <button class="action-btn secondary">
+                <i class="fas fa-external-link-alt"></i>
+                View Docs
+            </button>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h3>Frequently Asked Questions</h3>
+        
+        <div class="faq-categories">
+            <button class="faq-category active" data-category="general">
+                <i class="fas fa-info-circle"></i>
+                General
+            </button>
+            <button class="faq-category" data-category="projects">
+                <i class="fas fa-project-diagram"></i>
+                Projects
+            </button>
+            <button class="faq-category" data-category="account">
+                <i class="fas fa-user"></i>
+                Account
+            </button>
+            <button class="faq-category" data-category="billing">
+                <i class="fas fa-credit-card"></i>
+                Billing
+            </button>
+        </div>
+        
+        <div class="faq-list">
+            <!-- General FAQ -->
+            <div class="faq-group active" data-category="general">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What is CodeWeave?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CodeWeave is a comprehensive project management platform designed specifically for developers and development teams. It helps you organize projects, track progress, collaborate with team members, and manage your development workflow efficiently.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I get started with CodeWeave?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Getting started is easy! Simply create an account, set up your profile, and start creating your first project. You can invite team members, set up tasks, and begin tracking your development progress right away.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Is CodeWeave free to use?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>CodeWeave offers both free and premium plans. The free plan includes basic features for individual developers, while premium plans offer advanced features for teams and larger organizations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects FAQ -->
+            <div class="faq-group" data-category="projects">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I create a new project?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To create a new project, click the "Create Project" button in your dashboard. Fill in the project details including name, description, and initial settings. You can then add team members and start creating tasks.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I invite team members to my projects?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can invite team members by going to your project settings and clicking "Invite Members". Enter their email addresses and they'll receive an invitation to join your project.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I track project progress?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Project progress is automatically tracked based on completed tasks and milestones. You can view detailed analytics in the project dashboard, including completion rates, time tracking, and team performance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account FAQ -->
+            <div class="faq-group" data-category="account">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I change my password?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Go to your account settings and click on "Security". From there, you can change your password, enable two-factor authentication, and manage other security settings.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I export my project data?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can export your project data in various formats including JSON, CSV, and PDF. Go to your project settings and look for the "Export Data" option.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>How do I delete my account?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To delete your account, go to your account settings and scroll to the bottom. Click on "Delete Account" and follow the confirmation process. Note that this action cannot be undone.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Billing FAQ -->
+            <div class="faq-group" data-category="billing">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>What payment methods do you accept?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans. All payments are processed securely through our payment partners.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Can I cancel my subscription anytime?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your subscription at any time. Go to your billing settings and click "Cancel Subscription". You'll continue to have access until the end of your current billing period.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h4>Do you offer refunds?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day money-back guarantee for new subscriptions. If you're not satisfied with our service, contact our support team within 30 days of your first payment for a full refund.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Options -->
+    <div class="contact-section">
+        <h3>Still Need Help?</h3>
+        <p>We're here to help you succeed with CodeWeave</p>
+        
+        <div class="contact-options">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h4>Email Support</h4>
+                <p>Get a response within 24 hours</p>
+                <a href="mailto:support@codeweave.com" class="contact-link">
+                    support@codeweave.com
+                </a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h4>Live Chat</h4>
+                <p>Chat with our support team</p>
+                <button class="contact-btn" onclick="startLiveChat()">
+                    Start Chat
+                </button>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h4>Phone Support</h4>
+                <p>Call us during business hours</p>
+                <a href="tel:+1-555-123-4567" class="contact-link">
+                    +1 (555) 123-4567
+                </a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h4>Community</h4>
+                <p>Join our Discord community</p>
+                <a href="#" class="contact-link">
+                    Join Discord
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="system-status">
+        <h3>System Status</h3>
+        <div class="status-indicators">
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span>API Services</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span>Database</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span>File Storage</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span>Notifications</span>
+            </div>
+        </div>
+        <p class="status-note">All systems operational • Last updated: 2 minutes ago</p>
+    </div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal" id="contactModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Contact Support</h3>
+            <button class="modal-close" onclick="closeContactModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <select id="contactSubject" required>
+                        <option value="">Select a topic</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="technical">Technical Issue</option>
+                        <option value="billing">Billing Question</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="bug">Bug Report</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" rows="5" placeholder="Describe your issue or question..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        I agree to the terms and conditions
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="action-btn secondary" onclick="submitContact()">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+            </button>
+            <button class="action-btn" onclick="closeContactModal()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .help-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .action-card {
+        background: var(--glass-bg);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .action-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-primary);
+    }
+
+    .action-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 1rem;
+        background: var(--gradient-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        margin: 0 auto 1.5rem;
+    }
+
+    .action-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .action-card p {
+        color: var(--text-secondary);
+        margin: 0 0 1.5rem;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: var(--shadow-secondary);
+    }
+
+    .action-btn {
+        padding: 0.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 auto;
+    }
+
+    .action-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--text-primary);
+        transform: translateY(-1px);
+    }
+
+    .action-btn.secondary {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    .action-btn.secondary:hover {
+        box-shadow: var(--shadow-secondary);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+        background: var(--glass-bg);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        margin-bottom: 3rem;
+    }
+
+    .faq-section h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 2rem;
+        text-align: center;
+    }
+
+    .faq-categories {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .faq-category {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .faq-category:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+    }
+
+    .faq-category.active {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .faq-group {
+        display: none;
+    }
+
+    .faq-group.active {
+        display: block;
+    }
+
+    .faq-item {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-question h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .faq-question i {
+        color: var(--text-secondary);
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+        display: none;
+    }
+
+    .faq-item.active .faq-answer {
+        display: block;
+    }
+
+    .faq-answer p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        background: var(--glass-bg);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .contact-section h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .contact-section p {
+        color: var(--text-secondary);
+        margin: 0 0 2rem;
+    }
+
+    .contact-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .contact-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-secondary);
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 1rem;
+        background: var(--gradient-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 1rem;
+    }
+
+    .contact-card h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+    }
+
+    .contact-card p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin: 0 0 1rem;
+    }
+
+    .contact-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+        color: var(--text-primary);
+    }
+
+    .contact-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+        box-shadow: var(--shadow-secondary);
+        transform: translateY(-1px);
+    }
+
+    /* System Status */
+    .system-status {
+        background: var(--glass-bg);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        text-align: center;
+    }
+
+    .system-status h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 1.5rem;
+    }
+
+    .status-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .status-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .status-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+
+    .status-dot.online {
+        background: #4facfe;
+    }
+
+    .status-dot.offline {
+        background: #f093fb;
+    }
+
+    .status-dot.warning {
+        background: #fad0c4;
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    .status-item span {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    .status-note {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin: 0;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        backdrop-filter: blur(5px);
+    }
+
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: var(--glass-bg);
+        border-radius: 1.5rem;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        max-width: 500px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-header h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    .modal-footer {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    /* Form Styles */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: var(--shadow-secondary);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .quick-actions {
+            grid-template-columns: 1fr;
+        }
+
+        .faq-categories {
+            flex-direction: column;
+        }
+
+        .contact-options {
+            grid-template-columns: 1fr;
+        }
+
+        .status-indicators {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .action-card,
+        .faq-section,
+        .contact-section,
+        .system-status {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // FAQ functionality
+    function toggleFAQ(element) {
+        const faqItem = element.closest('.faq-item');
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    }
+
+    // FAQ category switching
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryButtons = document.querySelectorAll('.faq-category');
+        const faqGroups = document.querySelectorAll('.faq-group');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active category button
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding FAQ group
+                faqGroups.forEach(group => {
+                    group.classList.remove('active');
+                    if (group.getAttribute('data-category') === category) {
+                        group.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h4').textContent.toLowerCase();
+                    const answer = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+    });
+
+    // Modal functions
+    function openContactModal() {
+        document.getElementById('contactModal').classList.add('active');
+    }
+
+    function closeContactModal() {
+        document.getElementById('contactModal').classList.remove('active');
+    }
+
+    function submitContact() {
+        const name = document.getElementById('contactName').value;
+        const email = document.getElementById('contactEmail').value;
+        const subject = document.getElementById('contactSubject').value;
+        const message = document.getElementById('contactMessage').value;
+
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Simulate form submission
+        setTimeout(() => {
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            closeContactModal();
+        }, 1000);
+    }
+
+    function startLiveChat() {
+        alert('Live chat feature would be implemented here. For now, please use email support.');
+    }
+</script>
+{% endblock %} 

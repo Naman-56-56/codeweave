@@ -1,0 +1,335 @@
+<style>
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .overview-card {
+        background: var(--glass-bg);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overview-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-primary);
+        border-color: var(--primary);
+    }
+
+    .overview-card:active {
+        transform: translateY(-4px);
+    }
+
+    .overview-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+
+    .overview-card:hover::before {
+        opacity: 1;
+    }
+
+    .overview-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 1rem;
+        background: var(--gradient-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.25rem;
+        margin: 0 auto 1rem;
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .overview-card:hover .overview-icon {
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    .overview-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 0.5rem;
+        line-height: 1;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .overview-label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin: 0 0 0.75rem;
+        font-weight: 500;
+    }
+
+    .overview-change {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-top: 0.25rem;
+        transition: all 0.3s ease;
+        min-height: 32px;
+        justify-content: center;
+        min-width: 100px;
+    }
+
+    .overview-change.positive {
+        background: rgba(79, 172, 254, 0.15);
+        color: #4facfe;
+        border: 1px solid rgba(79, 172, 254, 0.3);
+    }
+
+    .overview-change.negative {
+        background: rgba(240, 147, 251, 0.15);
+        color: #f093fb;
+        border: 1px solid rgba(240, 147, 251, 0.3);
+    }
+
+    .overview-change:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Enhanced responsive design */
+    @media (max-width: 1400px) {
+        .overview-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .overview-grid {
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+        
+        .overview-card {
+            padding: 1.25rem;
+            min-height: 120px;
+        }
+        
+        .overview-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 1.1rem;
+        }
+        
+        .overview-value {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .overview-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .overview-card {
+            padding: 1rem;
+            min-height: 120px;
+        }
+        
+        .overview-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .overview-value {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .overview-label {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .overview-change {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.7rem;
+            min-height: 28px;
+            min-width: 80px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .overview-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .overview-card {
+            padding: 0.75rem;
+            min-height: 100px;
+        }
+        
+        .overview-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
+        }
+        
+        .overview-value {
+            font-size: 1.25rem;
+        }
+        
+        .overview-label {
+            font-size: 0.75rem;
+        }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+        .overview-card {
+            min-height: 100px;
+        }
+        
+        .overview-card:hover {
+            transform: none;
+        }
+        
+        .overview-card:active {
+            transform: scale(0.98);
+        }
+        
+        .overview-change {
+            min-height: 36px;
+            min-width: 120px;
+        }
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .overview-card {
+            border-width: 2px;
+        }
+        
+        .overview-change {
+            border-width: 2px;
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .overview-card,
+        .overview-icon,
+        .overview-change {
+            transition: none;
+        }
+        
+        .overview-card:hover {
+            transform: none;
+        }
+        
+        .overview-card:hover .overview-icon {
+            transform: none;
+        }
+    }
+</style>
+
+<div class="section">
+    <div class="section-header">
+        <div>
+            <h2 class="section-title">Overview</h2>
+            <p class="section-subtitle">Your project statistics and key metrics</p>
+        </div>
+    </div>
+    
+    <div class="overview-grid">
+        <div class="overview-card" onclick="window.location.href='{% url 'users:create_project' %}'" role="button" tabindex="0" aria-label="Create new project">
+            <div class="overview-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="overview-value">{{ projects|length }}</div>
+            <div class="overview-label">Total Projects</div>
+            <div class="overview-change positive">
+                <i class="fas fa-arrow-up"></i> +2 this month
+            </div>
+        </div>
+        
+        <div class="overview-card" onclick="window.location.href='#'" role="button" tabindex="0" aria-label="View active tasks">
+            <div class="overview-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="overview-value">24</div>
+            <div class="overview-label">Active Tasks</div>
+            <div class="overview-change positive">
+                <i class="fas fa-arrow-up"></i> +5 today
+            </div>
+        </div>
+        
+        <div class="overview-card" onclick="window.location.href='#'" role="button" tabindex="0" aria-label="Manage team members">
+            <div class="overview-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="overview-value">8</div>
+            <div class="overview-label">Team Members</div>
+            <div class="overview-change positive">
+                <i class="fas fa-arrow-up"></i> +1 this week
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Enhanced keyboard navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.overview-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+            
+            // Add focus styles
+            card.addEventListener('focus', function() {
+                this.style.outline = '2px solid var(--primary)';
+                this.style.outlineOffset = '2px';
+            });
+            
+            card.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+    });
+</script> 

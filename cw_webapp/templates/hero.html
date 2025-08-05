@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -7,7 +8,8 @@
   <meta name="keywords" content="scroll animation, 3d, gsap, hero, codeweave" />
   <meta name="author" content="CodeWeave" />
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://use.typekit.net/pxn8wdc.css">
+      <link rel="stylesheet" href="https://use.typekit.net/pxn8wdc.css">
+    <link rel="stylesheet" href="{% static 'css/parallax-effects.css' %}">
   <style>
     *,
     *::after,
@@ -250,7 +252,7 @@
       box-shadow: 0 10px 30px rgba(239, 93, 54, 0.3);
     }
 
-    /* 3D Elements */
+    /* Enhanced 3D Elements with Parallax */
     .hero__3d-elements {
       position: absolute;
       top: 0;
@@ -258,6 +260,8 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+      perspective: 1000px;
+      transform-style: preserve-3d;
     }
 
     .hero__cube {
@@ -268,6 +272,13 @@
       border-radius: 8px;
       transform-style: preserve-3d;
       will-change: transform;
+      box-shadow: 0 8px 32px rgba(239, 93, 54, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .hero__cube:hover {
+      box-shadow: 0 12px 48px rgba(239, 93, 54, 0.5);
+      transform: scale(1.1) rotateY(15deg);
     }
 
     .hero__cube--1 {
@@ -275,6 +286,7 @@
       left: 10%;
       width: 80px;
       height: 80px;
+      animation: float1 6s ease-in-out infinite;
     }
 
     .hero__cube--2 {
@@ -283,6 +295,7 @@
       width: 120px;
       height: 120px;
       background: linear-gradient(45deg, #4a90e2, #357abd);
+      animation: float2 8s ease-in-out infinite;
     }
 
     .hero__cube--3 {
@@ -291,6 +304,25 @@
       width: 60px;
       height: 60px;
       background: linear-gradient(45deg, #50c878, #3cb371);
+      animation: float3 7s ease-in-out infinite;
+    }
+
+    .hero__cube--4 {
+      top: 45%;
+      left: 5%;
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(45deg, #f39c12, #e67e22);
+      animation: float4 9s ease-in-out infinite;
+    }
+
+    .hero__cube--5 {
+      bottom: 35%;
+      right: 25%;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      animation: float5 5s ease-in-out infinite;
     }
 
     .hero__sphere {
@@ -300,6 +332,13 @@
       border-radius: 50%;
       background: radial-gradient(circle, var(--color-accent) 0%, #ff6b35 100%);
       will-change: transform;
+      box-shadow: 0 6px 24px rgba(239, 93, 54, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .hero__sphere:hover {
+      box-shadow: 0 10px 36px rgba(239, 93, 54, 0.6);
+      transform: scale(1.15);
     }
 
     .hero__sphere--1 {
@@ -307,6 +346,7 @@
       right: 25%;
       width: 40px;
       height: 40px;
+      animation: sphere1 4s ease-in-out infinite;
     }
 
     .hero__sphere--2 {
@@ -315,13 +355,29 @@
       width: 80px;
       height: 80px;
       background: radial-gradient(circle, #9b59b6, #8e44ad);
+      animation: sphere2 6s ease-in-out infinite;
     }
 
-    /* Floating Elements */
+    .hero__sphere--3 {
+      top: 15%;
+      right: 40%;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, #3498db, #2980b9);
+      animation: sphere3 5s ease-in-out infinite;
+    }
+
+    /* Enhanced Floating Elements */
     .hero__float {
       position: absolute;
-      opacity: 0.6;
+      opacity: 0.8;
       will-change: transform;
+      transition: all 0.3s ease;
+    }
+
+    .hero__float:hover {
+      opacity: 1;
+      transform: scale(1.2);
     }
 
     .hero__float--1 {
@@ -331,6 +387,7 @@
       height: 20px;
       background: var(--color-accent);
       border-radius: 50%;
+      animation: float1 3s ease-in-out infinite;
     }
 
     .hero__float--2 {
@@ -340,6 +397,7 @@
       height: 15px;
       background: #4a90e2;
       border-radius: 50%;
+      animation: float2 4s ease-in-out infinite;
     }
 
     .hero__float--3 {
@@ -349,6 +407,108 @@
       height: 25px;
       background: #50c878;
       border-radius: 50%;
+      animation: float3 3.5s ease-in-out infinite;
+    }
+
+    .hero__float--4 {
+      top: 80%;
+      right: 35%;
+      width: 18px;
+      height: 18px;
+      background: #e74c3c;
+      border-radius: 50%;
+      animation: float4 4.5s ease-in-out infinite;
+    }
+
+    .hero__float--5 {
+      top: 25%;
+      left: 60%;
+      width: 12px;
+      height: 12px;
+      background: #f39c12;
+      border-radius: 50%;
+      animation: float5 2.5s ease-in-out infinite;
+    }
+
+    /* Parallax Background Layers */
+    .hero__parallax-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero__parallax-layer--1 {
+      background: radial-gradient(circle at 20% 30%, rgba(239, 93, 54, 0.1) 0%, transparent 50%);
+      animation: parallax1 20s ease-in-out infinite;
+    }
+
+    .hero__parallax-layer--2 {
+      background: radial-gradient(circle at 80% 70%, rgba(239, 93, 54, 0.05) 0%, transparent 50%);
+      animation: parallax2 25s ease-in-out infinite;
+    }
+
+    .hero__parallax-layer--3 {
+      background: radial-gradient(circle at 50% 50%, rgba(239, 93, 54, 0.08) 0%, transparent 50%);
+      animation: parallax3 30s ease-in-out infinite;
+    }
+
+    /* Floating Animations */
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(-180deg); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(90deg); }
+    }
+
+    @keyframes float4 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(-90deg); }
+    }
+
+    @keyframes float5 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(45deg); }
+    }
+
+    @keyframes sphere1 {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-15px) scale(1.1); }
+    }
+
+    @keyframes sphere2 {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-25px) scale(1.05); }
+    }
+
+    @keyframes sphere3 {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-20px) scale(1.15); }
+    }
+
+    @keyframes parallax1 {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      50% { transform: translateX(20px) translateY(-20px); }
+    }
+
+    @keyframes parallax2 {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      50% { transform: translateX(-30px) translateY(30px); }
+    }
+
+    @keyframes parallax3 {
+      0%, 100% { transform: translateX(0px) translateY(0px); }
+      50% { transform: translateX(15px) translateY(-15px); }
     }
 
     /* Transition Section */
@@ -2032,17 +2192,28 @@
 <body class="loading">
   <main class="shadow">
     
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section with Parallax -->
     <section class="hero">
+      <!-- Parallax Background Layers -->
+      <div class="hero__parallax-layer hero__parallax-layer--1"></div>
+      <div class="hero__parallax-layer hero__parallax-layer--2"></div>
+      <div class="hero__parallax-layer hero__parallax-layer--3"></div>
+      
+      <!-- Enhanced 3D Elements with Parallax -->
       <div class="hero__3d-elements">
         <div class="hero__cube hero__cube--1"></div>
         <div class="hero__cube hero__cube--2"></div>
         <div class="hero__cube hero__cube--3"></div>
+        <div class="hero__cube hero__cube--4"></div>
+        <div class="hero__cube hero__cube--5"></div>
         <div class="hero__sphere hero__sphere--1"></div>
         <div class="hero__sphere hero__sphere--2"></div>
+        <div class="hero__sphere hero__sphere--3"></div>
         <div class="hero__float hero__float--1"></div>
         <div class="hero__float hero__float--2"></div>
         <div class="hero__float hero__float--3"></div>
+        <div class="hero__float hero__float--4"></div>
+        <div class="hero__float hero__float--5"></div>
       </div>
       
       <div class="hero__content">
@@ -2217,1060 +2388,155 @@
   </main>
 
   <!-- GSAP library -->
-  <script src="{% static 'js/gsap.min.js' %}"></script>
+  <!-- <script src="{% static 'js/gsap.min.js' %}"></script> -->
   <!-- GSAP ScrollTrigger plugin -->
-  <script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+  <!-- <script src="{% static 'js/ScrollTrigger.min.js' %}"></script> -->
   <!-- GSAP SplitText (Club Membership), Trial only https://gsap.com/resources/trial/ -->
-  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+  <!-- <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script> -->
   <!-- ImagesLoaded -->
-  <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+  <!-- <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script> -->
   <!-- Add (Lenis) smooth scroll -->
-  <script src="{% static 'js/lenis.min.js' %}"></script>
-  <script src="{% static 'js/smoothscroll.js' %}"></script>
+  <!-- <script src="{% static 'js/lenis.min.js' %}"></script> -->
+  <!-- <script src="{% static 'js/smoothscroll.js' %}"></script> -->
 
-  <!-- Hero Animation Script -->
-  <script src="{% static 'js/hero-animations.js' %}"></script>
+                  <!-- Hero Animation Script -->
+                    <!-- <script src="{% static 'js/hero-animations.js' %}"></script> -->
+                  <!-- <script type="module" src="{% static 'js/parallax-hero.js' %}"></script> -->
+                  <!-- <script type="module" src="{% static 'js/performance-monitor.js' %}"></script> -->
 
   <!-- Hero Integration Script -->
   <script>
-    // Animation state management
-    const AnimationState = {
-      isInitialized: false,
-      isDestroyed: false,
-      eventListeners: new Map(),
-      timelines: new Set(),
-      splitTexts: new Map()
-    };
+    // Simplified initialization without heavy animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Remove loading state
+      document.body.classList.remove('loading');
+      
+      // Reset scroll position
+      window.scrollTo(0, 0);
+      
+      console.log('Application initialized successfully');
+    });
 
-    // Error handling utility
-    const safeExecute = (fn, context = 'Animation') => {
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      /*--------------------
+      Vars
+      --------------------*/
+      let progress = 50
+      let startX = 0
+      let active = 0
+      let isDown = false
+
+      /*--------------------
+      Constants
+      --------------------*/
+      const speedWheel = 0.02
+      const speedDrag = -0.1
+
+      /*--------------------
+      Get Z
+      --------------------*/
+      const getZindex = (array, index) => (array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i)))
+
+      /*--------------------
+      Items
+      --------------------*/
+      const $items = document.querySelectorAll('.carousel-item')
+      const $cursors = document.querySelectorAll('.cursor')
+
+      if ($items.length === 0) {
+        console.warn('No carousel items found');
+        return;
+      }
+
+      console.log(`Found ${$items.length} carousel items`);
+
+      const displayItems = (item, index, active) => {
+        const zIndex = getZindex([...$items], active)[index]
+        item.style.setProperty('--zIndex', zIndex)
+        item.style.setProperty('--active', (index-active)/$items.length)
+        console.log(`Item ${index}: zIndex=${zIndex}, active=${(index-active)/$items.length}`);
+      }
+
+      /*--------------------
+      Animate
+      --------------------*/
+      const animate = () => {
+        progress = Math.max(0, Math.min(progress, 100))
+        active = Math.floor(progress/100*($items.length-1))
+        
+        $items.forEach((item, index) => displayItems(item, index, active))
+      }
+      
+      // Initialize with fallback
       try {
-        return fn();
+        animate()
+        console.log('Carousel animation initialized');
       } catch (error) {
-        console.error(`${context} Error:`, error);
-        return null;
-      }
-    };
-
-    // Import utility function with error handling
-    const preloadImages = (selector = 'img') => {
-      return new Promise((resolve, reject) => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          if (elements.length === 0) {
-            console.warn('No elements found for preloading:', selector);
-            resolve();
-            return;
-          }
-          
-          imagesLoaded(elements, {background: true}, () => {
-            console.log('Images preloaded successfully');
-            resolve();
-          });
-        } catch (error) {
-          console.error('Preload error:', error);
-          reject(error);
-        }
-      });
-    };
-
-    // Register GSAP plugins with error handling
-    const registerGSAPPlugins = () => {
-      try {
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.registerPlugin(SplitText);
-        console.log('GSAP plugins registered successfully');
-      } catch (error) {
-        console.error('GSAP plugin registration failed:', error);
-        throw error;
-      }
-    };
-
-    // Animation configuration with validation
-    const ANIMATION_CONFIG = {
-      durations: {
-        fast: 0.6,
-        normal: 1.2,
-        slow: 2.0
-      },
-      easings: {
-        smooth: 'power2.out',
-        bouncy: 'back.out(1.7)',
-        sine: 'sine'
-      },
-      staggers: {
-        fast: 0.05,
-        normal: 0.1,
-        slow: 0.2
-      },
-      // Performance settings
-      performance: {
-        throttleScroll: 16, // ~60fps
-        batchSize: 10,
-        lazyLoadDistance: 100
-      }
-    };
-
-    // Optimized helper function with caching
-    const isLeftSide = (() => {
-      const cache = new WeakMap();
-      
-      return (element) => {
-        if (!element) return false;
-        
-        if (cache.has(element)) {
-          return cache.get(element);
-        }
-        
-        try {
-          const rect = element.getBoundingClientRect();
-          const elementCenter = rect.left + rect.width / 2;
-          const viewportCenter = window.innerWidth / 2;
-          const result = elementCenter < viewportCenter;
-          
-          cache.set(element, result);
-          return result;
-        } catch (error) {
-          console.error('Error calculating element position:', error);
-          return false;
-        }
-      };
-    })();
-
-    // Get all animation elements with validation
-    const getAnimationElements = () => {
-      const elements = {};
-      
-      // Hero elements
-      elements.heroTitle = document.querySelector('.hero__title');
-      elements.heroSubtitle = document.querySelector('.hero__subtitle');
-      elements.heroCta = document.querySelector('.hero__cta');
-      elements.heroCubes = document.querySelectorAll('.hero__cube');
-      elements.heroSpheres = document.querySelectorAll('.hero__sphere');
-      elements.heroFloats = document.querySelectorAll('.hero__float');
-      elements.textElement = document.querySelector('.text');
-
-      // Lower CodeWeave elements
-      elements.lowerCodeWeaveTitle = document.querySelector('.lower-codeweave__title');
-      elements.lowerCodeWeaveSubtitle = document.querySelector('.lower-codeweave__subtitle');
-      elements.lowerCodeWeaveCubes = document.querySelectorAll('.lower-codeweave__cube');
-      elements.lowerCodeWeaveSpheres = document.querySelectorAll('.lower-codeweave__sphere');
-      elements.lowerCodeWeaveFloats = document.querySelectorAll('.lower-codeweave__float');
-
-      // Transition elements
-      elements.transitionTitle = document.querySelector('.transition__title');
-      elements.transitionSubtitle = document.querySelector('.transition__subtitle');
-      elements.transitionCircle = document.querySelector('.transition__circle');
-      elements.transitionLine = document.querySelector('.transition__line');
-      elements.transitionDots = document.querySelectorAll('.transition__dot');
-      elements.transitionStats = document.querySelectorAll('.transition__stat');
-      elements.transitionFeatures = document.querySelectorAll('.transition__feature');
-      elements.transitionCodeLines = document.querySelectorAll('.transition__code-line');
-
-      // Alternate section elements
-      elements.alternateSections = document.querySelectorAll('.alternate-section');
-      elements.alternateTitles = document.querySelectorAll('.alternate-section__title');
-      elements.alternateSubtitles = document.querySelectorAll('.alternate-section__subtitle');
-      elements.alternateStats = document.querySelectorAll('.alternate-section__stat');
-      elements.alternateFeatures = document.querySelectorAll('.alternate-section__feature');
-      elements.alternateCodeLines = document.querySelectorAll('.alternate-section__code-line');
-
-      // Inspiration elements
-      elements.inspirationTitle = document.querySelector('.inspiration__title');
-      elements.inspirationSubtitle = document.querySelector('.inspiration__subtitle');
-      elements.inspirationCards = document.querySelectorAll('.inspiration__card');
-      elements.inspirationLines = document.querySelectorAll('.inspiration__line');
-      elements.inspirationDots = document.querySelectorAll('.inspiration__dot');
-
-      // Validate required elements
-      const requiredElements = ['heroTitle', 'textElement'];
-      const missingElements = requiredElements.filter(key => !elements[key]);
-      
-      if (missingElements.length > 0) {
-        console.warn('Missing required elements:', missingElements);
-      }
-
-      return elements;
-    };
-
-    // Create split text instances with error handling
-    const createSplitTexts = (elements) => {
-      const splitTexts = {};
-      
-      const createSplitText = (element, type, name) => {
-        if (!element) return null;
-        
-        try {
-          const splitText = new SplitText(element, {type});
-          AnimationState.splitTexts.set(element, splitText);
-          return splitText;
-        } catch (error) {
-          console.error(`Failed to create SplitText for ${name}:`, error);
-          return null;
-        }
-      };
-
-      // Create split texts with error handling
-      splitTexts.heroSubtitle = createSplitText(elements.heroSubtitle, 'words', 'heroSubtitle');
-      splitTexts.textElement = createSplitText(elements.textElement, 'chars', 'textElement');
-      splitTexts.lowerCodeWeaveSubtitle = createSplitText(elements.lowerCodeWeaveSubtitle, 'words', 'lowerCodeWeaveSubtitle');
-      splitTexts.transitionTitle = createSplitText(elements.transitionTitle, 'chars', 'transitionTitle');
-      splitTexts.transitionSubtitle = createSplitText(elements.transitionSubtitle, 'words', 'transitionSubtitle');
-      splitTexts.inspirationTitle = createSplitText(elements.inspirationTitle, 'chars', 'inspirationTitle');
-      splitTexts.inspirationSubtitle = createSplitText(elements.inspirationSubtitle, 'words', 'inspirationSubtitle');
-
-      // Split text for alternate sections
-      splitTexts.alternateTitles = elements.alternateTitles.map((title, index) => 
-        createSplitText(title, 'chars', `alternateTitle_${index}`)
-      ).filter(Boolean);
-      
-      splitTexts.alternateSubtitles = elements.alternateSubtitles.map((subtitle, index) => 
-        createSplitText(subtitle, 'words', `alternateSubtitle_${index}`)
-      ).filter(Boolean);
-
-      return splitTexts;
-    };
-
-    // Memory management utilities
-    const addEventListener = (element, event, handler, options = {}) => {
-      if (!element) return;
-      
-      const key = `${element.outerHTML.slice(0, 50)}_${event}`;
-      if (!AnimationState.eventListeners.has(key)) {
-        AnimationState.eventListeners.set(key, []);
-      }
-      
-      element.addEventListener(event, handler, options);
-      AnimationState.eventListeners.get(key).push({element, event, handler, options});
-    };
-
-    const cleanupEventListeners = () => {
-      AnimationState.eventListeners.forEach((listeners, key) => {
-        listeners.forEach(({element, event, handler, options}) => {
-          try {
-            element.removeEventListener(event, handler, options);
-          } catch (error) {
-            console.error('Error removing event listener:', error);
-          }
+        console.error('Error initializing carousel animation:', error);
+        // Fallback: show all items in a grid
+        $items.forEach((item, index) => {
+          item.style.setProperty('--zIndex', $items.length - index);
+          item.style.setProperty('--active', index * 0.1);
+          item.style.transform = `translate(${index * 50}px, ${index * 30}px) rotate(${index * 10}deg)`;
         });
-      });
-      AnimationState.eventListeners.clear();
-    };
-
-    // Timeline management
-    const createTimeline = (config = {}) => {
-      const timeline = gsap.timeline(config);
-      AnimationState.timelines.add(timeline);
-      return timeline;
-    };
-
-    const cleanupTimelines = () => {
-      AnimationState.timelines.forEach(timeline => {
-        try {
-          timeline.kill();
-        } catch (error) {
-          console.error('Error killing timeline:', error);
-        }
-      });
-      AnimationState.timelines.clear();
-    };
-
-    // Consolidated hero animation with improved error handling
-    const animateHero = (elements, splitTexts) => {
-      if (!elements.heroTitle) {
-        console.warn('Hero title not found, skipping hero animation');
-        return;
-      }
-      
-      const heroLetters = elements.heroTitle.querySelectorAll('span');
-      if (heroLetters.length === 0) {
-        console.warn('No hero letters found');
-        return;
       }
 
-      // Main hero entrance animation
-      const heroTimeline = createTimeline({
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top 80%',
-          end: 'center center',
-          scrub: false,
-          toggleActions: "play none none reverse"
-        }
-      });
+      /*--------------------
+      Click on Items
+      --------------------*/
+      $items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          progress = (i/$items.length) * 100 + 10
+          animate()
+        })
+      })
 
-      try {
-        heroTimeline
-          .from(heroLetters, {
-            duration: 2.0,
-            yPercent: 400,
-            autoAlpha: 0,
-            rotationX: -90,
-            ease: 'sine',
-            stagger: {
-              each: 0.05,
-              from: 'center'
-            }
+      /*--------------------
+      Handlers
+      --------------------*/
+      const handleWheel = e => {
+        const wheelProgress = e.deltaY * speedWheel
+        progress = progress + wheelProgress
+        animate()
+      }
+
+      const handleMouseMove = (e) => {
+        if (e.type === 'mousemove') {
+          $cursors.forEach(($cursor) => {
+            $cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
           })
-          .from(splitTexts.heroSubtitle?.words || [], {
-            duration: 1,
-            y: 50,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "power2.out"
-          }, '-=0.5')
-          .from(elements.heroCta, {
-            duration: 0.8,
-            y: 30,
-            opacity: 0,
-            scale: 0.8,
-            ease: "back.out(1.7)"
-          }, '-=0.3')
-          .from(elements.heroCubes, {
-            duration: 1.5,
-            y: 80,
-            opacity: 0,
-            rotationY: 180,
-            stagger: 0.1,
-            ease: "back.out(1.7)"
-          }, '-=0.8')
-          .from(elements.heroSpheres, {
-            duration: 1.2,
-            y: 60,
-            opacity: 0,
-            scale: 0,
-            stagger: 0.15,
-            ease: "back.out(1.7)"
-          }, '-=1')
-          .from(elements.heroFloats, {
-            duration: 1,
-            y: 40,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "power2.out"
-          }, '-=0.8');
-
-        // Continuous 3D animations with performance optimization
-        const continuousAnimations = [
-          gsap.to(elements.heroCubes, {
-            duration: 20,
-            rotationY: "+=360",
-            ease: "none",
-            repeat: -1
-          }),
-          gsap.to(elements.heroSpheres, {
-            duration: 3,
-            y: -20,
-            ease: "power1.inOut",
-            yoyo: true,
-            repeat: -1
-          }),
-          gsap.to(elements.heroFloats, {
-            duration: 2,
-            scale: 1.2,
-            ease: "power1.inOut",
-            yoyo: true,
-            repeat: -1,
-            stagger: 0.5
-          })
-        ];
-
-        continuousAnimations.forEach(anim => AnimationState.timelines.add(anim));
-
-        // Hover effects for hero letters with proper event management
-        heroLetters.forEach((letter, index) => {
-          const hoverHandler = () => {
-            gsap.to(letter, {
-              duration: 0.3,
-              scale: 1.2,
-              rotationY: 15,
-              ease: 'back.out(1.7)',
-            });
-          };
-          
-          const leaveHandler = () => {
-            gsap.to(letter, {
-              duration: 0.3,
-              scale: 1,
-              rotationY: 0,
-              ease: 'power2.out',
-            });
-          };
-
-          addEventListener(letter, 'mouseenter', hoverHandler);
-          addEventListener(letter, 'mouseleave', leaveHandler);
-        });
-
-      } catch (error) {
-        console.error('Error in hero animation:', error);
-      }
-    };
-
-    // Lower CodeWeave animation with enhanced effects
-    const animateLowerCodeWeave = (elements, splitTexts) => {
-      if (!elements.lowerCodeWeaveTitle) {
-        console.warn('Lower CodeWeave title not found, skipping lower CodeWeave animation');
-        return;
-      }
-      
-      const lowerCodeWeaveLetters = elements.lowerCodeWeaveTitle.querySelectorAll('span');
-      if (lowerCodeWeaveLetters.length === 0) {
-        console.warn('No lower CodeWeave letters found');
-        return;
-      }
-
-      // Main lower CodeWeave entrance animation with enhanced effects
-      const lowerCodeWeaveTimeline = createTimeline({
-        scrollTrigger: {
-          trigger: '.lower-codeweave',
-          start: 'top 80%',
-          end: 'center center',
-          scrub: false,
-          toggleActions: "play none none reverse"
         }
-      });
-
-      try {
-        lowerCodeWeaveTimeline
-          .from(lowerCodeWeaveLetters, {
-            duration: 2.5,
-            yPercent: 500,
-            autoAlpha: 0,
-            rotationX: -120,
-            scale: 0.3,
-            ease: 'back.out(1.7)',
-            stagger: {
-              each: 0.08,
-              from: 'center'
-            }
-          })
-          .from(splitTexts.lowerCodeWeaveSubtitle?.words || [], {
-            duration: 1.5,
-            y: 80,
-            opacity: 0,
-            scale: 0.6,
-            stagger: 0.15,
-            ease: "power2.out"
-          }, '-=1.0')
-          .from(elements.lowerCodeWeaveCubes, {
-            duration: 2.0,
-            y: 120,
-            opacity: 0,
-            rotationY: 360,
-            scale: 0,
-            stagger: 0.15,
-            ease: "back.out(1.7)"
-          }, '-=1.2')
-          .from(elements.lowerCodeWeaveSpheres, {
-            duration: 1.8,
-            y: 100,
-            opacity: 0,
-            scale: 0,
-            rotation: 720,
-            stagger: 0.2,
-            ease: "back.out(1.7)"
-          }, '-=1.5')
-          .from(elements.lowerCodeWeaveFloats, {
-            duration: 1.3,
-            y: 60,
-            opacity: 0,
-            scale: 0,
-            stagger: 0.12,
-            ease: "power2.out"
-          }, '-=1.0');
-
-        // Enhanced continuous 3D animations for lower CodeWeave
-        const lowerContinuousAnimations = [
-          gsap.to(elements.lowerCodeWeaveCubes, {
-            duration: 25,
-            rotationY: "+=360",
-            rotationX: "+=180",
-            ease: "none",
-            repeat: -1
-          }),
-          gsap.to(elements.lowerCodeWeaveSpheres, {
-            duration: 4,
-            y: -30,
-            scale: 1.2,
-            ease: "power1.inOut",
-            yoyo: true,
-            repeat: -1
-          }),
-          gsap.to(elements.lowerCodeWeaveFloats, {
-            duration: 3,
-            scale: 1.3,
-            y: -25,
-            ease: "power1.inOut",
-            yoyo: true,
-            repeat: -1,
-            stagger: 0.6
-          })
-        ];
-
-        lowerContinuousAnimations.forEach(anim => AnimationState.timelines.add(anim));
-
-        // Enhanced hover effects for lower CodeWeave letters
-        lowerCodeWeaveLetters.forEach((letter, index) => {
-          const hoverHandler = () => {
-            gsap.to(letter, {
-              duration: 0.4,
-              scale: 1.4,
-              rotationY: 20,
-              rotationX: 8,
-              ease: 'back.out(1.7)',
-            });
-          };
-          
-          const leaveHandler = () => {
-            gsap.to(letter, {
-              duration: 0.4,
-              scale: 1,
-              rotationY: 0,
-              rotationX: 0,
-              ease: 'power2.out',
-            });
-          };
-
-          addEventListener(letter, 'mouseenter', hoverHandler);
-          addEventListener(letter, 'mouseleave', leaveHandler);
-        });
-
-        // Additional scroll-based parallax effect for lower CodeWeave
-        gsap.to(elements.lowerCodeWeaveTitle, {
-          scrollTrigger: {
-            trigger: '.lower-codeweave',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-          y: -150,
-          opacity: 0.9,
-          ease: 'none'
-        });
-
-      } catch (error) {
-        console.error('Error in lower CodeWeave animation:', error);
-      }
-    };
-
-    // Transition section animation with error handling
-    const animateTransition = (elements, splitTexts) => {
-      if (!elements.transitionTitle || !splitTexts.transitionTitle) {
-        console.warn('Transition elements not found, skipping transition animation');
-        return;
-      }
-      
-      const transitionTimeline = createTimeline({
-        scrollTrigger: {
-          trigger: '.transition',
-          start: 'top 80%',
-          end: 'center center',
-          scrub: false,
-          toggleActions: "play none none reverse"
-        }
-      });
-
-      try {
-        transitionTimeline
-          .from(splitTexts.transitionTitle.chars, {
-            duration: 1.5,
-            y: 120,
-            opacity: 0,
-            rotationX: -30,
-            stagger: 0.04,
-            ease: "back.out(1.7)"
-          })
-          .from(splitTexts.transitionSubtitle?.words || [], {
-            duration: 1.2,
-            y: 60,
-            opacity: 0,
-            scale: 0.8,
-            stagger: 0.12,
-            ease: "power2.out"
-          }, '-=0.6')
-          .from(elements.transitionCircle, {
-            duration: 1.8,
-            y: 100,
-            opacity: 0,
-            scale: 0,
-            rotation: 360,
-            ease: "back.out(1.7)"
-          }, '-=0.8')
-          .from(elements.transitionLine, {
-            duration: 1.2,
-            y: 80,
-            opacity: 0,
-            scaleY: 0,
-            rotationZ: 90,
-            ease: "power2.out"
-          }, '-=0.6')
-          .from(elements.transitionDots, {
-            duration: 1.4,
-            y: 90,
-            opacity: 0,
-            scale: 0,
-            rotation: 180,
-            stagger: 0.15,
-            ease: "back.out(1.7)"
-          }, '-=0.4')
-          .from(elements.transitionStats, {
-            duration: 1.1,
-            y: 50,
-            opacity: 0,
-            scale: 0.9,
-            stagger: 0.12,
-            ease: "power2.out"
-          }, '-=0.3')
-          .from(elements.transitionFeatures, {
-            duration: 1.3,
-            y: 70,
-            opacity: 0,
-            scale: 0.7,
-            rotationY: 15,
-            stagger: 0.1,
-            ease: "back.out(1.7)"
-          }, '-=0.2')
-          .from(elements.transitionCodeLines, {
-            duration: 1.2,
-            x: -120,
-            opacity: 0,
-            scale: 0.8,
-            stagger: 0.15,
-            ease: "power2.out"
-          }, '-=0.4');
-
-      } catch (error) {
-        console.error('Error in transition animation:', error);
-      }
-    };
-
-    // Alternate sections animation with improved error handling
-    const animateAlternateSections = (elements, splitTexts) => {
-      if (!elements.alternateSections || elements.alternateSections.length === 0) {
-        console.warn('No alternate sections found');
-        return;
+        if (!isDown) return
+        const x = e.clientX || (e.touches && e.touches[0].clientX) || 0
+        const mouseProgress = (x - startX) * speedDrag
+        progress = progress + mouseProgress
+        startX = x
+        animate()
       }
 
-      elements.alternateSections.forEach((section, index) => {
-        const title = splitTexts.alternateTitles[index];
-        const subtitle = splitTexts.alternateSubtitles[index];
-        
-        if (!title || !subtitle) {
-          console.warn(`Missing split text for alternate section ${index}`);
-          return;
-        }
-
-        const sectionStats = section.querySelectorAll('.alternate-section__stat');
-        const sectionFeatures = section.querySelectorAll('.alternate-section__feature');
-        const sectionCodeLines = section.querySelectorAll('.alternate-section__code-line');
-        const sectionCircle = section.querySelector('.alternate-section__circle');
-        const sectionLine = section.querySelector('.alternate-section__line');
-        const sectionDots = section.querySelectorAll('.alternate-section__dot');
-
-        const sectionTimeline = createTimeline({
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            end: 'center center',
-            scrub: false,
-            toggleActions: "play none none reverse"
-          }
-        });
-
-        try {
-          sectionTimeline
-            .from(title.chars, {
-              duration: 1.6,
-              y: 130,
-              opacity: 0,
-              rotationX: -25,
-              stagger: 0.05,
-              ease: "back.out(1.7)"
-            })
-            .from(subtitle.words, {
-              duration: 1.3,
-              y: 70,
-              opacity: 0,
-              scale: 0.8,
-              stagger: 0.15,
-              ease: "power2.out"
-            }, '-=0.7')
-            .from(sectionCircle, {
-              duration: 2.0,
-              y: 110,
-              opacity: 0,
-              scale: 0,
-              rotation: 720,
-              ease: "back.out(1.7)"
-            }, '-=0.9')
-            .from(sectionLine, {
-              duration: 1.4,
-              y: 90,
-              opacity: 0,
-              scaleY: 0,
-              rotationZ: 45,
-              ease: "power2.out"
-            }, '-=0.7')
-            .from(sectionDots, {
-              duration: 1.6,
-              y: 100,
-              opacity: 0,
-              scale: 0,
-              rotation: 360,
-              stagger: 0.2,
-              ease: "back.out(1.7)"
-            }, '-=0.5')
-            .from(sectionStats, {
-              duration: 1.2,
-              y: 60,
-              opacity: 0,
-              scale: 0.9,
-              stagger: 0.15,
-              ease: "power2.out"
-            }, '-=0.4')
-            .from(sectionFeatures, {
-              duration: 1.5,
-              y: 80,
-              opacity: 0,
-              scale: 0.6,
-              rotationY: 20,
-              stagger: 0.12,
-              ease: "back.out(1.7)"
-            }, '-=0.3')
-            .from(sectionCodeLines, {
-              duration: 1.3,
-              x: index % 2 === 0 ? -140 : 140,
-              opacity: 0,
-              scale: 0.7,
-              rotationY: index % 2 === 0 ? -15 : 15,
-              stagger: 0.18,
-              ease: "power2.out"
-            }, '-=0.5');
-
-        } catch (error) {
-          console.error(`Error in alternate section ${index} animation:`, error);
-        }
-      });
-    };
-
-    // Inspiration section animation with error handling
-    const animateInspiration = (elements, splitTexts) => {
-      if (!elements.inspirationTitle || !splitTexts.inspirationTitle) {
-        console.warn('Inspiration elements not found, skipping inspiration animation');
-        return;
-      }
-      
-      const inspirationTimeline = createTimeline({
-        scrollTrigger: {
-          trigger: '.inspiration',
-          start: 'top 80%',
-          end: 'center center',
-          scrub: false,
-        }
-      });
-
-      try {
-        inspirationTimeline
-          .from(splitTexts.inspirationTitle.chars, {
-            duration: 2.0,
-            y: 150,
-            opacity: 0,
-            rotationX: -60,
-            scale: 0.8,
-            stagger: 0.06,
-            ease: "back.out(1.7)"
-          })
-          .from(splitTexts.inspirationSubtitle?.words || [], {
-            duration: 1.7,
-            y: 90,
-            opacity: 0,
-            scale: 0.7,
-            stagger: 0.15,
-            ease: "power2.out"
-          }, '-=1.0')
-          .from(elements.inspirationCards, {
-            duration: 1.5,
-            y: 140,
-            opacity: 0,
-            scale: 0.5,
-            rotationY: 25,
-            stagger: 0.3,
-            ease: "back.out(1.7)"
-          }, '-=0.7')
-          .from(elements.inspirationLines, {
-            duration: 3.0,
-            scaleX: 0,
-            opacity: 0,
-            rotationZ: 90,
-            stagger: 0.5,
-            ease: "power2.out"
-          }, '-=1.5')
-          .from(elements.inspirationDots, {
-            duration: 1.5,
-            scale: 0,
-            opacity: 0,
-            rotation: 360,
-            stagger: 0.3,
-            ease: "back.out(1.7)"
-          }, '-=2.0');
-
-      } catch (error) {
-        console.error('Error in inspiration animation:', error);
-      }
-    };
-
-    // Statistics count-up animation with improved error handling
-    const animateStatistics = () => {
-      const allStats = document.querySelectorAll('.transition__stat, .alternate-section__stat');
-      
-      if (allStats.length === 0) {
-        console.warn('No statistics elements found');
-        return;
+      const handleMouseDown = e => {
+        isDown = true
+        startX = e.clientX || (e.touches && e.touches[0].clientX) || 0
       }
 
-      allStats.forEach((stat, index) => {
-        const numberElement = stat.querySelector('.transition__number, .alternate-section__number');
-        if (!numberElement) {
-          console.warn(`No number element found in stat ${index}`);
-          return;
-        }
-        
-        const finalNumber = parseInt(numberElement.textContent) || 0;
-        
-        const statTimeline = createTimeline({
-          scrollTrigger: {
-            trigger: stat,
-            start: 'top 90%',
-            end: 'center center',
-            scrub: false,
-          }
-        });
-
-        try {
-          statTimeline
-            .from(stat, {
-              duration: 1.2,
-              y: 50,
-              opacity: 0,
-              scale: 0.7,
-              rotationY: 15,
-              ease: "back.out(1.7)"
-            })
-            .to(numberElement, {
-              duration: 2.5,
-              textContent: finalNumber,
-              roundProps: "textContent",
-              ease: "power2.out",
-              snap: { textContent: 1 }
-            }, '-=0.5');
-
-        } catch (error) {
-          console.error(`Error in statistics animation ${index}:`, error);
-        }
-      });
-    };
-
-    // Consolidated text animation (INNOVATION text) with performance optimization
-    const animateTextElement = (elements, splitTexts) => {
-      if (!elements.textElement) {
-        console.warn('Text element not found, skipping text animation');
-        return;
-      }
-      
-      const letters = elements.textElement.querySelectorAll('span');
-      if (letters.length === 0) {
-        console.warn('No letters found in text element');
-        return;
+      const handleMouseUp = () => {
+        isDown = false
       }
 
-      // Main entrance animation
-      const textTimeline = createTimeline({
-        scrollTrigger: {
-          trigger: elements.textElement,
-          start: 'top bottom',
-          end: 'center center-=25%',
-          scrub: true,
-        }
-      });
+      /*--------------------
+      Listeners
+      --------------------*/
+      document.addEventListener('mousewheel', handleWheel)
+      document.addEventListener('mousedown', handleMouseDown)
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+      document.addEventListener('touchstart', handleMouseDown)
+      document.addEventListener('touchmove', handleMouseMove)
+      document.addEventListener('touchend', handleMouseUp)
 
-      try {
-        textTimeline.from(letters, {
-          ease: 'sine',
-          yPercent: 300,
-          autoAlpha: 0,
-          stagger: {
-            each: 0.04,
-            from: 'center'
-          }
-        });
-
-        // Scroll-based effects for each letter with performance optimization
-        const letterEffects = letters.map((letter) => {
-          const leftSide = isLeftSide(letter);
-          
-          return createTimeline({
-            scrollTrigger: {
-              trigger: elements.textElement,
-              start: 'top bottom+=10%',
-              end: 'bottom top-=25%',
-              scrub: true,
-            }
-          })
-          .from(letter, {
-            z: 300,
-            rotateX: 70,
-            rotateZ: leftSide ? 5 : -5,
-            xPercent: leftSide ? -40 : 40,
-            skewX: leftSide ? -20 : 20,
-            yPercent: 100,
-            filter: 'blur(7px) brightness(0%) contrast(400%)',
-            ease: 'sine',
-          })
-          .to(letter, {
-            z: 300,
-            rotateX: -50,
-            rotateZ: leftSide ? -1 : 1,
-            xPercent: leftSide ? -20 : 20,
-            skewX: leftSide ? 10 : -10,
-            filter: 'blur(4px) brightness(0%) contrast(500%)',
-            ease: 'sine.in',
-          });
-        });
-
-        // Add all letter effect timelines to state
-        letterEffects.forEach(timeline => AnimationState.timelines.add(timeline));
-
-      } catch (error) {
-        console.error('Error in text animation:', error);
-      }
-    };
-
-    // Cleanup function
-    const cleanupAnimations = () => {
-      if (AnimationState.isDestroyed) return;
-      
-      try {
-        // Kill all timelines
-        cleanupTimelines();
-        
-        // Remove event listeners
-        cleanupEventListeners();
-        
-        // Kill ScrollTriggers
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        
-        // Revert SplitText
-        AnimationState.splitTexts.forEach((splitText, element) => {
-          try {
-            splitText.revert();
-          } catch (error) {
-            console.error('Error reverting SplitText:', error);
-          }
-        });
-        AnimationState.splitTexts.clear();
-        
-        AnimationState.isDestroyed = true;
-        console.log('Animations cleaned up successfully');
-      } catch (error) {
-        console.error('Error during cleanup:', error);
-      }
-    };
-
-    // Initialize all animations with comprehensive error handling
-    const initHeroAnimations = () => {
-      if (AnimationState.isInitialized) {
-        console.warn('Animations already initialized');
-        return;
-      }
-
-      try {
-        // Register plugins
-        registerGSAPPlugins();
-        
-        // Get elements
-        const elements = getAnimationElements();
-        if (!elements.heroTitle) {
-          throw new Error('Required hero title element not found');
-        }
-        
-        // Create split texts
-        const splitTexts = createSplitTexts(elements);
-        
-        // Initialize animations
-        animateHero(elements, splitTexts);
-        animateTransition(elements, splitTexts);
-        animateAlternateSections(elements, splitTexts);
-        animateInspiration(elements, splitTexts);
-        animateStatistics();
-        animateTextElement(elements, splitTexts);
-        animateLowerCodeWeave(elements, splitTexts);
-        
-        AnimationState.isInitialized = true;
-        console.log('Animations initialized successfully');
-        
-        // Add cleanup on page unload
-        window.addEventListener('beforeunload', cleanupAnimations);
-        
-      } catch (error) {
-        console.error('Failed to initialize animations:', error);
-        // Attempt cleanup on error
-        cleanupAnimations();
-      }
-    };
-
-    // Performance monitoring
-    const monitorPerformance = () => {
-      let frameCount = 0;
-      let lastTime = performance.now();
-      
-      const countFrames = () => {
-        frameCount++;
-        const currentTime = performance.now();
-        
-        if (currentTime - lastTime >= 1000) {
-          const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-          if (fps < 30) {
-            console.warn(`Low FPS detected: ${fps}`);
-          }
-          frameCount = 0;
-          lastTime = currentTime;
-        }
-        
-        requestAnimationFrame(countFrames);
-      };
-      
-      requestAnimationFrame(countFrames);
-    };
-
-    // Initialize with comprehensive error handling
-    const initialize = async () => {
-      try {
-        // Start performance monitoring
-        monitorPerformance();
-        
-        // Preload images
-        await preloadImages('.grid__item-img, .hero__cube, .hero__sphere, .hero__float');
-        
-        // Remove loading state
-        document.body.classList.remove('loading');
-        
-        // Initialize animations
-        initHeroAnimations();
-        
-        // Reset scroll position
-        window.scrollTo(0, 0);
-        
-        console.log('Application initialized successfully');
-        
-      } catch (error) {
-        console.error('Initialization failed:', error);
-        // Remove loading state even on error
-        document.body.classList.remove('loading');
-      }
-    };
-
-    // Start initialization
-    initialize();
+      console.log('Carousel initialized successfully');
+    });
 
 
     // Carousel functionality

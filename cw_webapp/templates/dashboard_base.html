@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CodeWeave Dashboard{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    
+    <!-- Global function for dropdown - must be defined before body -->
+    <script>
+        function toggleProfileDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const profileDropdown = document.getElementById('profileDropdown');
+            const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+            
+            if (profileDropdown && profileDropdownMenu) {
+                const isCurrentlyOpen = profileDropdownMenu.classList.contains('active');
+                
+                if (isCurrentlyOpen) {
+                    profileDropdownMenu.classList.remove('active');
+                    profileDropdown.style.transform = 'scale(1)';
+                    console.log('Dropdown closed via inline onclick');
+                } else {
+                    profileDropdownMenu.classList.add('active');
+                    profileDropdown.style.transform = 'scale(1.05)';
+                    console.log('Dropdown opened via inline onclick');
+                }
+            } else {
+                console.error('Profile dropdown elements not found in toggleProfileDropdown');
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --success: #4facfe;
+            --error: #f093fb;
+            --warning: #fad0c4;
+            --info: #a8edea;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --border-color: rgba(102, 126, 234, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-secondary: 0 4px 16px rgba(102, 126, 234, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(circle at 20% 50%, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(102, 126, 234, 0.5) 20%, 
+                rgba(118, 75, 162, 0.5) 80%, 
+                transparent 100%);
+            animation: borderFlow 4s ease-in-out infinite;
+        }
+
+        @keyframes borderFlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-logo i {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* Profile Dropdown Styles */
+        .profile-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            box-shadow: var(--shadow-primary);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1000;
+        }
+
+        /* Temporary debug - make dropdown visible */
+        .profile-dropdown.debug {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .profile-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .profile-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 0.25rem;
+            font-size: 1rem;
+        }
+
+        .profile-email {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .profile-menu {
+            padding: 0.5rem;
+        }
+
+        .profile-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .profile-menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .profile-menu-item i {
+            width: 16px;
+            color: var(--text-secondary);
+        }
+
+        .profile-menu-item.danger {
+            color: #f093fb;
+        }
+
+        .profile-menu-item.danger:hover {
+            background: rgba(240, 147, 251, 0.1);
+        }
+
+        .profile-menu-item.danger i {
+            color: #f093fb;
+        }
+
+        /* Dropdown arrow */
+        .profile-dropdown::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--glass-bg);
+        }
+
+        .profile-dropdown::after {
+            content: '';
+            position: absolute;
+            top: -9px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--border-color);
+        }
+
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 70px;
+            padding: 2rem;
+            min-height: calc(100vh - 70px);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            min-width: 300px;
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-secondary);
+        }
+
+        .search-bar::placeholder {
+            color: var(--text-muted);
+        }
+
+        .action-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--glass-bg);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .section:hover::before {
+            opacity: 1;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .search-bar {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+
+            /* Mobile dropdown adjustments */
+            .profile-dropdown {
+                right: -10px;
+                min-width: 200px;
+                top: calc(100% + 8px);
+            }
+
+            .profile-dropdown::before,
+            .profile-dropdown::after {
+                right: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-dropdown {
+                right: -20px;
+                min-width: 180px;
+                top: calc(100% + 6px);
+            }
+
+            .profile-menu-item {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .profile-header {
+                padding: 0.8rem;
+            }
+
+            .profile-name {
+                font-size: 0.9rem;
+            }
+
+            .profile-email {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'users:home' %}" class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>CodeWeave</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="{% url 'users:dashboard' %}" class="nav-link active">Dashboard</a>
+                <a href="{% url 'users:create_project' %}" class="nav-link">Create Project</a>
+                <a href="#" class="nav-link">Projects</a>
+                <a href="#" class="nav-link">Analytics</a>
+                <a href="#" class="nav-link">Team</a>
+            </div>
+            
+            <div class="user-menu">
+                <div class="user-avatar" id="profileDropdown" title="{{ request.user.username }}" onclick="toggleProfileDropdown(event)">
+                    {{ request.user.username|slice:':2'|upper }}
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown" id="profileDropdownMenu">
+                        <div class="profile-header">
+                            <div class="profile-name">{{ request.user.username }}</div>
+                            <div class="profile-email">{{ request.user.email|default:"user@example.com" }}</div>
+                        </div>
+                        <div class="profile-menu">
+                            <a href="{% url 'users:profile' %}" class="profile-menu-item">
+                                <i class="fas fa-user"></i>
+                                My Profile
+                            </a>
+                            <a href="{% url 'users:settings' %}" class="profile-menu-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <a href="{% url 'users:notifications' %}" class="profile-menu-item">
+                                <i class="fas fa-bell"></i>
+                                Notifications
+                            </a>
+                            <a href="{% url 'users:security' %}" class="profile-menu-item">
+                                <i class="fas fa-shield-alt"></i>
+                                Security
+                            </a>
+                            <a href="{% url 'users:help_support' %}" class="profile-menu-item">
+                                <i class="fas fa-question-circle"></i>
+                                Help & Support
+                            </a>
+                            <div style="height: 1px; background: var(--border-color); margin: 0.5rem 0;"></div>
+                            <a href="{% url 'users:logout' %}" class="profile-menu-item danger">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-header fade-in">
+            <div>
+                <h1 class="header-title">{% block page_title %}Dashboard{% endblock %}</h1>
+                <p class="header-subtitle">{% block page_subtitle %}Welcome back! Here's what's happening with your projects.{% endblock %}</p>
+            </div>
+            <div class="header-actions">
+                <input type="text" class="search-bar" placeholder="Search projects, tasks, or team members...">
+                {% block header_actions %}
+                <a href="{% url 'users:create_project' %}" class="action-btn">
+                    <i class="fas fa-plus"></i>
+                    New Project
+                </a>
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            {% block dashboard_content %}
+            <!-- Content will be included here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    {% block extra_js %}
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'linear-gradient(135deg, #151528 0%, #1a1a2e 100%)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.4)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add animation classes to sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.1}s`;
+                section.classList.add('slide-up');
+            });
+
+            // Temporary debug - add debug button
+            const debugButton = document.createElement('button');
+            debugButton.textContent = 'Debug Dropdown';
+            debugButton.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 10000; padding: 10px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer;';
+            debugButton.onclick = function() {
+                const dropdown = document.getElementById('profileDropdownMenu');
+                if (dropdown) {
+                    dropdown.classList.toggle('debug');
+                    console.log('Debug dropdown toggled');
+                } else {
+                    console.error('Dropdown not found for debug');
+                }
+            };
+            document.body.appendChild(debugButton);
+
+            // Profile dropdown functionality
+            const profileDropdown = document.getElementById('profileDropdown');
+            const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+            
+            console.log('Profile dropdown element:', profileDropdown);
+            console.log('Profile dropdown menu element:', profileDropdownMenu);
+            
+            let isDropdownOpen = false;
+
+            // Toggle dropdown on click - Simplified and more reliable
+            if (profileDropdown && profileDropdownMenu) {
+                // Add onclick attribute directly
+                profileDropdown.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isDropdownOpen = !isDropdownOpen;
+                    
+                    console.log('Dropdown clicked, isOpen:', isDropdownOpen);
+                    
+                    if (isDropdownOpen) {
+                        profileDropdownMenu.classList.add('active');
+                        profileDropdown.style.transform = 'scale(1.05)';
+                        console.log('Dropdown opened');
+                    } else {
+                        profileDropdownMenu.classList.remove('active');
+                        profileDropdown.style.transform = 'scale(1)';
+                        console.log('Dropdown closed');
+                    }
+                };
+                
+                // Also add event listener as backup
+                profileDropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isDropdownOpen = !isDropdownOpen;
+                    
+                    console.log('Dropdown clicked (event listener), isOpen:', isDropdownOpen);
+                    
+                    if (isDropdownOpen) {
+                        profileDropdownMenu.classList.add('active');
+                        profileDropdown.style.transform = 'scale(1.05)';
+                        console.log('Dropdown opened');
+                    } else {
+                        profileDropdownMenu.classList.remove('active');
+                        profileDropdown.style.transform = 'scale(1)';
+                        console.log('Dropdown closed');
+                    }
+                });
+            } else {
+                console.error('Profile dropdown elements not found!');
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (profileDropdown && !profileDropdown.contains(e.target)) {
+                    isDropdownOpen = false;
+                    profileDropdownMenu.classList.remove('active');
+                    profileDropdown.style.transform = 'scale(1)';
+                }
+            });
+
+            // Close dropdown on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isDropdownOpen) {
+                    isDropdownOpen = false;
+                    profileDropdownMenu.classList.remove('active');
+                    profileDropdown.style.transform = 'scale(1)';
+                }
+            });
+
+            // Keyboard navigation for dropdown items
+            if (profileDropdownMenu) {
+                const dropdownItems = profileDropdownMenu.querySelectorAll('.profile-menu-item');
+                dropdownItems.forEach((item, index) => {
+                    item.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+
+                    // Add focus styles
+                    item.addEventListener('focus', function() {
+                        this.style.outline = '2px solid var(--primary)';
+                        this.style.outlineOffset = '2px';
+                    });
+
+                    item.addEventListener('blur', function() {
+                        this.style.outline = 'none';
+                    });
+                });
+            }
+        });
+    </script>
+    {% endblock %}
+</body>
+</html> 
