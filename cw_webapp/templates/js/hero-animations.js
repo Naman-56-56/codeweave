@@ -1,5 +1,7 @@
-// Hero Animations Integration
+// Hero Animations Integration (Anime.js version)
 // Connects the existing animation logic to animate components on scroll
+// Loads Anime.js if not present
+import './anime-loader.js';
 
 // Import utility function
 const preloadImages = (selector = 'img') => {
@@ -8,28 +10,8 @@ const preloadImages = (selector = 'img') => {
   });
 };
 
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(SplitText);
-
-// Animation configuration
-const ANIMATION_CONFIG = {
-  durations: {
-    fast: 0.6,
-    normal: 1.2,
-    slow: 2.0
-  },
-  easings: {
-    smooth: 'power2.out',
-    bouncy: 'back.out(1.7)',
-    sine: 'sine'
-  },
-  staggers: {
-    fast: 0.05,
-    normal: 0.1,
-    slow: 0.2
-  }
-};
+// Animation configuration (Anime.js)
+// You can add custom config here if needed
 
 // Helper function to determine if element is on left or right side
 const isLeftSide = (element) => {
@@ -72,191 +54,167 @@ const inspirationCards = document.querySelectorAll('.inspiration__card');
 const inspirationLines = document.querySelectorAll('.inspiration__line');
 const inspirationDots = document.querySelectorAll('.inspiration__dot');
 
-// Split text for animation
-const splitTitle = heroTitle ? new SplitText(heroTitle, {type: 'chars'}) : null;
-const splitSubtitle = heroSubtitle ? new SplitText(heroSubtitle, {type: 'words'}) : null;
-const splitTextEl = textElement ? new SplitText(textElement, {type: 'chars'}) : null;
-const splitTransitionTitle = transitionTitle ? new SplitText(transitionTitle, {type: 'chars'}) : null;
-const splitTransitionSubtitle = transitionSubtitle ? new SplitText(transitionSubtitle, {type: 'words'}) : null;
-const splitInspirationTitle = inspirationTitle ? new SplitText(inspirationTitle, {type: 'chars'}) : null;
-const splitInspirationSubtitle = inspirationSubtitle ? new SplitText(inspirationSubtitle, {type: 'words'}) : null;
-
-// Split text for alternate sections
-const splitAlternateTitles = alternateTitles.map(title => new SplitText(title, {type: 'chars'}));
-const splitAlternateSubtitles = alternateSubtitles.map(subtitle => new SplitText(subtitle, {type: 'words'}));
+// Split text for animation (Anime.js works with spans)
+const splitTitle = heroTitle ? heroTitle.querySelectorAll('span') : null;
+const splitSubtitle = heroSubtitle ? heroSubtitle.querySelectorAll('span, .word') : null;
+const splitTextEl = textElement ? textElement.querySelectorAll('span') : null;
+const splitTransitionTitle = transitionTitle ? transitionTitle.querySelectorAll('span') : null;
+const splitTransitionSubtitle = transitionSubtitle ? transitionSubtitle.querySelectorAll('span, .word') : null;
+const splitInspirationTitle = inspirationTitle ? inspirationTitle.querySelectorAll('span') : null;
+const splitInspirationSubtitle = inspirationSubtitle ? inspirationSubtitle.querySelectorAll('span, .word') : null;
+const splitAlternateTitles = alternateTitles ? Array.from(alternateTitles).map(title => title.querySelectorAll('span')) : [];
+const splitAlternateSubtitles = alternateSubtitles ? Array.from(alternateSubtitles).map(subtitle => subtitle.querySelectorAll('span, .word')) : [];
 
 // Hero entrance animation
 const animateHero = () => {
   if (!heroTitle) return;
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top 80%',
-      end: 'center center',
-      scrub: false,
-      toggleActions: "play none none reverse"
-    }
-  })
-  .from(splitTitle.chars, {
-    duration: 2.0,
-    yPercent: 400,
-    autoAlpha: 0,
-    rotationX: -90,
-    ease: 'sine',
-    stagger: {
-      each: 0.05,
-      from: 'center'
-    }
-  })
-  .from(splitSubtitle.words, {
-    duration: 1,
-    y: 50,
-    opacity: 0,
-    stagger: 0.1,
-    ease: "power2.out"
-  }, '-=0.5')
-  .from(heroCta, {
-    duration: 0.8,
-    y: 30,
-    opacity: 0,
-    scale: 0.8,
-    ease: "back.out(1.7)"
-  }, '-=0.3')
-  .from(heroCubes, {
-    duration: 1.5,
-    y: 80,
-    opacity: 0,
-    rotationY: 180,
-    stagger: 0.1,
-    ease: "back.out(1.7)"
-  }, '-=0.8')
-  .from(heroSpheres, {
-    duration: 1.2,
-    y: 60,
-    opacity: 0,
-    scale: 0,
-    stagger: 0.15,
-    ease: "back.out(1.7)"
-  }, '-=1')
-  .from(heroFloats, {
-    duration: 1,
-    y: 40,
-    opacity: 0,
-    stagger: 0.1,
-    ease: "power2.out"
-  }, '-=0.8');
+  anime({
+    targets: splitTitle,
+    translateY: [400, 0],
+    opacity: [0, 1],
+    rotateX: [-90, 0],
+    easing: 'easeOutSine',
+    delay: anime.stagger(50, {start: 0, from: 'center'})
+  });
+  anime({
+    targets: splitSubtitle,
+    translateY: [50, 0],
+    opacity: [0, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(100, {start: 0})
+  });
+  anime({
+    targets: heroCta,
+    translateY: [30, 0],
+    opacity: [0, 1],
+    scale: [0.8, 1],
+    easing: 'easeOutBack',
+    duration: 800
+  });
+  anime({
+    targets: heroCubes,
+    translateY: [80, 0],
+    opacity: [0, 1],
+    rotateY: [180, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(100, {start: 0})
+  });
+  anime({
+    targets: heroSpheres,
+    translateY: [60, 0],
+    opacity: [0, 1],
+    scale: [0, 1],
+    easing: 'easeOutBack',
+    delay: anime.stagger(150, {start: 0})
+  });
+  anime({
+    targets: heroFloats,
+    translateY: [40, 0],
+    opacity: [0, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(100, {start: 0})
+  });
 };
 
 // Continuous 3D animation
 const animate3DElements = () => {
-  // Rotate cubes continuously
-  gsap.to(heroCubes, {
-    duration: 20,
-    rotationY: "+=360",
-    ease: "none",
-    repeat: -1
+  anime({
+    targets: heroCubes,
+    rotateY: 360,
+    duration: 20000,
+    easing: 'linear',
+    loop: true
   });
-
-  // Float spheres
-  gsap.to(heroSpheres, {
-    duration: 3,
-    y: -20,
-    ease: "power1.inOut",
-    yoyo: true,
-    repeat: -1
+  anime({
+    targets: heroSpheres,
+    translateY: [-20, 0],
+    direction: 'alternate',
+    duration: 3000,
+    easing: 'easeInOutQuad',
+    loop: true
   });
-
-  // Pulse floats
-  gsap.to(heroFloats, {
-    duration: 2,
-    scale: 1.2,
-    ease: "power1.inOut",
-    yoyo: true,
-    repeat: -1,
-    stagger: 0.5
+  anime({
+    targets: heroFloats,
+    scale: [1, 1.2],
+    direction: 'alternate',
+    duration: 2000,
+    easing: 'easeInOutQuad',
+    loop: true,
+    delay: anime.stagger(500, {start: 0})
   });
 };
 
 // Transition section animation
 const animateTransition = () => {
   if (!transitionTitle) return;
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.transition',
-      start: 'top 80%',
-      end: 'center center',
-      scrub: false,
-      toggleActions: "play none none reverse"
-    }
-  })
-  .from(splitTransitionTitle.chars, {
-    duration: 1.5,
-    y: 120,
-    opacity: 0,
-    rotationX: -30,
-    stagger: 0.04,
-    ease: "back.out(1.7)"
-  })
-  .from(splitTransitionSubtitle.words, {
-    duration: 1.2,
-    y: 60,
-    opacity: 0,
-    scale: 0.8,
-    stagger: 0.12,
-    ease: "power2.out"
-  }, '-=0.6')
-  .from(transitionCircle, {
-    duration: 1.8,
-    y: 100,
-    opacity: 0,
-    scale: 0,
-    rotation: 360,
-    ease: "back.out(1.7)"
-  }, '-=0.8')
-  .from(transitionLine, {
-    duration: 1.2,
-    y: 80,
-    opacity: 0,
-    scaleY: 0,
-    rotationZ: 90,
-    ease: "power2.out"
-  }, '-=0.6')
-  .from(transitionDots, {
-    duration: 1.4,
-    y: 90,
-    opacity: 0,
-    scale: 0,
-    rotation: 180,
-    stagger: 0.15,
-    ease: "back.out(1.7)"
-  }, '-=0.4')
-  .from(transitionStats, {
-    duration: 1.1,
-    y: 50,
-    opacity: 0,
-    scale: 0.9,
-    stagger: 0.12,
-    ease: "power2.out"
-  }, '-=0.3')
-  .from(transitionFeatures, {
-    duration: 1.3,
-    y: 70,
-    opacity: 0,
-    scale: 0.7,
-    rotationY: 15,
-    stagger: 0.1,
-    ease: "back.out(1.7)"
-  }, '-=0.2')
-  .from(transitionCodeLines, {
-    duration: 1.2,
-    x: -120,
-    opacity: 0,
-    scale: 0.8,
-    stagger: 0.15,
-    ease: "power2.out"
-  }, '-=0.4');
+  anime({
+    targets: splitTransitionTitle,
+    translateY: [120, 0],
+    opacity: [0, 1],
+    rotateX: [-30, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(40, {start: 0})
+  });
+  anime({
+    targets: splitTransitionSubtitle,
+    translateY: [60, 0],
+    opacity: [0, 1],
+    scale: [0.8, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(120, {start: 0})
+  });
+  anime({
+    targets: transitionCircle,
+    translateY: [100, 0],
+    opacity: [0, 1],
+    scale: [0, 1],
+    rotate: [360, 0],
+    easing: 'easeOutBack',
+    duration: 1800
+  });
+  anime({
+    targets: transitionLine,
+    translateY: [80, 0],
+    opacity: [0, 1],
+    scaleY: [0, 1],
+    rotateZ: [90, 0],
+    easing: 'easeOutQuad',
+    duration: 1200
+  });
+  anime({
+    targets: transitionDots,
+    translateY: [90, 0],
+    opacity: [0, 1],
+    scale: [0, 1],
+    rotate: [180, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(150, {start: 0})
+  });
+  anime({
+    targets: transitionStats,
+    translateY: [50, 0],
+    opacity: [0, 1],
+    scale: [0.9, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(120, {start: 0})
+  });
+  anime({
+    targets: transitionFeatures,
+    translateY: [70, 0],
+    opacity: [0, 1],
+    scale: [0.7, 1],
+    rotateY: [15, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(100, {start: 0})
+  });
+  anime({
+    targets: transitionCodeLines,
+    translateX: [-120, 0],
+    opacity: [0, 1],
+    scale: [0.8, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(150, {start: 0})
+  });
 };
 
 // Alternate sections animation
@@ -271,226 +229,168 @@ const animateAlternateSections = () => {
     const sectionLine = section.querySelector('.alternate-section__line');
     const sectionDots = section.querySelectorAll('.alternate-section__dot');
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'center center',
-        scrub: false,
-        toggleActions: "play none none reverse"
-      }
-    })
-    .from(title.chars, {
-      duration: 1.6,
-      y: 130,
-      opacity: 0,
-      rotationX: -25,
-      stagger: 0.05,
-      ease: "back.out(1.7)"
-    })
-    .from(subtitle.words, {
-      duration: 1.3,
-      y: 70,
-      opacity: 0,
-      scale: 0.8,
-      stagger: 0.15,
-      ease: "power2.out"
-    }, '-=0.7')
-    .from(sectionCircle, {
-      duration: 2.0,
-      y: 110,
-      opacity: 0,
-      scale: 0,
-      rotation: 720,
-      ease: "back.out(1.7)"
-    }, '-=0.9')
-    .from(sectionLine, {
-      duration: 1.4,
-      y: 90,
-      opacity: 0,
-      scaleY: 0,
-      rotationZ: 45,
-      ease: "power2.out"
-    }, '-=0.7')
-    .from(sectionDots, {
-      duration: 1.6,
-      y: 100,
-      opacity: 0,
-      scale: 0,
-      rotation: 360,
-      stagger: 0.2,
-      ease: "back.out(1.7)"
-    }, '-=0.5')
-    .from(sectionStats, {
-      duration: 1.2,
-      y: 60,
-      opacity: 0,
-      scale: 0.9,
-      stagger: 0.15,
-      ease: "power2.out"
-    }, '-=0.4')
-    .from(sectionFeatures, {
-      duration: 1.5,
-      y: 80,
-      opacity: 0,
-      scale: 0.6,
-      rotationY: 20,
-      stagger: 0.12,
-      ease: "back.out(1.7)"
-    }, '-=0.3')
-    .from(sectionCodeLines, {
-      duration: 1.3,
-      x: index % 2 === 0 ? -140 : 140,
-      opacity: 0,
-      scale: 0.7,
-      rotationY: index % 2 === 0 ? -15 : 15,
-      stagger: 0.18,
-      ease: "power2.out"
-    }, '-=0.5');
+    anime({
+      targets: title,
+      translateY: [130, 0],
+      opacity: [0, 1],
+      rotateX: [-25, 0],
+      easing: 'easeOutBack',
+      delay: anime.stagger(50, {start: 0})
+    });
+    anime({
+      targets: subtitle,
+      translateY: [70, 0],
+      opacity: [0, 1],
+      scale: [0.8, 1],
+      easing: 'easeOutQuad',
+      delay: anime.stagger(150, {start: 0})
+    });
+    anime({
+      targets: sectionCircle,
+      translateY: [110, 0],
+      opacity: [0, 1],
+      scale: [0, 1],
+      rotate: [720, 0],
+      easing: 'easeOutBack',
+      duration: 2000
+    });
+    anime({
+      targets: sectionLine,
+      translateY: [90, 0],
+      opacity: [0, 1],
+      scaleY: [0, 1],
+      rotateZ: [45, 0],
+      easing: 'easeOutQuad',
+      duration: 1400
+    });
+    anime({
+      targets: sectionDots,
+      translateY: [100, 0],
+      opacity: [0, 1],
+      scale: [0, 1],
+      rotate: [360, 0],
+      easing: 'easeOutBack',
+      delay: anime.stagger(200, {start: 0})
+    });
+    anime({
+      targets: sectionStats,
+      translateY: [60, 0],
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      easing: 'easeOutQuad',
+      delay: anime.stagger(150, {start: 0})
+    });
+    anime({
+      targets: sectionFeatures,
+      translateY: [80, 0],
+      opacity: [0, 1],
+      scale: [0.6, 1],
+      rotateY: [20, 0],
+      easing: 'easeOutBack',
+      delay: anime.stagger(120, {start: 0})
+    });
+    anime({
+      targets: sectionCodeLines,
+      translateX: [index % 2 === 0 ? -140 : 140, 0],
+      opacity: [0, 1],
+      scale: [0.7, 1],
+      rotateY: [index % 2 === 0 ? -15 : 15, 0],
+      easing: 'easeOutQuad',
+      delay: anime.stagger(180, {start: 0})
+    });
   });
 };
 
 // Inspiration section animation
 const animateInspiration = () => {
   if (!inspirationTitle) return;
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.inspiration',
-      start: 'top 80%',
-      end: 'center center',
-      scrub: false,
-    }
-  })
-  .from(splitInspirationTitle.chars, {
-    duration: 2.0,
-    y: 150,
-    opacity: 0,
-    rotationX: -60,
-    scale: 0.8,
-    stagger: 0.06,
-    ease: "back.out(1.7)"
-  })
-  .from(splitInspirationSubtitle.words, {
-    duration: 1.7,
-    y: 90,
-    opacity: 0,
-    scale: 0.7,
-    stagger: 0.15,
-    ease: "power2.out"
-  }, '-=1.0')
-  .from(inspirationCards, {
-    duration: 1.5,
-    y: 140,
-    opacity: 0,
-    scale: 0.5,
-    rotationY: 25,
-    stagger: 0.3,
-    ease: "back.out(1.7)"
-  }, '-=0.7')
-  .from(inspirationLines, {
-    duration: 3.0,
-    scaleX: 0,
-    opacity: 0,
-    rotationZ: 90,
-    stagger: 0.5,
-    ease: "power2.out"
-  }, '-=1.5')
-  .from(inspirationDots, {
-    duration: 1.5,
-    scale: 0,
-    opacity: 0,
-    rotation: 360,
-    stagger: 0.3,
-    ease: "back.out(1.7)"
-  }, '-=2.0');
+  anime({
+    targets: splitInspirationTitle,
+    translateY: [150, 0],
+    opacity: [0, 1],
+    rotateX: [-60, 0],
+    scale: [0.8, 1],
+    easing: 'easeOutBack',
+    delay: anime.stagger(60, {start: 0})
+  });
+  anime({
+    targets: splitInspirationSubtitle,
+    translateY: [90, 0],
+    opacity: [0, 1],
+    scale: [0.7, 1],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(150, {start: 0})
+  });
+  anime({
+    targets: inspirationCards,
+    translateY: [140, 0],
+    opacity: [0, 1],
+    scale: [0.5, 1],
+    rotateY: [25, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(300, {start: 0})
+  });
+  anime({
+    targets: inspirationLines,
+    scaleX: [0, 1],
+    opacity: [0, 1],
+    rotateZ: [90, 0],
+    easing: 'easeOutQuad',
+    delay: anime.stagger(500, {start: 0})
+  });
+  anime({
+    targets: inspirationDots,
+    scale: [0, 1],
+    opacity: [0, 1],
+    rotate: [360, 0],
+    easing: 'easeOutBack',
+    delay: anime.stagger(300, {start: 0})
+  });
 };
 
 // Statistics count-up animation
 const animateStatistics = () => {
-  const allStats = document.querySelectorAll('.transition__stat, .alternate-section__stat');
-  
-  allStats.forEach(stat => {
-    const numberElement = stat.querySelector('.transition__number, .alternate-section__number');
-    if (!numberElement) return;
-    
-    const finalNumber = numberElement.textContent;
-    
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: stat,
-        start: 'top 90%',
-        end: 'center center',
-        scrub: false,
-      }
-    })
-    .from(stat, {
-      duration: 1.2,
-      y: 50,
-      opacity: 0,
-      scale: 0.7,
-      rotationY: 15,
-      ease: "back.out(1.7)"
-    })
-    .to(numberElement, {
-      duration: 2.5,
-      textContent: finalNumber,
-      roundProps: "textContent",
-      ease: "power2.out",
-      snap: { textContent: 1 }
-    }, '-=0.5');
+  anime({
+    targets: heroCubes,
+    rotateY: 360,
+    duration: 20000,
+    easing: 'linear',
+    loop: true
+  });
+  anime({
+    targets: heroSpheres,
+    translateY: [-20, 0],
+    direction: 'alternate',
+    duration: 3000,
+    easing: 'easeInOutQuad',
+    loop: true
+  });
+  anime({
+    targets: heroFloats,
+    scale: [1, 1.2],
+    direction: 'alternate',
+    duration: 2000,
+    easing: 'easeInOutQuad',
+    loop: true,
+    delay: anime.stagger(500, {start: 0})
   });
 };
-
 // Text animation
 const animateTextElement = () => {
   if (!textElement) return;
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: textElement,
-      start: 'top bottom',
-      end: 'center center-=25%',
-      scrub: true,
-    }
-  })
-  .from(splitTextEl.chars, {
-    ease: 'sine',
-    yPercent: 400,
-    autoAlpha: 0,
-    rotationX: -90,
-    stagger: {
-      each: 0.05,
-      from: 'center'
-    }
+  anime({
+    targets: splitTextEl,
+    translateY: [400, 0],
+    opacity: [0, 1],
+    rotateX: [-90, 0],
+    easing: 'easeOutSine',
+    delay: anime.stagger(50, {start: 0, from: 'center'})
   });
 };
 
 // Hero parallax animation
 const animateHeroParallax = () => {
-  gsap.to('.hero__content', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-    y: -100,
-    opacity: 0.8,
-    ease: 'none'
-  });
-
-  gsap.to('.hero__3d-elements', {
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    },
-    y: -200,
-    rotationY: 15,
-    ease: 'none'
-  });
+  // Removed scroll-based parallax for smoother native scroll
 };
 
 // Enhanced scroll animations for CODEWEAVE title
@@ -540,19 +440,20 @@ const addEnhancedAnimations = () => {
   let ticking = false;
   const throttledHandleScroll = () => {
     if (!ticking) {
+      ticking = true;
       requestAnimationFrame(() => {
         handleScroll();
         ticking = false;
       });
-      ticking = true;
     }
   };
   
+  // Attach the throttled handler and run once to initialize
   window.addEventListener('scroll', throttledHandleScroll);
   handleScroll();
 };
 
-// Initialize animations
+// Initialize all animations and enhanced behaviors
 const init = () => {
   animateHero();
   animate3DElements();
@@ -566,8 +467,10 @@ const init = () => {
 };
 
 // Preload images and initialize
+// Enable native smooth scroll
+document.documentElement.style.scrollBehavior = 'smooth';
 preloadImages('.grid__item-img, .hero__cube, .hero__sphere, .hero__float').then(() => {
   document.body.classList.remove('loading');
   init();
   window.scrollTo(0, 0);
-}); 
+});
