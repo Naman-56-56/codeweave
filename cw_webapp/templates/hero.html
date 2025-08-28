@@ -33,6 +33,9 @@
             object-fit: cover;
             z-index: 0;
             opacity: 1;
+            /* Remove pointer-events: none if you want to interact with video */
+            /* Add filter for brightness if needed */
+            filter: brightness(1) contrast(1);
             pointer-events: none;
         }
 
@@ -47,10 +50,11 @@
             gap: 4rem;
             align-items: center;
             width: 100%;
+            background: rgba(20, 20, 20, 0.65); /* semi-transparent bg for video visibility */
         }
 
         .hero-content {
-            color: white;
+            color: rgba(255,255,255,0.85); /* slightly transparent text */
             animation: fadeInUp 1s ease-out;
             padding-left: 6rem;
         }
@@ -359,9 +363,10 @@
     </style>
 </head>
 <body>
+    {% load static %}
     <section class="hero">
-        <video class="hero-bg-video" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100vw; height: auto; object-fit: cover; z-index: 0; opacity: 1; pointer-events: none;">
-            <source src="/templates/assets/9669050-hd_1920_1080_25fps.mp4" type="video/mp4">
+    <video class="hero-bg-video" autoplay muted loop playsinline>
+            <source src="{% static 'assets/9669050-hd_1920_1080_25fps.mp4' %}" type="video/mp4">
         </video>
         <div class="hero-container" style="position: relative; z-index: 2;">
             <div class="hero-content">
