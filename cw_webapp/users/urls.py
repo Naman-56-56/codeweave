@@ -12,7 +12,12 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
     path('create_project/', views.create_project, name='create_project'),
     path("", views.home_view, name="home"),
+    path('profile/', views.profile_view, name='profile'),
     path('auth/token/', CustomObtainAuthToken.as_view(), name='token_obtain'),
     path("test-auth/", views.test_user_auth, name="test-auth"),
     path("dashboard/", views.dashboard_view, name="dashboard"),
+    path('settings/', views.settings_view, name='settings'),
+    path('notifications/', views.notifications_view, name='notifications'),
+    path('security/', views.security_view, name='security'),
+    path('help-support/', views.help_support_view, name='help_support'),
 ]

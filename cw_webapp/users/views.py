@@ -11,6 +11,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from projects.models import Project
 import logging
+from datetime import date, datetime
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -96,14 +97,57 @@ def logout_view(request):
 # Dashboard View (Only Accessible After Login)
 @login_required
 def dashboard_view(request):
-    projects = Project.objects.filter(user=request.user).order_by('-created_at')
+    # Get today's date and current month/week
+    today = date.today()
+    current_month = today.month
+    current_year = today.year
+    current_week = today.isocalendar()[1]
+
+    # Project statistics
+    projects = Project.objects.filter(user=request.user)
+    total_projects = projects.count()
+    projects_this_month = projects.filter(created_at__year=current_year, created_at__month=current_month).count()
+
+    # Active tasks statistics
+    # TODO: Replace with your actual Task model and logic
+    total_active_tasks = 0
+    active_tasks_today = 0
+    # Example:
+    # from tasks.models import Task
+    # active_tasks = Task.objects.filter(project__user=request.user, status='active')
+    # total_active_tasks = active_tasks.count()
+    # active_tasks_today = active_tasks.filter(created_at__date=today).count()
+
+    # Team members statistics
+    # TODO: Replace with your actual TeamMember model and logic
+    total_team_members = 0
+    team_members_this_week = 0
+    # Example:
+    # from teams.models import TeamMember
+    # team_members = TeamMember.objects.filter(project__user=request.user)
+    # total_team_members = team_members.count()
+    # team_members_this_week = team_members.filter(created_at__year=current_year, created_at__week=current_week).count()
+
+    overview = {
+        "total_projects": total_projects,
+        "projects_this_month": projects_this_month,
+        "total_active_tasks": total_active_tasks,
+        "active_tasks_today": active_tasks_today,
+        "total_team_members": total_team_members,
+        "team_members_this_week": team_members_this_week,
+    }
+
     projects_data = [{
         'id': project.id,
         'name': project.name,
         'created_at': project.created_at,
         'roadmap': project.roadmap
     } for project in projects]
-    return render(request, "dashboard.html", {"projects": projects_data})
+
+    return render(request, "dashboard.html", {
+        "projects": projects_data,
+        "overview": overview
+    })
 
 def create_project(request):
     return render(request, 'app.html')
@@ -124,3 +168,23 @@ from django.http import JsonResponse
 def test_user_auth(request):
     user = get_user(request)
     return JsonResponse({"logged_in_user": str(user)})
+
+def profile_view(request):
+    # Simple placeholder view for user profile
+    return render(request, "profile.html")
+
+def settings_view(request):
+    # Simple placeholder view for user settings
+    return render(request, "settings.html")
+
+def notifications_view(request):
+    # Simple placeholder view for user notifications
+    return render(request, "notifications.html")
+
+def security_view(request):
+    # Simple placeholder view for user security settings
+    return render(request, "security.html")
+
+def help_support_view(request):
+    # Simple placeholder view for help and support
+    return render(request, "help_support.html")
