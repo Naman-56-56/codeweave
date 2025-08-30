@@ -1,198 +1,170 @@
-// Additional scroll animations for text elements
-// This file contains enhanced scroll animations for various text elements
+import anime from 'animejs/lib/anime.es.js';
 
-// Function to create a typewriter effect for text
+// Utility to split text into spans for character animation
+const splitText = (element) => {
+  if (!element) return [];
+  const text = element.textContent;
+  element.innerHTML = '';
+  return Array.from(text).map(char => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.display = 'inline-block';
+    element.appendChild(span);
+    return span;
+  });
+};
+
+// Simple scroll trigger for elements
+const onScrollTrigger = (element, callback, offset = 0) => {
+  const handler = () => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top <= window.innerHeight - offset && rect.bottom >= offset) {
+      callback();
+    }
+  };
+  window.addEventListener('scroll', handler);
+  window.addEventListener('resize', handler);
+  handler();
+};
+
+// Typewriter effect
 const createTypewriterEffect = (element, options = {}) => {
   if (!element) return;
-  
-  const {
-    speed = 0.05,
-    delay = 0,
-    ease = 'power2.out'
-  } = options;
-  
-  const splitText = new SplitText(element, { type: 'chars' });
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-    }
-  })
-  .from(splitText.chars, {
-    autoAlpha: 0,
-    yPercent: 100,
-    stagger: {
-      each: speed,
-      from: 'start'
-    },
-    ease: ease,
-    delay: delay
+  const { speed = 50, delay = 0, easing = 'easeOutQuad' } = options;
+  const chars = splitText(element);
+  anime.set(chars, { opacity: 0, translateY: '100%' });
+  onScrollTrigger(element, () => {
+    anime({
+      targets: chars,
+      opacity: 1,
+      translateY: 0,
+      delay: anime.stagger(speed, { start: delay }),
+      duration: 600,
+      easing
+    });
   });
 };
 
-// Function to create a reveal effect for text
+// Reveal effect
 const createRevealEffect = (element, options = {}) => {
   if (!element) return;
-  
-  const {
-    direction = 'left',
-    distance = 100,
-    stagger = 0.02,
-    ease = 'power2.out'
-  } = options;
-  
-  const splitText = new SplitText(element, { type: 'chars' });
-  
-  let xPercent = 0;
-  let yPercent = 0;
-  
-  switch (direction) {
-    case 'left':
-      xPercent = -distance;
-      break;
-    case 'right':
-      xPercent = distance;
-      break;
-    case 'up':
-      yPercent = -distance;
-      break;
-    case 'down':
-      yPercent = distance;
-      break;
-  }
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-    }
-  })
-  .from(splitText.chars, {
-    xPercent: xPercent,
-    yPercent: yPercent,
-    autoAlpha: 0,
-    stagger: {
-      each: stagger,
-      from: 'start'
-    },
-    ease: ease
+  const { direction = 'left', distance = 100, stagger = 20, easing = 'easeOutQuad' } = options;
+  const chars = splitText(element);
+  let translateX = 0, translateY = 0;
+  if (direction === 'left') translateX = -distance;
+  if (direction === 'right') translateX = distance;
+  if (direction === 'up') translateY = -distance;
+  if (direction === 'down') translateY = distance;
+  anime.set(chars, { opacity: 0, translateX, translateY });
+  onScrollTrigger(element, () => {
+    anime({
+      targets: chars,
+      opacity: 1,
+      translateX: 0,
+      translateY: 0,
+      delay: anime.stagger(stagger),
+      duration: 600,
+      easing
+    });
   });
 };
 
-// Function to create a 3D flip effect for text
+// 3D flip effect
 const create3DFlipEffect = (element, options = {}) => {
   if (!element) return;
-  
-  const {
-    rotation = 90,
-    stagger = 0.03,
-    ease = 'power2.out'
-  } = options;
-  
-  const splitText = new SplitText(element, { type: 'chars' });
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-    }
-  })
-  .from(splitText.chars, {
-    rotationX: rotation,
-    autoAlpha: 0,
-    stagger: {
-      each: stagger,
-      from: 'start'
-    },
-    ease: ease
+  const { rotation = 90, stagger = 30, easing = 'easeOutQuad' } = options;
+  const chars = splitText(element);
+  anime.set(chars, { opacity: 0, rotateX: rotation });
+  onScrollTrigger(element, () => {
+    anime({
+      targets: chars,
+      opacity: 1,
+      rotateX: 0,
+      delay: anime.stagger(stagger),
+      duration: 600,
+      easing
+    });
   });
 };
 
-// Function to create a wave effect for text
+// Wave effect
 const createWaveEffect = (element, options = {}) => {
   if (!element) return;
-  
-  const {
-    amplitude = 50,
-    frequency = 0.1,
-    stagger = 0.02,
-    ease = 'power2.out'
-  } = options;
-  
-  const splitText = new SplitText(element, { type: 'chars' });
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-    }
-  })
-  .from(splitText.chars, {
-    yPercent: (index) => Math.sin(index * frequency) * amplitude,
-    autoAlpha: 0,
-    stagger: {
-      each: stagger,
-      from: 'start'
-    },
-    ease: ease
+  const { amplitude = 50, frequency = 0.2, stagger = 20, easing = 'easeOutQuad' } = options;
+  const chars = splitText(element);
+  anime.set(chars, {
+    opacity: 0,
+    translateY: (el, i) => Math.sin(i * frequency) * amplitude
+  });
+  onScrollTrigger(element, () => {
+    anime({
+      targets: chars,
+      opacity: 1,
+      translateY: 0,
+      delay: anime.stagger(stagger),
+      duration: 600,
+      easing
+    });
   });
 };
 
-// Function to create a magnetic effect for text
+// Magnetic effect
 const createMagneticEffect = (element, options = {}) => {
   if (!element) return;
-  
-  const {
-    strength = 0.3,
-    stagger = 0.01,
-    ease = 'power2.out'
-  } = options;
-  
-  const splitText = new SplitText(element, { type: 'chars' });
-  
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: element,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-    }
-  })
-  .from(splitText.chars, {
-    scale: 0,
-    autoAlpha: 0,
-    stagger: {
-      each: stagger,
-      from: 'center'
-    },
-    ease: ease
-  })
-  .to(splitText.chars, {
-    scale: 1 + strength,
-    stagger: {
-      each: stagger,
-      from: 'center'
-    },
-    ease: ease,
-    yoyo: true,
-    repeat: 1
-  }, '+=0.2');
+  const { strength = 0.3, stagger = 10, easing = 'easeOutQuad' } = options;
+  const chars = splitText(element);
+  anime.set(chars, { opacity: 0, scale: 0 });
+  onScrollTrigger(element, () => {
+    anime({
+      targets: chars,
+      opacity: 1,
+      scale: 1 + strength,
+      delay: anime.stagger(stagger, { from: 'center' }),
+      duration: 600,
+      easing,
+      direction: 'alternate'
+    });
+  });
 };
 
-// Export all animation functions
+// Scroll effect for feature images (scale, fade-in, parallax)
+const createFeatureImageScrollEffect = (imageSelector = '.feature__img', options = {}) => {
+  const images = document.querySelectorAll(imageSelector);
+  images.forEach(img => {
+    // Set initial state
+    anime.set(img, {
+      opacity: 0,
+      scale: 0.8,
+      translateY: 60
+    });
+
+    // Parallax and fade/scale on scroll
+    const handler = () => {
+      const rect = img.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.top <= windowHeight - 60 && rect.bottom >= 0) {
+        const progress = Math.min(1, Math.max(0, 1 - (rect.top / windowHeight)));
+        anime({
+          targets: img,
+          opacity: progress,
+          scale: 0.8 + 0.2 * progress,
+          translateY: 60 - 60 * progress,
+          duration: 0,
+          easing: 'linear'
+        });
+      }
+    };
+    window.addEventListener('scroll', handler);
+    window.addEventListener('resize', handler);
+    handler();
+  });
+};
+
 export {
   createTypewriterEffect,
   createRevealEffect,
   create3DFlipEffect,
   createWaveEffect,
-  createMagneticEffect
-}; 
+  createMagneticEffect,
+  createFeatureImageScrollEffect
+};

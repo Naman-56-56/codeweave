@@ -1,8 +1,112 @@
 import { preloadImages } from './utils.js'; // Import utility function to preload images
-import { SplitText } from "gsap/SplitText"; // Import official GSAP SplitText plugin
 
-gsap.registerPlugin(ScrollTrigger); // Register GSAP's ScrollTrigger plugin
-gsap.registerPlugin(SplitText);     // Register GSAP's SplitText plugin
+// Custom scroll trigger implementation for Anime.js
+class ScrollTrigger {
+  constructor() {
+    this.triggers = [];
+    this.init();
+  }
+
+  init() {
+    window.addEventListener('scroll', () => this.handleScroll());
+    window.addEventListener('resize', () => this.handleScroll());
+  }
+
+  add(options) {
+    this.triggers.push({
+      ...options,
+      isActive: false,
+      progress: 0
+    });
+  }
+
+  handleScroll() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    this.triggers.forEach(trigger => {
+      const element = trigger.trigger;
+      const rect = element.getBoundingClientRect();
+      const elementTop = rect.top + scrollY;
+      const elementBottom = elementTop + rect.height;
+
+      // Parse start and end positions
+      const start = this.parsePosition(trigger.start, elementTop, windowHeight);
+      const end = this.parsePosition(trigger.end, elementBottom, windowHeight);
+
+      // Calculate progress
+      const scrollProgress = (scrollY - start) / (end - start);
+      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+
+      if (clampedProgress !== trigger.progress) {
+        trigger.progress = clampedProgress;
+        if (trigger.onUpdate) {
+          trigger.onUpdate(clampedProgress);
+        }
+      }
+
+      // Handle enter/leave callbacks
+      if (clampedProgress > 0 && !trigger.isActive) {
+        trigger.isActive = true;
+        if (trigger.onEnter) trigger.onEnter();
+      } else if (clampedProgress === 0 && trigger.isActive) {
+        trigger.isActive = false;
+        if (trigger.onLeave) trigger.onLeave();
+      }
+    });
+  }
+
+  parsePosition(position, elementPos, windowHeight) {
+    if (typeof position === 'string') {
+      const parts = position.split(' ');
+      let result = elementPos;
+
+      if (parts.includes('top')) result = elementPos;
+      if (parts.includes('center')) result = elementPos - windowHeight / 2;
+      if (parts.includes('bottom')) result = elementPos - windowHeight;
+
+      // Handle offset like 'bottom+=10%'
+      const offsetMatch = position.match(/([+-]\d+%?)/);
+      if (offsetMatch) {
+        const offset = offsetMatch[1];
+        if (offset.includes('%')) {
+          const percentage = parseFloat(offset.replace('%', '')) / 100;
+          result += windowHeight * percentage;
+        } else {
+          result += parseFloat(offset);
+        }
+      }
+
+      return result;
+    }
+    return position;
+  }
+}
+
+const scrollTrigger = new ScrollTrigger();
+
+// Utility function to split text into characters (simplified version of SplitText)
+const splitText = (element, options = { type: 'chars' }) => {
+  if (!element) return { chars: [] };
+  
+  const text = element.textContent;
+  const chars = [];
+  
+  // Clear the element
+  element.innerHTML = '';
+  
+  // Create span for each character
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? '\u00A0' : char; // Non-breaking space for spaces
+    span.style.display = 'inline-block';
+    element.appendChild(span);
+    chars.push(span);
+  }
+  
+  return { chars };
+};
 
 const grid = document.querySelector('.grid'); // Select the container that holds all grid items
 const gridImages = grid.querySelectorAll('.grid__item-imgwrap'); // Select all elements with the class '.grid__item-imgwrap'
@@ -10,7 +114,10 @@ const gridImages = grid.querySelectorAll('.grid__item-imgwrap'); // Select all e
 const marqueeInner = document.querySelector('.mark > .mark__inner'); // Select the inner element of the marquee
 
 const textElement = document.querySelector('.text'); // Select the text element
-var splitTextEl = new SplitText(textElement, {type: 'chars'}); // Split the text into individual characters for animation
+let splitTextEl = null;
+if (textElement) {
+  splitTextEl = splitText(textElement, { type: 'chars' }); // Split the text into individual characters for animation
+}
 
 const gridFull = document.querySelector('.grid--full'); // Select the full grid container
 
@@ -31,59 +138,59 @@ const isLeftSide = (element) => {
 const animateIntroTitle = () => {
   if (!introTitle) return;
   
-  const splitIntroTitle = new SplitText(introTitle, { type: 'chars, words' });
+  const splitIntroTitle = splitText(introTitle, { type: 'chars' });
   
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: introTitle,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
+  // Set initial state
+  anime.set(splitIntroTitle.chars, {
+    translateY: '200%',
+    rotateX: 90,
+    opacity: 0
+  });
+
+  scrollTrigger.add({
+    trigger: introTitle,
+    start: 'top bottom',
+    end: 'center center',
+    onUpdate: (progress) => {
+      anime({
+        targets: splitIntroTitle.chars,
+        translateY: `${200 - (200 * progress)}%`,
+        rotateX: 90 - (90 * progress),
+        opacity: progress,
+        delay: anime.stagger(20, { start: 0 }),
+        easing: 'easeOutQuad',
+        duration: 0
+      });
     }
-  })
-  .from(splitIntroTitle.chars, {
-    yPercent: 200,
-    rotationX: 90,
-    autoAlpha: 0,
-    stagger: {
-      each: 0.02,
-      from: 'start'
-    },
-    ease: 'power2.out'
-  })
-  .from(splitIntroTitle.words, {
-    yPercent: 50,
-    autoAlpha: 0,
-    stagger: {
-      each: 0.1,
-      from: 'start'
-    },
-    ease: 'power2.out'
-  }, 0);
+  });
 };
 
 // Function to animate the intro info text
 const animateIntroInfo = () => {
   if (!introInfo) return;
   
-  const splitIntroInfo = new SplitText(introInfo, { type: 'chars' });
+  const splitIntroInfo = splitText(introInfo, { type: 'chars' });
   
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: introInfo,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
+  // Set initial state
+  anime.set(splitIntroInfo.chars, {
+    translateY: '100%',
+    opacity: 0
+  });
+
+  scrollTrigger.add({
+    trigger: introInfo,
+    start: 'top bottom',
+    end: 'center center',
+    onUpdate: (progress) => {
+      anime({
+        targets: splitIntroInfo.chars,
+        translateY: `${100 - (100 * progress)}%`,
+        opacity: progress,
+        delay: anime.stagger(30, { start: 0 }),
+        easing: 'easeOutQuad',
+        duration: 0
+      });
     }
-  })
-  .from(splitIntroInfo.chars, {
-    yPercent: 100,
-    autoAlpha: 0,
-    stagger: {
-      each: 0.03,
-      from: 'start'
-    },
-    ease: 'power2.out'
   });
 };
 
@@ -93,91 +200,140 @@ const animateScrollGrid = () => {
     const imgEl = imageWrap.querySelector('.grid__item-img'); // Select the image element inside the grid item
     const leftSide = isLeftSide(imageWrap); // Check if the element is on the left side of the viewport
 
-    // Create a GSAP timeline with ScrollTrigger for each grid item
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: imageWrap,               // Trigger the animation when this element enters the viewport
-        start: 'top bottom+=10%',         // Start when the top of the element is 10% past the bottom of the viewport
-        end: 'bottom top-=25%',           // End when the bottom of the element is 25% past the top of the viewport
-        scrub: true,                      // Smooth scrub animation
+    // Set initial state
+    anime.set(imageWrap, {
+      translateZ: 300,
+      rotateX: 70,
+      rotateZ: leftSide ? 5 : -5,
+      translateX: leftSide ? '-40%' : '40%',
+      skewX: leftSide ? -20 : 20,
+      translateY: '100%',
+      filter: 'blur(7px) brightness(0%) contrast(400%)',
+      opacity: 1
+    });
+
+    anime.set(imgEl, {
+      scaleY: 1.8
+    });
+
+    scrollTrigger.add({
+      trigger: imageWrap,
+      start: 'top bottom+=10%',
+      end: 'bottom top-=25%',
+      onUpdate: (progress) => {
+        // Calculate mid-point for the animation phases
+        const midPoint = 0.5;
+        
+        if (progress <= midPoint) {
+          // First half: animate in
+          const localProgress = progress / midPoint;
+          
+          anime({
+            targets: imageWrap,
+            translateZ: 300 - (300 * localProgress),
+            rotateX: 70 - (70 * localProgress),
+            rotateZ: leftSide ? 5 - (5 * localProgress) : -5 + (5 * localProgress),
+            translateX: leftSide ? `${-40 + (40 * localProgress)}%` : `${40 - (40 * localProgress)}%`,
+            skewX: leftSide ? -20 + (20 * localProgress) : 20 - (20 * localProgress),
+            translateY: `${100 - (100 * localProgress)}%`,
+            filter: `blur(${7 - (7 * localProgress)}px) brightness(${100 * localProgress}%) contrast(${400 - (300 * localProgress)}%)`,
+            duration: 0,
+            easing: 'linear'
+          });
+
+          anime({
+            targets: imgEl,
+            scaleY: 1.8 - (0.8 * localProgress),
+            duration: 0,
+            easing: 'linear'
+          });
+        } else {
+          // Second half: animate out
+          const localProgress = (progress - midPoint) / (1 - midPoint);
+          
+          anime({
+            targets: imageWrap,
+            translateZ: 300,
+            rotateX: -50 * localProgress,
+            rotateZ: leftSide ? -1 * localProgress : 1 * localProgress,
+            translateX: leftSide ? `${-20 * localProgress}%` : `${20 * localProgress}%`,
+            skewX: leftSide ? 10 * localProgress : -10 * localProgress,
+            filter: `blur(${4 * localProgress}px) brightness(${100 - (100 * localProgress)}%) contrast(${100 + (400 * localProgress)}%)`,
+            duration: 0,
+            easing: 'linear'
+          });
+
+          anime({
+            targets: imgEl,
+            scaleY: 1 + (0.8 * localProgress),
+            duration: 0,
+            easing: 'linear'
+          });
+        }
       }
-    })
-    .from(imageWrap, {
-      // Initial state when the element enters the viewport
-      startAt: { filter: 'blur(0px) brightness(100%) contrast(100%)' }, // Ensure no blur or brightness adjustments at the start
-      z: 300,                             // Translate the item 300px closer on the Z-axis
-      rotateX: 70,                        // Start with a rotation of 70 degrees on the X-axis
-      rotateZ: leftSide ? 5 : -5,         // Rotate 5 degrees if on the left, -5 degrees if on the right
-      xPercent: leftSide ? -40 : 40,      // Horizontal translation: -40% if on the left, 40% if on the right
-      skewX: leftSide ? -20 : 20,         // Skew the element on the X-axis
-      yPercent: 100,                      // Start with the element below the viewport
-      filter: 'blur(7px) brightness(0%) contrast(400%)', // Start with a blur, low brightness, and high contrast
-      ease: 'sine',                       
-    })
-    .to(imageWrap, {
-      // Animation when the element exits the viewport
-      z: 300,                             // Move back to original Z-translation (300px)
-      rotateX: -50,                       // Rotate -50 degrees on the X-axis
-      rotateZ: leftSide ? -1 : 1,         // Slightly rotate on the Z-axis (-1 or 1 depending on side)
-      xPercent: leftSide ? -20 : 20,      // Move slightly left (-20%) or right (20%) on exit
-      skewX: leftSide ? 10 : -10,         // Skew slightly on exit
-      filter: 'blur(4px) brightness(0%) contrast(500%)', // Add blur and reduce brightness on exit
-      ease: 'sine.in',                    
-    })
-    .from(imgEl, {
-      // Additional animation on the image itself (scale along the Y-axis)
-      scaleY: 1.8,                        // Scale Y-axis by 1.8
-      ease: 'sine',                       
-    }, 0)
-    .to(imgEl, {
-      scaleY: 1.8,                        // Return to normal scaling
-      ease: 'sine.in'                     
-    }, '>');
+    });
   });
 };
 
 // Function to animate the horizontal marquee as the user scrolls
 const animateMarquee = () => {
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: grid,                     // Trigger the animation based on the grid's position
-      start: 'top bottom',               // Start the animation when the top of the grid is at the bottom of the viewport
-      end: 'bottom top',                 // End the animation when the bottom of the grid is at the top of the viewport
-      scrub: true,                       // Smooth scrub
+  if (!marqueeInner) return;
+
+  // Set initial state
+  anime.set(marqueeInner, {
+    translateX: '100vw'
+  });
+
+  scrollTrigger.add({
+    trigger: grid,
+    start: 'top bottom',
+    end: 'bottom top',
+    onUpdate: (progress) => {
+      anime({
+        targets: marqueeInner,
+        translateX: `${100 - (210 * progress)}vw`, // From 100vw to -110vw
+        duration: 0,
+        easing: 'linear'
+      });
     }
-  })
-  .fromTo(marqueeInner, {
-    x: '100vw'                           // Start the marquee off-screen to the right
-  }, {
-    x: '-110%',                          // Move the marquee further to the left at the end
-    ease: 'sine',
   });
 };
 
 // Function to animate text (split into characters) as it scrolls into view
 const animateTextElement = () => {
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: textElement,              // Trigger the animation when the text element enters the viewport
-      start: 'top bottom',               // Start when the top of the text hits the bottom of the viewport
-      end: 'center center-=25%',         // End when the center of the text is near the center of the viewport
-      scrub: true,                       // Smooth scrub
-    }
-  })
-  .from(splitTextEl.chars, {
-    // Animate each character individually
-    ease: 'sine',
-    yPercent: 300,                       // Move characters from below the viewport
-    autoAlpha: 0,                        // Start with opacity 0
-    stagger: {                           // Stagger the animation for each character
-      each: 0.04,                        // 0.04 seconds between each character's animation
-      from: 'center'                     // Animate characters from the center outward
+  if (!textElement || !splitTextEl) return;
+
+  // Set initial state
+  anime.set(splitTextEl.chars, {
+    translateY: '300%',
+    opacity: 0
+  });
+
+  scrollTrigger.add({
+    trigger: textElement,
+    start: 'top bottom',
+    end: 'center center-=25%',
+    onUpdate: (progress) => {
+      splitTextEl.chars.forEach((char, index) => {
+        const delay = Math.abs(index - (splitTextEl.chars.length / 2)) * 40;
+        const charProgress = Math.max(0, progress - (delay / 1000));
+        
+        anime({
+          targets: char,
+          translateY: `${300 - (300 * charProgress)}%`,
+          opacity: charProgress,
+          duration: 0,
+          easing: 'linear'
+        });
+      });
     }
   });
 };
 
 // Function to animate the full grid with staggered delays per column
 const animateGridFull = () => {
+  if (!gridFull) return;
+
   const gridFullItems = gridFull.querySelectorAll('.grid__item'); // Select all items in the full grid
   
   // Calculate the number of columns in the grid--full
@@ -191,61 +347,87 @@ const animateGridFull = () => {
     columns[columnIndex].push(item); // Add the item to the respective column
   });
 
-  // Animate each column, starting from the center column, with staggered delays for adjacent columns
-  columns.forEach((columnItems, columnIndex) => {
-    const delayFactor = Math.abs(columnIndex - middleColumnIndex) * 0.2; // Delay based on distance from the center column
+  // Set initial state for all items
+  gridFullItems.forEach(item => {
+    const img = item.querySelector('.grid__item-img');
+    anime.set(item, {
+      translateY: '450%',
+      opacity: 0
+    });
+    if (img) {
+      anime.set(img, {
+        transformOrigin: '50% 0%'
+      });
+    }
+  });
 
-    // GSAP timeline for the entire column
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: gridFull,               // Trigger the animation when the full grid section comes into view
-        start: 'top bottom',             // Start when the top of the grid hits the bottom of the viewport
-        end: 'center center',            // End when the bottom of the grid hits the center of the viewport
-        scrub: true,                     // Smooth scrub
-      }
-    })
-    .from(columnItems, {
-      // Animate the column items into view
-      yPercent: 450,                     // Start with items far below the viewport
-      autoAlpha: 0,                      // Fade in from opacity 0
-      delay: delayFactor,                // Delay based on distance from the center
-      ease: 'sine',
-    })
-    .from(columnItems.map(item => item.querySelector('.grid__item-img')), {
-      // Apply rotation to the images inside each grid item
-      transformOrigin: '50% 0%',          // Set the transform origin for the 3D effect
-      ease: 'sine',
-    }, 0); // Start the rotation at the same time as the translation
+  scrollTrigger.add({
+    trigger: gridFull,
+    start: 'top bottom',
+    end: 'center center',
+    onUpdate: (progress) => {
+      columns.forEach((columnItems, columnIndex) => {
+        const delayFactor = Math.abs(columnIndex - middleColumnIndex) * 0.2;
+        const adjustedProgress = Math.max(0, progress - delayFactor);
+
+        columnItems.forEach(item => {
+          const img = item.querySelector('.grid__item-img');
+          
+          anime({
+            targets: item,
+            translateY: `${450 - (450 * adjustedProgress)}%`,
+            opacity: adjustedProgress,
+            duration: 0,
+            easing: 'linear'
+          });
+
+          if (img) {
+            anime({
+              targets: img,
+              duration: 0,
+              easing: 'linear'
+            });
+          }
+        });
+      });
+    }
   });
 };
 
 const animateCredits = () => {
   creditsTexts.forEach(creditsText => {
-    const splitCredits = new SplitText(creditsText, { type: 'chars' }); // Split each credits text into characters
+    const splitCredits = splitText(creditsText, { type: 'chars' }); // Split each credits text into characters
 
-    // GSAP timeline for the credits animation
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: creditsText,              // Trigger the animation for each credits element
-        start: 'top bottom',               // Start when the top of the element hits the bottom of the viewport
-        end: 'clamp(bottom top)',          // End when the bottom of the element hits the top of the viewport
-        scrub: true,                       // Smooth scrub as you scroll
+    // Set initial state with spread out characters
+    splitCredits.chars.forEach((char, index) => {
+      anime.set(char, {
+        translateX: index * 80 - ((splitCredits.chars.length * 80) / 2)
+      });
+    });
+
+    scrollTrigger.add({
+      trigger: creditsText,
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: (progress) => {
+        splitCredits.chars.forEach((char, index) => {
+          const initialX = index * 80 - ((splitCredits.chars.length * 80) / 2);
+          anime({
+            targets: char,
+            translateX: initialX - (initialX * progress), // Animate back to 0
+            duration: 0,
+            easing: 'linear'
+          });
+        });
       }
-    })
-    .fromTo(splitCredits.chars, {
-      x: (index) => index * 80 - ((splitCredits.chars.length * 80) / 2),  // Start with extra spacing between characters, centered
-    }, {
-      x: 0,                               // Animate the characters back to their original position
-      ease: 'sine'
     });
   });
 };
 
-
 // Main initialization function
 const init = () => {
-  animateIntroTitle();  // Animate the intro title
-  animateIntroInfo();   // Animate the intro info text
+  animateIntroTitle();    // Animate the intro title
+  animateIntroInfo();     // Animate the intro info text
   animateScrollGrid();    // Animate the grid items on scroll
   animateMarquee();       // Animate the marquee on scroll
   animateTextElement();   // Animate the split text on scroll
