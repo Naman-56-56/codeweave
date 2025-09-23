@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-import google.generativeai as genai
 import logging
 import json
 from datetime import datetime
@@ -24,7 +23,7 @@ def devenv(request):
 load_dotenv()
 
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
-genai.configure(api_key=GOOGLE_API_KEY)
+# genai.configure(api_key=GOOGLE_API_KEY)
 
 
 logging.basicConfig(
@@ -155,152 +154,43 @@ def generate_roadmap(prompt):
             logger.info(f"Returning cached roadmap for prompt: {prompt}")
             return roadmap_cache[cache_key]
 
-        logger.info("Initializing generative model: models/gemini-2.5-flash-preview-05-20")
-        model = genai.GenerativeModel('models/gemini-2.5-flash-preview-05-20')
-        logger.info(f"Model initialized. Generating content...")
-
-        response = model.generate_content(
-            get_prompt_template(prompt),
-            generation_config=genai.types.GenerationConfig(
-                temperature=0.7,
-                top_p=1,
-                top_k=32,
-                max_output_tokens=8192
-            )
-        )
-        logger.info("Model response received.")
-
-        if not response or not hasattr(response, "text") or not response.text.strip():
-            logger.error("No response text generated — likely due to token limit or model cutoff.")
-            logger.info("Falling back to retry with simplified prompt.")
-            raise ValueError("Empty response from Gemini — finish_reason likely indicates cutoff.")
-
-        
-        if not response or not response.text:
-            logger.error("No response generated from model")
+        # Ollama API call
+        ollama_payload = {
+            "model": "mistral",
+            "prompt": get_prompt_template(prompt),
+        }
+        response = requests.post("http://localhost:11434/api/generate", json=ollama_payload)
+        if response.status_code != 200:
+            logger.error(f"Ollama request failed: {response.text}")
             return create_default_roadmap(prompt)
 
-        try:
-            response_text = response.text.strip()
-            logger.debug(f"Raw response text: {response_text[:200]}...")
-            start_idx = response_text.find('{')
-            end_idx = response_text.rfind('}') + 1
-            logger.debug(f"JSON extraction indices: start={start_idx}, end={end_idx}")
-            
-            if start_idx != -1 and end_idx != -1:
-                logger.debug("Attempting to clean and parse model response...")
-                def clean_and_parse_json(response_text):
-                    import re
-                    import json5
-                    try:
-                        response_text = response_text.strip().replace("```json", "").replace("```", "")
-                        start_idx = response_text.find('{')
-                        end_idx = response_text.rfind('}') + 1
-                        if start_idx == -1 or end_idx == -1:
-                            return None
+        result = response.json()
+        response_text = result.get("response", "").strip()
+        logger.debug(f"Ollama raw response: {response_text[:200]}...")
 
-                        json_str = response_text[start_idx:end_idx]
-                        json_str = re.sub(r",\s*([}\]])", r"\1", json_str)
-
-                        # Check if the JSON ends properly
-                        if not json_str.strip().endswith('}') and not json_str.strip().endswith(']'):
-                            raise ValueError("Response JSON appears incomplete or cut off.")
-
-                        return json5.loads(json_str)
-
-                    except Exception as e:
-                        logger.error(f"Failed to clean and parse JSON: {e}")
-                        return None
-
-
-
-                roadmap = clean_and_parse_json(response_text)
-                if roadmap:
-                    logger.info("JSON parsed successfully.")
-                    if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
-                        logger.error("Invalid roadmap structure - missing required fields")
-                        logger.info("Falling back to default roadmap")
-                        return create_default_roadmap(prompt)
-
-                    roadmap['metadata'] = {
-                        'generated_at': datetime.now().isoformat(),
-                        'prompt': prompt,
-                        'version': '2.0'
-                    }
-                    roadmap_cache[cache_key] = roadmap
-                    logger.info("Roadmap generation completed successfully")
-                    return roadmap
-                else:
-                    logger.warning("Initial parse failed. Retrying with simplified prompt...")
-                    short_prompt = (
-                        f"""Create a concise but complete project roadmap for: {prompt}
-
-                    Respond in **raw JSON** ONLY, no markdown or extra text.
-
-                    Your response MUST include these two top-level keys:
-                    - "project_overview"
-                    - "phases"
-
-                    Limit to 4 main phases, each with 1–2 subphases.
-                    Keep each task brief and realistic. Close all brackets and avoid trailing commas."""
-                    )
-
-                    os.makedirs("logs", exist_ok=True)
-                    with open("logs/invalid_retry_output.json", "w", encoding="utf-8") as f:
-                        json.dump(roadmap, f, indent=2)
-
-
-
-                    try:
-                        retry_response = model.generate_content(
-                            short_prompt,
-                            generation_config=genai.types.GenerationConfig(
-                                temperature=0.7,
-                                top_p=1,
-                                top_k=32,
-                                max_output_tokens=6144  # safer token limit
-                            )
-                        )
-                        try:
-                            roadmap = clean_and_parse_json(retry_response.text)
-
-                            # ✅ NEW: Check if roadmap is a valid dict
-                            if not roadmap or not isinstance(roadmap, dict):
-                                logger.error("Retry returned non-dict response. Type: %s", type(roadmap))
-                                logger.warning(f"Retry parsed value: {roadmap}")
-                                return create_default_roadmap(prompt)
-
-                            # ✅ Also check if required keys exist
-                            if "project_overview" not in roadmap or "phases" not in roadmap:
-                                logger.error("Retry missing required keys.")
-                                logger.warning(f"Retry result: {roadmap}")
-                                return create_default_roadmap(prompt)
-
-                            logger.info("Retry succeeded. JSON parsed.")
-
-                            roadmap['metadata'] = {
-                                'generated_at': datetime.now().isoformat(),
-                                'prompt': prompt,
-                                'version': '2.0 (retry)'
-                            }
-                            roadmap_cache[cache_key] = roadmap
-                            return roadmap
-
-                        except Exception as e:
-                            logger.error(f"Retry parsing failed: {str(e)}")
-                            return create_default_roadmap(prompt)
-
-                    except Exception as retry_err:
-                        logger.error(f"Retry generation error: {retry_err}")
-                        return create_default_roadmap(prompt)
-
-                
-
-            else:
-                logger.error("No JSON structure found in response")
+        # Try to extract JSON from the response
+        start_idx = response_text.find('{')
+        end_idx = response_text.rfind('}') + 1
+        if start_idx != -1 and end_idx != -1:
+            json_str = response_text[start_idx:end_idx]
+            try:
+                roadmap = json.loads(json_str)
+                if not isinstance(roadmap, dict) or 'project_overview' not in roadmap or 'phases' not in roadmap:
+                    logger.error("Invalid roadmap structure - missing required fields")
+                    return create_default_roadmap(prompt)
+                roadmap['metadata'] = {
+                    'generated_at': datetime.now().isoformat(),
+                    'prompt': prompt,
+                    'version': 'ollama'
+                }
+                roadmap_cache[cache_key] = roadmap
+                logger.info("Roadmap generation completed successfully")
+                return roadmap
+            except Exception as e:
+                logger.error(f"Failed to parse JSON from Ollama response: {e}")
                 return create_default_roadmap(prompt)
-        except Exception as e:
-            logger.error(f"Error processing response: {str(e)}")
+        else:
+            logger.error("No JSON structure found in Ollama response")
             return create_default_roadmap(prompt)
     except Exception as e:
         logger.error(f"Error generating roadmap: {str(e)}")
@@ -427,6 +317,116 @@ def clear_cache_view(request):
 @log_request
 @validate_request
 def roadmap_view(request):
+    try:
+        data = json.loads(request.body)
+        prompt = data.get('prompt')
+        project_name = data.get('project_name')
+        duration = data.get('duration')
+
+        # roadmap using existing function
+        roadmap = generate_roadmap(prompt)
+        
+        # project name 
+        if project_name:
+            roadmap['project_overview']['name'] = project_name
+            
+        # duration 
+        if duration:
+            roadmap['project_overview']['estimated_duration'] = duration
+
+        return JsonResponse({
+            'status': 'success',
+            'roadmap': roadmap
+        })
+        
+    except Exception as e:
+        logger.error(f"Error in roadmap_view: {str(e)}")
+        return JsonResponse({
+            'status': 'error',
+            'message': 'Failed to generate roadmap'
+        }, status=500)
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def generate_pdf(request):
+    if request.method == 'POST':
+        try:
+            # content from the request
+            data = json.loads(request.body)
+            content = data.get('content')
+            title = data.get('title', 'Project Roadmap')
+            
+            # payload for the PDF API
+            payload = {
+                'content': content,
+                'title': title,
+                'options': {
+                    'format': 'A4',
+                    'margin': '20mm',
+                    'printBackground': True
+                }
+            }
+            
+            # request to the PDF API
+            response = requests.post(
+                'https://api.market/store/yakpdf/pdf',
+                json=payload,
+                headers={
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/pdf'
+                }
+            )
+            
+            if response.status_code == 200:
+                # return PDF data 
+                response = HttpResponse(
+                    response.content,
+                    content_type='application/pdf'
+                )
+                response['Content-Disposition'] = f'attachment; filename="{title}.pdf"'
+                response['Access-Control-Allow-Origin'] = '*'
+                response['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+                response['Access-Control-Allow-Headers'] = 'Content-Type'
+                return response
+            else:
+                return JsonResponse(
+                    {'error': f'PDF generation failed with status {response.status_code}'},
+                    status=response.status_code,
+                    headers={
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                        'Access-Control-Allow-Headers': 'Content-Type'
+                    }
+                )
+                
+        except Exception as e:
+            return JsonResponse(
+                {'error': str(e)},
+                status=500,
+                headers={
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type'
+                }
+            )
+            
+    # CORS
+    if request.method == 'OPTIONS':
+        response = HttpResponse()
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+        response['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+        
+    return JsonResponse(
+        {'error': 'Method not allowed'},
+        status=405,
+        headers={
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type'
+        }
+    )
     try:
         data = json.loads(request.body)
         prompt = data.get('prompt')
